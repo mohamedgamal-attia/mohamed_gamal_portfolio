@@ -1,0 +1,70 @@
+{
+  "name": "Mohamed Gamal",
+  "title": "Senior Odoo Developer",
+  "subtitle": "ERP Software Developer",
+  "experienceYears": "3+",
+  "location": "Cairo, Egypt",
+  "openTo": "Open to Remote & Relocation",
+  "email": "mohammedgamal37l30@gmail.com",
+  "phone": ["+201102672347", "+201016843962"],
+  "whatsapp": "https://wa.me/201102672347",
+  "linkedin": "https://www.linkedin.com/in/mohamedgamal37l30",
+  "github": "https://github.com/mohamedgamal-attia",
+  "cv": "0_Mohamed_Gamal_CV.pdf",
+  "photo": "my_img.png",
+  "headline": "Building scalable ERP systems, custom Odoo modules, and business workflows for real estate, engineering, and digital transformation companies across Egypt, Saudi Arabia, and the USA.",
+  "odooVersions": ["Odoo 14", "Odoo 15", "Odoo 16", "Odoo 17", "Odoo 18", "Odoo 19"],
+  "about": [
+    "I'm Mohamed Gamal, a Senior Odoo Developer with 3+ years of hands-on experience designing, building, and delivering custom ERP systems. I work at the intersection of business process design and technical implementation — translating real operational needs into clean, maintainable Odoo modules.",
+    "My approach is business-first: I map workflows and requirements before writing a single line of code, ensuring the final system is both technically robust and genuinely useful to the people who use it every day."
+  ],
+  "highlights": [
+    {
+      "icon": "🏗️",
+      "strong": "Built complete ERP systems from scratch",
+      "text": "for Margins Developments (Real Estate, Egypt) and DOTec Engineering (USA) — owning the full project from data modeling and module architecture to QWeb reports, automation, and access control."
+    },
+    {
+      "icon": "🇸🇦",
+      "strong": "Senior Odoo Developer",
+      "text": "at EJAD Digital Solutions (Odoo Silver Partner, KSA) and Odoo Developer at EjadTech (KSA) — working on ERP implementations, custom modules, digital transformation projects, and government platform backends."
+    },
+    {
+      "icon": "⚙️",
+      "strong": "Deep Odoo expertise",
+      "text": "across custom modules, ORM, QWeb reports, access rights, server actions, cron jobs, automation, REST API integrations, PostgreSQL optimization, and performance tuning — on Odoo 14 through Odoo 19."
+    },
+    {
+      "icon": "🧠",
+      "strong": "Business-first mindset:",
+      "text": "requirement analysis, story sizing, and process mapping before coding — ensuring ERP solutions that solve real business problems, not just technical exercises."
+    }
+  ],
+  "skills": {
+    "odoo": [
+      "Custom Modules", "Models & ORM", "Module Inheritance",
+      "Views (Form / List / Kanban / Tree)", "Security & Access Rights",
+      "Record Rules", "QWeb Reports", "Server Actions", "Scheduled Actions (Cron)",
+      "Mail / Chatter Integration", "Workflow Automation", "Computed Fields",
+      "Onchange / Constraints", "Performance Optimization"
+    ],
+    "backend": [
+      "Python", "PostgreSQL", "XML", "QWeb Templates",
+      "REST API Integration", "JSON-RPC", "SQL Queries",
+      "Data Migration", "pgAdmin", "Git / GitLab CI/CD",
+      "Odoo.sh Basics", "Linux Server Deployment"
+    ],
+    "domains": [
+      "Real Estate ERP", "Engineering ERP", "CRM",
+      "HR & Payroll", "Sales Pipeline", "Project Management",
+      "Document Management", "Accounting Workflow",
+      "Digital Transformation", "Government Platforms",
+      "Reporting & Dashboards"
+    ],
+    "process": [
+      "Agile / Scrum", "Requirement Analysis", "Story Sizing",
+      "Business Process Mapping", "Technical Documentation",
+      "Code Review & Refactoring"
+    ]
+  }
+}

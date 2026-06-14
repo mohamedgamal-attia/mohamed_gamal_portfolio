@@ -1,0 +1,151 @@
+{
+  "_comment": "Image asset provenance for the portfolio. Updated: 2026-06-14.",
+
+  "companies": [
+    {
+      "file": "assets/images/companies/ejadtech-logo.png",
+      "type": "real-logo",
+      "format": "PNG",
+      "size": "256x256",
+      "bytes": 6078,
+      "source": "https://ejadtech.sa/ (Odoo backend footer logo via /web/image/ endpoint)",
+      "notes": "Downloaded from the EjadTech Odoo backend. Actual PNG bytes; file saved as .png."
+    },
+    {
+      "file": "assets/images/companies/ejad-digital-logo.png",
+      "type": "real-logo",
+      "format": "PNG",
+      "size": "850x245",
+      "bytes": 16519,
+      "source": "https://ejad.sa/wp-content/uploads/2024/10/logo-w-l.png"
+    },
+    {
+      "file": "assets/images/companies/margins-logo.svg",
+      "type": "generated-svg-placeholder",
+      "notes": "Real Margins Developments logo not publicly accessible (all attempted wp-content paths returned 404). Premium branded SVG placeholder generated using company name and industry colors."
+    },
+    {
+      "file": "assets/images/companies/dotec-logo.png",
+      "type": "real-logo",
+      "format": "PNG",
+      "size": "268x92",
+      "bytes": 6357,
+      "source": "https://dotecengineering.com/wp-content/uploads/logo-main.png"
+    },
+    {
+      "file": "assets/images/companies/ejadtech-placeholder.svg",
+      "type": "generated-svg-placeholder",
+      "notes": "Fallback shown if ejadtech-logo.png fails to load. Generated SVG placeholder."
+    },
+    {
+      "file": "assets/images/companies/ejad-digital-placeholder.svg",
+      "type": "generated-svg-placeholder",
+      "notes": "Fallback shown if ejad-digital-logo.png fails to load. Generated SVG placeholder."
+    },
+    {
+      "file": "assets/images/companies/dotec-placeholder.svg",
+      "type": "generated-svg-placeholder",
+      "notes": "Fallback shown if dotec-logo.png fails to load. Generated SVG placeholder."
+    }
+  ],
+
+  "projects": [
+    {
+      "file": "assets/images/projects/margins-erp-system.svg",
+      "type": "generated-svg",
+      "notes": "Premium SVG generated with Margins Developments brand colors"
+    },
+    {
+      "file": "assets/images/projects/dotec-erp-system.svg",
+      "type": "generated-svg",
+      "notes": "Premium SVG generated with DOTec Engineering brand colors"
+    },
+    {
+      "file": "assets/images/projects/ejadtech-odoo-work.png",
+      "type": "official-screenshot",
+      "format": "PNG",
+      "size": "2312x534",
+      "bytes": 100370,
+      "source": "http://ejadtech.sa/web/image/website/1/social_default_image?unique=d74c65d",
+      "notes": "EjadTech official social banner image downloaded from their Odoo website backend. Used for EjadTech Odoo Work case study and related cards."
+    },
+    {
+      "file": "assets/images/projects/zeraei-platform.png",
+      "type": "official-screenshot",
+      "format": "PNG",
+      "size": "1206x627",
+      "bytes": 78269,
+      "source": "https://www.mewa.gov.sa/_layouts/15/MewaPortal/mewa-branding/images/default-metatag-image.png",
+      "notes": "Official OG/meta image from MEWA (Ministry of Environment, Water and Agriculture) website. Used as Zeraei Platform context image since MEWA is the platform's government client."
+    },
+    {
+      "file": "assets/images/projects/vro-ministry-media.svg",
+      "type": "generated-svg",
+      "notes": "Saudi Ministry of Media website (media.gov.sa) was unreachable. Generated SVG placeholder used."
+    },
+    {
+      "file": "assets/images/projects/tasharuk-platform.svg",
+      "type": "official-logo-svg",
+      "format": "SVG",
+      "bytes": 48687,
+      "source": "https://najran.gov.sa/assets/core/collection/assets/Najran-Municipality.svg",
+      "notes": "Official Najran Municipality SVG logo from their government website. Contains an embedded base64 PNG (36KB). Used for Tasharuk Platform since Najran Region Emirate is the government client."
+    },
+    {
+      "file": "assets/images/projects/ejadx-platform.png",
+      "type": "official-screenshot",
+      "format": "PNG",
+      "size": "2312x534",
+      "bytes": 100370,
+      "source": "http://ejadtech.sa/web/image/website/1/social_default_image?unique=d74c65d",
+      "notes": "EjadTech official social banner image. EjadX is EjadTech's own innovation platform."
+    },
+    {
+      "file": "assets/images/projects/tawajod-platform.png",
+      "type": "official-screenshot",
+      "format": "PNG",
+      "size": "2312x534",
+      "bytes": 100370,
+      "source": "http://ejadtech.sa/web/image/website/1/social_default_image?unique=d74c65d",
+      "notes": "EjadTech official social banner image. Tawajod is delivered through EjadTech."
+    },
+    { "file": "assets/images/projects/ejad-digital-odoo-work.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/ejad-erp-implementations.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/ejad-internal-erp.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/visitor-service-robot.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/creatio-automation.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/zia-business-complex.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/oaks-egypt.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/lusail-residence.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/sheraton-residences.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/cargill-engineering.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/johnson-controls.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/pb-lodge.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/container-home-design.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/smurfit-stone.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/aerofil-technologies.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/reckitt-benckiser.svg", "type": "generated-svg" },
+    { "file": "assets/images/projects/city-grocers.svg", "type": "generated-svg" }
+  ],
+
+  "placeholders": [
+    {
+      "file": "assets/images/placeholders/generic.svg",
+      "type": "generated-svg",
+      "notes": "Generic fallback shown by data-loader.js onerror handler if any project image fails to load."
+    }
+  ],
+
+  "personal": [
+    {
+      "file": "my_img.png",
+      "type": "personal-photo",
+      "notes": "Developer's personal photo, provided by user."
+    },
+    {
+      "file": "0_Mohamed_Gamal_CV.pdf",
+      "type": "cv",
+      "notes": "Developer CV, provided by user."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" width="480" height="280">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a2f4a"/>
+      <stop offset="100%" stop-color="#0d1b2e"/>
+    </linearGradient>
+    <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="280" fill="url(#bg)"/>
+  <!-- subtle grid -->
+  <g stroke="rgba(37,99,235,0.08)" stroke-width="1">
+    <line x1="0" y1="56" x2="480" y2="56"/>
+    <line x1="0" y1="112" x2="480" y2="112"/>
+    <line x1="0" y1="168" x2="480" y2="168"/>
+    <line x1="0" y1="224" x2="480" y2="224"/>
+    <line x1="96" y1="0" x2="96" y2="280"/>
+    <line x1="192" y1="0" x2="192" y2="280"/>
+    <line x1="288" y1="0" x2="288" y2="280"/>
+    <line x1="384" y1="0" x2="384" y2="280"/>
+  </g>
+  <!-- icon circle -->
+  <circle cx="240" cy="120" r="44" fill="url(#icon-grad)" opacity="0.15"/>
+  <circle cx="240" cy="120" r="32" fill="none" stroke="url(#icon-grad)" stroke-width="2" opacity="0.5"/>
+  <!-- image icon -->
+  <g transform="translate(240,120)" fill="rgba(59,130,246,0.7)">
+    <rect x="-14" y="-11" width="28" height="22" rx="3" fill="none" stroke="rgba(59,130,246,0.7)" stroke-width="1.5"/>
+    <circle cx="-5" cy="-4" r="3.5" fill="rgba(59,130,246,0.7)"/>
+    <polyline points="-14,6 -4,-2 4,5 10,-1 14,6" fill="none" stroke="rgba(59,130,246,0.7)" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+  <!-- label -->
+  <text x="240" y="182" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" fill="rgba(148,163,184,0.7)" letter-spacing="0.5">Project Image</text>
+</svg>

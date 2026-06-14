@@ -1,0 +1,30 @@
+/* =========================================================
+   base.css — reset, typography, body
+   ========================================================= */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img   { max-width: 100%; display: block; }
+a     { text-decoration: none; color: inherit; }
+ul    { list-style: none; }
+button { font-family: inherit; }
+
+/* Headings */
+h1 { font-size: clamp(2rem, 5vw, 3.5rem);   font-weight: 800; line-height: 1.1; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 700; line-height: 1.2; }
+h3 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 600; line-height: 1.3; }
+h4 { font-size: 1.1rem; font-weight: 600; }
+p  { line-height: 1.75; color: var(--text-mid); }
+
+/* Selection */
+::selection { background: rgba(37,99,235,.2); }

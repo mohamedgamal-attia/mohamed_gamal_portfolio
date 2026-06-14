@@ -1,0 +1,32 @@
+/* =========================================================
+   layout.css — container, spacing, grids, divider
+   ========================================================= */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-pad    { padding: 100px 0; }
+.section-pad-sm { padding: 70px 0; }
+
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-header h2 { margin-bottom: 16px; }
+.section-header p {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--text-light);
+}
+
+.divider {
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--blue), transparent);
+  opacity: .3;
+}
+
+/* Generic two-column grid */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }

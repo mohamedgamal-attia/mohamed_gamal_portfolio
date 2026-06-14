@@ -1,0 +1,54 @@
+/* =========================================================
+   variables.css — CSS custom properties
+   ========================================================= */
+
+:root {
+  /* Brand colours */
+  --navy:        #0d1b2e;
+  --navy-mid:    #1a2f4a;
+  --navy-light:  #1e3a5f;
+  --blue:        #2563eb;
+  --blue-light:  #3b82f6;
+  --blue-glow:   rgba(37, 99, 235, 0.15);
+  --gold:        #d4a843;
+  --gold-light:  #f0c55a;
+
+  /* Neutrals */
+  --white:       #ffffff;
+  --gray-50:     #f9fafb;
+  --gray-100:    #f8fafc;
+  --gray-200:    #e2e8f0;
+  --gray-300:    #cbd5e1;
+  --gray-400:    #94a3b8;
+  --gray-500:    #64748b;
+  --gray-600:    #475569;
+  --gray-900:    #0f172a;
+
+  /* Text */
+  --text-dark:   #1e293b;
+  --text-mid:    #334155;
+  --text-light:  #64748b;
+
+  /* Status */
+  --green:       #16a34a;
+  --purple:      #7c3aed;
+  --red:         #dc2626;
+  --orange:      #ea580c;
+
+  /* Radii */
+  --radius:    12px;
+  --radius-sm:  8px;
+  --radius-lg: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,.15);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,.20);
+
+  /* Motion */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --max-width: 1200px;
+}

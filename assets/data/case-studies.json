@@ -1,0 +1,90 @@
+[
+  {
+    "id": "margins-erp-case",
+    "title": "Real Estate ERP – Margins Developments",
+    "company": "Margins Developments",
+    "country": "Egypt",
+    "sector": "Real Estate",
+    "image": "assets/images/projects/margins-erp-system.svg",
+    "problem": "Margins Developments managed all real estate sales, reservations, broker commissions, and contract data through disconnected spreadsheets. Leads were lost, commissions were miscalculated, and there was no reliable pipeline visibility for management.",
+    "solution": "I designed and built a complete Odoo ERP system from scratch — covering CRM, unit management, reservations, broker tracking, contracts, accounting workflow, and payment milestone tracking. The system replaced every spreadsheet with structured, automated workflows.",
+    "features": [
+      "Real Estate CRM with lead qualification pipeline",
+      "Unit / Property catalog with availability and pricing",
+      "Reservation and approval workflow",
+      "Broker and agent commission management",
+      "Automated contract generation",
+      "Payment milestone tracking with automated reminders",
+      "QWeb PDF reports (contracts, receipts, unit sheets)",
+      "Role-based access control"
+    ],
+    "impact": "Eliminated data silos across sales, reservations, and accounting. Management gained real-time pipeline reporting, brokers gained a structured commission workflow, and the operations team went from weekly manual spreadsheet consolidation to automated daily reporting.",
+    "tech": ["Odoo 17", "Python", "PostgreSQL", "QWeb", "ORM", "XML Views", "Cron Jobs"]
+  },
+  {
+    "id": "dotec-erp-case",
+    "title": "Engineering ERP – DOTec Engineering",
+    "company": "DOTec Engineering",
+    "country": "United States",
+    "sector": "Engineering Consultancy",
+    "image": "assets/images/projects/dotec-erp-system.svg",
+    "problem": "DOTec Engineering tracked active projects, consultant assignments, and client engagements manually. No centralized system existed for managing multi-discipline engineering teams (civil, structural, MEP, robotics, forensic) across concurrent client projects.",
+    "solution": "Built a full internal Odoo ERP from scratch — covering engineering CRM, project lifecycle management, multi-discipline team management, timesheet and expense tracking, document management, automation, and comprehensive QWeb reporting.",
+    "features": [
+      "Engineering CRM with opportunity-to-project lifecycle",
+      "Multi-discipline team and consultant management",
+      "Project phase and milestone tracking",
+      "Timesheet and workload management",
+      "Expense management per project",
+      "Document and deliverable tracking",
+      "Role-based access control and security groups",
+      "QWeb reports (project status, utilization, expenses)",
+      "PostgreSQL optimization and performance tuning"
+    ],
+    "impact": "Gave DOTec real-time visibility into project status, consultant utilization, and financials across all active engagements. Eliminated manual project tracking, reduced administrative overhead, and provided management with actionable operational data.",
+    "tech": ["Odoo 18", "Python", "PostgreSQL", "QWeb", "ORM", "XML Views", "REST API"]
+  },
+  {
+    "id": "ejadtech-odoo-case",
+    "title": "Government Digital Platforms – EjadTech",
+    "company": "EjadTech",
+    "country": "Saudi Arabia",
+    "sector": "Government · Digital Transformation",
+    "image": "assets/images/projects/ejadtech-odoo-work.png",
+    "problem": "Government and public-sector clients required digital transformation ERP backbones for large-scale national platforms — including a Ministry of Environment agriculture platform (Zeraei), a Ministry of Media platform (VRO), and a regional emirate participation platform (Tasharuk).",
+    "solution": "As an Odoo Developer on EjadTech's delivery team, I contributed to ERP/business workflow modules across these projects — building custom module development, backend logic, automation workflows, access rights, QWeb reports, and integration support.",
+    "features": [
+      "Custom Odoo module development",
+      "Workflow automation and server actions",
+      "Role-based access control configuration",
+      "Backend logic and ORM data models",
+      "Scheduled actions (Cron)",
+      "QWeb reports and data exports",
+      "Integration support and connector development"
+    ],
+    "impact": "Supported national-scale digital transformation initiatives for Saudi government ministries and regional authorities, contributing reliable ERP workflow modules to high-visibility public sector platforms.",
+    "tech": ["Odoo", "Python", "PostgreSQL", "QWeb", "XML", "API Integration"]
+  },
+  {
+    "id": "ejad-digital-case",
+    "title": "Multi-Client ERP & BPM – EJAD Digital Solutions",
+    "company": "EJAD Digital Solutions",
+    "country": "Saudi Arabia",
+    "sector": "Odoo Silver Partner · ERP",
+    "image": "assets/images/projects/ejad-digital-odoo-work.svg",
+    "problem": "EJAD Digital Solutions (Odoo Silver Partner) needed a capable Senior Odoo Developer to handle concurrent client ERP implementations, custom module development, Creatio BPM integrations, and internal tooling improvements.",
+    "solution": "As Senior Odoo Developer, I built and maintained custom Odoo modules, CRM workflows, HR modules, accounting customizations, QWeb reports, security configurations, automation rules, and Odoo-Creatio BPM integration support across multiple simultaneous client projects — including the Visitor Service Robot system for the Grand Mosque.",
+    "features": [
+      "Multi-client custom Odoo module development",
+      "CRM pipeline automation and HR customization",
+      "Accounting and sales workflow modules",
+      "QWeb report templates (PDF, contracts, summaries)",
+      "Security groups and access rights configuration",
+      "Odoo-Creatio BPM integration",
+      "Visitor management system (Grand Mosque project)",
+      "Code review and module quality improvements"
+    ],
+    "impact": "Delivered clean, production-grade Odoo ERP solutions across concurrent client projects at an official Odoo Silver Partner — while contributing to a landmark AI visitor service project for one of the world's most significant sites.",
+    "tech": ["Odoo 17", "Odoo 18", "Python", "PostgreSQL", "QWeb", "Creatio BPM", "REST API"]
+  }
+]
