@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1524"/>
+      <stop offset="1" stop-color="#0d1b2e"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.09"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M34 0H0V34" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <ellipse cx="120" cy="90" rx="360" ry="300" fill="url(#glow)" filter="url(#soft)" opacity="0.9"/>
+  <ellipse cx="1120" cy="720" rx="380" ry="300" fill="url(#glow)" filter="url(#soft)" opacity="0.6"/>
+  <g transform="translate(100,64)">
+    <rect x="0" y="0" width="1000" height="52" rx="16" fill="#16294a"/>
+    <rect x="0" y="26" width="1000" height="26" fill="#16294a"/>
+    <circle cx="30" cy="26" r="6" fill="#ff5f57"/>
+    <circle cx="52" cy="26" r="6" fill="#febc2e"/>
+    <circle cx="74" cy="26" r="6" fill="#28c840"/>
+    <rect x="360" y="15" width="280" height="22" rx="11" fill="#0a1524" opacity="0.6"/>
+    <text x="500" y="30" font-family="Inter,Segoe UI,sans-serif" font-size="12"
+          fill="#5f78a3" text-anchor="middle">dotec.odoo · Projects</text>
+    <rect x="836" y="14" width="150" height="24" rx="12" fill="url(#acc)" opacity="0.9"/>
+    <text x="911" y="30" font-family="Inter,sans-serif" font-size="11" font-weight="700"
+          fill="#04122a" text-anchor="middle" letter-spacing="0.5">PROJECT LIFECYCLE</text><rect x="0" y="70" width="88" height="480" rx="16" fill="#101f36"/><rect x="18" y="90" width="52" height="34" rx="10" fill="url(#acc)" opacity="1"/><rect x="30" y="101" width="28" height="4" rx="2" fill="#04122a" opacity="0.9"/><rect x="18" y="138" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="149" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/><rect x="18" y="186" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="197" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/><rect x="18" y="234" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="245" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/><rect x="18" y="282" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="293" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/><rect x="18" y="330" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="341" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/>
+    <rect x="108" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="126" y="118" font-family="Space Grotesk,Inter,sans-serif" font-size="30" font-weight="700" fill="#eaf1ff">46</text>
+    <text x="126" y="138" font-family="Inter,sans-serif" font-size="12" fill="#9db4d8">Projects</text>
+    <rect x="126" y="146.15780312848526" width="10" height="7.842196871514732" rx="3" fill="url(#acc)" opacity="0.4738884013752833"/><rect x="140" y="149.94588230210886" width="10" height="4.054117697891146" rx="3" fill="url(#acc)" opacity="0.40104072495944515"/><rect x="154" y="147.30816025364018" width="10" height="6.6918397463598245" rx="3" fill="url(#acc)" opacity="0.4517661489684582"/><rect x="168" y="131.13796410159034" width="10" height="22.862035898409673" rx="3" fill="url(#acc)" opacity="0.7627314595848014"/><rect x="182" y="137.14021295210415" width="10" height="16.85978704789585" rx="3" fill="url(#acc)" opacity="0.6473035970749202"/><rect x="196" y="138.6496023579545" width="10" height="15.350397642045488" rx="3" fill="url(#acc)" opacity="0.6182768777316441"/>
+    <rect x="320" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="338" y="118" font-family="Space Grotesk,Inter,sans-serif" font-size="30" font-weight="700" fill="#eaf1ff">212</text>
+    <text x="338" y="138" font-family="Inter,sans-serif" font-size="12" fill="#9db4d8">Milestones</text>
+    <rect x="338" y="130.5855216995913" width="10" height="23.414478300408703" rx="3" fill="url(#acc)" opacity="0.7733553519309366"/><rect x="352" y="138.64531674659628" width="10" height="15.35468325340373" rx="3" fill="url(#acc)" opacity="0.6183592933346871"/><rect x="366" y="127.52211622433249" width="10" height="26.47788377566751" rx="3" fill="url(#acc)" opacity="0.8322669956859137"/><rect x="380" y="137.62220077540906" width="10" height="16.37779922459095" rx="3" fill="url(#acc)" opacity="0.638034600472903"/><rect x="394" y="125.56887432764857" width="10" height="28.431125672351424" rx="3" fill="url(#acc)" opacity="0.869829339852912"/><rect x="408" y="134.33479859227208" width="10" height="19.665201407727924" rx="3" fill="url(#acc)" opacity="0.701253873225537"/>
+    <rect x="532" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="550" y="118" font-family="Space Grotesk,Inter,sans-serif" font-size="30" font-weight="700" fill="#eaf1ff">Docs</text>
+    <text x="550" y="138" font-family="Inter,sans-serif" font-size="12" fill="#9db4d8">Managed</text>
+    <rect x="550" y="126.95939936618701" width="10" height="27.040600633812982" rx="3" fill="url(#acc)" opacity="0.8430884737271728"/><rect x="564" y="128.8788188738471" width="10" height="25.121181126152898" rx="3" fill="url(#acc)" opacity="0.806176560118325"/><rect x="578" y="135.6704594160475" width="10" height="18.329540583952515" rx="3" fill="url(#acc)" opacity="0.6755680881529329"/><rect x="592" y="124.05370972650019" width="10" height="29.94629027349982" rx="3" fill="url(#acc)" opacity="0.8989671206442273"/><rect x="606" y="126.46388396601373" width="10" height="27.536116033986275" rx="3" fill="url(#acc)" opacity="0.8526176160381976"/><rect x="620" y="128.3091180738898" width="10" height="25.690881926110183" rx="3" fill="url(#acc)" opacity="0.8171323447328882"/>
+    <rect x="744" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="762" y="118" font-family="Space Grotesk,Inter,sans-serif" font-size="30" font-weight="700" fill="#eaf1ff">RBAC</text>
+    <text x="762" y="138" font-family="Inter,sans-serif" font-size="12" fill="#9db4d8">Security</text>
+    <rect x="762" y="145.19964543221053" width="10" height="8.800354567789466" rx="3" fill="url(#acc)" opacity="0.4923145109190282"/><rect x="776" y="135.21330211030215" width="10" height="18.786697889697848" rx="3" fill="url(#acc)" opacity="0.6843595748018817"/><rect x="790" y="129.1830051767492" width="10" height="24.816994823250806" rx="3" fill="url(#acc)" opacity="0.8003268235240539"/><rect x="804" y="127.44570704729782" width="10" height="26.55429295270219" rx="3" fill="url(#acc)" opacity="0.8337364029365806"/><rect x="818" y="132.05672680356764" width="10" height="21.943273196432344" rx="3" fill="url(#acc)" opacity="0.7450629460852374"/><rect x="832" y="126.68790764705146" width="10" height="27.31209235294854" rx="3" fill="url(#acc)" opacity="0.8483094683259335"/>
+    <rect x="108" y="196" width="470" height="190" rx="16" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="128" y="226" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#eaf1ff">Revenue by stage</text>
+    <line x1="126" y1="266" x2="560" y2="266" stroke="#24406b" stroke-opacity="0.5" stroke-width="1"/><line x1="126" y1="296" x2="560" y2="296" stroke="#24406b" stroke-opacity="0.5" stroke-width="1"/><line x1="126" y1="326" x2="560" y2="326" stroke="#24406b" stroke-opacity="0.5" stroke-width="1"/><rect x="128" y="297" width="34" height="65" rx="5" fill="url(#acc)"/><rect x="195" y="264" width="34" height="98" rx="5" fill="url(#acc)"/><rect x="262" y="308" width="34" height="54" rx="5" fill="url(#acc)"/><rect x="329" y="243" width="34" height="119" rx="5" fill="url(#acc)"/><rect x="397" y="275" width="34" height="87" rx="5" fill="url(#acc)"/><rect x="464" y="232" width="34" height="130" rx="5" fill="url(#acc)"/><rect x="531" y="286" width="34" height="76" rx="5" fill="url(#acc)"/><circle cx="760" cy="292" r="66" fill="none" stroke="#16294a" stroke-width="18"/><path d="M 760.0 226.0 A 66 66 0 1 1 751.7 357.5" fill="none" stroke="#2563eb" stroke-width="18" stroke-linecap="round"/><path d="M 751.7 357.5 A 66 66 0 0 1 697.2 271.6" fill="none" stroke="#22d3ee" stroke-width="18" stroke-linecap="round"/><path d="M 697.2 271.6 A 66 66 0 0 1 760.0 226.0" fill="none" stroke="#8b5cf6" stroke-width="18" stroke-linecap="round"/><text x="760" y="298" font-family="Space Grotesk,Inter" font-size="26" font-weight="700" fill="#eaf1ff" text-anchor="middle">100</text><rect x="620" y="196" width="272" height="190" rx="16" fill="url(#glass)" stroke="#24406b" stroke-width="1"/><text x="640" y="226" font-family="Inter" font-size="14" font-weight="600" fill="#eaf1ff">Distribution</text><rect x="108" y="400" width="784" height="150" rx="16" fill="url(#glass)" stroke="#24406b" stroke-width="1"/><rect x="126" y="420" width="240" height="8" rx="4" fill="#5f78a3"/><rect x="420" y="420" width="150" height="8" rx="4" fill="#24406b"/><rect x="620" y="420" width="120" height="8" rx="4" fill="#24406b"/><rect x="800" y="416" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="450" width="240" height="8" rx="4" fill="#24406b"/><rect x="420" y="450" width="150" height="8" rx="4" fill="#24406b"/><rect x="620" y="450" width="120" height="8" rx="4" fill="#24406b"/><rect x="800" y="446" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="480" width="240" height="8" rx="4" fill="#24406b"/><rect x="420" y="480" width="150" height="8" rx="4" fill="#24406b"/><rect x="620" y="480" width="120" height="8" rx="4" fill="#24406b"/><rect x="800" y="476" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="510" width="240" height="8" rx="4" fill="#24406b"/><rect x="420" y="510" width="150" height="8" rx="4" fill="#24406b"/><rect x="620" y="510" width="120" height="8" rx="4" fill="#24406b"/><rect x="800" y="506" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/></g>
+</svg>

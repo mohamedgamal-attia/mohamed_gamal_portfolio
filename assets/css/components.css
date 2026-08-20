@@ -350,31 +350,6 @@
 }
 .modal-source-link:hover { text-decoration: underline; }
 
-/* ── Contact Form ───────────────────────────────────────── */
-.form-group { margin-bottom: 18px; }
-.form-group label {
-  display: block;
-  font-size: .82rem; font-weight: 600;
-  color: var(--gray-300); margin-bottom: 6px;
-}
-.form-control {
-  width: 100%;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: var(--radius-sm);
-  padding: 11px 14px;
-  color: var(--white); font-size: .9rem;
-  transition: var(--transition); outline: none;
-  resize: none; font-family: inherit;
-}
-.form-control::placeholder { color: rgba(255,255,255,.3); }
-.form-control:focus {
-  border-color: var(--blue);
-  background: rgba(37,99,235,.06);
-  box-shadow: 0 0 0 3px rgba(37,99,235,.15);
-}
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
 /* ── Context disclaimer banner ──────────────────────────── */
 .context-disclaimer {
   background: rgba(212,168,67,.06);

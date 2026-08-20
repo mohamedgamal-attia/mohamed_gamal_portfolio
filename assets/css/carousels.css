@@ -1,0 +1,93 @@
+/* =========================================================
+   carousels.css — auto-carousel with manual control
+   ========================================================= */
+
+.carousel { position: relative; }
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 8px 4px 20px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-track.dragging { cursor: grabbing; scroll-behavior: auto; scroll-snap-type: none; }
+
+.carousel-slide {
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+  transition: transform .5s var(--ease-out-expo), opacity .5s ease;
+}
+
+/* Arrows */
+.carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 5;
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--glass-bg-2); color: #fff;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  cursor: pointer; font-size: 1rem;
+  transition: var(--transition);
+  box-shadow: 0 10px 30px -8px rgba(0,0,0,.5);
+}
+.carousel-arrow:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-50%) scale(1.08); }
+.carousel-arrow.prev { left: -8px; }
+.carousel-arrow.next { right: -8px; }
+
+/* Dots */
+.carousel-dots {
+  display: flex; justify-content: center; gap: 8px; margin-top: 8px;
+}
+.carousel-dot {
+  width: 9px; height: 9px; border-radius: 999px;
+  background: rgba(255,255,255,.22); border: none; cursor: pointer; padding: 0;
+  transition: var(--transition);
+}
+.carousel-dot:hover { background: rgba(255,255,255,.5); }
+.carousel-dot.active { width: 26px; background: var(--grad-brand); }
+
+/* On-light dot variant */
+.carousel.on-light .carousel-dot { background: rgba(37,99,235,.2); }
+.carousel.on-light .carousel-dot.active { background: var(--grad-brand); }
+
+/* ── Career track (journey cards are the slides) ────────── */
+.journey-carousel .journey-card.carousel-slide { width: 320px; }
+
+/* Center-active emphasis + glow edge (desktop) */
+@media (pointer: fine) and (min-width: 861px) {
+  .journey-carousel .journey-card.carousel-slide { opacity: .6; transform: scale(.93); }
+  .journey-carousel .journey-card.carousel-slide.is-active {
+    opacity: 1; transform: scale(1);
+    border-color: rgba(34,211,238,.5);
+    box-shadow: 0 24px 60px -22px rgba(0,0,0,.6), 0 0 0 1px rgba(34,211,238,.35), 0 0 40px -6px rgba(34,211,238,.25);
+  }
+}
+
+/* Progress delivery line under the career track */
+.journey-progress {
+  height: 2px; margin: 4px 8px 0;
+  background: linear-gradient(90deg, var(--blue), rgba(37,99,235,.12));
+  border-radius: 2px; position: relative; overflow: hidden;
+}
+.journey-progress::after {
+  content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 90px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: jp-slide 4.5s var(--ease-out-expo) infinite;
+}
+@keyframes jp-slide { 0% { left: -90px; } 100% { left: 100%; } }
+
+@media (max-width: 860px) {
+  .journey-carousel .journey-card.carousel-slide { width: 80vw; max-width: 340px; }
+  .carousel-arrow { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { scroll-behavior: auto; }
+  .journey-progress::after { animation: none; }
+}

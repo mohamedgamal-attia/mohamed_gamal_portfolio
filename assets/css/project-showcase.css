@@ -1,0 +1,235 @@
+/* =========================================================
+   project-showcase.css — bento work grid, context section,
+   tabbed modal. Loaded after sections/futuristic to override.
+   ========================================================= */
+
+/* ── Bento work grid ────────────────────────────────────── */
+.projects-grid.bento {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  perspective: 1200px;
+}
+
+.project-card {
+  position: relative;
+  display: flex; flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+.project-card:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.project-card.hidden { display: none; }
+
+/* Image area */
+.project-card-img {
+  position: relative;
+  height: 210px; overflow: hidden;
+  background: var(--navy-mid);
+}
+.project-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease-out-expo); }
+.project-card:hover .project-card-img img { transform: scale(1.06); }
+.project-card-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,21,36,.55), transparent 55%);
+  pointer-events: none;
+}
+
+/* Badges on image */
+.card-type-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  padding: 5px 12px; border-radius: 999px;
+  font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .5px;
+}
+.card-type-badge.erp-system     { background: var(--grad-gold); color: var(--navy); }
+.card-type-badge.odoo-work      { background: var(--grad-brand); color: #fff; }
+.card-type-badge.website-project{ background: #16a34a; color: #fff; }
+.card-type-badge.content-project{ background: var(--violet); color: #fff; }
+
+.card-gallery-hint {
+  position: absolute; bottom: 12px; left: 12px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 11px; border-radius: 999px;
+  background: rgba(10,21,36,.72); color: #fff; backdrop-filter: blur(6px);
+  font-size: .7rem; font-weight: 700;
+}
+
+/* Hover overlay CTA */
+.project-card-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(120deg, rgba(37,99,235,.55), rgba(139,92,246,.5));
+  opacity: 0; transition: opacity .35s var(--ease-out-expo);
+}
+.project-card:hover .project-card-overlay,
+.project-card:focus-visible .project-card-overlay { opacity: 1; }
+.overlay-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: 999px;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.5);
+  color: #fff; font-weight: 700; font-size: .9rem; backdrop-filter: blur(6px);
+  transform: translateY(10px); transition: transform .35s var(--ease-out-expo);
+}
+.project-card:hover .overlay-cta { transform: none; }
+
+/* Body */
+.project-card-body { padding: 20px 22px 14px; flex: 1; }
+.project-card-company {
+  font-size: .72rem; font-weight: 700; letter-spacing: .6px; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 7px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.card-sub-hint {
+  background: rgba(37,99,235,.1); color: var(--blue);
+  padding: 2px 9px; border-radius: 999px; font-size: .64rem; letter-spacing: .3px;
+}
+.project-card-body h3 { font-size: 1.12rem; color: var(--text-dark); margin-bottom: 7px; line-height: 1.25; }
+.project-card-body p  { font-size: .88rem; color: var(--text-mid); line-height: 1.55; }
+
+/* Tag pills — always spaced, never concatenated */
+.project-card-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.tag-pill {
+  display: inline-block;
+  background: var(--gray-100); color: var(--text-mid);
+  border: 1px solid var(--gray-200);
+  padding: 4px 11px; border-radius: 999px;
+  font-size: .72rem; font-weight: 600; white-space: nowrap;
+}
+
+/* Footer */
+.project-card-footer {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 22px; border-top: 1px solid var(--gray-200);
+}
+.project-card-sector { font-size: .72rem; color: var(--text-light); flex: 1; }
+.project-card-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .8rem; font-weight: 700; color: var(--blue);
+}
+.project-card-cta i { transition: transform .3s var(--ease-out-expo); }
+.project-card:hover .project-card-cta i { transform: translateX(4px); }
+.card-source {
+  width: 30px; height: 30px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--gray-100); color: var(--text-light);
+  border: 1px solid var(--gray-200); font-size: .78rem;
+}
+.card-source:hover { color: var(--blue); border-color: var(--blue); }
+
+/* ── Flagship (full-width horizontal) cards ─────────────── */
+.project-card.card-flagship {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+}
+.card-flagship .project-card-img { grid-row: 1 / 3; height: 100%; min-height: 320px; }
+.card-flagship .project-card-body { padding: 34px 34px 14px; align-self: center; }
+.card-flagship .project-card-body h3 { font-size: 1.55rem; }
+.card-flagship .project-card-body p  { font-size: .98rem; max-width: 46ch; }
+.card-flagship .project-card-footer { grid-column: 2; border-top: none; padding: 0 34px 30px; }
+
+/* ── Project Context section ────────────────────────────── */
+#context { background: var(--gray-100); }
+
+.context-note {
+  display: flex; align-items: flex-start; gap: 12px;
+  max-width: 820px; margin: 0 auto 44px;
+  padding: 16px 22px; border-radius: var(--radius);
+  background: rgba(37,99,235,.05); border: 1px solid rgba(37,99,235,.16);
+  font-size: .9rem; color: var(--text-mid); line-height: 1.6;
+}
+.context-note i { color: var(--blue); margin-top: 3px; }
+.context-note strong { color: var(--text-dark); }
+
+.context-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+.context-group {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 24px 24px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.context-group-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--gray-200);
+}
+.context-group-company { font-size: 1.02rem; font-weight: 700; color: var(--text-dark); }
+.context-group-sub { font-size: .76rem; color: var(--text-light); margin-top: 2px; }
+.context-open {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(37,99,235,.08); color: var(--blue);
+  border: 1px solid rgba(37,99,235,.18); border-radius: 999px;
+  padding: 7px 14px; font-size: .76rem; font-weight: 700; cursor: pointer;
+  white-space: nowrap; transition: var(--transition);
+}
+.context-open:hover { background: var(--blue); color: #fff; }
+
+.context-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.context-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gray-100); border: 1px solid var(--gray-200);
+  border-radius: 10px; padding: 8px 12px;
+  font-size: .8rem; color: var(--text-mid); transition: var(--transition);
+}
+.context-chip:hover { border-color: var(--blue); background: rgba(37,99,235,.05); color: var(--blue); }
+.context-chip .chip-name { font-weight: 700; color: var(--text-dark); }
+.context-chip:hover .chip-name { color: var(--blue); }
+.context-chip .chip-sub { font-size: .72rem; color: var(--text-light); }
+.context-chip i { font-size: .68rem; opacity: .6; }
+
+/* ── Tabbed modal ───────────────────────────────────────── */
+.modal-type-badge {
+  display: inline-block; margin-top: 8px;
+  background: var(--gold); color: var(--navy);
+  padding: 4px 12px; border-radius: 999px;
+  font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .5px;
+}
+.modal-tabs {
+  position: sticky; top: 0; z-index: 3;
+  display: flex; gap: 4px; padding: 8px 20px;
+  background: var(--white); border-bottom: 1px solid var(--gray-200);
+  overflow-x: auto;
+}
+.modal-tab {
+  flex: 0 0 auto;
+  background: none; border: none; cursor: pointer;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: .84rem; font-weight: 600; color: var(--text-light);
+  transition: var(--transition); white-space: nowrap;
+}
+.modal-tab:hover { color: var(--text-dark); background: var(--gray-100); }
+.modal-tab.active { color: var(--blue); background: rgba(37,99,235,.08); }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: tab-in .35s var(--ease-out-expo); }
+@keyframes tab-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.modal-ctx-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.modal-ctx-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border-radius: 10px;
+  background: var(--gray-100); border: 1px solid var(--gray-200);
+  color: var(--text-mid); transition: var(--transition);
+}
+a.modal-ctx-item:hover { border-color: var(--blue); background: rgba(37,99,235,.05); }
+.modal-ctx-item .ctx-name { font-weight: 700; color: var(--text-dark); }
+.modal-ctx-item .ctx-sub { font-size: .76rem; color: var(--text-light); }
+.modal-ctx-item i { margin-left: auto; font-size: .72rem; color: var(--blue); }
+.modal-ctx-item .ctx-name + .ctx-sub { margin-left: 2px; }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .projects-grid.bento { grid-template-columns: 1fr; }
+  .project-card.card-flagship { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+  .card-flagship .project-card-img { grid-row: auto; min-height: 210px; height: 210px; }
+  .card-flagship .project-card-footer { grid-column: 1; padding: 0 24px 24px; }
+  .card-flagship .project-card-body { padding: 22px 24px 12px; }
+  .card-flagship .project-card-body h3 { font-size: 1.3rem; }
+  .context-grid { grid-template-columns: 1fr; }
+  .modal-ctx-list { grid-template-columns: 1fr; }
+}

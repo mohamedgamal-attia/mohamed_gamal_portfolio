@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1524"/>
+      <stop offset="1" stop-color="#0d1b2e"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.09"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M34 0H0V34" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <ellipse cx="120" cy="90" rx="360" ry="300" fill="url(#glow)" filter="url(#soft)" opacity="0.9"/>
+  <ellipse cx="1120" cy="720" rx="380" ry="300" fill="url(#glow)" filter="url(#soft)" opacity="0.6"/>
+  <g transform="translate(100,64)">
+    <rect x="0" y="0" width="1000" height="52" rx="16" fill="#16294a"/>
+    <rect x="0" y="26" width="1000" height="26" fill="#16294a"/>
+    <circle cx="30" cy="26" r="6" fill="#ff5f57"/>
+    <circle cx="52" cy="26" r="6" fill="#febc2e"/>
+    <circle cx="74" cy="26" r="6" fill="#28c840"/>
+    <rect x="360" y="15" width="280" height="22" rx="11" fill="#0a1524" opacity="0.6"/>
+    <text x="500" y="30" font-family="Inter,Segoe UI,sans-serif" font-size="12"
+          fill="#5f78a3" text-anchor="middle">dotec.odoo · Engineering</text>
+    <rect x="836" y="14" width="150" height="24" rx="12" fill="url(#acc)" opacity="0.9"/>
+    <text x="911" y="30" font-family="Inter,sans-serif" font-size="11" font-weight="700"
+          fill="#04122a" text-anchor="middle" letter-spacing="0.5">ENGINEERING ERP</text><rect x="0" y="70" width="88" height="480" rx="16" fill="#101f36"/><rect x="18" y="90" width="52" height="34" rx="10" fill="url(#acc)" opacity="1"/><rect x="30" y="101" width="28" height="4" rx="2" fill="#04122a" opacity="0.9"/><rect x="18" y="138" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="149" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/><rect x="18" y="186" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="197" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/><rect x="18" y="234" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="245" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/><rect x="18" y="282" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="293" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/><rect x="18" y="330" width="52" height="34" rx="10" fill="#16294a" opacity="0.8"/><rect x="30" y="341" width="28" height="4" rx="2" fill="#5f78a3" opacity="0.9"/>
+    <rect x="108" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="126" y="118" font-family="Space Grotesk,Inter,sans-serif" font-size="30" font-weight="700" fill="#eaf1ff">46</text>
+    <text x="126" y="138" font-family="Inter,sans-serif" font-size="12" fill="#9db4d8">Active Projects</text>
+    <rect x="126" y="144.2836296398925" width="10" height="9.716370360107517" rx="3" fill="url(#acc)" opacity="0.5099301992328369"/><rect x="140" y="125.01623797797592" width="10" height="28.983762022024074" rx="3" fill="url(#acc)" opacity="0.8804569619620014"/><rect x="154" y="137.02637214328303" width="10" height="16.97362785671696" rx="3" fill="url(#acc)" opacity="0.6494928433984031"/><rect x="168" y="143.9758280170507" width="10" height="10.024171982949309" rx="3" fill="url(#acc)" opacity="0.5158494612105636"/><rect x="182" y="142.27311145980394" width="10" height="11.726888540196049" rx="3" fill="url(#acc)" opacity="0.5485940103883855"/><rect x="196" y="130.85092284571806" width="10" height="23.149077154281947" rx="3" fill="url(#acc)" opacity="0.7682514837361913"/>
+    <rect x="320" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="338" y="118" font-family="Space Grotesk,Inter,sans-serif" font-size="30" font-weight="700" fill="#eaf1ff">128</text>
+    <text x="338" y="138" font-family="Inter,sans-serif" font-size="12" fill="#9db4d8">Consultants</text>
+    <rect x="338" y="130.1330025570682" width="10" height="23.86699744293179" rx="3" fill="url(#acc)" opacity="0.7820576431333037"/><rect x="352" y="142.85990088938595" width="10" height="11.140099110614036" rx="3" fill="url(#acc)" opacity="0.5373095982810392"/><rect x="366" y="138.46693043977496" width="10" height="15.53306956022505" rx="3" fill="url(#acc)" opacity="0.6217897992350971"/><rect x="380" y="141.14593135049088" width="10" height="12.854068649509127" rx="3" fill="url(#acc)" opacity="0.5702705509520987"/><rect x="394" y="144.6324420846637" width="10" height="9.36755791533631" rx="3" fill="url(#acc)" opacity="0.5032222676026213"/><rect x="408" y="128.6230782963078" width="10" height="25.37692170369221" rx="3" fill="url(#acc)" opacity="0.8110946481479272"/>
+    <rect x="532" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="550" y="118" font-family="Space Grotesk,Inter,sans-serif" font-size="30" font-weight="700" fill="#eaf1ff">$2.4M</text>
+    <text x="550" y="138" font-family="Inter,sans-serif" font-size="12" fill="#9db4d8">Billed</text>
+    <rect x="550" y="147.52047758532285" width="10" height="6.47952241467715" rx="3" fill="url(#acc)" opacity="0.447683123359176"/><rect x="564" y="147.51304983740988" width="10" height="6.486950162590132" rx="3" fill="url(#acc)" opacity="0.44782596466519486"/><rect x="578" y="133.69421638446852" width="10" height="20.30578361553148" rx="3" fill="url(#acc)" opacity="0.7135727618371439"/><rect x="592" y="138.018029347002" width="10" height="15.981970652998013" rx="3" fill="url(#acc)" opacity="0.6304225125576541"/><rect x="606" y="126.95133740231009" width="10" height="27.048662597689905" rx="3" fill="url(#acc)" opacity="0.8432435114940366"/><rect x="620" y="140.70447139638324" width="10" height="13.295528603616765" rx="3" fill="url(#acc)" opacity="0.5787601654541685"/>
+    <rect x="744" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="762" y="118" font-family="Space Grotesk,Inter,sans-serif" font-size="30" font-weight="700" fill="#eaf1ff">5</text>
+    <text x="762" y="138" font-family="Inter,sans-serif" font-size="12" fill="#9db4d8">Disciplines</text>
+    <rect x="762" y="140.34974791727643" width="10" height="13.650252082723558" rx="3" fill="url(#acc)" opacity="0.5855817708216069"/><rect x="776" y="131.09497880704936" width="10" height="22.90502119295064" rx="3" fill="url(#acc)" opacity="0.7635580998644355"/><rect x="790" y="127.62091615294831" width="10" height="26.379083847051692" rx="3" fill="url(#acc)" opacity="0.8303669970586864"/><rect x="804" y="126.84023598656668" width="10" height="27.159764013433318" rx="3" fill="url(#acc)" opacity="0.84538007718141"/><rect x="818" y="136.47158206651346" width="10" height="17.52841793348655" rx="3" fill="url(#acc)" opacity="0.6601618833362799"/><rect x="832" y="140.2912964623111" width="10" height="13.7087035376889" rx="3" fill="url(#acc)" opacity="0.5867058372632481"/>
+    <rect x="108" y="196" width="470" height="190" rx="16" fill="url(#glass)" stroke="#24406b" stroke-width="1"/>
+    <text x="128" y="226" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#eaf1ff">Revenue by stage</text>
+    <line x1="126" y1="266" x2="560" y2="266" stroke="#24406b" stroke-opacity="0.5" stroke-width="1"/><line x1="126" y1="296" x2="560" y2="296" stroke="#24406b" stroke-opacity="0.5" stroke-width="1"/><line x1="126" y1="326" x2="560" y2="326" stroke="#24406b" stroke-opacity="0.5" stroke-width="1"/><rect x="128" y="297" width="34" height="65" rx="5" fill="url(#acc)"/><rect x="195" y="264" width="34" height="98" rx="5" fill="url(#acc)"/><rect x="262" y="308" width="34" height="54" rx="5" fill="url(#acc)"/><rect x="329" y="243" width="34" height="119" rx="5" fill="url(#acc)"/><rect x="397" y="275" width="34" height="87" rx="5" fill="url(#acc)"/><rect x="464" y="232" width="34" height="130" rx="5" fill="url(#acc)"/><rect x="531" y="286" width="34" height="76" rx="5" fill="url(#acc)"/><circle cx="760" cy="292" r="66" fill="none" stroke="#16294a" stroke-width="18"/><path d="M 760.0 226.0 A 66 66 0 1 1 751.7 357.5" fill="none" stroke="#2563eb" stroke-width="18" stroke-linecap="round"/><path d="M 751.7 357.5 A 66 66 0 0 1 697.2 271.6" fill="none" stroke="#22d3ee" stroke-width="18" stroke-linecap="round"/><path d="M 697.2 271.6 A 66 66 0 0 1 760.0 226.0" fill="none" stroke="#8b5cf6" stroke-width="18" stroke-linecap="round"/><text x="760" y="298" font-family="Space Grotesk,Inter" font-size="26" font-weight="700" fill="#eaf1ff" text-anchor="middle">100</text><rect x="620" y="196" width="272" height="190" rx="16" fill="url(#glass)" stroke="#24406b" stroke-width="1"/><text x="640" y="226" font-family="Inter" font-size="14" font-weight="600" fill="#eaf1ff">Distribution</text><rect x="108" y="400" width="784" height="150" rx="16" fill="url(#glass)" stroke="#24406b" stroke-width="1"/><rect x="126" y="420" width="240" height="8" rx="4" fill="#5f78a3"/><rect x="420" y="420" width="150" height="8" rx="4" fill="#24406b"/><rect x="620" y="420" width="120" height="8" rx="4" fill="#24406b"/><rect x="800" y="416" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="450" width="240" height="8" rx="4" fill="#24406b"/><rect x="420" y="450" width="150" height="8" rx="4" fill="#24406b"/><rect x="620" y="450" width="120" height="8" rx="4" fill="#24406b"/><rect x="800" y="446" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="480" width="240" height="8" rx="4" fill="#24406b"/><rect x="420" y="480" width="150" height="8" rx="4" fill="#24406b"/><rect x="620" y="480" width="120" height="8" rx="4" fill="#24406b"/><rect x="800" y="476" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="510" width="240" height="8" rx="4" fill="#24406b"/><rect x="420" y="510" width="150" height="8" rx="4" fill="#24406b"/><rect x="620" y="510" width="120" height="8" rx="4" fill="#24406b"/><rect x="800" y="506" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/></g>
+</svg>

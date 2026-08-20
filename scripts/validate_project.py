@@ -69,6 +69,19 @@ if isinstance(projects, list):
             fail(f"Missing image for '{pid}': {img}")
     else:
         ok(f"All {len(projects)} project image paths exist")
+    # gallery images
+    gal_missing = []
+    gal_count = 0
+    for p in projects:
+        for g in (p.get("gallery") or []):
+            gal_count += 1
+            if not os.path.exists(os.path.join(ROOT, g)):
+                gal_missing.append((p.get("id"), g))
+    if gal_missing:
+        for pid, g in gal_missing:
+            fail(f"Missing gallery image for '{pid}': {g}")
+    else:
+        ok(f"All {gal_count} gallery image paths exist")
 else:
     warn("projects.json is not a list — skipping image check")
 
@@ -116,8 +129,17 @@ required = [
     "assets/css/components.css",
     "assets/css/sections.css",
     "assets/css/responsive.css",
+    "assets/css/futuristic.css",
+    "assets/css/project-showcase.css",
+    "assets/css/carousels.css",
+    "assets/css/cursor.css",
     "assets/js/config.js",
     "assets/js/animations.js",
+    "assets/js/effects.js",
+    "assets/js/cursor.js",
+    "assets/js/particles.js",
+    "assets/js/tilt.js",
+    "assets/js/carousels.js",
     "assets/js/modals.js",
     "assets/js/filters.js",
     "assets/js/data-loader.js",

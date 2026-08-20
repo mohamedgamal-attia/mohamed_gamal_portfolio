@@ -46,8 +46,8 @@ my_portfolio/
 │   │   ├── profile.json          # Personal info, skills, Odoo versions
 │   │   ├── companies.json        # 4 companies with logos, roles, descriptions
 │   │   ├── case-studies.json     # 4 featured ERP case studies (used by featured section)
-│   │   ├── projects.json         # All 23 project cards (type, categories, roleNote, sourceUrl)
-│   │   └── sources.json          # Image asset provenance (type, URL, notes)
+│   │   ├── projects.json         # All 25 project cards (type, categories, roleNote, sourceUrl)
+│   │   └── sources.json          # Image asset provenance (type, source, notes)
 │   │
 │   └── images/
 │       ├── companies/
@@ -56,7 +56,15 @@ my_portfolio/
 │       │   ├── margins-logo.svg          # Premium SVG placeholder (real logo unavailable)
 │       │   └── dotec-logo.png            # Real PNG logo
 │       └── projects/
-│           └── *.svg                     # 23 premium generated SVG illustrations
+│           ├── *.svg                     # Premium generated SVG illustrations (ERP projects)
+│           ├── bluedez/                  # BlueDez content-pack images (real project assets)
+│           │   ├── bluedez-cover.png
+│           │   └── bluedez-screenshot-1..3.png
+│           └── sunbelt/                  # Sunbelt website asset-pack images (real project assets)
+│               ├── sunbelt-cover.webp
+│               ├── sunbelt-screenshot-1.webp
+│               ├── sunbelt-screenshot-2..3.jpg
+│               └── sunbelt-logo.png
 │
 └── scripts/
     ├── download_assets.py        # Try to download real company logos from official URLs
@@ -97,7 +105,7 @@ Key fields per project:
 | Field | Purpose |
 |-------|---------|
 | `id` | Used as the `data-modal` trigger key |
-| `type` | `"erp-system"` / `"odoo-work"` / `"public-context"` — drives badge and border styling |
+| `type` | `"erp-system"` / `"odoo-work"` / `"public-context"` / `"website-project"` / `"content-project"` — drives badge and border styling |
 | `categories` | Array of filter keys (e.g., `["erp-systems", "real-estate-erp"]`) |
 | `roleNote` | Shown in modal for `public-context` cards as a blue callout |
 | `sourceUrl` | Enables "View Official Source" button in modal |
@@ -119,6 +127,9 @@ Current categories:
 - `engineering-erp` — Engineering domain
 - `digital-transformation` — KSA digital transformation
 - `public-context` — Company reference context cards
+- `digital-delivery` — Website & digital delivery projects (Sunbelt, BlueDez)
+- `web-projects` — Website / frontend projects (Sunbelt)
+- `content-projects` — Content & branding projects (BlueDez)
 
 ### Styles
 - Global tokens (colors, shadows, spacing): `assets/css/variables.css`
@@ -132,15 +143,32 @@ Current categories:
 
 ## Project Types & Honesty Model
 
-The portfolio uses three explicit project types to be transparent about the nature of each listing:
+The portfolio uses explicit project types to be transparent about the nature of each listing:
 
 | Type | Meaning | Visual |
 |------|---------|--------|
 | `erp-system` | Complete Odoo ERP system built from scratch by me | Gold badge "Full ERP Build" |
 | `odoo-work` | Odoo/ERP backend contributor on company client projects | Blue badge "Odoo Work" |
 | `public-context` | Company's public projects shown as **business domain context only** — my direct role was building the internal ERP, not these projects | Dashed border, grey badge, role note in modal |
+| `website-project` | Website / frontend / digital delivery work — **not** an ERP build (Sunbelt Deals website asset curation) | Green badge "Website & Frontend" |
+| `content-project` | Content design / branding delivery — **not** an ERP build (BlueDez engineering content pack) | Purple badge "Content & Branding" |
 
-A disclaimer banner at the top of `#work` explains this to visitors.
+A disclaimer banner at the top of `#work` explains this to visitors. Odoo/ERP remains the core identity; the website and content projects are listed honestly as additional digital-delivery work.
+
+### Recent Digital Projects (BlueDez & Sunbelt)
+
+Two non-ERP projects are included in the `#work` grid and filterable via **Website & Digital Delivery**, **Web Projects**, and **Content & Branding** tabs:
+
+| Project | id | Type | Images |
+|---------|----|------|--------|
+| Sunbelt Deals – Website Image & Asset Curation | `sunbelt-website-assets` | `website-project` | `assets/images/projects/sunbelt/` |
+| BlueDez – Engineering Blog Content Pack | `bluedez-content-pack` | `content-project` | `assets/images/projects/bluedez/` |
+
+**To edit their text:** open `assets/data/projects.json` and edit the first two objects (`sunbelt-website-assets`, `bluedez-content-pack`).
+
+**To replace their screenshots later:** drop a new image into the matching folder above and either reuse the existing filename (e.g. `sunbelt-cover.webp`, `bluedez-cover.png`) or update the `image` field in `projects.json`. Keep card/cover images roughly 16:9 (the card thumbnail is `object-fit: cover`, 160px tall). After replacing, add/adjust the provenance entry in `assets/data/sources.json` and re-run the validator.
+
+> Original source packs live in `~/Downloads/BlueDez_Blog_Content_Pack` and `~/Downloads/Sunbelt_Website_Asset_Pack` (untouched — the portfolio only holds copied, web-optimized selections).
 
 ---
 
@@ -175,8 +203,7 @@ No build step needed — everything is static HTML/CSS/JS with relative paths.
 | Field | Value |
 |-------|-------|
 | Email | mohammedgamal37l30@gmail.com |
-| Phone 1 | +201102672347 |
-| Phone 2 | +201016843962 |
+| Phone 1 | 01102672347 (tel:+201102672347) |
 | WhatsApp | https://wa.me/201102672347 |
 | LinkedIn | https://www.linkedin.com/in/mohamedgamal37l30 |
 | GitHub | https://github.com/mohamedgamal-attia |

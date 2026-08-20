@@ -52,7 +52,8 @@
   );
 
   function observeFadeUps() {
-    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => fadeObserver.observe(el));
+    document.querySelectorAll('.fade-up:not(.visible), .reveal:not(.visible), .reveal-left:not(.visible), .reveal-scale:not(.visible)')
+      .forEach(el => fadeObserver.observe(el));
   }
   observeFadeUps();
 
@@ -89,18 +90,5 @@
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
-
-  /* ── Contact form demo handler ────────────────────────── */
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const btn = form.querySelector('[type="submit"]');
-      const orig = btn.innerHTML;
-      btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
-      btn.disabled = true;
-      setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; form.reset(); }, 3500);
-    });
-  }
 
 }());

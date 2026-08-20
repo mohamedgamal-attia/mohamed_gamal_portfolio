@@ -3,27 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mohamed Gamal – Senior Odoo Developer & ERP Software Developer. 3+ years building scalable ERP systems for real estate, engineering, and digital transformation companies across Egypt, Saudi Arabia, and the USA. Odoo 14–19." />
+  <meta name="theme-color" content="#0d1b2e" />
+  <meta name="description" content="Mohamed Gamal – Senior Odoo Techno-Functional Consultant & Developer. Delivering Odoo Enterprise solutions in production across Saudi Arabia, Egypt & the USA — custom modules, business workflows, REST APIs, training & enablement, plus Applied AI and Data Analytics. Odoo 14–19." />
+  <meta name="keywords" content="Odoo Developer, Odoo Consultant, Techno-Functional, ERP, Odoo Enterprise, Python, PostgreSQL, AI, Data Analyst, Saudi Arabia, Egypt" />
+  <meta name="author" content="Mohamed Gamal" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Mohamed Gamal | Senior Odoo Developer" />
-  <meta property="og:description" content="Senior Odoo Developer with 3+ years building complete ERP systems and custom Odoo modules for real estate, engineering, and government digital transformation projects." />
+  <meta property="og:title" content="Mohamed Gamal | Senior Odoo Techno-Functional Consultant & Developer" />
+  <meta property="og:description" content="Odoo Techno-Functional Consultant & Developer delivering Odoo Enterprise in production — custom modules, workflows, REST integrations, training & enablement, with Applied AI and Data Analytics." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="my_img.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <title>Mohamed Gamal | Senior Odoo Developer & ERP Specialist</title>
+  <title>Mohamed Gamal | Odoo Techno-Functional Consultant & Developer</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome (icons only) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohamed Gamal",
+    "jobTitle": "Senior Odoo Techno-Functional Consultant & Developer",
+    "email": "mailto:mohammedgamal37l30@gmail.com",
+    "telephone": "+201102672347",
+    "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "Egypt" },
+    "url": "https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio",
+    "sameAs": [
+      "https://www.linkedin.com/in/mohamedgamal37l30",
+      "https://github.com/mohamedgamal-attia"
+    ],
+    "knowsAbout": ["Odoo ERP", "Techno-Functional Consulting", "Python", "PostgreSQL", "REST API", "Applied AI", "Data Analytics", "Odoo Training"]
+  }
+  </script>
 </head>
 <body>
+
+<div id="scroll-progress"></div>
 
 <!-- ════════════════════════════════════════════════════════
      NAVIGATION
@@ -34,7 +59,7 @@
       <div class="nav-logo-icon">MG</div>
       <div>
         <div class="nav-logo-text">Mohamed Gamal</div>
-        <div class="nav-logo-sub">Senior Odoo Developer</div>
+        <div class="nav-logo-sub">Odoo Techno-Functional Consultant</div>
       </div>
     </a>
 
@@ -42,8 +67,8 @@
       <a href="#about"      data-section="about">About</a>
       <a href="#skills"     data-section="skills">Skills</a>
       <a href="#companies"  data-section="companies">Companies</a>
-      <a href="#featured"   data-section="featured">ERP Systems</a>
-      <a href="#work"       data-section="work">Work &amp; Context</a>
+      <a href="#work"       data-section="work">Work</a>
+      <a href="#context"    data-section="context">Context</a>
       <a href="#experience" data-section="experience">Experience</a>
       <a href="#contact"    data-section="contact">Contact</a>
       <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-primary btn-sm nav-cta">
@@ -62,8 +87,8 @@
   <a href="#about">About</a>
   <a href="#skills">Skills</a>
   <a href="#companies">Companies</a>
-  <a href="#featured">ERP Systems</a>
-  <a href="#work">Work &amp; Context</a>
+  <a href="#work">Work</a>
+  <a href="#context">Context</a>
   <a href="#experience">Experience</a>
   <a href="#contact">Contact</a>
   <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-primary">
@@ -76,73 +101,93 @@
      HERO
 ════════════════════════════════════════════════════════ -->
 <section id="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-blob hero-blob-1"></div>
-  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-bg-grid" data-parallax="0.15" aria-hidden="true"></div>
+  <div class="aurora-bg" data-parallax="0.25" aria-hidden="true"></div>
+  <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
 
   <div class="container">
     <div class="hero-inner">
 
       <!-- Left: Content -->
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          Available for new opportunities
+        <div class="hero-avail-badge kin" style="--kin:0">
+          <span class="avail-dot"></span>
+          Available for roles, consulting &amp; freelance
         </div>
 
-        <h1>
-          Mohamed <span class="hero-title-accent">Gamal</span>
+        <h1 class="hero-title" aria-label="Mohamed Gamal">
+          <span class="kin-word" style="--kin:1">Mohamed</span>
+          <span class="kin-word" style="--kin:2"><span class="text-aurora">Gamal</span></span>
+          <span class="scan-bar" aria-hidden="true"></span>
         </h1>
-        <div class="hero-role">
-          <i class="fa-solid fa-code"></i>&nbsp; Senior Odoo Developer &amp; ERP Software Developer
+        <div class="hero-role kin" style="--kin:3" id="hero-role-typed">
+          Odoo Techno-Functional Consultant &amp; Developer
         </div>
-        <p>
-          Building scalable ERP systems, custom Odoo modules, and business workflows for
-          real estate, engineering, and digital transformation companies across Egypt, Saudi Arabia, and the USA.
+        <p class="kin" style="--kin:4">
+          I build <strong>Odoo Enterprise systems</strong> that connect business, automation,
+          and intelligent data — from requirements to go-live and training.
         </p>
 
-        <div class="hero-btns">
-          <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-gold btn-lg">
-            <i class="fa-solid fa-download"></i> Download CV
-          </a>
-          <a href="#work" class="btn btn-outline-white btn-lg">
+        <div class="hero-btns kin" style="--kin:5">
+          <a href="#work" class="btn btn-brand btn-lg btn-glow" data-magnetic>
             <i class="fa-solid fa-briefcase"></i> View Work
           </a>
-          <a href="#contact" class="btn btn-outline-white btn-lg">
-            <i class="fa-solid fa-envelope"></i> Contact Me
+          <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-outline-white btn-lg" data-magnetic>
+            <i class="fa-solid fa-download"></i> Download CV
+          </a>
+          <a href="https://wa.me/201102672347" target="_blank" rel="noopener" class="btn btn-gold btn-lg btn-glow" data-wa-link data-magnetic>
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://www.linkedin.com/in/mohamedgamal37l30" target="_blank" rel="noopener" class="btn btn-outline-white btn-lg" data-magnetic>
+            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
           </a>
         </div>
 
-        <div class="hero-stats">
+        <div class="hero-stats kin" style="--kin:6">
           <div class="hero-stat">
-            <div class="hero-stat-num"><span data-count="4">4</span></div>
-            <div class="hero-stat-label">Companies</div>
+            <div class="hero-stat-num"><span data-count="6">6</span></div>
+            <div class="hero-stat-label">Case Studies</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num"><span data-count="3" data-suffix="+">3+</span></div>
-            <div class="hero-stat-label">Years Experience</div>
+            <div class="hero-stat-num"><span data-count="4">4</span></div>
+            <div class="hero-stat-label">Business Domains</div>
           </div>
           <div class="hero-stat">
             <div class="hero-stat-num"><span>14–19</span></div>
             <div class="hero-stat-label">Odoo Versions</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num"><span data-count="4">4</span></div>
-            <div class="hero-stat-label">Business Domains</div>
+            <div class="hero-stat-num"><span data-count="3" data-suffix="+">3+</span></div>
+            <div class="hero-stat-label">Years Experience</div>
           </div>
+        </div>
+
+        <!-- Trust strip -->
+        <div class="hero-trust kin" style="--kin:7" aria-label="Core stack">
+          <span class="hero-trust-label">Stack</span>
+          <span class="hero-trust-item">Odoo Enterprise</span>
+          <span class="hero-trust-item">Python</span>
+          <span class="hero-trust-item">PostgreSQL</span>
+          <span class="hero-trust-item">REST APIs</span>
+          <span class="hero-trust-item">AI / Data</span>
         </div>
       </div>
 
       <!-- Right: Photo -->
       <div class="hero-image-wrap">
-        <div class="hero-image-ring">
-          <img src="my_img.png" alt="Mohamed Gamal – Senior Odoo Developer" class="hero-img" />
+        <div class="hero-image-ring tilt" id="hero-portrait">
+          <img src="my_img.png"
+               alt="Mohamed Gamal – Odoo Techno-Functional Consultant &amp; Developer"
+               class="hero-img" width="728" height="1008" />
         </div>
         <div class="hero-badge-float hero-badge-float-1">
           <span class="float-icon">⚙️</span> Odoo 14–19
         </div>
         <div class="hero-badge-float hero-badge-float-2">
-          <span class="float-icon">🏆</span> ERP Specialist
+          <span class="float-icon">🧠</span> AI &amp; Data
+        </div>
+        <div class="hero-float-stat">
+          <b>98%</b><span>CV Model Acc.</span>
         </div>
       </div>
 
@@ -155,24 +200,34 @@
      STATS BAR
 ════════════════════════════════════════════════════════ -->
 <div id="stats-bar">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item fade-up">
-        <div class="stat-item-num"><span data-count="4">4</span></div>
-        <div class="stat-item-label">Companies Served</div>
-      </div>
-      <div class="stat-item fade-up fade-up-delay-1">
-        <div class="stat-item-num"><span data-count="3">3</span><span style="color:var(--blue-light)">+</span></div>
-        <div class="stat-item-label">Years Odoo Experience</div>
-      </div>
-      <div class="stat-item fade-up fade-up-delay-2">
-        <div class="stat-item-num"><span>14–19</span></div>
-        <div class="stat-item-label">Odoo Versions</div>
-      </div>
-      <div class="stat-item fade-up fade-up-delay-3">
-        <div class="stat-item-num"><span data-count="4">4</span></div>
-        <div class="stat-item-label">Business Domains</div>
-      </div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <!-- set 1 -->
+      <span class="tech-pill"><i class="fa-solid fa-cube"></i> Odoo Enterprise 14–19</span>
+      <span class="tech-pill"><i class="fa-brands fa-python"></i> Python</span>
+      <span class="tech-pill"><i class="fa-solid fa-database"></i> PostgreSQL</span>
+      <span class="tech-pill"><i class="fa-solid fa-code"></i> XML / QWeb</span>
+      <span class="tech-pill"><i class="fa-solid fa-plug"></i> REST API</span>
+      <span class="tech-pill"><i class="fa-solid fa-gears"></i> Workflow Automation</span>
+      <span class="tech-pill"><i class="fa-brands fa-gitlab"></i> GitLab CI/CD</span>
+      <span class="tech-pill"><i class="fa-solid fa-handshake"></i> Techno-Functional</span>
+      <span class="tech-pill"><i class="fa-solid fa-graduation-cap"></i> Training &amp; Enablement</span>
+      <span class="tech-pill"><i class="fa-solid fa-brain"></i> Applied AI</span>
+      <span class="tech-pill"><i class="fa-solid fa-chart-line"></i> Data Analytics</span>
+      <span class="tech-pill"><i class="fa-solid fa-people-group"></i> Agile / Scrum</span>
+      <!-- set 2 (duplicate for seamless loop) -->
+      <span class="tech-pill"><i class="fa-solid fa-cube"></i> Odoo Enterprise 14–19</span>
+      <span class="tech-pill"><i class="fa-brands fa-python"></i> Python</span>
+      <span class="tech-pill"><i class="fa-solid fa-database"></i> PostgreSQL</span>
+      <span class="tech-pill"><i class="fa-solid fa-code"></i> XML / QWeb</span>
+      <span class="tech-pill"><i class="fa-solid fa-plug"></i> REST API</span>
+      <span class="tech-pill"><i class="fa-solid fa-gears"></i> Workflow Automation</span>
+      <span class="tech-pill"><i class="fa-brands fa-gitlab"></i> GitLab CI/CD</span>
+      <span class="tech-pill"><i class="fa-solid fa-handshake"></i> Techno-Functional</span>
+      <span class="tech-pill"><i class="fa-solid fa-graduation-cap"></i> Training &amp; Enablement</span>
+      <span class="tech-pill"><i class="fa-solid fa-brain"></i> Applied AI</span>
+      <span class="tech-pill"><i class="fa-solid fa-chart-line"></i> Data Analytics</span>
+      <span class="tech-pill"><i class="fa-solid fa-people-group"></i> Agile / Scrum</span>
     </div>
   </div>
 </div>
@@ -196,75 +251,59 @@
       </div>
 
       <div class="about-content fade-up fade-up-delay-1">
-        <div class="label-section">About Me</div>
-        <h2>ERP Developer Who Understands Business, Not Just Code</h2>
-        <p>
-          I'm <strong>Mohamed Gamal</strong>, a Senior Odoo Developer with more than 3 years of hands-on experience
-          designing, building, and delivering custom ERP systems. I work at the intersection of business process
-          design and technical implementation — translating real operational needs into clean, maintainable Odoo modules.
-        </p>
-        <p style="margin-top:12px;">
-          My approach is business-first: I map workflows and requirements before writing a single line of code,
-          ensuring the final system is both technically robust and genuinely useful to the people who use it every day.
+        <div class="eyebrow on-light">About Me</div>
+        <h2>The Bridge Between <span class="text-gradient" style="background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Business &amp; Technology</span></h2>
+        <p style="font-size:1.08rem;color:var(--text-mid)">
+          Senior Odoo <strong>techno-functional</strong> consultant and developer. I gather requirements,
+          map the process, build the system, train the team — and back it all with Python, PostgreSQL and Applied&nbsp;AI.
         </p>
 
         <div class="about-highlights">
           <div class="about-highlight">
             <span class="about-highlight-icon">🏗️</span>
             <div class="about-highlight-text">
-              <strong>Built complete ERP systems from scratch</strong> for Margins Developments (Real Estate, Egypt) and
-              DOTec Engineering (USA) — owning the full project from data modeling and module architecture to QWeb reports,
-              automation, and access control.
+              <strong>Full ERP builds from scratch</strong> — complete Odoo systems for Margins (Real Estate, EG) and DOTec (Engineering, US).
             </div>
           </div>
           <div class="about-highlight">
-            <span class="about-highlight-icon">🇸🇦</span>
+            <span class="about-highlight-icon">🤝</span>
             <div class="about-highlight-text">
-              <strong>Senior Odoo Developer</strong> at EJAD Digital Solutions (Odoo Silver Partner, KSA) and Odoo Developer
-              at EjadTech (KSA) — working on ERP implementations, custom modules, digital transformation projects, and
-              government platform backends.
+              <strong>Techno-functional delivery</strong> — requirements, gap analysis, BRD/FRD, UAT and end-user training, not just code.
             </div>
           </div>
           <div class="about-highlight">
             <span class="about-highlight-icon">⚙️</span>
             <div class="about-highlight-text">
-              <strong>Deep Odoo expertise</strong> across custom modules, ORM, QWeb reports, access rights, server actions,
-              cron jobs, automation, REST API integrations, PostgreSQL optimization, and performance tuning —
-              on <strong>Odoo 14 through Odoo 19</strong>.
+              <strong>Enterprise-grade engineering</strong> — modules, REST APIs, PostgreSQL tuning &amp; GitLab CI/CD on Odoo&nbsp;14–19.
             </div>
           </div>
           <div class="about-highlight">
             <span class="about-highlight-icon">🧠</span>
             <div class="about-highlight-text">
-              <strong>Business-first mindset:</strong> requirement analysis, story sizing, and process mapping before coding —
-              ensuring ERP solutions that solve real business problems, not just technical exercises.
+              <strong>AI &amp; data foundation</strong> — ML/DL, computer vision (YOLO, 98% acc.) and LLM automation inside ERP.
             </div>
           </div>
         </div>
 
         <div class="about-tags">
-          <span class="about-tag">Odoo 14</span>
-          <span class="about-tag">Odoo 15</span>
-          <span class="about-tag">Odoo 16</span>
-          <span class="about-tag">Odoo 17</span>
-          <span class="about-tag">Odoo 18</span>
-          <span class="about-tag">Odoo 19</span>
+          <span class="about-tag">Odoo 14–19</span>
+          <span class="about-tag">Techno-Functional</span>
           <span class="about-tag">Python</span>
           <span class="about-tag">PostgreSQL</span>
-          <span class="about-tag">XML / QWeb</span>
-          <span class="about-tag">CRM</span>
-          <span class="about-tag">Real Estate ERP</span>
-          <span class="about-tag">Engineering ERP</span>
-          <span class="about-tag">Automation</span>
-          <span class="about-tag">Git / GitLab CI/CD</span>
+          <span class="about-tag">REST API</span>
+          <span class="about-tag">QWeb</span>
+          <span class="about-tag">Training &amp; Enablement</span>
+          <span class="about-tag">Applied AI</span>
+          <span class="about-tag">Data Analytics</span>
+          <span class="about-tag">GitLab CI/CD</span>
           <span class="about-tag">Agile / Scrum</span>
         </div>
 
         <div style="margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="#work" class="btn btn-primary">
+          <a href="#work" class="btn btn-brand btn-glow" data-magnetic>
             <i class="fa-solid fa-briefcase"></i> View Work
           </a>
-          <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-outline">
+          <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-outline" data-magnetic>
             <i class="fa-solid fa-download"></i> Download CV
           </a>
         </div>
@@ -274,7 +313,7 @@
   </div>
 </section>
 
-<div class="divider"></div>
+<hr class="beam-divider" />
 
 <!-- ════════════════════════════════════════════════════════
      SKILLS
@@ -282,9 +321,9 @@
 <section id="skills" class="section-pad">
   <div class="container">
     <div class="section-header">
-      <div class="label-section">Technical Skills</div>
-      <h2>What I Bring to Every ERP Project</h2>
-      <p>A full-stack Odoo skill set covering backend development, business domain expertise, and developer tooling.</p>
+      <div class="eyebrow on-light">Core Competencies</div>
+      <h2>Technical Depth Meets Business Fluency</h2>
+      <p>A techno-functional toolkit — from requirements and training to custom modules, integrations, and Applied AI.</p>
     </div>
 
     <div class="skills-grid">
@@ -355,19 +394,54 @@
 
       <div class="skill-group fade-up fade-up-delay-3">
         <div class="skill-group-header">
-          <div class="skill-group-icon purple"><i class="fa-solid fa-wrench" style="color:#7c3aed"></i></div>
-          <h3>Process &amp; Methodology</h3>
+          <div class="skill-group-icon purple"><i class="fa-solid fa-handshake" style="color:#7c3aed"></i></div>
+          <h3>Techno-Functional &amp; Training</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Requirements Gathering</span>
+          <span class="skill-tag">Business Process Analysis</span>
+          <span class="skill-tag">Gap Analysis</span>
+          <span class="skill-tag">Functional Docs (BRD / FRD)</span>
+          <span class="skill-tag">Solution Design</span>
+          <span class="skill-tag">UAT Support</span>
+          <span class="skill-tag">Odoo Training Programs</span>
+          <span class="skill-tag">Training Materials &amp; Videos</span>
+          <span class="skill-tag">User Onboarding</span>
+          <span class="skill-tag">Post Go-Live Support</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-up">
+        <div class="skill-group-header">
+          <div class="skill-group-icon green"><i class="fa-solid fa-brain" style="color:#16a34a"></i></div>
+          <h3>AI, Data &amp; Analytics</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Deep Learning</span>
+          <span class="skill-tag">Computer Vision (CNN / YOLO)</span>
+          <span class="skill-tag">LLM-Based Automation</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">SQL Analytics</span>
+          <span class="skill-tag">Excel Dashboards</span>
+        </div>
+      </div>
+
+      <div class="skill-group fade-up fade-up-delay-1">
+        <div class="skill-group-header">
+          <div class="skill-group-icon blue"><i class="fa-solid fa-diagram-project" style="color:#2563eb"></i></div>
+          <h3>Process &amp; DevOps</h3>
         </div>
         <div class="skill-tags">
           <span class="skill-tag">Agile / Scrum</span>
-          <span class="skill-tag">Requirement Analysis</span>
           <span class="skill-tag">Story Sizing</span>
-          <span class="skill-tag">Business Process Mapping</span>
-          <span class="skill-tag">Technical Documentation</span>
+          <span class="skill-tag">GitLab CI/CD</span>
+          <span class="skill-tag">Unit Testing</span>
+          <span class="skill-tag">Version Control (Git)</span>
+          <span class="skill-tag">Performance Optimization</span>
           <span class="skill-tag">Code Review &amp; Refactoring</span>
-          <span class="skill-tag">Odoo 14 – 19</span>
-          <span class="skill-tag">VS Code</span>
-          <span class="skill-tag">macOS / Linux</span>
+          <span class="skill-tag">Linux Deployment</span>
         </div>
       </div>
 
@@ -375,7 +449,7 @@
   </div>
 </section>
 
-<div class="divider"></div>
+<hr class="beam-divider" />
 
 <!-- ════════════════════════════════════════════════════════
      COMPANIES
@@ -383,9 +457,9 @@
 <section id="companies" class="section-pad">
   <div class="container">
     <div class="section-header">
-      <div class="label-section" style="background:rgba(37,99,235,.15);border-color:rgba(37,99,235,.3)">Companies I Worked With</div>
-      <h2>Professional Experience Across 3 Countries</h2>
-      <p>I've contributed as an Odoo Developer across Saudi Arabia, Egypt, and the United States — delivering ERP systems, module customizations, and digital transformation support.</p>
+      <div class="eyebrow">Companies</div>
+      <h2>Trusted Across <span class="text-aurora">3 Countries</span></h2>
+      <p>Odoo delivery for partners and clients in Saudi Arabia, Egypt, and the United States — from Silver-Partner client work to full internal ERP builds.</p>
     </div>
 
     <!-- Populated by data-loader.js from companies.json -->
@@ -403,297 +477,55 @@
 <!-- ════════════════════════════════════════════════════════
      FEATURED ERP SYSTEMS
 ════════════════════════════════════════════════════════ -->
-<section id="featured" class="section-pad">
-  <div class="container">
-    <div class="section-header">
-      <div class="label-section">Featured Case Studies</div>
-      <h2>ERP Systems I Built &amp; Contributed To</h2>
-      <p>Deep-dive case studies showing the full scope of my Odoo development work — from business problem to technical solution.</p>
-    </div>
-
-    <div class="featured-grid">
-
-      <!-- Margins Real Estate ERP -->
-      <div class="featured-card fade-up">
-        <div class="featured-card-inner">
-          <div class="featured-img-wrap featured-img-contain">
-            <img src="assets/images/projects/margins-erp-system.svg" alt="Margins Real Estate ERP" />
-            <div class="featured-img-overlay"></div>
-            <div class="featured-img-badge">Full ERP Build</div>
-          </div>
-          <div class="featured-content">
-            <div class="featured-company">Margins Developments · Egypt</div>
-            <h3>Margins Real Estate ERP System</h3>
-            <span class="badge badge-red featured-sector">Real Estate</span>
-
-            <div class="featured-grid-2">
-              <div class="featured-block">
-                <h4>Business Problem</h4>
-                <p>Manual spreadsheet-based operations for property sales, reservations, broker commissions, and contracts — with no unified system, causing data gaps and reporting failures.</p>
-              </div>
-              <div class="featured-block">
-                <h4>My Role</h4>
-                <p>Designed and built the full ERP system from scratch as Senior Odoo Developer — all custom modules, data models, UI views, QWeb reports, automation, and access control.</p>
-              </div>
-            </div>
-
-            <div class="featured-features">
-              <h4>Key Modules &amp; Features Built</h4>
-              <ul>
-                <li>Real Estate CRM</li>
-                <li>Sales Pipeline</li>
-                <li>Unit / Property Management</li>
-                <li>Reservation Workflow</li>
-                <li>Broker Management</li>
-                <li>Contract Generation</li>
-                <li>Payment Milestone Tracking</li>
-                <li>QWeb Reports</li>
-                <li>Role-Based Access</li>
-                <li>Automation &amp; Cron Jobs</li>
-                <li>Dashboards</li>
-                <li>Customer Data Management</li>
-              </ul>
-            </div>
-
-            <div class="featured-block" style="margin-bottom:16px">
-              <h4>Business Impact</h4>
-              <p>Replaced fragmented manual processes with a unified digital ERP — reducing errors, improving sales pipeline visibility, enabling accurate reporting, and automating repetitive workflows.</p>
-            </div>
-
-            <div class="tech-tags">
-              <span class="tech-tag">Odoo 17</span>
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">XML</span>
-              <span class="tech-tag">QWeb</span>
-              <span class="tech-tag">ORM</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DOTec Engineering ERP -->
-      <div class="featured-card fade-up fade-up-delay-1">
-        <div class="featured-card-inner">
-          <div class="featured-img-wrap featured-img-contain">
-            <img src="assets/images/projects/dotec-erp-system.svg" alt="DOTec Engineering ERP" />
-            <div class="featured-img-overlay"></div>
-            <div class="featured-img-badge">Full ERP Build</div>
-          </div>
-          <div class="featured-content">
-            <div class="featured-company">DOTec Engineering · United States</div>
-            <h3>DOTec Engineering ERP System</h3>
-            <span class="badge badge-blue featured-sector">Engineering ERP</span>
-
-            <div class="featured-grid-2">
-              <div class="featured-block">
-                <h4>Business Problem</h4>
-                <p>An engineering consultancy with no structured system for managing projects, client opportunities, team assignments, consultant expenses, and deliverable tracking.</p>
-              </div>
-              <div class="featured-block">
-                <h4>My Role</h4>
-                <p>Built the entire Odoo ERP system from the ground up — all custom modules, data models, views, reports, security, automation, and code quality improvements.</p>
-              </div>
-            </div>
-
-            <div class="featured-features">
-              <h4>Key Modules &amp; Features Built</h4>
-              <ul>
-                <li>Engineering CRM</li>
-                <li>Project Lifecycle Management</li>
-                <li>Discipline &amp; Team Management</li>
-                <li>Consultant Profiles</li>
-                <li>Timesheet Tracking</li>
-                <li>Expense Management</li>
-                <li>Document Management</li>
-                <li>QWeb Reports</li>
-                <li>Security Groups</li>
-                <li>Automation &amp; Cron Jobs</li>
-                <li>PostgreSQL Optimization</li>
-                <li>Code Refactoring</li>
-              </ul>
-            </div>
-
-            <div class="featured-block" style="margin-bottom:16px">
-              <h4>Business Impact</h4>
-              <p>Gave DOTec real-time visibility into project status, team workload, and financial performance — replacing scattered manual tracking with a scalable, automated engineering ERP.</p>
-            </div>
-
-            <div class="tech-tags">
-              <span class="tech-tag">Odoo 18</span>
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">XML</span>
-              <span class="tech-tag">QWeb</span>
-              <span class="tech-tag">ORM</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- EjadTech -->
-      <div class="featured-card fade-up fade-up-delay-2">
-        <div class="featured-card-inner">
-          <div class="featured-img-wrap featured-img-balanced">
-            <img src="assets/images/projects/ejadtech-odoo-work.png" alt="EjadTech Odoo Work" />
-            <div class="featured-img-overlay"></div>
-            <div class="featured-img-badge">Government Digital Transformation</div>
-          </div>
-          <div class="featured-content">
-            <div class="featured-company">EjadTech · Saudi Arabia</div>
-            <h3>EjadTech — Government Digital Platforms</h3>
-            <span class="badge badge-purple featured-sector">Digital Transformation</span>
-
-            <div class="featured-grid-2">
-              <div class="featured-block">
-                <h4>Context</h4>
-                <p>Large-scale government digital transformation projects serving Saudi ministries including Ministry of Environment (MEWA), Ministry of Media, and Najran Region Emirate.</p>
-              </div>
-              <div class="featured-block">
-                <h4>My Role</h4>
-                <p>Contributed as Odoo Developer to ERP and business workflow modules — backend customization, automation, access rights, reporting, and data model design within the company's delivery team.</p>
-              </div>
-            </div>
-
-            <div class="featured-features">
-              <h4>Key Contributions</h4>
-              <ul>
-                <li>Custom Module Development</li>
-                <li>Workflow Automation</li>
-                <li>Access Rights &amp; Security</li>
-                <li>Backend Logic &amp; Data Models</li>
-                <li>QWeb Reports</li>
-                <li>Server Actions</li>
-                <li>Cron Jobs</li>
-                <li>Business Process Mapping</li>
-                <li>Integration Support</li>
-              </ul>
-            </div>
-
-            <div class="featured-block" style="margin-bottom:16px">
-              <h4>Projects Involved</h4>
-              <p>Zeraei Platform (MEWA), VRO (Ministry of Media), Tasharuk (Najran), EjadX, and Tawajod — all major Saudi government digital initiatives.</p>
-            </div>
-
-            <div class="tech-tags">
-              <span class="tech-tag">Odoo</span>
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">XML</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">QWeb</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- EJAD Digital Solutions -->
-      <div class="featured-card fade-up fade-up-delay-3">
-        <div class="featured-card-inner">
-          <div class="featured-img-wrap featured-img-contain">
-            <img src="assets/images/projects/ejad-digital-odoo-work.svg" alt="EJAD Digital Solutions ERP Work" />
-            <div class="featured-img-overlay"></div>
-            <div class="featured-img-badge">Odoo Silver Partner</div>
-          </div>
-          <div class="featured-content">
-            <div class="featured-company">EJAD Digital Solutions · Saudi Arabia</div>
-            <h3>EJAD Digital Solutions — Odoo ERP Work</h3>
-            <span class="badge badge-green featured-sector">Odoo ERP</span>
-
-            <div class="featured-grid-2">
-              <div class="featured-block">
-                <h4>Context</h4>
-                <p>Working within an official Odoo Silver Partner environment, delivering ERP implementations, customizations, and integration solutions for multiple enterprise and government clients.</p>
-              </div>
-              <div class="featured-block">
-                <h4>My Role</h4>
-                <p>Senior Odoo Developer — built custom modules, QWeb reports, configured access rights, wrote automation rules and server actions, and contributed to the Visitor Service Robot ERP backend.</p>
-              </div>
-            </div>
-
-            <div class="featured-features">
-              <h4>Key Contributions</h4>
-              <ul>
-                <li>CRM Customization</li>
-                <li>HR Module Development</li>
-                <li>QWeb Reports</li>
-                <li>Access Rights &amp; Security Groups</li>
-                <li>Server Actions &amp; Cron Jobs</li>
-                <li>Module Inheritance</li>
-                <li>Visitor Management ERP Layer</li>
-                <li>Creatio Integration Support</li>
-                <li>Internal ERP Customizations</li>
-              </ul>
-            </div>
-
-            <div class="featured-block" style="margin-bottom:16px">
-              <h4>Notable Project</h4>
-              <p>Contributed to the ERP/backend layer of the Visitor Service Robot for the General Presidency for the Affairs of the Grand Mosque and the Prophet's Mosque.</p>
-            </div>
-
-            <div class="tech-tags">
-              <span class="tech-tag">Odoo 17</span>
-              <span class="tech-tag">Odoo 18</span>
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">QWeb</span>
-              <span class="tech-tag">PostgreSQL</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- ════════════════════════════════════════════════════════
-     WORK & CONTEXT
+     FEATURED WORK  (6 canonical case studies, data-driven)
 ════════════════════════════════════════════════════════ -->
 <section id="work" class="section-pad">
   <div class="container">
     <div class="section-header">
-      <div class="label-section">Work &amp; Context</div>
-      <h2>ERP Work, Contributions &amp; Business Context</h2>
-      <p>Browse all projects by category. Click any card to see details about my role and contributions.</p>
+      <div class="eyebrow on-light">Featured Work</div>
+      <h2>Six Case Studies, <span class="text-gradient" style="background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Zero Filler</span></h2>
+      <p>Each card is one real project. Open it for scope, visuals, and honest context.</p>
     </div>
 
-    <!-- Honest disclaimer -->
-    <div class="context-disclaimer">
-      <strong>About project types shown below:</strong>
-      <ul>
-        <li><strong>ERP Systems</strong> — Complete Odoo ERP systems I designed and built from scratch (Margins, DOTec).</li>
-        <li><strong>Odoo Work</strong> — Projects where I contributed Odoo/ERP backend modules as part of a delivery team (EjadTech, EJAD Digital).</li>
-        <li><strong>Company Context</strong> — Public real estate or engineering projects listed as <em>business domain context only</em>. My direct contribution was building the company's internal ERP system that manages these projects, not the projects themselves.</li>
-      </ul>
-    </div>
-
-    <!-- Filter Tabs -->
     <div class="filter-tabs">
       <button class="filter-tab active" data-filter="all">All</button>
       <button class="filter-tab" data-filter="erp-systems">ERP Systems</button>
-      <button class="filter-tab" data-filter="odoo-work">Odoo Work</button>
-      <button class="filter-tab" data-filter="real-estate-erp">Real Estate ERP</button>
-      <button class="filter-tab" data-filter="engineering-erp">Engineering ERP</button>
-      <button class="filter-tab" data-filter="digital-transformation">Digital Transformation</button>
-      <button class="filter-tab" data-filter="public-context">Public Company Context</button>
+      <button class="filter-tab" data-filter="odoo-delivery">Odoo Delivery</button>
+      <button class="filter-tab" data-filter="digital-delivery">Digital Delivery</button>
     </div>
 
-    <!-- Populated by data-loader.js from projects.json -->
-    <div class="projects-grid" id="projects-grid">
-      <!-- Loading skeletons -->
-      <div class="project-card skeleton-card"><div class="skeleton" style="height:160px;border-radius:8px 8px 0 0"></div><div style="padding:16px"><div class="skeleton skeleton-h" style="height:14px;width:50%;margin-bottom:10px"></div><div class="skeleton skeleton-h" style="height:20px;margin-bottom:8px"></div><div class="skeleton skeleton-h" style="height:14px;width:80%"></div></div></div>
-      <div class="project-card skeleton-card"><div class="skeleton" style="height:160px;border-radius:8px 8px 0 0"></div><div style="padding:16px"><div class="skeleton skeleton-h" style="height:14px;width:50%;margin-bottom:10px"></div><div class="skeleton skeleton-h" style="height:20px;margin-bottom:8px"></div><div class="skeleton skeleton-h" style="height:14px;width:80%"></div></div></div>
-      <div class="project-card skeleton-card"><div class="skeleton" style="height:160px;border-radius:8px 8px 0 0"></div><div style="padding:16px"><div class="skeleton skeleton-h" style="height:14px;width:50%;margin-bottom:10px"></div><div class="skeleton skeleton-h" style="height:20px;margin-bottom:8px"></div><div class="skeleton skeleton-h" style="height:14px;width:80%"></div></div></div>
+    <div class="projects-grid bento" id="projects-grid">
+      <div class="project-card card-medium skeleton-card"><div class="skeleton" style="height:200px;border-radius:16px 16px 0 0"></div><div style="padding:18px"><div class="skeleton skeleton-h" style="height:14px;width:45%;margin-bottom:10px"></div><div class="skeleton skeleton-h" style="height:20px;margin-bottom:8px"></div><div class="skeleton skeleton-h" style="height:14px;width:80%"></div></div></div><div class="project-card card-medium skeleton-card"><div class="skeleton" style="height:200px;border-radius:16px 16px 0 0"></div><div style="padding:18px"><div class="skeleton skeleton-h" style="height:14px;width:45%;margin-bottom:10px"></div><div class="skeleton skeleton-h" style="height:20px;margin-bottom:8px"></div><div class="skeleton skeleton-h" style="height:14px;width:80%"></div></div></div><div class="project-card card-medium skeleton-card"><div class="skeleton" style="height:200px;border-radius:16px 16px 0 0"></div><div style="padding:18px"><div class="skeleton skeleton-h" style="height:14px;width:45%;margin-bottom:10px"></div><div class="skeleton skeleton-h" style="height:20px;margin-bottom:8px"></div><div class="skeleton skeleton-h" style="height:14px;width:80%"></div></div></div>
     </div>
 
-    <!-- No results message -->
     <div id="no-results-msg" style="display:none;text-align:center;padding:40px 0;color:var(--text-light)">
       <div style="font-size:2rem;margin-bottom:12px">🔍</div>
       <div style="font-size:1.1rem;font-weight:600;margin-bottom:6px">No projects match this filter</div>
-      <div>Try selecting a different category above.</div>
+      <div>Try a different category above.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="beam-divider" />
+
+<!-- ════════════════════════════════════════════════════════
+     PROJECT CONTEXT & BUSINESS DOMAINS  (secondary, compact)
+════════════════════════════════════════════════════════ -->
+<section id="context" class="section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow on-light">Project Context</div>
+      <h2>Business Domains &amp; <span class="text-gradient" style="background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Delivery Contexts</span></h2>
+      <p>The public projects and platforms my ERP work supported — shown as context, not as separate case studies.</p>
     </div>
 
+    <div class="context-note">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>I build the <strong>internal ERP</strong> behind these organisations. The items below are their public projects/platforms — business context for my work, not deliverables I claim as my own.</span>
+    </div>
+
+    <div class="context-grid" id="context-grid"><!-- rendered by data-loader.js --></div>
   </div>
 </section>
 
@@ -704,159 +536,165 @@
 <section id="experience" class="section-pad">
   <div class="container">
     <div class="section-header">
-      <div class="label-section" style="background:rgba(37,99,235,.15);border-color:rgba(37,99,235,.3)">Experience</div>
-      <h2>Professional Journey</h2>
-      <p>My professional journey across Saudi Arabia, Egypt, and the United States — contributing to Odoo client work and building complete internal ERP systems.</p>
+      <div class="eyebrow">Experience</div>
+      <h2>A Career Built on <span class="text-aurora">Delivery</span></h2>
+      <p>Odoo Enterprise delivery and AI/data work across Saudi Arabia, Egypt, and the United States — from full ERP builds to techno-functional consulting and training.</p>
     </div>
 
-    <div class="timeline">
+    <div class="carousel journey-carousel" data-carousel data-carousel-auto="3600" tabindex="0" aria-label="Career timeline carousel">
+      <button class="carousel-arrow prev" aria-label="Previous experience"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="carousel-track">
 
-      <div class="timeline-item">
-        <div class="timeline-content fade-up">
-          <div class="timeline-step">01</div>
-          <div class="timeline-period">Experience With — EjadTech</div>
-          <div class="timeline-company">Odoo Developer</div>
-          <div class="timeline-country"><i class="fa-solid fa-location-dot"></i> Saudi Arabia</div>
-          <p>
-            Contributed as an Odoo Developer on multiple government digital transformation projects including
-            Zeraei (MEWA), VRO (Ministry of Media), Tasharuk (Najran Emirate), EjadX, and Tawajod —
-            delivering custom modules, workflow automation, backend logic, reports, and access rights configuration.
-          </p>
-          <div class="timeline-skills">
-            <span class="timeline-skill">Government Digital</span>
-            <span class="timeline-skill">Automation</span>
-            <span class="timeline-skill">Custom Modules</span>
-            <span class="timeline-skill">Access Rights</span>
-            <span class="timeline-skill">QWeb Reports</span>
-          </div>
-        </div>
-        <div class="timeline-dot"></div>
+      <article class="journey-card carousel-slide">
+        <span class="journey-date">Apr 2026 – Present</span>
+        <div class="journey-role">Senior Odoo Developer</div>
+        <div class="journey-company">EJAD Digital Solutions</div>
+        <div class="journey-country"><i class="fa-solid fa-location-dot"></i> Saudi Arabia · Odoo Silver Partner</div>
+        <p>Backend Odoo Enterprise solutions across concurrent projects — scalable modules, workflow automation, and ORM performance tuning in Agile/GitLab CI/CD teams.</p>
+        <div class="timeline-skills"><span class="timeline-skill">Odoo Enterprise</span><span class="timeline-skill">Automation</span><span class="timeline-skill">CI/CD</span></div>
+      </article>
+
+      <article class="journey-card carousel-slide">
+        <span class="journey-date">Sep 2024 – Mar 2026</span>
+        <div class="journey-role">Odoo Developer (Enterprise)</div>
+        <div class="journey-company">EjadTech</div>
+        <div class="journey-country"><i class="fa-solid fa-location-dot"></i> Egypt / Saudi Arabia</div>
+        <p>End-to-end backend delivery on government digital platforms (MEWA, Ministry of Media, Najran). Custom modules, REST integrations, PostgreSQL optimization, plus structured Odoo training for client teams.</p>
+        <div class="timeline-skills"><span class="timeline-skill">Government</span><span class="timeline-skill">REST API</span><span class="timeline-skill">Training</span></div>
+      </article>
+
+      <article class="journey-card carousel-slide">
+        <span class="journey-date">Nov 2025 – Present</span>
+        <div class="journey-role">Odoo Developer (Remote)</div>
+        <div class="journey-company">DOTec Professional Corp.</div>
+        <div class="journey-country"><i class="fa-solid fa-location-dot"></i> United States</div>
+        <p>Odoo customizations, backend enhancements, and scalable ERP solutions for US-based clients with complex requirements.</p>
+        <div class="timeline-skills"><span class="timeline-skill">Engineering ERP</span><span class="timeline-skill">Full Build</span><span class="timeline-skill">Python</span></div>
+      </article>
+
+      <article class="journey-card carousel-slide">
+        <span class="journey-date">Oct 2025 – Jan 2026</span>
+        <div class="journey-role">Odoo Techno-Functional</div>
+        <div class="journey-company">Margins Developments</div>
+        <div class="journey-country"><i class="fa-solid fa-location-dot"></i> Cairo, Egypt</div>
+        <p>Gathered requirements and customized CRM, Sales &amp; Accounting workflows; built automated reports and trained end users on the real-estate ERP.</p>
+        <div class="timeline-skills"><span class="timeline-skill">Real Estate ERP</span><span class="timeline-skill">CRM</span><span class="timeline-skill">Training</span></div>
+      </article>
+
+      <article class="journey-card carousel-slide">
+        <span class="journey-date">Aug 2025 – Dec 2025</span>
+        <div class="journey-role">AI Software Engineer</div>
+        <div class="journey-company">Computing Gate IT</div>
+        <div class="journey-country"><i class="fa-solid fa-location-dot"></i> Saudi Arabia · Part-Time</div>
+        <p>Designed ML/DL models for enterprise apps and integrated AI components into backend ERP systems for intelligent automation.</p>
+        <div class="timeline-skills"><span class="timeline-skill">ML / DL</span><span class="timeline-skill">AI in ERP</span></div>
+      </article>
+
+      <article class="journey-card carousel-slide">
+        <span class="journey-date">Mar 2024 – Sep 2024</span>
+        <div class="journey-role">Data Scientist</div>
+        <div class="journey-company">DEPI · Digital Egypt Pioneers</div>
+        <div class="journey-country"><i class="fa-solid fa-location-dot"></i> Cairo, Egypt</div>
+        <p>Built computer-vision models at 98% accuracy using YOLO; optimized object-detection speed and overall performance.</p>
+        <div class="timeline-skills"><span class="timeline-skill">Computer Vision</span><span class="timeline-skill">YOLO</span><span class="timeline-skill">98% Acc.</span></div>
+      </article>
+
+      <article class="journey-card carousel-slide">
+        <span class="journey-date">Jun 2023 – Aug 2024</span>
+        <div class="journey-role">Data Scientist</div>
+        <div class="journey-company">ExploreAI Academy</div>
+        <div class="journey-country"><i class="fa-solid fa-location-dot"></i> Remote</div>
+        <p>Delivered end-to-end data-science projects and communicated actionable insights to support strategic decisions.</p>
+        <div class="timeline-skills"><span class="timeline-skill">Data Science</span><span class="timeline-skill">Insights</span></div>
+      </article>
+
+      <article class="journey-card carousel-slide">
+        <span class="journey-date">2024</span>
+        <div class="journey-role">Data Analyst</div>
+        <div class="journey-company">CognoRise InfoTech</div>
+        <div class="journey-country"><i class="fa-solid fa-location-dot"></i> Cairo, Egypt</div>
+        <p>Cleaned and analyzed large datasets and built interactive dashboards to support decision-making.</p>
+        <div class="timeline-skills"><span class="timeline-skill">Dashboards</span><span class="timeline-skill">SQL</span></div>
+      </article>
+
       </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content fade-up">
-          <div class="timeline-step">02</div>
-          <div class="timeline-period">Experience With — Margins Developments</div>
-          <div class="timeline-company">Odoo Developer – Full ERP Build</div>
-          <div class="timeline-country"><i class="fa-solid fa-location-dot"></i> Egypt</div>
-          <p>
-            Designed and developed the company's entire real estate ERP system — including CRM, sales pipeline,
-            unit/property management, reservation workflows, broker management, contract generation,
-            payment milestone tracking, QWeb reports, role-based access, and automation rules.
-          </p>
-          <div class="timeline-skills">
-            <span class="timeline-skill">Odoo 17</span>
-            <span class="timeline-skill">Python</span>
-            <span class="timeline-skill">Real Estate ERP</span>
-            <span class="timeline-skill">Full Build</span>
-            <span class="timeline-skill">PostgreSQL</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-content fade-up">
-          <div class="timeline-step">03</div>
-          <div class="timeline-period">Experience With — DOTec Engineering</div>
-          <div class="timeline-company">Senior Odoo Developer – Full ERP Build</div>
-          <div class="timeline-country"><i class="fa-solid fa-location-dot"></i> United States</div>
-          <p>
-            Built the company's complete internal engineering ERP system from scratch. Covered CRM, project lifecycle,
-            discipline and team management, consultant profiles, timesheet tracking, expense management,
-            document handling, QWeb reports, automation rules, security groups, PostgreSQL optimization, and code refactoring.
-          </p>
-          <div class="timeline-skills">
-            <span class="timeline-skill">Odoo 18</span>
-            <span class="timeline-skill">Python</span>
-            <span class="timeline-skill">PostgreSQL</span>
-            <span class="timeline-skill">Engineering ERP</span>
-            <span class="timeline-skill">Full Build</span>
-          </div>
-        </div>
-        <div class="timeline-dot"></div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content fade-up">
-          <div class="timeline-step">04</div>
-          <div class="timeline-period">Experience With — EJAD Digital Solutions</div>
-          <div class="timeline-company">Senior Odoo Developer</div>
-          <div class="timeline-country"><i class="fa-solid fa-location-dot"></i> Saudi Arabia</div>
-          <p>
-            Senior Odoo Developer at an official Odoo Silver Partner, delivering ERP implementations and customizations
-            for multiple clients. Contributed to the Visitor Service Robot project, Creatio integration support,
-            CRM and HR module development, QWeb reports, and internal Odoo tooling improvements.
-          </p>
-          <div class="timeline-skills">
-            <span class="timeline-skill">Odoo 17 &amp; 18</span>
-            <span class="timeline-skill">Silver Partner</span>
-            <span class="timeline-skill">CRM</span>
-            <span class="timeline-skill">HR</span>
-            <span class="timeline-skill">QWeb</span>
-            <span class="timeline-skill">Automation</span>
-          </div>
-        </div>
-      </div>
-
+      <button class="carousel-arrow next" aria-label="Next experience"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="journey-progress" aria-hidden="true"></div>
+      <div class="carousel-dots"></div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<hr class="beam-divider" />
 
 <!-- ════════════════════════════════════════════════════════
      BUSINESS IMPACT
 ════════════════════════════════════════════════════════ -->
 <section id="impact" class="section-pad">
-  <div class="container">
+  <div class="aurora-bg" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
     <div class="section-header">
-      <div class="label-section">Business Impact</div>
-      <h2>What My Work Delivers</h2>
-      <p>I don't just write code — I solve business problems. Here's the real-world value my Odoo work creates.</p>
+      <div class="eyebrow">Why Work With Me</div>
+      <h2>More Than a Developer — <span class="text-aurora">a Delivery Partner</span></h2>
+      <p>I own outcomes end-to-end: understand the business, build the system, ship it safely, and make sure people actually use it.</p>
     </div>
 
-    <div class="impact-grid">
-      <div class="impact-card fade-up">
-        <div class="impact-icon">⚡</div>
-        <h4>Faster Workflow Automation</h4>
-        <p>Repetitive manual tasks converted into automated Odoo workflows — reducing human error and saving hours per week.</p>
+    <div class="value-grid">
+      <div class="value-card reveal">
+        <div class="value-card-num">01</div>
+        <div class="value-icon">🎯</div>
+        <h4>Business-First Thinking</h4>
+        <p>Requirements, gap analysis and process mapping before a single line of code — so the system solves the real problem.</p>
       </div>
-      <div class="impact-card fade-up fade-up-delay-1">
-        <div class="impact-icon">🗃️</div>
-        <h4>Cleaner ERP Data Structure</h4>
-        <p>Well-designed data models with proper relations, constraints, and ORM queries — ensuring data integrity across the system.</p>
+      <div class="value-card reveal r-d1">
+        <div class="value-card-num">02</div>
+        <div class="value-icon">🏗️</div>
+        <h4>Full-Lifecycle Delivery</h4>
+        <p>From data models and modules to CI/CD deployment and go-live — I take ERPs from idea to production.</p>
       </div>
-      <div class="impact-card fade-up fade-up-delay-2">
-        <div class="impact-icon">📊</div>
-        <h4>Better Reporting &amp; Dashboards</h4>
-        <p>Custom QWeb reports and dashboard views giving management real-time visibility into operations, sales, and performance.</p>
+      <div class="value-card reveal r-d2">
+        <div class="value-card-num">03</div>
+        <div class="value-icon">🤝</div>
+        <h4>Techno-Functional Bridge</h4>
+        <p>Fluent with both stakeholders and code — I translate business language into scalable Odoo architecture.</p>
       </div>
-      <div class="impact-card fade-up fade-up-delay-3">
-        <div class="impact-icon">🔐</div>
-        <h4>Role-Based Access Control</h4>
-        <p>Properly configured security groups and record rules — ensuring every user sees only what they should, protecting sensitive data.</p>
+      <div class="value-card reveal">
+        <div class="value-card-num">04</div>
+        <div class="value-icon">🎓</div>
+        <h4>Training &amp; Enablement</h4>
+        <p>Structured training programs, materials and post-go-live support that drive real user adoption.</p>
       </div>
-      <div class="impact-card fade-up">
-        <div class="impact-icon">👁️</div>
-        <h4>Improved CRM &amp; Project Visibility</h4>
-        <p>Sales pipelines, opportunity tracking, and project lifecycle management giving teams full clarity on status and priorities.</p>
+      <div class="value-card reveal r-d1">
+        <div class="value-card-num">05</div>
+        <div class="value-icon">⚡</div>
+        <h4>Performance &amp; Reliability</h4>
+        <p>PostgreSQL tuning, ORM refactoring and clean module design for systems that stay fast as they grow.</p>
       </div>
-      <div class="impact-card fade-up fade-up-delay-1">
-        <div class="impact-icon">📉</div>
-        <h4>Reduced Manual Work</h4>
-        <p>Server actions, cron jobs, and automation rules eliminating manual data entry and follow-up tasks across business operations.</p>
+      <div class="value-card reveal r-d2">
+        <div class="value-card-num">06</div>
+        <div class="value-icon">🧠</div>
+        <h4>AI-Powered Automation</h4>
+        <p>ML, computer vision and LLM automation embedded into ERP for smarter reporting and decision support.</p>
       </div>
-      <div class="impact-card fade-up fade-up-delay-2">
-        <div class="impact-icon">🧱</div>
-        <h4>Scalable Odoo Modules</h4>
-        <p>Clean, well-structured module architecture using proper inheritance, ORM patterns, and separation of concerns — easy to maintain and extend.</p>
+    </div>
+
+    <!-- Animated trust stats -->
+    <div class="trust-metrics">
+      <div class="trust-metric reveal">
+        <div class="trust-metric-num"><span data-count="6">6</span></div>
+        <div class="trust-metric-label">Featured Case Studies</div>
       </div>
-      <div class="impact-card fade-up fade-up-delay-3">
-        <div class="impact-icon">🔗</div>
-        <h4>System Integration Support</h4>
-        <p>Odoo integrated with external systems via APIs and JSON-RPC — enabling connected data flows between ERP and business tools.</p>
+      <div class="trust-metric reveal r-d1">
+        <div class="trust-metric-num"><span data-count="4">4</span></div>
+        <div class="trust-metric-label">Companies</div>
+      </div>
+      <div class="trust-metric reveal r-d2">
+        <div class="trust-metric-num"><span data-count="3" data-suffix="+">3+</span></div>
+        <div class="trust-metric-label">Countries</div>
+      </div>
+      <div class="trust-metric reveal r-d3">
+        <div class="trust-metric-num"><span data-count="98" data-suffix="%">98%</span></div>
+        <div class="trust-metric-label">AI Model Accuracy</div>
       </div>
     </div>
   </div>
@@ -867,116 +705,75 @@
      CONTACT
 ════════════════════════════════════════════════════════ -->
 <section id="contact" class="section-pad">
-  <div class="container">
+  <div class="aurora-bg" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
     <div class="section-header">
-      <div class="label-section" style="background:rgba(37,99,235,.15);border-color:rgba(37,99,235,.3)">Contact</div>
-      <h2>Let's Work Together</h2>
-      <p>Looking to build or improve your ERP system? I'm available for full-time roles, freelance projects, and consulting. Reach out anytime.</p>
+      <div class="eyebrow">Contact</div>
+      <h2>Let's Build Your <span class="text-aurora">ERP Advantage</span></h2>
+      <p>Pick the channel that suits you — I usually reply within a day. Open to Senior Odoo roles, techno-functional consulting, and freelance ERP projects worldwide.</p>
     </div>
 
-    <div class="contact-grid">
+    <!-- Direct CTA cards -->
+    <div class="contact-cta-grid">
 
-      <!-- Contact Info -->
-      <div class="contact-info fade-up">
-        <h3>Get In Touch</h3>
-        <p>I'm open to Senior Odoo Developer roles, ERP consulting projects, and remote opportunities across Egypt, Saudi Arabia, and globally.</p>
+      <a href="https://wa.me/201102672347" target="_blank" rel="noopener" class="cta-card reveal" style="--accent:linear-gradient(120deg,#22c55e,#16a34a)" data-wa-link>
+        <div class="cta-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <h4>WhatsApp</h4>
+        <p>Fastest way to reach me. Message me about your project or role.</p>
+        <span class="cta-go">Start a chat <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
 
-        <div class="contact-methods">
+      <a href="mailto:mohammedgamal37l30@gmail.com" class="cta-card reveal r-d1" style="--accent:linear-gradient(120deg,#2563eb,#6366f1)">
+        <div class="cta-icon"><i class="fa-solid fa-envelope"></i></div>
+        <h4>Email</h4>
+        <p>mohammedgamal37l30@gmail.com — great for detailed briefs &amp; opportunities.</p>
+        <span class="cta-go">Send an email <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
 
-          <div class="contact-method">
-            <div class="contact-method-icon">📧</div>
-            <div>
-              <div class="contact-method-label">Email</div>
-              <div class="contact-method-value">
-                <a href="mailto:mohammedgamal37l30@gmail.com">mohammedgamal37l30@gmail.com</a>
-              </div>
-            </div>
-          </div>
+      <a href="https://www.linkedin.com/in/mohamedgamal37l30" target="_blank" rel="noopener" class="cta-card reveal r-d2" style="--accent:linear-gradient(120deg,#0a66c2,#2563eb)">
+        <div class="cta-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+        <h4>LinkedIn</h4>
+        <p>Connect professionally and view my full career timeline.</p>
+        <span class="cta-go">View profile <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
 
-          <div class="contact-method">
-            <div class="contact-method-icon">📱</div>
-            <div>
-              <div class="contact-method-label">Phone / WhatsApp</div>
-              <div class="contact-method-value">
-                <a href="https://wa.me/201102672347" target="_blank" rel="noopener" data-wa-link>+201102672347</a>
-                &nbsp;·&nbsp;
-                <a href="tel:+201016843962">+201016843962</a>
-              </div>
-            </div>
-          </div>
+      <a href="https://github.com/mohamedgamal-attia" target="_blank" rel="noopener" class="cta-card reveal r-d1" style="--accent:linear-gradient(120deg,#334155,#0f172a)">
+        <div class="cta-icon"><i class="fa-brands fa-github"></i></div>
+        <h4>GitHub</h4>
+        <p>Browse code, this portfolio's source, and technical work.</p>
+        <span class="cta-go">Open GitHub <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
 
-          <div class="contact-method">
-            <div class="contact-method-icon">🔗</div>
-            <div>
-              <div class="contact-method-label">LinkedIn</div>
-              <div class="contact-method-value">
-                <a href="https://www.linkedin.com/in/mohamedgamal37l30" target="_blank" rel="noopener">linkedin.com/in/mohamedgamal37l30</a>
-              </div>
-            </div>
-          </div>
+      <a href="tel:+201102672347" class="cta-card reveal r-d2" style="--accent:linear-gradient(120deg,#d4a843,#f0c55a)">
+        <div class="cta-icon"><i class="fa-solid fa-phone"></i></div>
+        <h4>Call</h4>
+        <p>01102672347 · Cairo, Egypt (GMT+2). Open to remote &amp; relocation.</p>
+        <span class="cta-go">Call now <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
 
-          <div class="contact-method">
-            <div class="contact-method-icon">🐙</div>
-            <div>
-              <div class="contact-method-label">GitHub</div>
-              <div class="contact-method-value">
-                <a href="https://github.com/mohamedgamal-attia" target="_blank" rel="noopener">github.com/mohamedgamal-attia</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-method">
-            <div class="contact-method-icon">📍</div>
-            <div>
-              <div class="contact-method-label">Location</div>
-              <div class="contact-method-value">Cairo, Egypt · Open to Remote &amp; Relocation</div>
-            </div>
-          </div>
-
-        </div>
-
-        <div style="margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-gold">
-            <i class="fa-solid fa-download"></i> Download CV
-          </a>
-          <a href="https://wa.me/201102672347" target="_blank" rel="noopener" class="btn btn-outline-white" data-wa-link>
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp Me
-          </a>
-        </div>
-      </div>
-
-      <!-- Contact Form -->
-      <div class="contact-form-wrap fade-up fade-up-delay-1">
-        <h3>Send a Message</h3>
-        <form id="contact-form" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="f-name">Your Name</label>
-              <input type="text" id="f-name" name="name" class="form-control" placeholder="John Smith" required />
-            </div>
-            <div class="form-group">
-              <label for="f-email">Your Email</label>
-              <input type="email" id="f-email" name="email" class="form-control" placeholder="john@company.com" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="f-subject">Subject</label>
-            <input type="text" id="f-subject" name="subject" class="form-control" placeholder="Odoo ERP Project Inquiry" />
-          </div>
-          <div class="form-group">
-            <label for="f-message">Message</label>
-            <textarea id="f-message" name="message" class="form-control" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
-            <i class="fa-solid fa-paper-plane"></i> Send Message
-          </button>
-        </form>
-        <p style="font-size:.78rem;color:var(--gray-400);margin-top:12px;text-align:center;">
-          * This form is a demo. Connect it to Formspree or EmailJS to enable real email delivery.
-        </p>
-      </div>
+      <a href="0_Mohamed_Gamal_CV.pdf" download class="cta-card reveal r-d3" style="--accent:linear-gradient(120deg,#8b5cf6,#22d3ee)">
+        <div class="cta-icon"><i class="fa-solid fa-file-arrow-down"></i></div>
+        <h4>Download CV</h4>
+        <p>Full résumé — experience, skills, certifications &amp; education (PDF).</p>
+        <span class="cta-go">Get the PDF <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
 
     </div>
+
+    <!-- Closing CTA band -->
+    <div class="cta-band reveal-scale">
+      <h3>Have an ERP challenge or a role in mind?</h3>
+      <p>Whether you need a system built from scratch, an existing Odoo instance optimized, or your team trained — let's talk about your business workflow.</p>
+      <div class="cta-band-btns">
+        <a href="https://wa.me/201102672347" target="_blank" rel="noopener" class="btn btn-brand btn-lg btn-glow" data-wa-link data-magnetic>
+          <i class="fa-brands fa-whatsapp"></i> Let's Work Together
+        </a>
+        <a href="mailto:mohammedgamal37l30@gmail.com" class="btn btn-outline-white btn-lg" data-magnetic>
+          <i class="fa-solid fa-envelope"></i> Email Me
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -988,7 +785,7 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-copy">
-        © 2026 Mohamed Gamal · Senior Odoo Developer · Built with HTML, CSS &amp; JavaScript.
+        © 2026 Mohamed Gamal · Odoo Techno-Functional Consultant &amp; Developer · Cairo, Egypt
       </div>
       <div class="footer-links">
         <a href="#hero">Home</a>
@@ -1013,54 +810,86 @@
 <!-- ════════════════════════════════════════════════════════
      PROJECT DETAIL MODAL
 ════════════════════════════════════════════════════════ -->
-<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Project Details">
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Project case study">
   <div class="modal">
     <div class="modal-header">
-      <img id="m-img" src="" alt="" />
+      <img id="m-img" alt="" />
       <div class="modal-header-overlay"></div>
       <div class="modal-header-text">
         <div class="modal-header-company" id="m-company"></div>
         <div class="modal-header-title" id="m-title"></div>
+        <span class="modal-type-badge" id="m-type"></span>
       </div>
       <button class="modal-close" id="modal-close" aria-label="Close modal">
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
+
+    <!-- Tabs -->
+    <div class="modal-tabs" role="tablist">
+      <button class="modal-tab active" data-tab="overview">Overview</button>
+      <button class="modal-tab" data-tab="gallery">Visuals</button>
+      <button class="modal-tab" data-tab="scope">Scope</button>
+      <button class="modal-tab" data-tab="context">Context</button>
+      <button class="modal-tab" data-tab="impact">Impact</button>
+    </div>
+
     <div class="modal-body">
-      <div class="modal-section">
-        <span class="badge badge-blue" id="m-sector"></span>
+      <!-- Overview -->
+      <div class="tab-panel active" data-panel="overview">
+        <div class="modal-section">
+          <h4>My Role</h4>
+          <p id="m-role"></p>
+        </div>
+        <div class="modal-section">
+          <h4>Overview</h4>
+          <p id="m-overview"></p>
+        </div>
       </div>
 
-      <!-- Role note for public-context projects (hidden by default) -->
-      <div class="modal-role-note" id="m-role-note" style="display:none"></div>
-
-      <div class="modal-section">
-        <h4>Project / Context</h4>
-        <p id="m-desc"></p>
-      </div>
-      <div class="modal-section">
-        <h4>My Role</h4>
-        <p id="m-role"></p>
-      </div>
-      <div class="modal-section">
-        <h4>Key Features &amp; Contributions</h4>
-        <div class="modal-features" id="m-features"></div>
-      </div>
-      <div class="modal-section">
-        <h4>Business Impact</h4>
-        <p id="m-impact"></p>
-      </div>
-      <div class="modal-section">
-        <h4>Technologies</h4>
-        <div class="modal-tags" id="m-tags"></div>
+      <!-- Visuals / Gallery -->
+      <div class="tab-panel" data-panel="gallery">
+        <div class="modal-gallery">
+          <div class="modal-gallery-main">
+            <img id="m-gallery-img" alt="" />
+            <button class="gallery-nav gallery-prev" id="m-gallery-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="gallery-nav gallery-next" id="m-gallery-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+            <span class="gallery-count" id="m-gallery-count"></span>
+          </div>
+          <div class="modal-thumbs" id="m-gallery-thumbs"></div>
+        </div>
       </div>
 
-      <!-- Source link (shown when sourceUrl is set) -->
-      <div class="modal-source-link" id="m-source-link" style="display:none">
-        <a href="#" target="_blank" rel="noopener" id="m-source-anchor">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          <span id="m-source-label">View Official Source</span>
-        </a>
+      <!-- Scope -->
+      <div class="tab-panel" data-panel="scope">
+        <div class="modal-section">
+          <h4>Scope &amp; What I Built</h4>
+          <div class="modal-features" id="m-scope"></div>
+        </div>
+      </div>
+
+      <!-- Context -->
+      <div class="tab-panel" data-panel="context">
+        <div class="modal-role-note" id="m-context-note"></div>
+        <div class="modal-ctx-list" id="m-context-list"></div>
+      </div>
+
+      <!-- Impact -->
+      <div class="tab-panel" data-panel="impact">
+        <div class="modal-section">
+          <h4>Business Impact</h4>
+          <p id="m-impact"></p>
+        </div>
+        <div class="modal-section">
+          <h4>Technologies</h4>
+          <div class="modal-tags" id="m-tags"></div>
+        </div>
+        <div class="modal-source-link" id="m-source-link" style="display:none">
+          <a href="#" target="_blank" rel="noopener" id="m-source-anchor">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span id="m-source-label">View Official Source</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -1072,6 +901,11 @@
 ════════════════════════════════════════════════════════ -->
 <script src="assets/js/config.js"></script>
 <script src="assets/js/animations.js"></script>
+<script src="assets/js/effects.js"></script>
+<script src="assets/js/cursor.js"></script>
+<script src="assets/js/particles.js"></script>
+<script src="assets/js/tilt.js"></script>
+<script src="assets/js/carousels.js"></script>
 <script src="assets/js/modals.js"></script>
 <script src="assets/js/filters.js"></script>
 <script src="assets/js/data-loader.js"></script>

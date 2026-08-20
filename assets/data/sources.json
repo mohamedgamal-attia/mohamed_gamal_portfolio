@@ -1,5 +1,30 @@
 {
-  "_comment": "Image asset provenance for the portfolio. Updated: 2026-06-14.",
+  "_comment": "Image asset provenance for the portfolio. Updated: 2026-08-20.",
+
+  "generatedProjectVisuals": {
+    "_comment": "Premium ERP dashboard / branded-context cover images generated locally (no real screenshots exist or are safe to publish). Produced by scripts/generate_project_visuals.py as crisp SVG. These are illustrative product-style mockups, NOT real client screenshots — numbers shown are placeholders.",
+    "directory": "assets/images/projects/generated/",
+    "type": "generated-svg-dashboard",
+    "generator": "scripts/generate_project_visuals.py",
+    "count": 29,
+    "usedFor": [
+      "margins-erp", "dotec-erp", "ejad-digital-odoo-work", "ejad-erp-implementations",
+      "ejad-internal-erp", "creatio-automation", "visitor-service-robot", "vro-ministry-media",
+      "tasharuk-platform", "zeraei-platform", "ejadx-platform", "tawajod-platform",
+      "ejadtech-odoo-work", "and 12 public-context real-estate / engineering covers"
+    ],
+    "realLogosKeptInGalleries": [
+      "assets/images/projects/zeraei-platform.png (MEWA ministry logo)",
+      "assets/images/projects/ejadx-platform.png (EjadTech logo)",
+      "assets/images/projects/tawajod-platform.png (EjadTech logo)"
+    ],
+    "brandCovers": {
+      "_comment": "Website-style covers that EMBED the real local logo asset (base64) — real brand marks, not generic charts. Used as the primary cover for EjadTech, EJAD Digital, and a gallery item for DOTec.",
+      "ejadtech-brand.svg": "embeds real EjadTech logo (assets/images/projects/ejadtech-odoo-work.png)",
+      "ejad-brand.svg": "embeds real EJAD Digital logo (assets/images/companies/ejad-digital-logo.png)",
+      "dotec-brand.svg": "embeds real DOTec logo (assets/images/companies/dotec-logo.png)"
+    }
+  },
 
   "companies": [
     {
@@ -125,7 +150,71 @@
     { "file": "assets/images/projects/smurfit-stone.svg", "type": "generated-svg" },
     { "file": "assets/images/projects/aerofil-technologies.svg", "type": "generated-svg" },
     { "file": "assets/images/projects/reckitt-benckiser.svg", "type": "generated-svg" },
-    { "file": "assets/images/projects/city-grocers.svg", "type": "generated-svg" }
+    { "file": "assets/images/projects/city-grocers.svg", "type": "generated-svg" },
+
+    {
+      "file": "assets/images/projects/bluedez/bluedez-cover.png",
+      "type": "local-project-asset",
+      "format": "PNG",
+      "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/01-cover.png",
+      "notes": "Cover page of the BlueDez Blog Content Pack produced by Mohamed Gamal. Resized from 3840×2160 to 1600px wide for web. Original content sourced from bluedez.com/blog."
+    },
+    {
+      "file": "assets/images/projects/bluedez/bluedez-screenshot-1.png",
+      "type": "local-project-asset",
+      "format": "PNG",
+      "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/08-who-needs-a-structural-engineer.png",
+      "notes": "Interior page (five audience cards) from the BlueDez content pack. Resized to 1600px wide for web."
+    },
+    {
+      "file": "assets/images/projects/bluedez/bluedez-screenshot-2.png",
+      "type": "local-project-asset",
+      "format": "PNG",
+      "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/20-timeline-project-lifecycle.png",
+      "notes": "Project-lifecycle timeline page from the BlueDez content pack. Resized to 1600px wide for web."
+    },
+    {
+      "file": "assets/images/projects/bluedez/bluedez-screenshot-3.png",
+      "type": "local-project-asset",
+      "format": "PNG",
+      "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/04-story-flow.png",
+      "notes": "Narrative story-flow page from the BlueDez content pack. Resized to 1600px wide for web."
+    },
+    {
+      "file": "assets/images/projects/sunbelt/sunbelt-cover.webp",
+      "type": "local-project-asset",
+      "format": "WebP",
+      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-hero-liquidation-warehouse-1600.webp",
+      "notes": "Primary hero image (web-optimized 1600×900 WebP) from the Sunbelt Website Asset Pack curated by Mohamed Gamal for the sunbeltdeals.com redesign. Copied as-is."
+    },
+    {
+      "file": "assets/images/projects/sunbelt/sunbelt-screenshot-1.webp",
+      "type": "local-project-asset",
+      "format": "WebP",
+      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-hero-warehouse-variety-1600.webp",
+      "notes": "Warehouse-variety hero (web-optimized 1600×900 WebP) from the Sunbelt asset pack. Copied as-is."
+    },
+    {
+      "file": "assets/images/projects/sunbelt/sunbelt-screenshot-2.jpg",
+      "type": "local-project-asset",
+      "format": "JPG",
+      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-thumb-amazon-returns-700.jpg",
+      "notes": "Proven real merchandise photo (Amazon-returns pallet, live shop product) — web thumbnail from the Sunbelt asset pack. Copied as-is."
+    },
+    {
+      "file": "assets/images/projects/sunbelt/sunbelt-screenshot-3.jpg",
+      "type": "local-project-asset",
+      "format": "JPG",
+      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-thumb-dollar-general-700.jpg",
+      "notes": "Proven real merchandise photo (Dollar General pallet, live shop product) — web thumbnail from the Sunbelt asset pack. Copied as-is."
+    },
+    {
+      "file": "assets/images/projects/sunbelt/sunbelt-logo.png",
+      "type": "local-project-asset",
+      "format": "PNG",
+      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-logo.png",
+      "notes": "Sunbelt Deals brand logo from the asset pack's brand kit. Copied as-is."
+    }
   ],
 
   "placeholders": [
