@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1727" />
+
+  <title>EJAD EGHR — Enterprise Employee Portal | Case Study · Mohamed Gamal</title>
+  <meta name="description" content="Case study: a portal-first employee self-service platform built on Odoo 18 — dynamic HR services, unified approvals, server-side geofenced attendance, Arabic/English, light/dark and responsive employee journeys." />
+  <meta name="author" content="Mohamed Gamal" />
+  <link rel="canonical" href="https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/projects/eghr.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Mohamed Gamal — Odoo Techno-Functional Consultant &amp; Developer" />
+  <meta property="og:title" content="EJAD EGHR — Enterprise Employee Portal" />
+  <meta property="og:description" content="A portal-first HR experience on Odoo 18: dynamic employee services, unified approvals, geofenced attendance, bilingual UX and responsive journeys." />
+  <meta property="og:url" content="https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/projects/eghr.html" />
+  <meta property="og:image" content="https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/assets/images/og/eghr-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EJAD EGHR — Enterprise Employee Portal" />
+  <meta name="twitter:description" content="Odoo 18 employee self-service portal — dynamic services, unified approvals, geofenced attendance, Arabic/English." />
+  <meta name="twitter:image" content="https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/assets/images/og/eghr-og.jpg" />
+
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
+
+  <script>
+    /* rel="preload" unlocks these stylesheets via onload. Engines without
+       preload support never fire it, which would mean no icons at all — so
+       promote the links to real stylesheets immediately when that is the case. */
+    (function () {
+      try {
+        var rl = document.createElement('link').relList;
+        if (rl && rl.supports && rl.supports('preload')) return;
+      } catch (e) { /* fall through and load them the plain way */ }
+      document.querySelectorAll('link[rel="preload"][as="style"]')
+        .forEach(function (l) { l.rel = 'stylesheet'; });
+    }());
+  </script>
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/case-study.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "EJAD EGHR — Enterprise Employee Portal",
+    "about": "Odoo 18 employee self-service portal",
+    "creator": { "@type": "Person", "name": "Mohamed Gamal" },
+    "url": "https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/projects/eghr.html",
+    "keywords": "Odoo 18, Employee Portal, HR Self Service, QWeb, PostgreSQL, Arabic RTL"
+  }
+  </script>
+  <noscript><style>
+    .fade-up, .reveal, .reveal-left, .reveal-scale, .cs-reveal, .kin, .kin-word
+      { opacity: 1 !important; transform: none !important; animation: none !important; }
+  </style></noscript>
+</head>
+
+<body class="cs-page">
+<a class="skip-link" href="#overview">Skip to content</a>
+
+<!-- ════════════════ NAV ════════════════ -->
+<nav class="cs-nav" aria-label="Case study navigation">
+  <div class="cs-nav-inner">
+    <a href="../index.html#work" class="cs-back">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Portfolio
+    </a>
+    <div class="cs-nav-title">EJAD EGHR <span>· Employee Portal</span></div>
+    <nav class="cs-secnav" aria-label="Sections">
+      <a href="#challenge"     data-sec-link>Problem</a>
+      <a href="#role"          data-sec-link>Role</a>
+      <a href="#dashboard"     data-sec-link>Dashboard</a>
+      <a href="#requests"      data-sec-link>Requests</a>
+      <a href="#attendance"    data-sec-link>Attendance</a>
+      <a href="#services"      data-sec-link>Services</a>
+      <a href="#localization"  data-sec-link>AR / EN</a>
+      <a href="#architecture"  data-sec-link>Architecture</a>
+    </nav>
+    <div class="cs-nav-spacer"></div>
+    <a href="../0_Mohamed_Gamal_CV.pdf" download class="btn btn-primary btn-sm">
+      <i class="fa-solid fa-download" aria-hidden="true"></i> Download CV
+    </a>
+  </div>
+  <div id="cs-progress" aria-hidden="true"></div>
+</nav>
+
+
+<!-- ════════════════ HERO ════════════════ -->
+<header class="cs-hero" id="overview">
+  <div class="cs-wrap">
+    <div class="cs-hero-grid">
+
+      <div>
+        <span class="cs-kicker">Flagship case study · 2026</span>
+        <h1>EJAD EGHR<em>Enterprise Employee Portal</em></h1>
+        <p class="cs-hero-sub">A portal-first HR experience built on Odoo 18.</p>
+        <p class="cs-hero-lead">
+          Employees get one branded place to check in, raise any HR request, follow its
+          approval, and read what HR published — in Arabic or English, light or dark, on a
+          phone or a desktop. The Odoo back office stays where it belongs: behind the portal.
+        </p>
+
+        <div class="cs-chips">
+          <span class="cs-chip is-key">Odoo 18</span>
+          <span class="cs-chip">Python</span>
+          <span class="cs-chip">QWeb / XML</span>
+          <span class="cs-chip">JavaScript</span>
+          <span class="cs-chip">SCSS / CSS</span>
+          <span class="cs-chip">PostgreSQL</span>
+          <span class="cs-chip">Playwright</span>
+          <span class="cs-chip">Git</span>
+        </div>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <div class="cs-meta-k">My role</div>
+            <div class="cs-meta-v">End-to-end delivery</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-k">Surface</div>
+            <div class="cs-meta-v">Responsive web</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-k">Languages</div>
+            <div class="cs-meta-v">Arabic · English</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-k">Themes</div>
+            <div class="cs-meta-v">Light · Dark</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-stage tilt-stage">
+        <div class="frame tilt-3d-media">
+          <img src="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg"
+               alt="EGHR employee dashboard: today's attendance, official working hours, annual leave balance, open requests, employee services, announcements and recent attendance."
+               width="1440" height="900" fetchpriority="high" decoding="async" />
+        </div>
+        <div class="frame-phone stage-phone lift">
+          <img src="../assets/images/projects/eghr/dashboard-mobile-ar.svg"
+               alt="EGHR dashboard on a phone, in Arabic with a right-to-left layout."
+               width="420" height="880" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- ════════════════ FACT STRIP ════════════════ -->
+<section class="cs-section cs-sheet" style="padding:48px 0" aria-label="Project at a glance">
+  <div class="cs-wrap">
+    <div class="fact-strip cs-reveal">
+      <div class="fact">
+        <div class="fact-k">Platform</div>
+        <div class="fact-v">Odoo 18 · portal controllers</div>
+      </div>
+      <div class="fact">
+        <div class="fact-k">Services</div>
+        <div class="fact-v">11 employee request flows</div>
+      </div>
+      <div class="fact">
+        <div class="fact-k">Attendance</div>
+        <div class="fact-v">Server-validated geofence</div>
+      </div>
+      <div class="fact">
+        <div class="fact-k">Reach</div>
+        <div class="fact-v">AR / EN · light / dark · responsive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ CHALLENGE ════════════════ -->
+<section class="cs-section" id="challenge">
+  <div class="cs-wrap">
+    <div class="split">
+      <div class="cs-reveal">
+        <div class="cs-head">
+          <div class="cs-num">01 · The problem</div>
+          <h2>HR software people actually open</h2>
+          <p>
+            The HR data already lived in Odoo. The problem was the front door:
+            asking every employee to learn an ERP back office to book three days off
+            is how a rollout dies.
+          </p>
+        </div>
+
+        <div class="bullets">
+          <div class="bullet">
+            <span class="bullet-mark" aria-hidden="true">01</span>
+            <p><b>Portal-first, back office hidden.</b> Employees never see an Odoo menu,
+              a technical model name or an internal view. They see one branded portal.</p>
+          </div>
+          <div class="bullet">
+            <span class="bullet-mark" aria-hidden="true">02</span>
+            <p><b>One coherent set of HR services.</b> Time off, advances, loans, tickets,
+              visas, trips, custody and the rest had to feel like one product, not eleven forms.</p>
+          </div>
+          <div class="bullet">
+            <span class="bullet-mark" aria-hidden="true">03</span>
+            <p><b>Approvals employees can follow.</b> A request is only useful if the person
+              who raised it can see where it is and who has it.</p>
+          </div>
+          <div class="bullet">
+            <span class="bullet-mark" aria-hidden="true">04</span>
+            <p><b>Attendance that cannot be faked.</b> Check-in is tied to the office location
+              and validated on the server, not in the browser.</p>
+          </div>
+          <div class="bullet">
+            <span class="bullet-mark" aria-hidden="true">05</span>
+            <p><b>Arabic and English, phone and desktop.</b> Both languages are first-class,
+              and the same journeys work at 360&nbsp;px and 1920&nbsp;px.</p>
+          </div>
+          <div class="bullet">
+            <span class="bullet-mark" aria-hidden="true">06</span>
+            <p><b>Extensible without a rewrite.</b> HR adds a service; the portal picks it up.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-reveal d1 tilt-stage">
+        <div class="frame tilt-3d-media">
+          <img src="../assets/images/projects/eghr/services-desktop-ar-light.svg"
+               alt="EGHR services catalogue in Arabic with a right-to-left layout and a light theme, showing eleven employee services as cards."
+               width="1440" height="900" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ ROLE ════════════════ -->
+<section class="cs-section cs-sheet" id="role">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">02 · My role</div>
+      <h2>Requirements through deployment</h2>
+      <p>
+        I owned this one end to end — the conversations with HR, the Odoo models and
+        controllers behind it, the portal itself, and the testing that kept it honest.
+      </p>
+    </div>
+
+    <div class="card-grid">
+      <article class="cs-card cs-reveal">
+        <div class="cs-card-ico" aria-hidden="true">🔎</div>
+        <span class="cs-card-num">01</span>
+        <h3>Business analysis</h3>
+        <p>Mapped each HR service to a request flow, an approval route and an owner before
+          any model was written.</p>
+      </article>
+      <article class="cs-card cs-reveal d1">
+        <div class="cs-card-ico" aria-hidden="true">🐍</div>
+        <span class="cs-card-num">02</span>
+        <h3>Odoo backend development</h3>
+        <p>Models, inheritance, compute and constraint logic, approval state machines and
+          scheduled actions — on Odoo 18, without patching core.</p>
+      </article>
+      <article class="cs-card cs-reveal d2">
+        <div class="cs-card-ico" aria-hidden="true">🧭</div>
+        <span class="cs-card-num">03</span>
+        <h3>Portal architecture</h3>
+        <p>Portal controllers, routing, the dynamic service registry and the record rules
+          that decide what each employee may open.</p>
+      </article>
+      <article class="cs-card cs-reveal">
+        <div class="cs-card-ico" aria-hidden="true">🎨</div>
+        <span class="cs-card-num">04</span>
+        <h3>UI/UX implementation</h3>
+        <p>Translated the approved EJAD design direction into QWeb templates, SCSS tokens
+          and reusable portal components.</p>
+      </article>
+      <article class="cs-card cs-reveal d1">
+        <div class="cs-card-ico" aria-hidden="true">📱</div>
+        <span class="cs-card-num">05</span>
+        <h3>Responsive frontend</h3>
+        <p>One markup set, one stylesheet, three breakpoint families — plus full RTL
+          mirroring rather than a separate Arabic build.</p>
+      </article>
+      <article class="cs-card cs-reveal d2">
+        <div class="cs-card-ico" aria-hidden="true">🛡️</div>
+        <span class="cs-card-num">06</span>
+        <h3>Security</h3>
+        <p>Access rights, record rules and server-side validation on every portal route —
+          nothing is trusted because it came from the client.</p>
+      </article>
+      <article class="cs-card cs-reveal">
+        <div class="cs-card-ico" aria-hidden="true">✅</div>
+        <span class="cs-card-num">07</span>
+        <h3>Testing &amp; QA</h3>
+        <p>Automated Odoo tests for the business rules, Playwright runs for the portal
+          journeys, and a responsive pass in both languages.</p>
+      </article>
+      <article class="cs-card cs-reveal d1">
+        <div class="cs-card-ico" aria-hidden="true">🚀</div>
+        <span class="cs-card-num">08</span>
+        <h3>Deployment support</h3>
+        <p>Module packaging, environment configuration and the fixes that only show up once
+          real users arrive.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ DESIGN SYSTEM ════════════════ -->
+<section class="cs-section" id="system">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">03 · Design system</div>
+      <h2>The rules the portal is built from</h2>
+      <p>
+        Eleven services, two languages and two themes only stay coherent if the surface
+        decisions are made once. These are the ones that mattered.
+      </p>
+    </div>
+
+    <div class="ds-grid">
+      <div class="ds-tile cs-reveal">
+        <div class="ds-swatch" aria-hidden="true">
+          <span style="background:#0a1524"></span><span style="background:#132544"></span>
+          <span style="background:#182f52"></span><span style="background:#27456f"></span>
+        </div>
+        <div class="ds-body">
+          <h4>Surface &amp; elevation</h4>
+          <p>Four surface levels — canvas, panel, raised panel, divider — so a card never
+            invents its own background.</p>
+        </div>
+      </div>
+
+      <div class="ds-tile cs-reveal d1">
+        <div class="ds-swatch" aria-hidden="true">
+          <span style="background:#16a34a"></span><span style="background:#d4a843"></span>
+          <span style="background:#dc2626"></span><span style="background:#2563eb"></span>
+        </div>
+        <div class="ds-body">
+          <h4>Status semantics</h4>
+          <p>Approved, pending, rejected, in review. One colour per meaning, applied the same
+            way on a pill, a timeline node and a row.</p>
+        </div>
+      </div>
+
+      <div class="ds-tile cs-reveal d2">
+        <div class="ds-type">
+          <div class="t1">Dashboard</div>
+          <div class="t2">Section heading</div>
+          <div class="t3">Body &amp; field labels</div>
+          <div class="t4">لوحة المعلومات · عربي</div>
+        </div>
+        <div class="ds-body" style="border-top:1px solid rgba(255,255,255,.08)">
+          <h4>Type scale</h4>
+          <p>A four-step scale that holds in both scripts — Arabic is set at its own size,
+            not the Latin size reused.</p>
+        </div>
+      </div>
+
+      <div class="ds-tile cs-reveal">
+        <div class="ds-body" style="padding-top:22px">
+          <h4>Navigation</h4>
+          <p>A persistent service rail on desktop, a bottom tab bar on phones, and the same
+            seven destinations in both — mirrored for Arabic.</p>
+        </div>
+      </div>
+
+      <div class="ds-tile cs-reveal d1">
+        <div class="ds-body" style="padding-top:22px">
+          <h4>Forms</h4>
+          <p>Label above field, full-width on phones, two columns from tablet up. Validation
+            messages sit with the field, never in an alert box.</p>
+        </div>
+      </div>
+
+      <div class="ds-tile cs-reveal d2">
+        <div class="ds-body" style="padding-top:22px">
+          <h4>Arabic RTL</h4>
+          <p>Layout, icon direction, progress rails and table alignment all mirror. Numerals
+            and dates follow the active locale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ DASHBOARD ════════════════ -->
+<section class="cs-section cs-sheet" id="dashboard">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">04 · Dashboard</div>
+      <h2>The whole working day on one screen</h2>
+      <p>
+        The landing screen answers the four questions an employee actually opens the portal
+        with: am I checked in, how much leave do I have, where are my requests, and what did
+        HR just publish.
+      </p>
+    </div>
+
+    <div class="split flip" style="align-items:start">
+      <div class="cs-reveal d1">
+        <div class="bullets" style="margin-top:0">
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Today &amp; attendance.</b> Check-in state, time, and the check-out action in
+              the same tile.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Official working hours.</b> Read from the employee's contract calendar, not
+              hard-coded.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Annual leave balance.</b> The same figure the approval flow validates against.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Open requests.</b> A live count that links straight into My Requests.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Services.</b> The most-used entries from the registry, promoted onto the dashboard.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Announcements.</b> Only the ones targeted at this employee.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Recent attendance.</b> The last working days with their present/late state.</p></div>
+        </div>
+      </div>
+
+      <div class="cs-reveal tilt-stage">
+        <figure style="margin:0">
+          <div class="frame tilt-3d-media">
+            <span class="schematic-tag">Schematic</span>
+            <img src="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg"
+                 alt="EGHR dashboard in English: four summary tiles, an employee services grid, an announcements panel, recent attendance and a my-requests list."
+                 width="1440" height="900" loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="state-cap">
+            <b>Dashboard · English, dark</b>
+            Summary tiles, promoted services, targeted announcements and the last working days.
+          </figcaption>
+        </figure>
+        <div class="frame-phone stage-phone lift" style="position:relative;right:auto;width:188px;margin:-56px 0 0 auto">
+          <img src="../assets/images/projects/eghr/dashboard-mobile-en.svg"
+               alt="The same EGHR dashboard on a phone, stacked into a single column with a bottom tab bar."
+               width="420" height="880" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ REQUEST CENTER ════════════════ -->
+<section class="cs-section" id="requests">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">05 · Request centre</div>
+      <h2>One inbox for raising, one for deciding</h2>
+      <p>
+        Every service writes into the same request spine, so an employee has exactly two
+        places to look: <b>My Requests</b> for what they raised, and <b>My Actions</b> for
+        what is waiting on them. What appears in either is decided by record rules, not by
+        the menu.
+      </p>
+    </div>
+
+    <div class="card-grid" style="margin-bottom:34px">
+      <article class="cs-card cs-reveal">
+        <h3>My Requests</h3>
+        <p>Every request the employee raised, across all eleven services, with its current
+          stage and the service it came from.</p>
+      </article>
+      <article class="cs-card cs-reveal d1">
+        <h3>My Actions</h3>
+        <p>Requests waiting on this person because of their role in the approval route —
+          line manager, HR, or a delegate.</p>
+      </article>
+      <article class="cs-card cs-reveal d2">
+        <h3>Request detail</h3>
+        <p>The submitted values, the attachment, and an approval timeline that names each
+          step and who currently holds it.</p>
+      </article>
+    </div>
+
+    <div class="split split-narrow" style="align-items:start">
+      <figure class="cs-reveal tilt-stage" style="margin:0">
+        <div class="frame tilt-3d-media">
+          <span class="schematic-tag">Schematic</span>
+          <img src="../assets/images/projects/eghr/requests-desktop-en-dark.svg"
+               alt="My Requests table listing request references, service, submission date and approval stage with coloured status pills."
+               width="1440" height="900" loading="lazy" decoding="async" />
+        </div>
+        <figcaption class="state-cap"><b>My Requests</b>Reference, service, submitted date and stage — one row per request.</figcaption>
+      </figure>
+
+      <figure class="cs-reveal d1" style="margin:0">
+        <div class="frame lift">
+          <span class="schematic-tag">Schematic</span>
+          <img src="../assets/images/projects/eghr/request-detail-desktop-ar-light.svg"
+               alt="Request detail in Arabic with a right-to-left layout: submitted values on one side and a vertical approval timeline on the other."
+               width="1440" height="900" loading="lazy" decoding="async" />
+        </div>
+        <figcaption class="state-cap"><b>Request detail · Arabic, light</b>Values, attachment and the approval timeline — mirrored for RTL.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ ATTENDANCE ════════════════ -->
+<section class="cs-section cs-sheet" id="attendance">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">06 · Attendance</div>
+      <h2>Check-in is a server decision</h2>
+      <p>
+        The browser supplies coordinates; it does not supply the verdict. The portal sends
+        the position with the check-in call and the server compares it against the configured
+        office geofence before any attendance record is written. A spoofed client gets a
+        rejection, not a record.
+      </p>
+    </div>
+
+    <p class="rail-hint cs-reveal"><i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i> Scroll for all seven states</p>
+    <div class="state-rail cs-reveal" role="group" aria-label="Attendance states">
+      <figure class="state-item" style="margin:0">
+        <img src="../assets/images/projects/eghr/attendance-state-not-checked-in.svg"
+             alt="Attendance widget with no record for today and a check-in button." width="560" height="380" loading="lazy" decoding="async" />
+        <figcaption class="state-cap"><b>Not checked in</b>Day opens with no attendance record.</figcaption>
+      </figure>
+      <figure class="state-item" style="margin:0">
+        <img src="../assets/images/projects/eghr/attendance-state-location-permission.svg"
+             alt="Attendance widget asking the employee to grant browser location permission." width="560" height="380" loading="lazy" decoding="async" />
+        <figcaption class="state-cap"><b>Location permission</b>Geolocation has not been granted yet.</figcaption>
+      </figure>
+      <figure class="state-item" style="margin:0">
+        <img src="../assets/images/projects/eghr/attendance-state-locating.svg"
+             alt="Attendance widget resolving the employee's coordinates before the check-in call." width="560" height="380" loading="lazy" decoding="async" />
+        <figcaption class="state-cap"><b>Locating</b>Coordinates resolving before the call is sent.</figcaption>
+      </figure>
+      <figure class="state-item" style="margin:0">
+        <img src="../assets/images/projects/eghr/attendance-state-inside-zone.svg"
+             alt="Attendance widget showing the employee inside the office geofence with the distance." width="560" height="380" loading="lazy" decoding="async" />
+        <figcaption class="state-cap"><b>Inside zone</b>Position falls inside the configured geofence.</figcaption>
+      </figure>
+      <figure class="state-item" style="margin:0">
+        <img src="../assets/images/projects/eghr/attendance-state-outside-zone.svg"
+             alt="Attendance widget showing a rejected check-in because the employee is outside the office geofence." width="560" height="380" loading="lazy" decoding="async" />
+        <figcaption class="state-cap"><b>Outside zone</b>Server rejects and explains the distance.</figcaption>
+      </figure>
+      <figure class="state-item" style="margin:0">
+        <img src="../assets/images/projects/eghr/attendance-state-checked-in.svg"
+             alt="Attendance widget after a successful check-in, showing the stored time." width="560" height="380" loading="lazy" decoding="async" />
+        <figcaption class="state-cap"><b>Checked in</b>Record created; check-out becomes the action.</figcaption>
+      </figure>
+      <figure class="state-item" style="margin:0">
+        <img src="../assets/images/projects/eghr/attendance-state-checkout.svg"
+             alt="Attendance widget at check-out, with worked hours computed from the stored check-in." width="560" height="380" loading="lazy" decoding="async" />
+        <figcaption class="state-cap"><b>Check out</b>Worked hours computed from the stored check-in.</figcaption>
+      </figure>
+    </div>
+
+    <div class="split" style="margin-top:46px;align-items:start">
+      <figure class="cs-reveal tilt-stage" style="margin:0">
+        <div class="frame tilt-3d-media">
+          <span class="schematic-tag">Schematic</span>
+          <img src="../assets/images/projects/eghr/attendance-desktop-en-dark.svg"
+               alt="Attendance screen with the geofence indicator, today's check-in time, and a monthly bar chart of worked hours with present, late and absent counts."
+               width="1440" height="900" loading="lazy" decoding="async" />
+        </div>
+        <figcaption class="state-cap"><b>Attendance · desktop</b>Today's state beside the month, with present / late / absent counts.</figcaption>
+      </figure>
+      <div class="cs-reveal d1">
+        <div class="bullets" style="margin-top:0">
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Geofence held in configuration.</b> Office coordinates and radius are data, so
+              a new branch needs a record rather than a release.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Every state is designed.</b> Permission refused, position unavailable and
+              out-of-range all have a screen — they are not left to a browser alert.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Worked hours are computed.</b> Check-out reads the stored check-in rather than
+              trusting a second client timestamp.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>History stays visible.</b> The employee can see their own month without
+              asking HR for a report.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ SERVICES GALLERY ════════════════ -->
+<section class="cs-section" id="services">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">07 · Employee services</div>
+      <h2>Eleven services, one registry</h2>
+      <p>
+        Each service is an entry in a registry — its label, icon, route, form and approval
+        route are data. The catalogue, the dashboard shortcuts and the request spine all read
+        from it, so adding a twelfth service does not mean rewriting the portal.
+      </p>
+    </div>
+
+    <div class="tag-row cs-reveal" style="margin-bottom:34px">
+      <span>Time Off</span><span>Advance Salary</span><span>Loans</span>
+      <span>Ticket Booking</span><span>Visa</span><span>Business Trip</span>
+      <span>End of Service</span><span>Custody</span><span>Data Update</span>
+      <span>Permission</span><span>Job Requests</span>
+    </div>
+
+    <div class="gal cs-reveal" data-gallery>
+      <div class="gal-tabs" role="tablist" aria-label="Screen categories">
+        <button class="gal-tab" type="button" role="tab" aria-selected="true" data-group="all">All screens</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="dashboard">Dashboard</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="requests">Requests</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="attendance">Attendance</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="services">Services</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="announcements">Announcements</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="mobile">Mobile</button>
+      </div>
+
+      <div class="gal-main">
+        <span class="schematic-tag">Schematic</span>
+        <img src="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg"
+             alt="EGHR dashboard in English." width="1440" height="900" loading="lazy" decoding="async" />
+        <button class="gal-open" type="button" data-lightbox>
+          <i class="fa-solid fa-expand" aria-hidden="true"></i> Expand
+        </button>
+      </div>
+      <p class="gal-cap" aria-live="polite"></p>
+      <div class="gal-thumbs" role="group" aria-label="Screen thumbnails"></div>
+
+      <!-- Source of truth for the gallery; also the no-JS and phone view -->
+      <div class="gal-track">
+        <figure data-group="dashboard">
+          <img src="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg" alt="EGHR dashboard in English, dark theme." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Dashboard · English, dark</b> Attendance, working hours, leave balance, open requests, services, announcements.</figcaption>
+        </figure>
+        <figure data-group="dashboard">
+          <img src="../assets/images/projects/eghr/dashboard-desktop-ar-light.svg" alt="EGHR dashboard in Arabic, right-to-left, light theme." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Dashboard · Arabic, light</b> The same screen mirrored for RTL, with locale-aware numerals and dates.</figcaption>
+        </figure>
+        <figure data-group="requests">
+          <img src="../assets/images/projects/eghr/requests-desktop-en-dark.svg" alt="My Requests list." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>My Requests</b> Everything this employee raised, across all services, with its stage.</figcaption>
+        </figure>
+        <figure data-group="requests">
+          <img src="../assets/images/projects/eghr/actions-desktop-en-dark.svg" alt="My Actions list of requests awaiting this employee's approval." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>My Actions</b> Requests waiting on this person because of their role in the route.</figcaption>
+        </figure>
+        <figure data-group="requests">
+          <img src="../assets/images/projects/eghr/request-detail-desktop-en-dark.svg" alt="Request detail with approval timeline." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Request detail</b> Submitted values, attachment and the approval timeline with the current holder.</figcaption>
+        </figure>
+        <figure data-group="requests">
+          <img src="../assets/images/projects/eghr/request-detail-desktop-ar-light.svg" alt="Request detail in Arabic, light theme." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Request detail · Arabic</b> Timeline rail and field grid mirrored for right-to-left reading.</figcaption>
+        </figure>
+        <figure data-group="attendance">
+          <img src="../assets/images/projects/eghr/attendance-desktop-en-dark.svg" alt="Attendance screen with geofence and monthly chart." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Attendance</b> Geofence state and check-in time beside the month's worked hours.</figcaption>
+        </figure>
+        <figure data-group="attendance">
+          <img src="../assets/images/projects/eghr/attendance-desktop-ar-light.svg" alt="Attendance screen in Arabic, light theme." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Attendance · Arabic</b> Same logic, mirrored layout and locale-aware figures.</figcaption>
+        </figure>
+        <figure data-group="services">
+          <img src="../assets/images/projects/eghr/services-desktop-en-dark.svg" alt="Services catalogue with search and category filters." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Services catalogue</b> Search and category filters over the registry entries.</figcaption>
+        </figure>
+        <figure data-group="services">
+          <img src="../assets/images/projects/eghr/service-form-desktop-en-dark.svg" alt="Time Off request form with policy and validation panel." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Service form · Time Off</b> Field layout beside the rules the server enforces on submit.</figcaption>
+        </figure>
+        <figure data-group="services">
+          <img src="../assets/images/projects/eghr/services-desktop-ar-light.svg" alt="Services catalogue in Arabic, light theme." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Services · Arabic, light</b> Catalogue cards and filters mirrored for RTL.</figcaption>
+        </figure>
+        <figure data-group="announcements">
+          <img src="../assets/images/projects/eghr/announcements-desktop-en-dark.svg" alt="Announcements list with audience tags." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Announcements</b> Each item carries the audience it was published to.</figcaption>
+        </figure>
+        <figure data-group="announcements">
+          <img src="../assets/images/projects/eghr/announcement-detail-desktop-ar-light.svg" alt="Announcement detail in Arabic with audience panel." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Announcement detail · Arabic</b> Body, attachment and the audience the item resolved to.</figcaption>
+        </figure>
+        <figure data-group="announcements">
+          <img src="../assets/images/projects/eghr/profile-desktop-en-dark.svg" alt="Employee profile screen." width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption><b>Profile</b> Employee record surfaced read-only; edits go through the Data Update service.</figcaption>
+        </figure>
+        <figure data-group="mobile">
+          <img src="../assets/images/projects/eghr/dashboard-mobile-en.svg" alt="Dashboard on a phone in English." width="420" height="880" loading="lazy" decoding="async" />
+          <figcaption><b>Dashboard · phone</b> One column, attendance first, bottom tab bar.</figcaption>
+        </figure>
+        <figure data-group="mobile">
+          <img src="../assets/images/projects/eghr/dashboard-mobile-ar.svg" alt="Dashboard on a phone in Arabic." width="420" height="880" loading="lazy" decoding="async" />
+          <figcaption><b>Dashboard · phone, Arabic</b> Tab bar order and card contents mirror with the locale.</figcaption>
+        </figure>
+        <figure data-group="mobile">
+          <img src="../assets/images/projects/eghr/services-mobile-en.svg" alt="Services catalogue on a phone." width="420" height="880" loading="lazy" decoding="async" />
+          <figcaption><b>Services · phone</b> Two-column catalogue with touch-sized targets.</figcaption>
+        </figure>
+        <figure data-group="mobile">
+          <img src="../assets/images/projects/eghr/request-form-mobile-en.svg" alt="Request form on a phone." width="420" height="880" loading="lazy" decoding="async" />
+          <figcaption><b>Request form · phone</b> Single column, labels above fields, actions pinned at the end.</figcaption>
+        </figure>
+        <figure data-group="mobile">
+          <img src="../assets/images/projects/eghr/attendance-mobile-en.svg" alt="Attendance on a phone." width="420" height="880" loading="lazy" decoding="async" />
+          <figcaption><b>Attendance · phone</b> Geofence state, check-out, and the month in one scroll.</figcaption>
+        </figure>
+        <figure data-group="mobile">
+          <img src="../assets/images/projects/eghr/announcements-mobile-ar.svg" alt="Announcements on a phone in Arabic." width="420" height="880" loading="lazy" decoding="async" />
+          <figcaption><b>Announcements · phone, Arabic</b> Audience tag kept visible at phone width.</figcaption>
+        </figure>
+        <figure data-group="mobile">
+          <img src="../assets/images/projects/eghr/profile-mobile-en.svg" alt="Profile on a phone." width="420" height="880" loading="lazy" decoding="async" />
+          <figcaption><b>Profile · phone</b> Stacked record fields with the same read-only rule.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="media-note cs-reveal">
+      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+      <p><b>About these visuals.</b> The screens above are interface schematics of the
+        delivered portal — they reproduce its layout, information architecture, RTL mirroring,
+        theming and attendance states. Live captures contain employee records, so they are
+        not published here; they can be walked through on request.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ ANNOUNCEMENTS ════════════════ -->
+<section class="cs-section cs-sheet" id="announcements">
+  <div class="cs-wrap">
+    <div class="split" style="align-items:start">
+      <div class="cs-reveal">
+        <div class="cs-head">
+          <div class="cs-num">08 · Announcements</div>
+          <h2>Published once, targeted per employee</h2>
+          <p>
+            HR writes an announcement in both languages and chooses who should see it —
+            everyone, a department, or a branch. Resolution happens per employee, so the
+            dashboard notice, the list and the detail page all show the same filtered set.
+          </p>
+        </div>
+        <div class="bullets">
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Dashboard notice.</b> The most recent targeted items, inline on the landing screen.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Full list.</b> Everything addressed to this employee, newest first, with its audience.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Detail page.</b> Body, attachment and the audience the item resolved to.</p></div>
+          <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
+            <p><b>Bilingual by record.</b> Arabic and English bodies live on the same announcement;
+              the portal picks by active locale instead of duplicating the record.</p></div>
+        </div>
+      </div>
+
+      <div class="cs-reveal d1 tilt-stage">
+        <figure style="margin:0">
+          <div class="frame tilt-3d-media">
+            <span class="schematic-tag">Schematic</span>
+            <img src="../assets/images/projects/eghr/announcements-desktop-en-dark.svg"
+                 alt="Announcements list where each row carries a coloured audience tag such as all employees, engineering, or a branch."
+                 width="1440" height="900" loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="state-cap"><b>Announcements · list</b>Audience is shown on the row, not buried in the record.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ LOCALISATION ════════════════ -->
+<section class="cs-section" id="localization">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">09 · Arabic / English · light / dark</div>
+      <h2>Four combinations, one codebase</h2>
+      <p>
+        Language and theme are independent. Switch either below — these are the same
+        dashboard built from the same templates, not four hand-made layouts.
+      </p>
+    </div>
+
+    <div class="cs-reveal" data-compare
+         data-src-en-dark="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg"
+         data-src-en-light="../assets/images/projects/eghr/dashboard-desktop-en-light.svg"
+         data-src-ar-dark="../assets/images/projects/eghr/dashboard-desktop-ar-dark.svg"
+         data-src-ar-light="../assets/images/projects/eghr/dashboard-desktop-ar-light.svg">
+      <div class="cmp-controls">
+        <div>
+          <div class="switch-label" id="lbl-lang">Language</div>
+          <div class="switch" role="group" aria-labelledby="lbl-lang">
+            <button type="button" data-set="lang:en" aria-pressed="true">English</button>
+            <button type="button" data-set="lang:ar" aria-pressed="false" lang="ar">العربية</button>
+          </div>
+        </div>
+        <div>
+          <div class="switch-label" id="lbl-theme">Theme</div>
+          <div class="switch" role="group" aria-labelledby="lbl-theme">
+            <button type="button" data-set="theme:dark" aria-pressed="true">Dark</button>
+            <button type="button" data-set="theme:light" aria-pressed="false">Light</button>
+          </div>
+        </div>
+      </div>
+
+      <figure style="margin:0">
+        <div class="frame lift">
+          <span class="schematic-tag">Schematic</span>
+          <img data-compare-img src="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg"
+               alt="EGHR dashboard schematic — English in dark theme."
+               width="1440" height="900" loading="lazy" decoding="async" />
+        </div>
+        <figcaption class="cmp-tag" style="margin-top:14px"><span data-compare-tag>English (LTR) · Dark</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="card-grid cs-reveal" style="margin-top:38px">
+      <article class="cs-card">
+        <h3>Mirrored, not translated</h3>
+        <p>Navigation side, progress rails, table alignment, icon direction and card internals
+          all flip. The Arabic build is the same markup under <code>dir="rtl"</code>.</p>
+      </article>
+      <article class="cs-card">
+        <h3>Locale-aware figures</h3>
+        <p>Numerals, dates and day names follow the active language rather than being printed
+          once and reused.</p>
+      </article>
+      <article class="cs-card">
+        <h3>Themes as tokens</h3>
+        <p>Light and dark are two token sets over one component layer, so a new component
+          inherits both for free.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ MOBILE ════════════════ -->
+<section class="cs-section cs-sheet" id="mobile">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">10 · Mobile</div>
+      <h2>Responsive web, not a separate app</h2>
+      <p>
+        There is no native build. The same portal reflows to one column, promotes attendance
+        to the top, and swaps the desktop service rail for a bottom tab bar — so an employee
+        on a phone gets the whole product, not a cut-down version of it.
+      </p>
+    </div>
+
+    <p class="rail-hint cs-reveal"><i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i> Scroll for more screens</p>
+    <div class="phones cs-reveal" role="group" aria-label="Mobile screens">
+      <figure class="phone-item" style="margin:0">
+        <div class="frame-phone lift"><img src="../assets/images/projects/eghr/dashboard-mobile-en.svg" alt="Dashboard on a phone in English." width="420" height="880" loading="lazy" decoding="async" /></div>
+        <figcaption><b>Dashboard</b>Attendance first, then balances</figcaption>
+      </figure>
+      <figure class="phone-item" style="margin:0">
+        <div class="frame-phone lift"><img src="../assets/images/projects/eghr/services-mobile-en.svg" alt="Services catalogue on a phone." width="420" height="880" loading="lazy" decoding="async" /></div>
+        <figcaption><b>Services</b>Two-column catalogue</figcaption>
+      </figure>
+      <figure class="phone-item" style="margin:0">
+        <div class="frame-phone lift"><img src="../assets/images/projects/eghr/request-form-mobile-en.svg" alt="Request form on a phone." width="420" height="880" loading="lazy" decoding="async" /></div>
+        <figcaption><b>Request form</b>One column, labels above</figcaption>
+      </figure>
+      <figure class="phone-item" style="margin:0">
+        <div class="frame-phone lift"><img src="../assets/images/projects/eghr/attendance-mobile-en.svg" alt="Attendance on a phone." width="420" height="880" loading="lazy" decoding="async" /></div>
+        <figcaption><b>Attendance</b>Geofence and the month</figcaption>
+      </figure>
+      <figure class="phone-item" style="margin:0">
+        <div class="frame-phone lift"><img src="../assets/images/projects/eghr/announcements-mobile-ar.svg" alt="Announcements on a phone in Arabic." width="420" height="880" loading="lazy" decoding="async" /></div>
+        <figcaption><b>Announcements</b>Arabic, right-to-left</figcaption>
+      </figure>
+      <figure class="phone-item" style="margin:0">
+        <div class="frame-phone lift"><img src="../assets/images/projects/eghr/profile-mobile-en.svg" alt="Profile on a phone." width="420" height="880" loading="lazy" decoding="async" /></div>
+        <figcaption><b>Profile</b>Stacked record fields</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ ARCHITECTURE ════════════════ -->
+<section class="cs-section" id="architecture">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">11 · Architecture</div>
+      <h2>How a request travels</h2>
+      <p>
+        Nothing reaches the employee without passing the controller and security layer, and
+        nothing new is added to the portal without being registered as a service first.
+      </p>
+    </div>
+
+    <div class="arch cs-reveal">
+      <ol class="arch-stack" aria-label="Request path through the system, top to bottom">
+
+        <li class="arch-layer" style="--c:#2563eb">
+          <span class="arch-tier">Platform</span>
+          <h3>Odoo 18</h3>
+          <p>ORM, access-rights framework, QWeb engine and the scheduler everything else is built on.</p>
+          <div class="arch-chips"><span>Python</span><span>PostgreSQL</span></div>
+        </li>
+
+        <li class="arch-layer" style="--c:#22d3ee">
+          <span class="arch-tier">Domain</span>
+          <h3>HR · Attendance · Approval models</h3>
+          <p>Employee and contract data, attendance records with their geofence rules, and the
+            approval state machine shared by every service.</p>
+          <div class="arch-chips"><span>Custom modules</span><span>Inheritance</span><span>Constraints</span></div>
+        </li>
+
+        <li class="arch-layer is-boundary" style="--c:#d4a843">
+          <span class="arch-tier">Security boundary</span>
+          <h3>Portal controllers + security</h3>
+          <p>Every portal route resolves the employee from the session, applies record rules,
+            and validates the payload server-side before anything is written.</p>
+          <div class="arch-chips"><span>Routes</span><span>Record rules</span><span>Server validation</span></div>
+        </li>
+
+        <li class="arch-layer is-config" style="--c:#8b5cf6">
+          <span class="arch-tier">Configuration-driven</span>
+          <h3>Dynamic service registry</h3>
+          <p>Each of the eleven services is a registry entry — label, icon, form, route and
+            approval chain. The catalogue and the request spine both read from here.</p>
+          <div class="arch-chips"><span>11 services</span><span>No portal rewrite to extend</span></div>
+        </li>
+
+        <li class="arch-layer" style="--c:#22d3ee">
+          <span class="arch-tier">Presentation</span>
+          <h3>EJAD portal theme</h3>
+          <p>QWeb templates and SCSS tokens: surfaces, status colours, type scale, navigation,
+            forms — plus the RTL mirroring and the light/dark token sets.</p>
+          <div class="arch-chips"><span>QWeb / XML</span><span>SCSS</span><span>JavaScript</span></div>
+        </li>
+
+        <li class="arch-layer" style="--c:#16a34a">
+          <span class="arch-tier">Delivery</span>
+          <h3>Desktop · tablet · mobile</h3>
+          <p>One responsive web surface. No native build, no separate Arabic build, no
+            cut-down phone experience.</p>
+          <div class="arch-chips"><span>360 → 1920 px</span><span>AR / EN</span><span>Light / dark</span></div>
+        </li>
+
+      </ol>
+    </div>
+
+    <div class="arch-legend cs-reveal">
+      <span><i style="background:#22d3ee"></i> Request path</span>
+      <span><i style="background:#d4a843"></i> Security boundary</span>
+      <span><i style="background:#8b5cf6"></i> Configuration-driven</span>
+    </div>
+
+    <div class="card-grid cs-reveal" style="margin-top:38px">
+      <article class="cs-card">
+        <h3>Odoo-core-safe</h3>
+        <p>Everything lives in custom modules using inheritance and extension points. No core
+          file is edited, so an Odoo upgrade stays an upgrade.</p>
+      </article>
+      <article class="cs-card">
+        <h3>Permission-aware by default</h3>
+        <p>Portal routes resolve the employee from the session and apply record rules — the
+          URL is never the thing that grants access.</p>
+      </article>
+      <article class="cs-card">
+        <h3>Theme as a layer</h3>
+        <p>The EJAD portal theme sits above the templates, so the same service renders
+          consistently wherever it appears.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ ENGINEERING ════════════════ -->
+<section class="cs-section cs-sheet" id="engineering">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">12 · Engineering highlights</div>
+      <h2>The decisions worth defending</h2>
+    </div>
+
+    <div class="hl-list cs-reveal">
+      <div class="hl-row">
+        <span class="hl-n">01</span>
+        <h3>Dynamic employee-service registry</h3>
+        <p>Services are configuration, not code branches. The catalogue, dashboard shortcuts
+          and request spine all read the same registry.</p>
+      </div>
+      <div class="hl-row">
+        <span class="hl-n">02</span>
+        <h3>Unified My Requests / My Actions</h3>
+        <p>One request spine behind eleven services, split into two views by the employee's
+          role in the approval route.</p>
+      </div>
+      <div class="hl-row">
+        <span class="hl-n">03</span>
+        <h3>Server-side attendance geofencing</h3>
+        <p>The client sends coordinates; the server decides. Out-of-range check-ins are
+          rejected before a record exists.</p>
+      </div>
+      <div class="hl-row">
+        <span class="hl-n">04</span>
+        <h3>Arabic RTL and English LTR</h3>
+        <p>Full mirroring from one template set — layout, rails, icons, tables and numerals.</p>
+      </div>
+      <div class="hl-row">
+        <span class="hl-n">05</span>
+        <h3>Light and dark themes</h3>
+        <p>Two token sets over one component layer, so new components inherit both.</p>
+      </div>
+      <div class="hl-row">
+        <span class="hl-n">06</span>
+        <h3>Targeted bilingual announcements</h3>
+        <p>One record carries both languages and its audience; resolution happens per employee.</p>
+      </div>
+      <div class="hl-row">
+        <span class="hl-n">07</span>
+        <h3>Permission-aware portal</h3>
+        <p>Access rights and record rules decide what each route returns — not the navigation.</p>
+      </div>
+      <div class="hl-row">
+        <span class="hl-n">08</span>
+        <h3>Responsive employee journeys</h3>
+        <p>Every journey — check in, raise, approve, read — completes on a phone as well as a desktop.</p>
+      </div>
+      <div class="hl-row">
+        <span class="hl-n">09</span>
+        <h3>Odoo-core-safe customisation</h3>
+        <p>Custom modules and inheritance only, so the work survives the next Odoo version.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ QA ════════════════ -->
+<section class="cs-section" id="quality">
+  <div class="cs-wrap">
+    <div class="cs-head cs-reveal">
+      <div class="cs-num">13 · Quality</div>
+      <h2>How it was checked</h2>
+      <p>Two languages times two themes times three device families is a lot of surface.
+        It was tested rather than hoped for.</p>
+    </div>
+
+    <div class="qa-grid cs-reveal">
+      <div class="qa-item"><i class="fa-solid fa-check" aria-hidden="true"></i>
+        <span><b>Responsive QA</b>Every journey walked at phone, tablet and desktop widths.</span></div>
+      <div class="qa-item"><i class="fa-solid fa-check" aria-hidden="true"></i>
+        <span><b>Arabic RTL</b>Full mirroring pass, including forms, tables and rails.</span></div>
+      <div class="qa-item"><i class="fa-solid fa-check" aria-hidden="true"></i>
+        <span><b>English LTR</b>Same pass, same checklist, in the default direction.</span></div>
+      <div class="qa-item"><i class="fa-solid fa-check" aria-hidden="true"></i>
+        <span><b>Automated Odoo tests</b>Business rules and approval transitions covered in the module's test suite.</span></div>
+      <div class="qa-item"><i class="fa-solid fa-check" aria-hidden="true"></i>
+        <span><b>Browser testing</b>Portal journeys driven end to end with Playwright.</span></div>
+      <div class="qa-item"><i class="fa-solid fa-check" aria-hidden="true"></i>
+        <span><b>Security review</b>Access rights, record rules and server-side validation on every route.</span></div>
+      <div class="qa-item"><i class="fa-solid fa-check" aria-hidden="true"></i>
+        <span><b>Performance profiling</b>Query and render paths checked on the list and dashboard screens.</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ CTA ════════════════ -->
+<section class="cs-end">
+  <div class="cs-wrap">
+    <h2>Want the walkthrough?</h2>
+    <p>
+      I can take you through the live portal, the module structure, or the parts of this
+      build that would apply to your own Odoo estate.
+    </p>
+    <div class="cs-end-btns">
+      <a href="https://wa.me/201102672347" target="_blank" rel="noopener" class="btn btn-brand btn-lg btn-glow">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Message me
+      </a>
+      <a href="mailto:mohammedgamal37l30@gmail.com" class="btn btn-outline-white btn-lg">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i> Email
+      </a>
+      <a href="../index.html#work" class="btn btn-outline-white btn-lg">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to all work
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">© 2026 Mohamed Gamal · Odoo Techno-Functional Consultant &amp; Developer · Cairo, Egypt</div>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#contact">Contact</a>
+        <a href="../0_Mohamed_Gamal_CV.pdf" download>Download CV</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════ LIGHTBOX ════════════════ -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Screen viewer">
+  <span class="lb-count" aria-hidden="true"></span>
+  <button class="lb-btn" type="button" aria-label="Close viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <button class="lb-nav lb-prev" type="button" aria-label="Previous screen"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+  <button class="lb-nav lb-next" type="button" aria-label="Next screen"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+  <figure class="lb-fig">
+    <img src="" alt="" />
+    <figcaption class="lb-cap"></figcaption>
+  </figure>
+</div>
+
+<script src="../assets/js/case-study.js"></script>
+</body>
+</html>

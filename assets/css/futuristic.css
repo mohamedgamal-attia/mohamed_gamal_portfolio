@@ -132,7 +132,7 @@
 .btn-glow:hover::before { transform: translateX(120%); }
 
 .btn-brand {
-  background: var(--grad-brand);
+  background: var(--grad-brand-btn);
   color: #fff;
   border: none;
   box-shadow: 0 8px 28px -8px rgba(37,99,235,.7);

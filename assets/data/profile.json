@@ -6,14 +6,23 @@
   "location": "Cairo, Egypt",
   "openTo": "Open to Remote & Relocation",
   "email": "mohammedgamal37l30@gmail.com",
-  "phone": ["+201102672347"],
+  "phone": [
+    "+201102672347"
+  ],
   "whatsapp": "https://wa.me/201102672347",
   "linkedin": "https://www.linkedin.com/in/mohamedgamal37l30",
   "github": "https://github.com/mohamedgamal-attia",
   "cv": "0_Mohamed_Gamal_CV.pdf",
-  "photo": "my_img.png",
+  "photo": "assets/images/portrait/mohamed-gamal-728.jpg",
   "headline": "I turn business requirements into production-grade Odoo Enterprise systems — custom modules, workflows, REST integrations and training — powered by Python, PostgreSQL and Applied AI.",
-  "odooVersions": ["Odoo 14", "Odoo 15", "Odoo 16", "Odoo 17", "Odoo 18", "Odoo 19"],
+  "odooVersions": [
+    "Odoo 14",
+    "Odoo 15",
+    "Odoo 16",
+    "Odoo 17",
+    "Odoo 18",
+    "Odoo 19"
+  ],
   "about": [
     "I'm Mohamed Gamal, a Senior Odoo Developer with 3+ years of hands-on experience designing, building, and delivering custom ERP systems. I work at the intersection of business process design and technical implementation — translating real operational needs into clean, maintainable Odoo modules.",
     "My approach is business-first: I map workflows and requirements before writing a single line of code, ensuring the final system is both technically robust and genuinely useful to the people who use it every day."
@@ -42,28 +51,54 @@
   ],
   "skills": {
     "odoo": [
-      "Custom Modules", "Models & ORM", "Module Inheritance",
-      "Views (Form / List / Kanban / Tree)", "Security & Access Rights",
-      "Record Rules", "QWeb Reports", "Server Actions", "Scheduled Actions (Cron)",
-      "Mail / Chatter Integration", "Workflow Automation", "Computed Fields",
-      "Onchange / Constraints", "Performance Optimization"
+      "Custom Modules",
+      "Models & ORM",
+      "Module Inheritance",
+      "Views (Form / List / Kanban / Tree)",
+      "Security & Access Rights",
+      "Record Rules",
+      "QWeb Reports",
+      "Server Actions",
+      "Scheduled Actions (Cron)",
+      "Mail / Chatter Integration",
+      "Workflow Automation",
+      "Computed Fields",
+      "Onchange / Constraints",
+      "Performance Optimization"
     ],
     "backend": [
-      "Python", "PostgreSQL", "XML", "QWeb Templates",
-      "REST API Integration", "JSON-RPC", "SQL Queries",
-      "Data Migration", "pgAdmin", "Git / GitLab CI/CD",
-      "Odoo.sh Basics", "Linux Server Deployment"
+      "Python",
+      "PostgreSQL",
+      "XML",
+      "QWeb Templates",
+      "REST API Integration",
+      "JSON-RPC",
+      "SQL Queries",
+      "Data Migration",
+      "pgAdmin",
+      "Git / GitLab CI/CD",
+      "Odoo.sh Basics",
+      "Linux Server Deployment"
     ],
     "domains": [
-      "Real Estate ERP", "Engineering ERP", "CRM",
-      "HR & Payroll", "Sales Pipeline", "Project Management",
-      "Document Management", "Accounting Workflow",
-      "Digital Transformation", "Government Platforms",
+      "Real Estate ERP",
+      "Engineering ERP",
+      "CRM",
+      "HR & Payroll",
+      "Sales Pipeline",
+      "Project Management",
+      "Document Management",
+      "Accounting Workflow",
+      "Digital Transformation",
+      "Government Platforms",
       "Reporting & Dashboards"
     ],
     "process": [
-      "Agile / Scrum", "Requirement Analysis", "Story Sizing",
-      "Business Process Mapping", "Technical Documentation",
+      "Agile / Scrum",
+      "Requirement Analysis",
+      "Story Sizing",
+      "Business Process Mapping",
+      "Technical Documentation",
       "Code Review & Refactoring"
     ]
   }

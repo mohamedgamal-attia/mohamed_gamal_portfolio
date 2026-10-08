@@ -64,9 +64,20 @@
 }
 
 @media (max-width: 560px) {
-  .hero-stats      { gap: 20px; }
+  .hero-stats      { gap: 18px 28px; }
   .impact-grid     { grid-template-columns: 1fr; }
   .companies-grid  { grid-template-columns: 1fr; }
   .projects-grid   { grid-template-columns: 1fr; }
   .stats-grid      { grid-template-columns: 1fr 1fr; }
+}
+
+/* Homepage flagship entry points */
+@media (max-width: 1180px) {
+  .nav-flagship { display: none; }
+}
+@media (max-width: 1024px) {
+  .hero-float-link { right: -6px; max-width: 168px; padding: 12px 15px; }
+}
+@media (max-width: 560px) {
+  .hero-float-link { top: auto; bottom: -14px; right: 50%; transform: translateX(50%); max-width: 220px; }
 }

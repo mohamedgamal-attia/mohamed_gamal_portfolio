@@ -76,7 +76,11 @@
   margin-bottom: 48px;
 }
 
-.hero-stats { display: flex; gap: 36px; flex-wrap: wrap; margin-bottom: 34px; }
+/* 2x2 reads as a deliberate block; four across never fits the hero column */
+.hero-stats {
+  display: grid; grid-template-columns: repeat(2, minmax(0, auto));
+  gap: 24px 48px; justify-content: start; margin-bottom: 34px;
+}
 
 /* Hero trust strip */
 .hero-trust {
@@ -102,6 +106,10 @@
   font-weight: 500; letter-spacing: .5px;
   text-transform: uppercase; margin-top: 2px;
 }
+
+/* <picture> must not become a layout box between the frame and the image */
+.hero-image-ring picture,
+.about-img-card picture { display: contents; }
 
 .hero-image-wrap {
   display: flex; justify-content: center;
@@ -488,7 +496,10 @@
   font-family: 'Monaco','Menlo',monospace;
 }
 
-/* ── Work & Context Section (projects filter area) ──────── */
+/* ── Work section ───────────────────────────────────────
+   Card, image, badge and grid rules live in project-showcase.css
+   (loaded later); only what that file does not define is kept here,
+   so a single file owns each card style. */
 #work { background: var(--white); }
 
 .filter-tabs {
@@ -496,91 +507,20 @@
   justify-content: center; margin-bottom: 48px;
 }
 .filter-tab {
-  padding: 8px 22px; border-radius: 999px;
-  font-size: .84rem; font-weight: 600; cursor: pointer;
-  border: 2px solid var(--gray-200);
-  background: var(--white); color: var(--text-mid);
-  transition: var(--transition);
+  padding: 8px 18px; border-radius: 999px;
+  border: 1px solid var(--gray-200); background: var(--white);
+  font-size: .82rem; font-weight: 600; color: var(--text-light);
+  cursor: pointer; transition: var(--transition);
 }
 .filter-tab:hover { border-color: var(--blue); color: var(--blue); }
 .filter-tab.active {
-  background: var(--blue); border-color: var(--blue);
-  color: var(--white); box-shadow: 0 4px 14px rgba(37,99,235,.3);
+  background: var(--blue); border-color: var(--blue); color: var(--white);
 }
 
-.projects-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-}
-
-.project-card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  overflow: hidden; box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  display: flex; flex-direction: column;
-}
-.project-card:hover {
-  box-shadow: var(--shadow-lg); transform: translateY(-4px);
-  border-color: rgba(37,99,235,.2);
-}
-.project-card.hidden { display: none; }
-
-/* Public context cards get a subtle different visual */
 .project-card[data-type="public-context"] {
-  border-style: dashed;
-  border-color: var(--gray-200);
+  border-style: dashed; border-color: var(--gray-300);
 }
-.project-card[data-type="public-context"]:hover {
-  border-style: solid;
-  border-color: rgba(212,168,67,.3);
-}
-
-.project-card-img {
-  width: 100%; height: 160px;
-  overflow: hidden; background: var(--navy-mid); position: relative;
-}
-.project-card-img img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .5s ease;
-}
-.project-card:hover .project-card-img img { transform: scale(1.04); }
-
-/* Type badge overlay on card image */
-.card-type-badge {
-  position: absolute; top: 10px; right: 10px;
-  padding: 3px 10px; border-radius: 999px;
-  font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
-}
-.card-type-badge.erp-system   { background: var(--gold); color: var(--navy); }
-.card-type-badge.odoo-work    { background: var(--blue); color: var(--white); }
-.card-type-badge.public-context { background: rgba(0,0,0,.5); color: rgba(255,255,255,.8); backdrop-filter: blur(4px); }
-.card-type-badge.website-project { background: var(--green); color: var(--white); }
-.card-type-badge.content-project { background: var(--purple); color: var(--white); }
-
-.project-card-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; }
-.project-card-company {
-  font-size: .7rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .8px;
-  color: var(--blue); margin-bottom: 5px;
-}
-.project-card-body h4 { font-size: .94rem; margin-bottom: 6px; color: var(--text-dark); }
-.project-card-body p  { font-size: .81rem; color: var(--text-light); line-height: 1.6; flex: 1; }
-
-.project-card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
-.project-tag {
-  background: var(--gray-100); color: var(--gray-600);
-  padding: 3px 8px; border-radius: 4px;
-  font-size: .7rem; font-weight: 500;
-}
-
-.project-card-footer {
-  padding: 12px 20px;
-  border-top: 1px solid var(--gray-200);
-  display: flex; align-items: center; justify-content: space-between; gap: 8px;
-}
-.project-card-sector { font-size: .71rem; color: var(--text-light); }
-.project-card-link   { font-size: .78rem; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.project-card[data-type="public-context"]:hover { border-color: var(--blue); }
 
 /* ── Experience Timeline ────────────────────────────────── */
 #experience { background: var(--navy); }
@@ -737,3 +677,89 @@
 .footer-links { display: flex; gap: 20px; }
 .footer-links a { font-size: .82rem; color: var(--gray-500); transition: var(--transition); }
 .footer-links a:hover { color: var(--blue-light); }
+
+/* =========================================================
+   Homepage refinements — flagship entry points, hero polish
+   ========================================================= */
+
+/* Skip link (matches the one on the case-study page) */
+.skip-link {
+  position: absolute; left: 16px; top: -60px; z-index: 2000;
+  background: var(--cyan); color: #06121f; font-weight: 800;
+  padding: 10px 18px; border-radius: 0 0 10px 10px;
+  transition: top var(--motion-base) var(--ease-standard);
+}
+.skip-link:focus { top: 0; }
+
+/* Flagship link in the desktop nav */
+.nav-flagship {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .82rem; font-weight: 700; color: var(--on-dark-2);
+  padding: 7px 15px; border-radius: 999px; margin-left: 4px;
+  background: rgba(34, 211, 238, .08);
+  border: 1px solid rgba(34, 211, 238, .28);
+  transition: color var(--motion-base) var(--ease-standard),
+              border-color var(--motion-base) var(--ease-standard),
+              background var(--motion-base) var(--ease-standard);
+}
+.nav-flagship:hover { color: #fff; background: rgba(34, 211, 238, .16); border-color: rgba(34, 211, 238, .6); }
+.nav-flagship-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan); box-shadow: 0 0 9px var(--cyan);
+  animation: pulse-dot 2s infinite;
+}
+.mobile-flagship {
+  display: flex !important; align-items: center; justify-content: space-between;
+  color: var(--cyan-soft) !important; font-weight: 700;
+  border: 1px solid rgba(34, 211, 238, .3); border-radius: 10px; margin-top: 4px;
+}
+
+/* Hero flagship card replaces the floating stat */
+.hero-float-link {
+  flex-direction: column; align-items: flex-start; gap: 2px;
+  text-align: left; max-width: 190px; padding: 14px 18px;
+  transition: transform var(--motion-medium) var(--ease-emphasis),
+              border-color var(--motion-medium) var(--ease-standard),
+              box-shadow var(--motion-medium) var(--ease-emphasis);
+}
+.hero-float-link:hover {
+  border-color: rgba(34, 211, 238, .6);
+  box-shadow: 0 22px 52px -14px rgba(0, 0, 0, .7), var(--glow-cyan);
+}
+.hero-float-k {
+  font-size: .6rem !important; letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--gold-light) !important; font-weight: 700; margin: 0 !important;
+}
+.hero-float-link b { font-size: 1rem !important; color: #fff !important; }
+.hero-float-go {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 6px !important;
+  font-size: .68rem !important; letter-spacing: .4px; text-transform: none !important;
+  color: var(--cyan-soft) !important; font-weight: 600;
+}
+.hero-float-go i { transition: transform var(--motion-base) var(--ease-standard); }
+.hero-float-link:hover .hero-float-go i { transform: translateX(4px); }
+
+/* Scroll cue */
+.hero-scroll-cue {
+  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 9px; z-index: 2;
+  color: rgba(255, 255, 255, .68); font-size: .62rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  transition: color var(--motion-base) var(--ease-standard);
+}
+.hero-scroll-cue:hover { color: var(--cyan-soft); }
+.cue-track {
+  width: 22px; height: 36px; border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, .28);
+  display: flex; justify-content: center; padding-top: 7px;
+}
+.cue-dot {
+  width: 4px; height: 7px; border-radius: 2px; background: var(--cyan);
+  animation: cue-fall 1.9s var(--ease-emphasis) infinite;
+}
+@keyframes cue-fall {
+  0%       { transform: translateY(0);    opacity: 0; }
+  28%      { opacity: 1; }
+  70%,100% { transform: translateY(13px); opacity: 0; }
+}
+@media (max-width: 1024px) { .hero-scroll-cue { display: none; } }

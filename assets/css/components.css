@@ -167,6 +167,9 @@
   color: var(--white);
   background: rgba(255,255,255,.08);
 }
+/* `.nav-links a` is more specific than `.btn-*`, so without this the CTA
+   inherits the 80%-white nav colour and drops below AA on its blue fill. */
+.nav-links a.btn { color: var(--white); }
 .nav-cta { margin-left: 8px; }
 
 .hamburger {

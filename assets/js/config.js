@@ -17,7 +17,7 @@ window.Portfolio = {
     linkedin:   'https://www.linkedin.com/in/mohamedgamal37l30',
     github:     'https://github.com/mohamedgamal-attia',
     cv:         '0_Mohamed_Gamal_CV.pdf',
-    photo:      'my_img.png',
+    photo:      'assets/images/portrait/mohamed-gamal-728.jpg',
     headline:   'I turn business requirements into production-grade Odoo Enterprise systems — custom modules, workflows, REST integrations and training — powered by Python, PostgreSQL and Applied AI.',
     odooVersions: ['Odoo 14', 'Odoo 15', 'Odoo 16', 'Odoo 17', 'Odoo 18', 'Odoo 19'],
   },

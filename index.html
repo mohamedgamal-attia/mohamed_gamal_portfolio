@@ -8,22 +8,52 @@
   <meta name="keywords" content="Odoo Developer, Odoo Consultant, Techno-Functional, ERP, Odoo Enterprise, Python, PostgreSQL, AI, Data Analyst, Saudi Arabia, Egypt" />
   <meta name="author" content="Mohamed Gamal" />
 
+  <link rel="canonical" href="https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+
   <!-- Open Graph -->
   <meta property="og:title" content="Mohamed Gamal | Senior Odoo Techno-Functional Consultant & Developer" />
-  <meta property="og:description" content="Odoo Techno-Functional Consultant & Developer delivering Odoo Enterprise in production — custom modules, workflows, REST integrations, training & enablement, with Applied AI and Data Analytics." />
+  <meta property="og:description" content="Odoo Techno-Functional Consultant & Developer delivering Odoo Enterprise in production — employee portals, custom modules, workflows, REST integrations and training. Featured: the EJAD EGHR employee portal." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="my_img.png" />
+  <meta property="og:site_name" content="Mohamed Gamal — Odoo Techno-Functional Consultant & Developer" />
+  <meta property="og:url" content="https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/" />
+  <meta property="og:image" content="https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/assets/images/og/portfolio-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mohamed Gamal | Odoo Techno-Functional Consultant & Developer" />
+  <meta name="twitter:description" content="Production Odoo Enterprise delivery — employee portals, custom modules, workflows and integrations. Featured: the EJAD EGHR employee portal." />
+  <meta name="twitter:image" content="https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/assets/images/og/portfolio-og.jpg" />
 
   <title>Mohamed Gamal | Odoo Techno-Functional Consultant & Developer</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
 
   <!-- Font Awesome (icons only) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
+
+  <script>
+    /* rel="preload" unlocks these stylesheets via onload. Engines without
+       preload support never fire it, which would mean no icons at all — so
+       promote the links to real stylesheets immediately when that is the case. */
+    (function () {
+      try {
+        var rl = document.createElement('link').relList;
+        if (rl && rl.supports && rl.supports('preload')) return;
+      } catch (e) { /* fall through and load them the plain way */ }
+      document.querySelectorAll('link[rel="preload"][as="style"]')
+        .forEach(function (l) { l.rel = 'stylesheet'; });
+    }());
+  </script>
 
   <link rel="stylesheet" href="assets/css/style.css" />
 
@@ -45,9 +75,14 @@
     "knowsAbout": ["Odoo ERP", "Techno-Functional Consulting", "Python", "PostgreSQL", "REST API", "Applied AI", "Data Analytics", "Odoo Training"]
   }
   </script>
+  <noscript><style>
+    .fade-up, .reveal, .reveal-left, .reveal-scale, .cs-reveal, .kin, .kin-word
+      { opacity: 1 !important; transform: none !important; animation: none !important; }
+  </style></noscript>
 </head>
 <body>
 
+<a class="skip-link" href="#about">Skip to content</a>
 <div id="scroll-progress"></div>
 
 <!-- ════════════════════════════════════════════════════════
@@ -71,6 +106,9 @@
       <a href="#context"    data-section="context">Context</a>
       <a href="#experience" data-section="experience">Experience</a>
       <a href="#contact"    data-section="contact">Contact</a>
+      <a href="projects/eghr.html" class="nav-flagship">
+        <span class="nav-flagship-dot" aria-hidden="true"></span> EGHR Case Study
+      </a>
       <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-primary btn-sm nav-cta">
         <i class="fa-solid fa-download"></i> Download CV
       </a>
@@ -91,6 +129,7 @@
   <a href="#context">Context</a>
   <a href="#experience">Experience</a>
   <a href="#contact">Contact</a>
+  <a href="projects/eghr.html" class="mobile-flagship">EGHR Case Study <i class="fa-solid fa-arrow-right"></i></a>
   <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-primary">
     <i class="fa-solid fa-download"></i> Download CV
   </a>
@@ -145,7 +184,7 @@
 
         <div class="hero-stats kin" style="--kin:6">
           <div class="hero-stat">
-            <div class="hero-stat-num"><span data-count="6">6</span></div>
+            <div class="hero-stat-num"><span data-count="7">7</span></div>
             <div class="hero-stat-label">Case Studies</div>
           </div>
           <div class="hero-stat">
@@ -176,9 +215,17 @@
       <!-- Right: Photo -->
       <div class="hero-image-wrap">
         <div class="hero-image-ring tilt" id="hero-portrait">
-          <img src="my_img.png"
-               alt="Mohamed Gamal – Odoo Techno-Functional Consultant &amp; Developer"
-               class="hero-img" width="728" height="1008" />
+          <picture>
+            <source type="image/webp"
+                    srcset="assets/images/portrait/mohamed-gamal-400.webp 400w,
+                            assets/images/portrait/mohamed-gamal-560.webp 560w,
+                            assets/images/portrait/mohamed-gamal-728.webp 728w"
+                    sizes="(max-width: 1024px) 76vw, 400px" />
+            <img src="assets/images/portrait/mohamed-gamal-728.jpg"
+                 alt="Mohamed Gamal – Odoo Techno-Functional Consultant &amp; Developer"
+                 class="hero-img" width="728" height="1008"
+                 fetchpriority="high" decoding="async" />
+          </picture>
         </div>
         <div class="hero-badge-float hero-badge-float-1">
           <span class="float-icon">⚙️</span> Odoo 14–19
@@ -186,12 +233,19 @@
         <div class="hero-badge-float hero-badge-float-2">
           <span class="float-icon">🧠</span> AI &amp; Data
         </div>
-        <div class="hero-float-stat">
-          <b>98%</b><span>CV Model Acc.</span>
-        </div>
+        <a href="projects/eghr.html" class="hero-float-stat hero-float-link">
+          <span class="hero-float-k">Flagship</span>
+          <b>EGHR Portal</b>
+          <span class="hero-float-go">Case study <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
       </div>
 
     </div>
+
+    <a href="#about" class="hero-scroll-cue" aria-label="Scroll to About">
+      <span class="cue-track"><span class="cue-dot"></span></span>
+      <span class="cue-label">Scroll</span>
+    </a>
   </div>
 </section>
 
@@ -242,7 +296,15 @@
 
       <div class="about-img-wrap fade-up">
         <div class="about-img-card">
-          <img src="my_img.png" alt="Mohamed Gamal" />
+          <picture>
+            <source type="image/webp"
+                    srcset="assets/images/portrait/mohamed-gamal-400.webp 400w,
+                            assets/images/portrait/mohamed-gamal-560.webp 560w"
+                    sizes="(max-width: 1024px) 400px, 460px" />
+            <img src="assets/images/portrait/mohamed-gamal-728.jpg"
+                 alt="Mohamed Gamal" width="728" height="1008"
+                 loading="lazy" decoding="async" />
+          </picture>
         </div>
         <div class="about-img-badge">
           <div class="about-img-badge-num">3+</div>
@@ -484,8 +546,9 @@
   <div class="container">
     <div class="section-header">
       <div class="eyebrow on-light">Featured Work</div>
-      <h2>Six Case Studies, <span class="text-gradient" style="background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Zero Filler</span></h2>
-      <p>Each card is one real project. Open it for scope, visuals, and honest context.</p>
+      <h2>Seven Case Studies, <span class="text-gradient" style="background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Zero Filler</span></h2>
+      <p>Each card is one real project. The flagship — the EJAD EGHR employee portal — has its
+         own long-form case study; the rest open in place for scope, visuals and honest context.</p>
     </div>
 
     <div class="filter-tabs">
@@ -673,7 +736,7 @@
       <div class="value-card reveal r-d2">
         <div class="value-card-num">06</div>
         <div class="value-icon">🧠</div>
-        <h4>AI-Powered Automation</h4>
+        <h4>AI &amp; Data Inside the ERP</h4>
         <p>ML, computer vision and LLM automation embedded into ERP for smarter reporting and decision support.</p>
       </div>
     </div>
@@ -681,7 +744,7 @@
     <!-- Animated trust stats -->
     <div class="trust-metrics">
       <div class="trust-metric reveal">
-        <div class="trust-metric-num"><span data-count="6">6</span></div>
+        <div class="trust-metric-num"><span data-count="7">7</span></div>
         <div class="trust-metric-label">Featured Case Studies</div>
       </div>
       <div class="trust-metric reveal r-d1">
@@ -694,7 +757,7 @@
       </div>
       <div class="trust-metric reveal r-d3">
         <div class="trust-metric-num"><span data-count="98" data-suffix="%">98%</span></div>
-        <div class="trust-metric-label">AI Model Accuracy</div>
+        <div class="trust-metric-label">Computer-Vision Model Accuracy</div>
       </div>
     </div>
   </div>
