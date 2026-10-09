@@ -7,8 +7,8 @@ window.Portfolio = {
 
   profile: {
     name:       'Mohamed Gamal',
-    title:      'Odoo Techno-Functional Consultant & Developer',
-    subtitle:   'Senior Odoo Developer · AI & Data Analyst',
+    title:      'Senior Odoo Developer & ERP Software Engineer',
+    subtitle:   'Enterprise systems · Employee portals · Integrations',
     experience: '3+ Years',
     location:   'Cairo, Egypt',
     email:      'mohammedgamal37l30@gmail.com',
