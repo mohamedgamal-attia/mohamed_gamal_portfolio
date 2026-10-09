@@ -34,7 +34,10 @@ h1, h2, .display {
   text-wrap: balance;
 }
 h1 { font-size: clamp(2.6rem, 7vw, 5.1rem); }
-h2 { font-size: clamp(1.9rem, 4.2vw, 3.15rem); }
+/* §23: 40-56px at desktop. The lower bound drops to 1.72rem (27.5px) because
+   at 1.9rem the display serif wrapped section headings onto three lines in a
+   358px column, which cost ~60px per heading on a phone. */
+h2 { font-size: clamp(1.72rem, 4.2vw, 3.1rem); line-height: 1.12; }
 h2 em, h1 em, .display em {
   font-style: italic;
   font-weight: 500;

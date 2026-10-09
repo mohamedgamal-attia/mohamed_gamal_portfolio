@@ -114,6 +114,22 @@
   --glass-bg-2:   rgba(243, 239, 230, .085);
   --glass-border: rgba(243, 239, 230, .13);
 
+  /* ── Icon scale ────────────────────────────────────────
+     Icons are sized by TOKEN, never by inheriting 1em from the
+     text around them: a 1em icon inside a large button or
+     heading silently becomes huge. Every icon in the markup
+     also carries explicit width/height attributes matching its
+     tier, so the size survives a stale or missing stylesheet —
+     an unsized <svg> falls back to 300x150, which is exactly
+     how this broke before.                                     */
+  --icon-xs:      12px;   /* metadata, inline hints            */
+  --icon-sm:      14px;   /* small directional arrows          */
+  --icon-md:      16px;   /* buttons, nav, controls            */
+  --icon-social:  18px;   /* LinkedIn / GitHub text links      */
+  --icon-row:     20px;   /* contact-row leading icons         */
+  --icon-lg:      24px;
+  --icon-feature: 28px;   /* deliberate feature illustration   */
+
   /* ── Radii — editorial, not pill-everything ────────────  */
   --radius-xs:  6px;
   --radius-sm: 10px;

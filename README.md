@@ -40,6 +40,39 @@ colour arrives separately, through `--pj-*` custom properties set per card from
 Gold is 7.0:1 on ink but only 2.4:1 on paper, so it is a dark-surface accent and never
 light-surface body text; burgundy (8.7:1 on paper) carries the light surfaces.
 
+### Icon scale
+
+Icons are sized by token, never by inheriting `1em` from surrounding text:
+
+| Token | Size | Used for |
+|---|---|---|
+| `--icon-xs` | 12px | metadata, gallery counts |
+| `--icon-sm` / `.ic-arrow` | 14px | small directional arrows, contact-row arrows |
+| `--icon-md` / `.ic-btn` | 16px | buttons, nav, controls |
+| `--icon-social` | 18px | LinkedIn / GitHub text links |
+| `--icon-row` | 20px | contact-row leading icons |
+| `--icon-feature` | 28px | deliberate feature illustration |
+
+Every icon in the markup **also** carries explicit `width`/`height` attributes matching its
+tier. That is not belt-and-braces: an `<svg>` with no intrinsic size and no CSS falls back
+to 300 x 150px, so a single stale stylesheet is enough to make every arrow on the page
+enormous — which is exactly what happened once. The attributes mean the size survives with
+no stylesheet at all.
+
+A 44px touch target does not need a 44px icon: `.card-source` keeps a 32px visible ring and
+extends its tappable area with a transparent overlay.
+
+### After editing CSS or JS
+
+Stylesheet and script filenames are stable, so run:
+
+```bash
+python3 scripts/version_assets.py
+```
+
+It stamps `?v=<content-hash>` on every local CSS/JS link in both pages, so a cached copy of
+an old file is never served against new markup. It exits non-zero if any link is missed.
+
 ### Project colour
 
 Each project records its own accent and where that colour came from:

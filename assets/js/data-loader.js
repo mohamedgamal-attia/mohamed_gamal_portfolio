@@ -50,7 +50,7 @@
         </span>
         <span class="co-text">
           <b>${escapeHTML(c.name)}</b>
-          <i>${escapeHTML(c.role)} · ${escapeHTML(c.country)}</i>
+          <i>${escapeHTML(c.country)}</i>
         </span>
       </div>`).join('');
 
@@ -77,15 +77,17 @@
       const ctaLabel   = p.caseStudyLabel || 'Case Study';
       const galleryN   = Array.isArray(p.gallery) ? p.gallery.length : 0;
       const galleryHint = galleryN > 1
-        ? `<span class="card-gallery-hint"><svg class="ic" aria-hidden="true"><use href="#i-images"/></svg> ${galleryN}</span>` : '';
+        ? `<span class="card-gallery-hint"><svg class="ic ic-xs" width="12" height="12" aria-hidden="true"><use href="#i-images"/></svg> ${galleryN}</span>` : '';
       const subN = (p.subProjects || []).length;
       const subHint = subN ? `<span class="card-sub-hint">+${subN} context</span>` : '';
       const size = p.size || 'medium';
 
       /* Never nest an anchor inside a card that is itself a link. */
       const sourceBtn = (p.sourceUrl && !href)
-        ? `<a href="${escapeHTML(p.sourceUrl)}" target="_blank" rel="noopener" class="card-source" title="Official source" onclick="event.stopPropagation()">
-             <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right-from-square"/></svg></a>` : '';
+        ? `<a href="${escapeHTML(p.sourceUrl)}" target="_blank" rel="noopener" class="card-source"
+             aria-label="Open the official source for ${escapeHTML(p.title)} (opens in a new tab)"
+             title="Official source" onclick="event.stopPropagation()">
+             <svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-up-right-from-square"/></svg></a>` : '';
 
       /* The project's own accent rides on the card as custom properties.
          It paints hairlines, the small type line and the arrow — never a
@@ -118,7 +120,7 @@
             ${badge ? `<span class="card-type-badge ${escapeHTML(p.type||'')}">${escapeHTML(badge)}</span>` : ''}
             ${galleryHint}
             <div class="project-card-overlay">
-              <span class="overlay-cta">${escapeHTML(ctaLabel)} <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+              <span class="overlay-cta">${escapeHTML(ctaLabel)} <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
             </div>
           </div>
           <div class="project-card-body">
@@ -129,7 +131,7 @@
           </div>
           <div class="project-card-footer">
             <span class="project-card-sector">${escapeHTML(p.sectorLabel || '')}</span>
-            <span class="project-card-cta">${escapeHTML(ctaLabel)} <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+            <span class="project-card-cta">${escapeHTML(ctaLabel)} <svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
             ${sourceBtn}
           </div>
         </${tag}>`;
@@ -156,13 +158,13 @@
             <div class="context-group-company">${escapeHTML(p.company)}</div>
             <div class="context-group-sub">${escapeHTML(p.sectorLabel || '')}</div>
           </div>
-          <button class="context-open" data-modal="${escapeHTML(p.id)}">Case study <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          <button class="context-open" data-modal="${escapeHTML(p.id)}">Case study <svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
         </div>
         <div class="context-chips">
           ${(p.subProjects || []).map(s => {
             const inner = `<span class="chip-name">${escapeHTML(s.name)}</span>${s.sub ? `<span class="chip-sub">${escapeHTML(s.sub)}</span>` : ''}`;
             return s.sourceUrl
-              ? `<a class="context-chip" href="${escapeHTML(s.sourceUrl)}" target="_blank" rel="noopener">${inner}<svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right-from-square"/></svg></a>`
+              ? `<a class="context-chip" href="${escapeHTML(s.sourceUrl)}" target="_blank" rel="noopener">${inner}<svg class="ic ic-xs" width="12" height="12" aria-hidden="true"><use href="#i-arrow-up-right-from-square"/></svg></a>`
               : `<span class="context-chip">${inner}</span>`;
           }).join('')}
         </div>

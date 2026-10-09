@@ -65,7 +65,7 @@
       ctx.innerHTML = (p.subProjects || []).map(s => {
         const meta = `<span class="ctx-name">${esc(s.name)}</span>${s.sub ? `<span class="ctx-sub">${esc(s.sub)}</span>` : ''}`;
         return s.sourceUrl
-          ? `<a class="modal-ctx-item" href="${esc(s.sourceUrl)}" target="_blank" rel="noopener">${meta}<svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right-from-square"/></svg></a>`
+          ? `<a class="modal-ctx-item" href="${esc(s.sourceUrl)}" target="_blank" rel="noopener">${meta}<svg class="ic ic-xs" width="12" height="12" aria-hidden="true"><use href="#i-arrow-up-right-from-square"/></svg></a>`
           : `<div class="modal-ctx-item">${meta}</div>`;
       }).join('');
     }

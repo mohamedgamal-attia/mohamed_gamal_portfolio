@@ -4,7 +4,10 @@
 
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 28px; }
 
-.section-pad { padding: clamp(72px, 9vw, 132px) 0; position: relative; }
+/* 56px on a phone, 96px at desktop. Was clamp(72px, 9vw, 132px), which put
+   260px of padding between every pair of sections — about 1300px of the
+   homepage's height spent on empty space. */
+.section-pad { padding: clamp(56px, 6.2vw, 96px) 0; position: relative; }
 
 /* ── Section surfaces ────────────────────────────────────
    Alternating bone / sage / plum is what gives the page its
@@ -30,7 +33,7 @@
 }
 
 /* ── Section heads ───────────────────────────────────────  */
-.sec-head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 68px); }
+.sec-head { max-width: 760px; margin-bottom: clamp(28px, 3.6vw, 48px); }
 .sec-head-center { margin-left: auto; margin-right: auto; text-align: center; }
 .sec-head-center .eyebrow { justify-content: center; }
 .sec-head h2 { margin-bottom: 18px; }

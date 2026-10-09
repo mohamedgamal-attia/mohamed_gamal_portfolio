@@ -5,7 +5,7 @@
     "company": "EJAD Digital Solutions",
     "country": "Saudi Arabia",
     "type": "erp-system",
-    "size": "large",
+    "size": "medium",
     "categories": [
       "odoo-erp",
       "portals-web"
@@ -15,7 +15,7 @@
     "caseStudyUrl": "projects/eghr.html",
     "caseStudyLabel": "View Case Study",
     "role": "Business analysis, Odoo backend development, portal architecture, UI/UX implementation, responsive frontend, security, QA and deployment support.",
-    "short": "A portal-first HR experience built on Odoo 18 with dynamic employee services, approvals, geofenced attendance, bilingual UX and announcements.",
+    "short": "Odoo 18 employee portal — services, approvals and geofenced attendance, bilingual.",
     "cover": "assets/images/projects/eghr/eghr-cover.svg",
     "gallery": [
       "assets/images/projects/eghr/dashboard-desktop-en-dark.svg",
@@ -42,8 +42,7 @@
       "Odoo 18",
       "Python",
       "QWeb",
-      "PostgreSQL",
-      "Playwright"
+      "PostgreSQL"
     ],
     "mediaNote": "Interface schematic",
     "accent": "#0e7390",
@@ -64,7 +63,7 @@
     "typeLabel": "Full ERP Build",
     "sectorLabel": "Engineering ERP",
     "role": "Senior Odoo Developer — full internal engineering ERP, built from scratch.",
-    "short": "Built the internal engineering ERP — projects, disciplines, timesheets, expenses, reports.",
+    "short": "Internal engineering ERP — projects, disciplines, timesheets, expenses, reports.",
     "cover": "assets/images/projects/generated/dotec-erp.svg",
     "gallery": [
       "assets/images/projects/generated/dotec-erp.svg",
@@ -130,8 +129,7 @@
       "Odoo 18",
       "Python",
       "PostgreSQL",
-      "REST API",
-      "Engineering"
+      "REST API"
     ],
     "sourceUrl": "https://dotecengineering.com/",
     "sourceLabel": "DOTec Engineering",
@@ -154,7 +152,7 @@
     "typeLabel": "Full ERP Build",
     "sectorLabel": "Real Estate",
     "role": "Odoo Techno-Functional Developer — full internal ERP, built from scratch.",
-    "short": "Built the internal real-estate ERP end-to-end — CRM, reservations, contracts, payments.",
+    "short": "Internal real-estate ERP end to end — CRM, reservations, contracts, payments.",
     "cover": "assets/images/projects/generated/margins-erp.svg",
     "gallery": [
       "assets/images/projects/generated/margins-erp.svg",
@@ -200,8 +198,7 @@
       "Odoo 17",
       "Python",
       "PostgreSQL",
-      "QWeb",
-      "Real Estate"
+      "QWeb"
     ],
     "sourceUrl": "https://marginsdevelopments.com/",
     "sourceLabel": "Margins Developments",
@@ -225,7 +222,7 @@
     "typeLabel": "Odoo Delivery Team",
     "sectorLabel": "Government · Digital Transformation",
     "role": "Odoo Developer on the delivery team across multiple national platforms.",
-    "short": "Odoo backend modules & automation across five Saudi government digital platforms.",
+    "short": "Odoo backend modules and automation across five Saudi government platforms.",
     "cover": "assets/images/projects/generated/ejadtech-brand.svg",
     "gallery": [
       "assets/images/projects/generated/ejadtech-brand.svg",
@@ -275,8 +272,7 @@
       "Odoo",
       "Python",
       "Government",
-      "Automation",
-      "QWeb"
+      "Automation"
     ],
     "sourceUrl": "https://ejadtech.sa/",
     "sourceLabel": "EjadTech",
@@ -300,7 +296,7 @@
     "typeLabel": "Senior Odoo Delivery",
     "sectorLabel": "Odoo Silver Partner",
     "role": "Senior Odoo Developer at an official Odoo Silver Partner.",
-    "short": "Senior Odoo delivery across multi-client ERP, automation and integrations.",
+    "short": "Multi-client Odoo delivery — ERP, workflow automation and integrations.",
     "cover": "assets/images/projects/generated/ejad-brand.svg",
     "gallery": [
       "assets/images/projects/generated/ejad-brand.svg",
@@ -341,8 +337,7 @@
       }
     ],
     "tags": [
-      "Odoo 17",
-      "Odoo 18",
+      "Odoo 17/18",
       "Python",
       "QWeb",
       "Integration"
@@ -361,14 +356,14 @@
     "company": "Sunbelt Deals",
     "country": "United States",
     "type": "website-project",
-    "size": "wide",
+    "size": "medium",
     "categories": [
       "portals-web"
     ],
     "typeLabel": "Website / Digital Delivery",
     "sectorLabel": "Website Asset Pack",
     "role": "Website / digital delivery — image curation, auditing & web optimization.",
-    "short": "Curated, audited & web-optimized the full image library for a site redesign.",
+    "short": "Curated and web-optimised the full image library for a site redesign.",
     "cover": "assets/images/projects/sunbelt/sunbelt-cover.webp",
     "gallery": [
       "assets/images/projects/sunbelt/sunbelt-cover.webp",
@@ -392,9 +387,8 @@
     "tags": [
       "Website",
       "Frontend",
-      "Image Optimization",
       "WebP",
-      "Digital Delivery"
+      "Image Optimization"
     ],
     "sourceUrl": "https://sunbeltdeals.com/",
     "sourceLabel": "Sunbelt Deals Website",
@@ -410,14 +404,14 @@
     "company": "BlueDez Engineered Solutions",
     "country": "United States",
     "type": "content-project",
-    "size": "medium",
+    "size": "wide",
     "categories": [
       "digital-content"
     ],
     "typeLabel": "Content / Branding",
     "sectorLabel": "Visual Content Pack",
     "role": "Content & digital delivery — content structuring, visual system & asset production.",
-    "short": "Turned 15 blog articles into a 24-page on-brand visual pack + 32 reusable images.",
+    "short": "15 articles into a 24-page branded visual pack and 32 reusable images.",
     "cover": "assets/images/projects/bluedez/bluedez-cover.webp",
     "gallery": [
       "assets/images/projects/bluedez/bluedez-cover.webp",
@@ -441,8 +435,7 @@
       "Content Design",
       "Branding",
       "Visual System",
-      "PDF",
-      "Digital Delivery"
+      "PDF"
     ],
     "sourceUrl": "https://bluedez.com/blog",
     "sourceLabel": "BlueDez Blog",

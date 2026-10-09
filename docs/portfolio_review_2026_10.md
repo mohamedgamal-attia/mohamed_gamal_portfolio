@@ -84,6 +84,68 @@ backgrounds the dark sections use).
 
 ---
 
+## Pass 3 — icon scale, density and layout polish
+
+### The giant icons: cause and fix
+
+The reported symptom — enormous arrows in `View Selected Work` and `Start a Project`,
+giant LinkedIn / GitHub / WhatsApp / mail / phone / CV glyphs, oversized contact-row
+arrows — was reproduced exactly, and it was not a styling choice.
+
+Pass 2 replaced the Font Awesome `<i>` glyphs with an inline SVG sprite and sized them
+**only in CSS** (`.ic { width: 1em; height: 1em }`). The stylesheet filenames never
+changed, so any browser or CDN still holding the previous `sections.css` had no `.ic` rule
+at all — and an `<svg>` with no intrinsic size and no CSS falls back to the replaced-element
+default, **300 x 150 px**. Serving the previous `sections.css` against the current markup
+reproduced every item on the list:
+
+| element | rendered |
+|---|---|
+| `View Selected Work` arrow | 300 x 150 |
+| `Download CV` arrow | 300 x 150 |
+| contact-row icons | 300 x 150 / 238 x 150 / 157 x 150 |
+
+Three fixes, so it cannot recur:
+
+1. **Every icon carries explicit `width`/`height` attributes** matching its tier, so the
+   size holds with no stylesheet at all. Verified by blanking *every* stylesheet: icons
+   still render 12-18px.
+2. **A semantic icon scale** (`--icon-xs` 12 → `--icon-feature` 28) replaces `1em`
+   inheritance, which silently inflated icons inside large buttons and headings.
+3. **Content-hash cache busting** (`scripts/version_assets.py`) stamps `?v=<hash>` on every
+   CSS/JS link, so a stale asset cannot be served against new markup again. The script fails
+   with a non-zero exit if any link is left unstamped.
+
+### Defects found by code review of this pass
+
+| ID | Problem | How it was confirmed | Fix |
+|---|---|---|---|
+| R10 | An earlier dead-CSS deletion removed a selector but left its declaration body, leaving `sections.css` with 237 `{` and 238 `}`. The parser's error recovery then swallowed the following rule, so `#contact { position: relative }` never reached the CSSOM — `.contact-wash` only positioned correctly because `.section-pad` coincidentally also sets `position: relative`. | Brace count, then checking the CSSOM for the `#contact` rule. | Orphan block removed. Braces balance at 237/237 and the rule is in the CSSOM. |
+| R11 | The ≤680px `.card-wide` override switched to one column but left `grid-template-rows`, the image's `grid-row: 1 / -1` and the footer's `grid-row: 2` in place. The footer claimed row 2 / column 1, pushing the cover into an implicit second column — measured 127px wide and clipped at 375px. | Measured the used grid columns and the image box at 375px. | All placements reset when it stacks. Cover and body now both fill the card: 333px at 375px, 348px at 390px. |
+| R12 | `version_assets.py` matched asset basenames with `[a-z-]+`, so a filename containing a digit, underscore or capital would be skipped silently while the script still reported success. | Read the regex against the script's own stated purpose. | Widened to `[^"?]+`, plus a check that fails with exit 1 and names any link left unstamped. |
+
+### Density
+
+| | before this pass | after | delta |
+|---|---|---|---|
+| homepage height @1440 | 8 575 px | 7 027 px | **−18.1%** |
+| homepage height @390 | 13 796 px | 11 843 px | **−14.2%** |
+
+Where it came from: section padding `clamp(72,9vw,132)` → `clamp(56,6.2vw,96)`; the project
+grid re-composed as 3 + 3 + 1 with a horizontal closer (the two double-width cards had
+488px-tall covers forcing 700px rows, and stretched the card beside them to 400px of body
+with dead space inside); card copy shortened and tags capped at 4; capability blocks cut to
+one short description and 4 chips; timeline entries cut from paragraphs to one outcome each;
+hero `min-height` 940 → 840px; the company row no longer repeats the role the timeline
+already carries.
+
+That is short of the brief's 25-35% target. The remaining height is content — seven project
+cards, six capability blocks, eight timeline roles, six contact rows — and cutting another
+10% would mean removing some of it, which is a call for the repository owner rather than a
+layout decision.
+
+---
+
 ## Section decisions (§53)
 
 | Current section | Decision | Where it goes |
