@@ -17,8 +17,8 @@ What it does
 Usage
   pip install playwright pillow && playwright install chromium
 
-  export EGHR_URL=http://localhost:8082
-  export EGHR_DB=ejad_hr_local
+  export EGHR_URL=http://localhost:8069     # whatever port the instance serves on
+  export EGHR_DB=<database>
   export EGHR_USER=qa.demo@example.com      # a demo/QA account, never a real employee
   export EGHR_PASSWORD=...                  # read from the environment, never committed
 
@@ -43,7 +43,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets/images/projects/eghr"
 PAGE = ROOT / "projects/eghr.html"
 
-URL = os.environ.get("EGHR_URL", "http://localhost:8082").rstrip("/")
+URL = os.environ.get("EGHR_URL", "http://localhost:8069").rstrip("/")
 DB = os.environ.get("EGHR_DB", "")
 USER = os.environ.get("EGHR_USER", "")
 PASSWORD = os.environ.get("EGHR_PASSWORD", "")

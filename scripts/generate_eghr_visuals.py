@@ -29,20 +29,32 @@ os.makedirs(OUT, exist_ok=True)
 # ── palettes ────────────────────────────────────────────────
 PAL = {
     "dark": dict(
-        back="#081220", shell="#0c1a2e", panel="#132544", panel2="#182f52",
-        line="#27456f", txt="#eaf1ff", txt2="#9db4d8", txt3="#6b82a8",
-        acc="#22d3ee", acc2="#2563eb", chip="#16294a", skel="#1d365c",
+        back="#1b1319", shell="#241a22", panel="#2e2029", panel2="#3a2a35",
+        line="#4a3542", txt="#f6f1e4", txt2="#ddd0d4", txt3="#a8939e",
+        acc="#e3b375", acc2="#7c414c", chip="#352531", skel="#44313d",
     ),
     "light": dict(
-        back="#e7edf6", shell="#ffffff", panel="#ffffff", panel2="#f3f7fc",
-        line="#d9e3f0", txt="#101c30", txt2="#4a5a76", txt3="#8296b4",
-        acc="#0e7490", acc2="#2563eb", chip="#eef3fa", skel="#e4ebf5",
+        back="#ece7d2", shell="#ffffff", panel="#ffffff", panel2="#faf7e9",
+        line="#e2dcc6", txt="#241a22", txt2="#5c4b55", txt3="#8a7682",
+        acc="#9a5a28", acc2="#7c414c", chip="#f3eedb", skel="#e6e0ca",
     ),
 }
-OK, WARN, DANGER, INFO, VIOLET = "#16a34a", "#d4a843", "#dc2626", "#2563eb", "#8b5cf6"
+OK, WARN, DANGER, INFO, VIOLET = "#5b7a5a", "#b8893f", "#8e3b45", "#7c414c", "#836773"
 
 FS = "Inter,'Segoe UI',system-ui,sans-serif"
 FA = "'Segoe UI','Tahoma',Arial,sans-serif"   # has Arabic glyphs on most systems
+
+
+def _mix(hexa, hexb, t):
+    a = [int(hexa[i:i + 2], 16) for i in (1, 3, 5)]
+    b = [int(hexb[i:i + 2], 16) for i in (1, 3, 5)]
+    return "#%02x%02x%02x" % tuple(round(a[i] + (b[i] - a[i]) * t) for i in range(3))
+
+
+def tone(p, color):
+    """Pull a status hue toward the theme's text colour so small pill and
+    label text stays legible on both the plum and the bone surfaces."""
+    return _mix(color, p["txt"], 0.34) if p["txt"].lower() == "#f6f1e4" else _mix(color, "#000000", 0.18)
 
 
 def esc(s):
@@ -95,14 +107,16 @@ def pill(p, x, y, label, color, w=None, rtl=False, trail=False):
     """trail=True anchors the pill at the row's trailing edge (mirrors for RTL)."""
     w = w or max(58, 8 * len(label) + 22)
     x0 = (x if rtl else x - w) if trail else x
+    color = tone(p, color)
     return (rr(x0, y, w, 24, 12, color, op="0.16")
             + rr(x0, y, w, 24, 12, "none", color, 1, "0.5")
             + t(x0 + w / 2, y + 16, label, 11, "700", color, "middle"))
 
 
 def icon_tile(p, x, y, s, color, glyph=""):
-    return (rr(x, y, s, s, s * 0.3, color, op="0.16")
-            + rr(x, y, s, s, s * 0.3, "none", color, 1, "0.45")
+    color = tone(p, color)
+    return (rr(x, y, s, s, s * 0.3, color, op="0.22")
+            + rr(x, y, s, s, s * 0.3, "none", color, 1, "0.55")
             + (t(x + s / 2, y + s * 0.68, glyph, int(s * 0.5), "700", color, "middle") if glyph else ""))
 
 
@@ -316,17 +330,18 @@ LAB = {
     "search":        ("Search services", "ابحث في الخدمات"),
 }
 
+GOLD, SAGE = "#c98f46", "#6f8a6e"
 SERVICES = [
     ("Time Off", "الإجازات", INFO),
-    ("Advance Salary", "سلفة راتب", WARN),
+    ("Advance Salary", "سلفة راتب", GOLD),
     ("Loans", "السلف والقروض", VIOLET),
-    ("Ticket Booking", "حجز تذاكر", "#0ea5b7"),
+    ("Ticket Booking", "حجز تذاكر", SAGE),
     ("Visa", "تأشيرات", OK),
     ("Business Trip", "مهمة عمل", INFO),
     ("End of Service", "نهاية الخدمة", DANGER),
-    ("Custody", "العُهد", WARN),
+    ("Custody", "العُهد", GOLD),
     ("Data Update", "تحديث البيانات", VIOLET),
-    ("Permission", "استئذان", "#0ea5b7"),
+    ("Permission", "استئذان", SAGE),
     ("Job Request", "طلب وظيفة", OK),
 ]
 
@@ -541,7 +556,7 @@ def attendance_screen(theme, rtl, state="inside"):
     msg_ar = {"inside": "داخل نطاق المكتب · ٤٢ م", "outside": "خارج نطاق المكتب · ١٫٨ كم",
               "locating": "جارٍ تحديد الموقع…", "off": "مطلوب إذن الموقع"}
     o.append(t(c.lead(330, 190), y + 110, (msg_ar if rtl else msg_en)[state],
-               13, "700", cols[state], c.anc, c.rtl))
+               13, "700", tone(p, cols[state]), c.anc, c.rtl))
     o.append(t(c.lead(330, 190), y + 150, "08:54", 30, "800", p["txt"], c.anc, c.rtl))
     o.append(t(c.lead(330, 190), y + 172, "Check-in time" if not rtl else "وقت الحضور",
                11, "500", p["txt3"], c.anc, c.rtl))
@@ -864,7 +879,7 @@ def m_dashboard(theme, rtl):
         o.append(rr(m.x(kx, 190), 346, 190, 92, 14, p["panel"], p["line"]))
         o.append(t(m.lead(kx + 14, 162), 370, lab, 9, "700", p["txt3"], m.anc, m.rtl))
         o.append(t(m.lead(kx + 14, 162), 402, val, 22, "800", p["txt"], m.anc, m.rtl))
-        o.append(t(m.lead(kx + 14, 162), 422, foot, 9.5, "500", col, m.anc, m.rtl))
+        o.append(t(m.lead(kx + 14, 162), 422, foot, 9.5, "500", tone(p, col), m.anc, m.rtl))
     # services row
     o.append(m_card(p, m, 450, 148, w("services", rtl), w("all", rtl)))
     for i in range(6):

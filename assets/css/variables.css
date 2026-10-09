@@ -1,85 +1,180 @@
 /* =========================================================
-   variables.css — CSS custom properties
+   variables.css — the design system
+   -----------------------------------------------------------
+   One warm, editorial palette: deep plum surfaces, bone and
+   sage light surfaces, honey gold and burgundy accents.
+   Everything downstream reads SEMANTIC tokens; the raw palette
+   below is the only place a literal colour is written.
    ========================================================= */
 
 :root {
-  /* Brand colours */
-  --navy:        #0d1b2e;
-  --navy-mid:    #1a2f4a;
-  --navy-light:  #1e3a5f;
-  --blue:        #2563eb;
-  --blue-light:  #3b82f6;
-  --blue-glow:   rgba(37, 99, 235, 0.15);
-  --gold:        #d4a843;
-  --gold-light:  #f0c55a;
 
-  /* Neutrals */
-  --white:       #ffffff;
-  --gray-50:     #f9fafb;
-  --gray-100:    #f8fafc;
-  --gray-200:    #e2e8f0;
-  --gray-300:    #cbd5e1;
-  --gray-400:    #94a3b8;
-  --gray-500:    #64748b;
-  --gray-600:    #475569;
-  --gray-900:    #0f172a;
+  /* ── Raw palette ───────────────────────────────────────
+     Supplied reference, plus the darker plums and the two
+     deeper neutrals needed to keep text above WCAG AA.      */
+  --p-bone:        #f5f2df;   /* Ivory / Bone      */
+  --p-ivory:       #fbf9ee;
+  --p-sage-soft:   #d8e3d2;   /* Soft Sage         */
+  --p-sage-muted:  #b4c5b5;   /* Muted Sage        */
+  --p-sage-stone:  #acb9b0;   /* Stone Sage        */
+  --p-mauve:       #836773;   /* Dusty Mauve       */
+  --p-plum:        #483440;   /* Deep Plum         */
+  --p-plum-deep:   #2e2029;
+  --p-plum-black:  #211720;
+  --p-burgundy:    #563339;   /* Burgundy          */
+  --p-gold-pale:   #f6e3b8;   /* Pale Gold         */
+  --p-gold:        #e3b375;   /* Honey Gold        */
+  --p-sand:        #d0b08a;   /* Warm Sand         */
 
-  /* Text */
-  --text-dark:   #1e293b;
-  --text-mid:    #334155;
-  --text-light:  #64748b;
+  /* ── Surfaces ──────────────────────────────────────────  */
+  --bg-deep:          #1b1319;   /* page floor, hero, footer  */
+  --bg-page:          var(--p-bone);
+  --surface-dark-1:   #241a22;
+  --surface-dark-2:   #2e2029;
+  --surface-dark-3:   #3a2a35;
+  --surface-elevated: #452f3e;
+  --surface-1:        #ffffff;
+  --surface-2:        #faf7e9;
+  --surface-3:        #ece7d2;
+  --surface-sage:     #e6ece0;
 
-  /* Status */
-  --green:       #16a34a;
-  --purple:      #7c3aed;
-  --red:         #dc2626;
-  --orange:      #ea580c;
+  /* ── Text ──────────────────────────────────────────────  */
+  --text-primary:     #241a22;
+  --text-secondary:   #5c4b55;
+  --text-muted:       #756270;
+  --text-on-dark:     #f6f1e4;
+  --text-on-dark-2:   #ddd0d4;
+  --text-on-dark-3:   #b4a2ab;
 
-  /* Radii */
-  --radius:    12px;
-  --radius-sm:  8px;
-  --radius-lg: 20px;
+  /* ── Borders & rules ───────────────────────────────────  */
+  --border-soft:      #e2dcc6;
+  --border-strong:    #cfc6ab;
+  --border-on-dark:   rgba(246, 227, 184, .14);
+  --border-on-dark-2: rgba(246, 227, 184, .26);
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
-  --shadow-lg: 0 10px 40px rgba(0,0,0,.15);
-  --shadow-xl: 0 20px 60px rgba(0,0,0,.20);
+  /* ── Accents ───────────────────────────────────────────  */
+  --accent-primary:   #e3b375;   /* honey gold — dark surfaces */
+  --accent-deep:      #7c414c;   /* burgundy  — light surfaces */
+  --accent-deep-hi:   #96505c;
+  --accent-secondary: #b4c5b5;   /* muted sage                 */
+  --accent-warm:      #f6e3b8;   /* pale gold highlight        */
+  --accent-mauve:     #9c7d8b;
+  /* On-dark variants of the colours whose light-surface versions are too
+     dark to read on plum. */
+  --on-dark-mauve:    #c9a7b4;
+  --on-dark-sage:     #a7bda8;
+  --on-dark-rose:     #d99aa6;
 
-  /* Motion */
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* ── Status ────────────────────────────────────────────  */
+  --success: #5b7a5a;
+  --warning: #b8893f;
+  --danger:  #8e3b45;
+  --info:    #6e5c78;
+  --focus:   #e3b375;
 
-  /* Layout */
-  --max-width: 1200px;
+  /* ── RGB channels, for tinting with alpha ──────────────  */
+  --rgb-gold:      227, 179, 117;
+  --rgb-gold-pale: 246, 227, 184;
+  --rgb-sage:      180, 197, 181;
+  --rgb-mauve:     131, 103, 115;
+  --rgb-burgundy:  124, 65, 76;
+  --rgb-plum:      72, 52, 64;
+  --rgb-deep:      27, 19, 25;
+  --rgb-success:   91, 122, 90;
+  --rgb-warning:   184, 137, 63;
+  --rgb-danger:    142, 59, 69;
 
-  /* ── Futuristic layer ─────────────────────────────────── */
-  --cyan:        #22d3ee;
-  --cyan-soft:   #67e8f9;
-  --violet:      #8b5cf6;
-  --indigo:      #6366f1;
+  /* ── Gradients ─────────────────────────────────────────  */
+  --grad-warm:   linear-gradient(118deg, #7c414c 0%, #9c7d8b 48%, #e3b375 100%);
+  --grad-gold:   linear-gradient(118deg, #d79f5c 0%, #f6e3b8 100%);
+  --grad-plum:   linear-gradient(160deg, #2e2029 0%, #1b1319 60%, #241a22 100%);
+  --grad-text:   linear-gradient(100deg, #f6f1e4 0%, #f6e3b8 52%, #d8e3d2 100%);
+  --grad-rule:   linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+  /* Button fill: every stop clears 4.5:1 against bone-white text */
+  --grad-cta:    linear-gradient(118deg, #6d3743 0%, #83414f 55%, #96505c 100%);
 
-  /* Signature gradients */
-  --grad-brand:  linear-gradient(120deg, #2563eb 0%, #6366f1 45%, #22d3ee 100%);
-  /* Same family, but every stop clears 4.5:1 against white button text */
-  --grad-brand-btn: linear-gradient(120deg, #1d4ed8 0%, #4f46e5 55%, #0e7490 100%);
-  --grad-gold:   linear-gradient(120deg, #d4a843 0%, #f0c55a 100%);
-  --grad-aurora: linear-gradient(120deg, #2563eb, #8b5cf6, #22d3ee, #2563eb);
-  --grad-text:   linear-gradient(100deg, #ffffff 0%, #bcd4ff 55%, #67e8f9 100%);
+  /* ── Depth — warm shadows, never neutral grey ──────────  */
+  --shadow-sm: 0 1px 3px rgba(27, 19, 25, .10), 0 1px 2px rgba(27, 19, 25, .06);
+  --shadow-md: 0 6px 20px -6px rgba(27, 19, 25, .18);
+  --shadow-lg: 0 18px 48px -14px rgba(27, 19, 25, .28);
+  --shadow-xl: 0 34px 80px -24px rgba(27, 19, 25, .40);
+  --shadow-warm: 0 26px 70px -22px rgba(124, 65, 76, .50);
+  --glow-gold: 0 0 36px rgba(227, 179, 117, .34);
+  --glow-sage: 0 0 30px rgba(180, 197, 181, .26);
+  --edge-light: inset 0 1px 0 rgba(246, 227, 184, .12);
 
-  /* Glass surfaces (on dark) */
-  --glass-bg:     rgba(255, 255, 255, 0.045);
-  --glass-bg-2:   rgba(255, 255, 255, 0.07);
-  --glass-border: rgba(255, 255, 255, 0.10);
+  /* ── Glass on dark ─────────────────────────────────────  */
+  --glass-bg:     rgba(246, 227, 184, .045);
+  --glass-bg-2:   rgba(246, 227, 184, .085);
+  --glass-border: rgba(246, 227, 184, .13);
 
-  /* Glow */
-  --glow-blue:  0 0 40px rgba(37, 99, 235, 0.45);
-  --glow-cyan:  0 0 34px rgba(34, 211, 238, 0.35);
-  --shadow-glow: 0 24px 70px -20px rgba(37, 99, 235, 0.55);
+  /* ── Radii — editorial, not pill-everything ────────────  */
+  --radius-xs:  6px;
+  --radius-sm: 10px;
+  --radius:    14px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
 
-  /* High-contrast text on dark surfaces (readability) */
-  --on-dark:        #eef4ff;   /* near-white primary */
-  --on-dark-2:      #c3d4f0;   /* readable light slate secondary */
-  --on-dark-muted:  #9fb2d4;   /* muted but still legible */
+  /* ── Layout & type ─────────────────────────────────────  */
+  --max-width:   1240px;
+  --measure:     68ch;
+  --font-sans:  'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display:'Fraunces', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-mono:  ui-monospace, 'SFMono-Regular', 'Cascadia Mono', 'Segoe UI Mono', monospace;
+
+  /* ── Easing kept here for files loaded before motion.css ─ */
+  --transition: all .3s cubic-bezier(.2, 0, 0, 1);
+  --ease-out-expo: cubic-bezier(.16, 1, .3, 1);
+  --ease-spring:   cubic-bezier(.34, 1.56, .64, 1);
+
+
+  /* ═══ Compatibility layer ═══════════════════════════════
+     The older partials still speak in --navy/--blue/--gold.
+     Re-pointing those names at the new palette re-skins them
+     in one place instead of a thousand find-and-replaces.
+     New work should use the semantic tokens above.          */
+  --navy:       var(--bg-deep);
+  --navy-mid:   var(--surface-dark-2);
+  --navy-light: var(--surface-dark-3);
+  --blue:       var(--accent-deep);
+  --blue-light: var(--accent-deep-hi);
+  --blue-glow:  rgba(var(--rgb-burgundy), .15);
+  --gold:       var(--accent-primary);
+  --gold-light: var(--accent-warm);
+  --cyan:       var(--accent-primary);
+  --cyan-soft:  var(--accent-warm);
+  --violet:     var(--accent-mauve);
+  --indigo:     var(--accent-mauve);
+  --green:      var(--success);
+  --purple:     var(--accent-mauve);
+  --red:        var(--danger);
+  --orange:     var(--warning);
+
+  --white:    #ffffff;
+  --gray-50:  var(--surface-2);
+  --gray-100: var(--surface-2);
+  --gray-200: var(--border-soft);
+  --gray-300: var(--border-strong);
+  --gray-400: var(--text-on-dark-3);
+  --gray-500: var(--text-muted);
+  --gray-600: var(--text-secondary);
+  --gray-900: var(--text-primary);
+
+  --text-dark:  var(--text-primary);
+  --text-mid:   var(--text-secondary);
+  --text-light: var(--text-muted);
+
+  --radius-xs-legacy: var(--radius-xs);
+
+  --grad-brand:     var(--grad-warm);
+  --grad-brand-btn: var(--grad-cta);
+  --grad-aurora:    linear-gradient(118deg, #7c414c, #9c7d8b, #e3b375, #7c414c);
+
+  --on-dark:       var(--text-on-dark);
+  --on-dark-2:     var(--text-on-dark-2);
+  --on-dark-muted: var(--text-on-dark-3);
+
+  --glow-blue:   var(--shadow-warm);
+  --glow-cyan:   var(--glow-gold);
+  --shadow-glow: var(--shadow-warm);
 }

@@ -18,10 +18,10 @@
   --ease-exit:     cubic-bezier(0.4, 0, 1, 1);
 
   /* Depth: one elevation ramp for every lifted surface */
-  --depth-1: 0 2px 8px rgba(3, 10, 22, .28);
-  --depth-2: 0 10px 28px -8px rgba(3, 10, 22, .45);
-  --depth-3: 0 26px 60px -18px rgba(3, 10, 22, .62);
-  --depth-4: 0 44px 110px -28px rgba(3, 10, 22, .78);
+  --depth-1: 0 2px 8px rgba(var(--rgb-deep), .28);
+  --depth-2: 0 10px 28px -8px rgba(var(--rgb-deep), .45);
+  --depth-3: 0 26px 60px -18px rgba(var(--rgb-deep), .62);
+  --depth-4: 0 44px 110px -28px rgba(var(--rgb-deep), .78);
 
   /* Edge highlight used on dark glass surfaces */
   --edge-light: inset 0 1px 0 rgba(255, 255, 255, .10);

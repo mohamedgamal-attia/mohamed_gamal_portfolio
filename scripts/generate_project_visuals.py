@@ -15,7 +15,7 @@ Two visual systems:
 Run:  python3 scripts/generate_project_visuals.py
 """
 
-import os, math, random, base64, mimetypes
+import os, re, math, random, base64, mimetypes
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT  = os.path.join(ROOT, "assets/images/projects/generated")
@@ -57,9 +57,9 @@ def brand_cover(fname, logo_rel, domain, title, tagline, accent, accent2,
   <ellipse cx="{W/2}" cy="300" rx="520" ry="240" fill="url(#glow)" filter="url(#soft)" opacity="0.7"/>
   <!-- white logo panel (logos ship on light backgrounds) -->
   <rect x="{lx-46:.0f}" y="188" width="{logo_w+92}" height="{logo_h+92}" rx="26"
-        fill="#ffffff" stroke="{accent}" stroke-opacity="0.4" stroke-width="2"/>
+        fill="{PANEL2}" stroke="{accent}" stroke-opacity="0.45" stroke-width="2"/>
   <image href="{uri}" x="{lx:.0f}" y="234" width="{logo_w}" height="{logo_h}" preserveAspectRatio="xMidYMid meet"/>
-  <text x="{W/2}" y="512" font-family="Space Grotesk,Inter,sans-serif" font-size="40" font-weight="700"
+  <text x="{W/2}" y="512" font-family="Inter,Segoe UI,sans-serif" font-size="40" font-weight="700"
         fill="{TXT}" text-anchor="middle">{title}</text>
   <text x="{W/2}" y="552" font-family="Inter,sans-serif" font-size="19" fill="{TXT2}" text-anchor="middle">{tagline}</text>
   {chip_html}
@@ -71,14 +71,15 @@ def brand_cover(fname, logo_rel, domain, title, tagline, accent, accent2,
 W, H = 1200, 750
 
 # ── shared palette ──────────────────────────────────────────
-INK      = "#0a1524"
-INK2     = "#0d1b2e"
-PANEL    = "#101f36"
-PANEL2   = "#16294a"
-LINE     = "#24406b"
-TXT      = "#eaf1ff"
-TXT2     = "#9db4d8"
-TXT3     = "#5f78a3"
+# Warm plum surfaces + bone type, matching assets/css/variables.css.
+INK      = "#1b1319"
+INK2     = "#241a22"
+PANEL    = "#2e2029"
+PANEL2   = "#3a2a35"
+LINE     = "#4a3542"
+TXT      = "#f6f1e4"
+TXT2     = "#ddd0d4"
+TXT3     = "#a8939e"
 
 
 def _defs(accent, accent2):
@@ -117,6 +118,11 @@ def _backdrop(accent):
   <ellipse cx="1120" cy="720" rx="380" ry="300" fill="url(#glow)" filter="url(#soft)" opacity="0.6"/>'''
 
 
+def _bw(badge):
+    """Badge pill width that always fits its label."""
+    return max(150, round(7.0 * len(badge)) + 26)
+
+
 def _chrome(title, badge, accent):
     """Window chrome header bar."""
     return f'''
@@ -128,9 +134,9 @@ def _chrome(title, badge, accent):
     <rect x="360" y="15" width="280" height="22" rx="11" fill="{INK}" opacity="0.6"/>
     <text x="500" y="30" font-family="Inter,Segoe UI,sans-serif" font-size="12"
           fill="{TXT3}" text-anchor="middle">{title}</text>
-    <rect x="836" y="14" width="150" height="24" rx="12" fill="url(#acc)" opacity="0.9"/>
-    <text x="911" y="30" font-family="Inter,sans-serif" font-size="11" font-weight="700"
-          fill="#04122a" text-anchor="middle" letter-spacing="0.5">{badge}</text>'''
+    <rect x="{986 - _bw(badge)}" y="14" width="{_bw(badge)}" height="24" rx="12" fill="url(#acc)" opacity="0.92"/>
+    <text x="{986 - _bw(badge) / 2}" y="30" font-family="Inter,sans-serif" font-size="11" font-weight="700"
+          fill="#140d13" text-anchor="middle" letter-spacing="0.5">{badge}</text>'''
 
 
 def _sidebar(accent):
@@ -141,20 +147,36 @@ def _sidebar(accent):
         fill = "url(#acc)" if active else PANEL2
         op = "1" if active else "0.8"
         items += f'<rect x="18" y="{y}" width="52" height="34" rx="10" fill="{fill}" opacity="{op}"/>'
-        items += f'<rect x="30" y="{y+11}" width="28" height="4" rx="2" fill="{"#04122a" if active else TXT3}" opacity="0.9"/>'
+        items += f'<rect x="30" y="{y+11}" width="28" height="4" rx="2" fill="{"#140d13" if active else TXT3}" opacity="0.9"/>'
     return f'<rect x="0" y="70" width="88" height="480" rx="16" fill="{PANEL}"/>{items}'
 
 
-def _kpi(x, y, value, label, accent, spark):
+_FIGURE = re.compile(r'^[\d$€£]|[\d]')
+
+
+def _caption(parts):
+    """Tile caption from a (a, b) pair whose order is not consistent across
+    the data. Any part that reads as a quantity is dropped — the covers are
+    illustrative, so the words are the content and the figure is a bar."""
+    words = [str(t).strip() for t in parts if str(t).strip() and not _FIGURE.search(str(t))]
+    if not words:
+        words = [str(t).strip() for t in parts if str(t).strip()]
+    return " ".join(words[:2]) or "Metric"
+
+
+def _kpi(x, y, label, accent, spark):
+    """A metric tile. The caption is real; the figure is deliberately a
+    placeholder bar — these are illustrative covers, not reported numbers."""
     bars = ""
-    bw = 10
     for i, v in enumerate(spark):
-        bh = 4 + v * 26
-        bars += f'<rect x="{x+18+i*14}" y="{y+70-bh}" width="{bw}" height="{bh}" rx="3" fill="url(#acc)" opacity="{0.4+0.5*(v)}"/>'
+        bh = 4 + v * 20
+        bars += (f'<rect x="{x+18+i*14}" y="{y+84-bh}" width="10" height="{bh}" rx="3" '
+                 f'fill="url(#acc)" opacity="{0.35+0.5*v:.2f}"/>')
     return f'''
     <rect x="{x}" y="{y}" width="196" height="96" rx="14" fill="url(#glass)" stroke="{LINE}" stroke-width="1"/>
-    <text x="{x+18}" y="{y+34}" font-family="Space Grotesk,Inter,sans-serif" font-size="30" font-weight="700" fill="{TXT}">{value}</text>
-    <text x="{x+18}" y="{y+54}" font-family="Inter,sans-serif" font-size="12" fill="{TXT2}">{label}</text>
+    <text x="{x+18}" y="{y+24}" font-family="Inter,sans-serif" font-size="10.5" font-weight="700"
+          letter-spacing="1.1" fill="{TXT3}">{label.upper()}</text>
+    <rect x="{x+18}" y="{y+34}" width="{72 + (len(label) * 2) % 36}" height="15" rx="7" fill="{TXT2}" opacity="0.55"/>
     {bars}'''
 
 
@@ -218,7 +240,7 @@ def _donut(cx, cy, r, accent, segs):
     out = f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{PANEL2}" stroke-width="18"/>'
     total = sum(s for s, _ in segs)
     ang = -90
-    cols = [accent, "#22d3ee", "#8b5cf6", "#f0c55a"]
+    cols = [accent, "#e3b375", "#836773", "#f6e3b8"]
     for i, (s, _) in enumerate(segs):
         frac = s / total
         a2 = ang + frac * 360
@@ -227,7 +249,9 @@ def _donut(cx, cy, r, accent, segs):
         x2 = cx + r * math.cos(math.radians(a2)); y2 = cy + r * math.sin(math.radians(a2))
         out += f'<path d="M {x1:.1f} {y1:.1f} A {r} {r} 0 {large} 1 {x2:.1f} {y2:.1f}" fill="none" stroke="{cols[i%len(cols)]}" stroke-width="18" stroke-linecap="round"/>'
         ang = a2
-    out += f'<text x="{cx}" y="{cy+6}" font-family="Space Grotesk,Inter" font-size="26" font-weight="700" fill="{TXT}" text-anchor="middle">{total}</text>'
+    # The centre figure is deliberately a placeholder bar: these covers
+    # illustrate structure, they do not report real numbers.
+    out += f'<rect x="{cx-24}" y="{cy-7}" width="48" height="13" rx="6" fill="{TXT2}" opacity="0.45"/>'
     return out
 
 
@@ -238,8 +262,8 @@ def erp_dashboard(fname, title, badge, accent, accent2, kpis, chart, layout="kan
     body += _chrome(title, badge, accent)
     body += _sidebar(accent)
     # KPI row
-    for i, (v, l) in enumerate(kpis[:4]):
-        body += _kpi(108 + i*212, 84, v, l, accent, spark())
+    for i, pair in enumerate(kpis[:4]):
+        body += _kpi(108 + i * 212, 84, _caption(pair), accent, spark())
     # charts
     if chart == "line":
         body += _linechart(108, 196, 470, 190, "Pipeline value / month", accent, [4,6,5,8,7,11,10,13])
@@ -304,8 +328,8 @@ def context_cover(fname, title, sector, accent, accent2, motif="building"):
       <rect x="0" y="22" width="360" height="18" fill="{PANEL2}"/>
       <circle cx="22" cy="20" r="5" fill="#ff5f57"/><circle cx="40" cy="20" r="5" fill="#febc2e"/><circle cx="58" cy="20" r="5" fill="#28c840"/>
       <text x="180" y="24" font-family="Inter" font-size="11" fill="{TXT3}" text-anchor="middle">Internal Odoo ERP</text>
-      {_kpi(18, 58, "24", "Units", accent, [.3,.6,.4,.8,.5,.9]).replace('width="196"','width="150"')}
-      {_kpi(190, 58, "8", "Deals", accent, [.4,.5,.7,.3,.6,.8]).replace('width="196"','width="150"')}
+      {_kpi(18, 58, "Units", accent, [.3,.6,.4,.8,.5,.9]).replace('width="196"','width="150"')}
+      {_kpi(190, 58, "Deals", accent, [.4,.5,.7,.3,.6,.8]).replace('width="196"','width="150"')}
       <rect x="18" y="170" width="324" height="72" rx="12" fill="url(#glass)" stroke="{LINE}" stroke-width="1"/>
       <rect x="34" y="188" width="120" height="7" rx="3.5" fill="{TXT3}"/>
       <rect x="34" y="206" width="200" height="6" rx="3" fill="{LINE}"/>
@@ -318,8 +342,8 @@ def context_cover(fname, title, sector, accent, accent2, motif="building"):
   {_backdrop(accent)}
   {art}
   <rect x="80" y="70" width="150" height="30" rx="15" fill="url(#acc)" opacity="0.9"/>
-  <text x="155" y="90" font-family="Inter" font-size="12" font-weight="700" fill="#04122a" text-anchor="middle" letter-spacing="0.5">{sector}</text>
-  <text x="80" y="150" font-family="Space Grotesk,Inter,sans-serif" font-size="46" font-weight="700" fill="{TXT}">{title}</text>
+  <text x="155" y="90" font-family="Inter" font-size="12" font-weight="700" fill="#140d13" text-anchor="middle" letter-spacing="0.5">{sector}</text>
+  <text x="80" y="150" font-family="Inter,Segoe UI,sans-serif" font-size="46" font-weight="700" fill="{TXT}">{title}</text>
   {inset}
 </svg>'''
     with open(os.path.join(OUT, fname), "w") as f:
@@ -327,17 +351,17 @@ def context_cover(fname, title, sector, accent, accent2, motif="building"):
     return fname
 
 
-BLUE, CYAN = "#2563eb", "#22d3ee"
-VIOLET     = "#8b5cf6"
-GREEN      = "#16a34a"
-GOLD       = "#d4a843"
-ROSE       = "#e11d48"
+BLUE, CYAN = "#7c414c", "#e3b375"
+VIOLET     = "#836773"
+GREEN      = "#5b7a5a"
+GOLD       = "#e3b375"
+ROSE       = "#8e3b45"
 
 def main():
     made = []
     # ── Flagship ERP builds ──
     made.append(erp_dashboard("margins-erp.svg", "margins.odoo · Real Estate", "REAL ESTATE ERP",
-        ROSE, "#f43f5e",
+        ROSE, "#a64b56",
         [("EGP 48M","Sales Pipeline"),("312","Units"),("87","Reservations"),("24","Brokers")],
         chart="line", layout="kanban"))
     made.append(erp_dashboard("dotec-erp.svg", "dotec.odoo · Engineering", "ENGINEERING ERP",
@@ -346,11 +370,11 @@ def main():
         chart="bar", layout="table"))
     # Flagship alt views (for galleries)
     made.append(erp_dashboard("margins-erp-2.svg", "margins.odoo · Reservations", "PAYMENT TRACKING",
-        ROSE, "#f43f5e",
+        ROSE, "#a64b56",
         [("EGP 12M","Collected"),("64","Installments"),("9","Overdue"),("QWeb","Receipts")],
         chart="bar", layout="table"))
     made.append(erp_dashboard("margins-erp-3.svg", "margins.odoo · CRM Pipeline", "SALES CRM",
-        ROSE, "#f43f5e",
+        ROSE, "#a64b56",
         [("214","Leads"),("38","Opportunities"),("22%","Win Rate"),("Auto","Nurture")],
         chart="line", layout="kanban"))
     made.append(erp_dashboard("dotec-erp-2.svg", "dotec.odoo · Timesheets", "WORKLOAD & EXPENSES",
@@ -362,7 +386,7 @@ def main():
         [("46","Projects"),("212","Milestones"),("Docs","Managed"),("RBAC","Security")],
         chart="bar", layout="table"))
     made.append(erp_dashboard("margins-erp-4.svg", "margins.odoo · Reports", "QWEB REPORTING",
-        ROSE, "#f43f5e",
+        ROSE, "#a64b56",
         [("48","Reports"),("Contracts","PDF"),("Roles","6"),("Access","Rules")],
         chart="bar", layout="table"))
     made.append(erp_dashboard("dotec-erp-4.svg", "dotec.odoo · Integrations", "REST & ACCESS",
@@ -372,44 +396,44 @@ def main():
 
     # ── Odoo work (SVG placeholders → dashboards) ──
     made.append(erp_dashboard("ejad-digital-odoo-work.svg", "ejad.odoo · Multi-Client", "ODOO SILVER PARTNER",
-        GREEN, "#22c55e",
-        [("14","Clients"),("60+","Modules"),("QWeb","Reports"),("99.9%","Uptime")],
+        GREEN, "#6f8a6e",
+        [("14","Clients"),("60+","Modules"),("QWeb","Reports"),("", "Releases")],
         chart="bar", layout="kanban"))
     made.append(erp_dashboard("ejad-erp-implementations.svg", "ejad.odoo · Implementations", "MULTI-CLIENT ERP",
         BLUE, CYAN,
         [("CRM","+ HR"),("32","Workflows"),("Access","Rules"),("Cron","Jobs")],
         chart="line", layout="table"))
     made.append(erp_dashboard("ejad-internal-erp.svg", "ejad.odoo · Internal Tools", "INTERNAL CUSTOMIZATION",
-        VIOLET, "#a78bfa",
+        VIOLET, "#9c7d8b",
         [("18","Modules"),("240","Commits"),("PDF","Templates"),("Chatter","Mail")],
         chart="bar", layout="kanban"))
     made.append(erp_dashboard("creatio-automation.svg", "odoo × creatio · BPM", "BUSINESS AUTOMATION",
-        CYAN, "#67e8f9",
+        CYAN, "#f6e3b8",
         [("Sync","Real-time"),("22","Flows"),("2","Systems"),("0","Manual")],
         chart="line", layout="table"))
     made.append(erp_dashboard("visitor-service-robot.svg", "grand-mosque · Visitors", "VISITOR MANAGEMENT",
-        GOLD, "#f0c55a",
+        GOLD, "#f6e3b8",
         [("1.2M","Visitors"),("340","Services/day"),("AI","Assist"),("Live","Reports")],
         chart="bar", layout="kanban"))
     made.append(erp_dashboard("vro-ministry-media.svg", "ministry-of-media · VRO", "GOVERNMENT · MEDIA",
-        VIOLET, "#8b5cf6",
+        VIOLET, "#836773",
         [("Licensing","Digital"),("Approvals","Workflow"),("Roles","RBAC"),("Reports","QWeb")],
         chart="line", layout="table"))
     made.append(erp_dashboard("tasharuk-platform.svg", "najran · Tasharuk", "GOVERNMENT · COMMUNITY",
-        GREEN, "#22c55e",
+        GREEN, "#6f8a6e",
         [("Citizens","Engaged"),("Regional","Services"),("Access","Managed"),("Data","Exports")],
         chart="bar", layout="kanban"))
 
     made.append(erp_dashboard("zeraei-platform.svg", "mewa · Zeraei", "GOVERNMENT · AGRICULTURE",
-        GREEN, "#22c55e",
+        GREEN, "#6f8a6e",
         [("Farmers","Onboarded"),("Services","Digital"),("Subsidies","Tracked"),("Reports","QWeb")],
         chart="line", layout="table"))
     made.append(erp_dashboard("ejadx-platform.svg", "ejadx · Acceleration", "INNOVATION PLATFORM",
-        CYAN, "#67e8f9",
+        CYAN, "#f6e3b8",
         [("Clients","Onboarded"),("APIs","Integrated"),("Flows","Automated"),("Live","Analytics")],
         chart="bar", layout="kanban"))
     made.append(erp_dashboard("tawajod-platform.svg", "tawajod · Presence", "DIGITAL SERVICES",
-        VIOLET, "#a78bfa",
+        VIOLET, "#9c7d8b",
         [("Multi","Client"),("Services","Managed"),("Cron","Jobs"),("Dashboards","Live")],
         chart="line", layout="table"))
     made.append(erp_dashboard("ejadtech-odoo-work.svg", "ejadtech · Government", "DIGITAL TRANSFORMATION",
@@ -425,7 +449,7 @@ def main():
         ("sheraton-residences.svg",  "Sheraton Residences",  "MOSTAKBAL CITY"),
     ]
     for fn, ti, se in re_ctx:
-        made.append(context_cover(fn, ti, se, ROSE, "#f43f5e", motif="building"))
+        made.append(context_cover(fn, ti, se, ROSE, "#a64b56", motif="building"))
 
     eng_ctx = [
         ("cargill-engineering.svg",   "Cargill",             "ROBOTICS / CONVEYOR"),
@@ -442,13 +466,13 @@ def main():
 
     # ── Real-brand covers (embed the actual local logo assets) ──
     made.append(brand_cover("ejadtech-brand.svg",
-        "assets/images/projects/ejadtech-odoo-work.png", "ejadtech.sa",
+        "assets/images/projects/ejadtech-odoo-work.webp", "ejadtech.sa",
         "EjadTech", "Government Digital Transformation · Odoo Delivery",
-        CYAN, "#2563eb", ["Odoo", "Gov Platforms", "KSA"], logo_w=560, logo_h=132))
+        CYAN, "#7c414c", ["Odoo", "Gov Platforms", "KSA"], logo_w=560, logo_h=132))
     made.append(brand_cover("ejad-brand.svg",
         "assets/images/companies/ejad-digital-logo.png", "ejad.sa",
         "EJAD Digital Solutions", "Odoo Silver Partner · Enterprise ERP Delivery",
-        GREEN, "#22c55e", ["Silver Partner", "Odoo 14–18", "Creatio"], logo_w=500, logo_h=145))
+        GREEN, "#6f8a6e", ["Silver Partner", "Odoo 14–18", "Creatio"], logo_w=500, logo_h=145))
     made.append(brand_cover("dotec-brand.svg",
         "assets/images/companies/dotec-logo.png", "dotecengineering.com",
         "DOTec Engineering", "Internal ERP · Project Lifecycle",

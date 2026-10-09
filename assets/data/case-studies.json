@@ -50,7 +50,7 @@
     "company": "EjadTech",
     "country": "Saudi Arabia",
     "sector": "Government · Digital Transformation",
-    "image": "assets/images/projects/ejadtech-odoo-work.png",
+    "image": "assets/images/projects/ejadtech-odoo-work.webp",
     "problem": "Government and public-sector clients required digital transformation ERP backbones for large-scale national platforms — including a Ministry of Environment agriculture platform (Zeraei), a Ministry of Media platform (VRO), and a regional emirate participation platform (Tasharuk).",
     "solution": "As an Odoo Developer on EjadTech's delivery team, I contributed to ERP/business workflow modules across these projects — building custom module development, backend logic, automation workflows, access rights, QWeb reports, and integration support.",
     "features": [

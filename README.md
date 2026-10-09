@@ -1,4 +1,4 @@
-# Mohamed Gamal — Odoo Techno-Functional Consultant & Developer
+# Mohamed Gamal — Senior Odoo Developer & ERP Software Engineer
 
 Portfolio site, plus the long-form case study for the **EJAD EGHR Enterprise Employee Portal**.
 
@@ -6,6 +6,33 @@ Portfolio site, plus the long-form case study for the **EJAD EGHR Enterprise Emp
 **EGHR case study:** https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/projects/eghr.html
 
 ![Portfolio social preview](assets/images/og/portfolio-og.jpg)
+
+---
+
+## Design system
+
+The site runs on one warm, editorial palette — deep plum surfaces, bone and sage light
+surfaces, honey gold and burgundy accents. Every colour in the stylesheets resolves through
+a semantic token in `assets/css/variables.css`; the raw palette is written down exactly once.
+
+| Role | Token | Value |
+|------|-------|-------|
+| Page floor / hero / footer | `--bg-deep` | `#1b1319` |
+| Light page | `--bg-page` | `#f5f2df` (Bone) |
+| Raised dark surfaces | `--surface-dark-1..3` | `#241a22` → `#3a2a35` |
+| Sage section | `--surface-sage` | `#e6ece0` |
+| Primary accent (dark) | `--accent-primary` | `#e3b375` (Honey Gold) |
+| Primary accent (light) | `--accent-deep` | `#7c414c` (Burgundy) |
+| Secondary accent | `--accent-secondary` | `#b4c5b5` (Muted Sage) |
+| Highlight | `--accent-warm` | `#f6e3b8` (Pale Gold) |
+
+Type is **Fraunces** for display (the editorial voice) and **Inter** for interface. Motion
+tokens — durations, easing and the depth ramp — live in `assets/css/motion.css` behind a
+`prefers-reduced-motion` override that switches every effect off.
+
+Generated artwork reads from the same palette: both `scripts/generate_*_visuals.py` files
+and the hero canvas in `assets/js/particles.js` pull their colours from it, so a palette
+change propagates to the images without hand-editing SVG.
 
 ---
 
@@ -49,9 +76,9 @@ writes optimised WebP next to the schematics, and repoints `projects/eghr.html` 
 
 ```bash
 pip install playwright pillow && playwright install chromium
-export EGHR_URL=http://localhost:8082
-export EGHR_DB=ejad_hr_local
-export EGHR_USER=qa.demo@example.com
+export EGHR_URL=<the portal's local URL>
+export EGHR_DB=<the local database name>
+export EGHR_USER=<a demo/QA account>
 export EGHR_PASSWORD=...                 # from the environment; never commit it
 
 python3 scripts/capture_eghr_screenshots.py --list   # review the plan first
@@ -59,6 +86,17 @@ python3 scripts/capture_eghr_screenshots.py
 ```
 
 Check every capture by eye for personal data before committing.
+
+---
+
+## Homepage structure
+
+Proof first, then the offer, then the person:
+
+`Hero → Selected work (flagship feature + grid) → Services → How I work → About → Capabilities → Companies → Context → Experience → Start a project`
+
+The flagship feature block is rendered from the same `projects.json` entry as the grid, so
+the case study is described in exactly one place.
 
 ---
 
@@ -72,6 +110,7 @@ company grids is data-driven from `assets/data/*.json`, rendered by `assets/js/d
 | Markup | Two pages: `index.html` and `projects/eghr.html` |
 | Styles | CSS custom properties; `assets/css/style.css` is an `@import` manifest |
 | Motion | Shared duration/easing/depth tokens in `assets/css/motion.css`, with a `prefers-reduced-motion` override |
+| Depth | `assets/js/hero.js` puts each hero layer on its own Z plane, so the pointer parallaxes the plate, portrait, chip and flagship card independently rather than tilting one flat image. Max rotation 5°. |
 | Behaviour | Vanilla JS modules, each guarded for reduced motion and coarse pointers |
 | Images | Generated SVG (tiny, crisp at any size) plus real photo/asset packs; everything lazy-loaded below the fold |
 | Social | Open Graph / Twitter cards generated into `assets/images/og/` |
@@ -96,8 +135,12 @@ Everything is relative-path only, so it works unchanged under the
 ## Checks
 
 ```bash
-python3 scripts/validate_project.py      # JSON parses, assets resolve, no external <img>, no broken links
+python3 scripts/validate_project.py      # JSON parses, assets resolve, anchors resolve, no external <img>
 ```
+
+The repository was also checked with a Playwright audit covering eleven viewports
+(360–1920) on both pages: horizontal overflow, text overlap and clipping, broken or
+distorted images, console errors, dead links and dead fragments.
 
 ---
 

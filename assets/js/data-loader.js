@@ -55,7 +55,7 @@
         <div class="company-role"><i class="fa-solid fa-user-tie"></i> ${escapeHTML(c.role)}</div>
         <p class="company-desc">${escapeHTML(c.description)}</p>
         <div class="company-card-footer">
-          <a href="#work" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-briefcase"></i> View Work</a>
+          <a href="#work" class="btn btn-outline-warm btn-sm"><i class="fa-solid fa-briefcase"></i> View Work</a>
           ${c.website ? `<a href="${escapeHTML(c.website)}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
             <i class="fa-solid fa-arrow-up-right-from-square"></i> Website</a>` : ''}
         </div>
@@ -65,12 +65,69 @@
     if (P.initTilt) P.initTilt(grid);
   }
 
-  /* ── Project (case-study) cards — the 6 canonical ────── */
-  function renderProjects(projects) {
-    const grid = document.getElementById('projects-grid');
-    if (!grid || !projects) return;
+  /* ── Flagship feature ────────────────────────────────
+     The first flagship-sized project gets its own editorial
+     block above the grid, built from the same JSON so there is
+     still one source of truth. */
+  function renderFeature(projects) {
+    const wrap = document.getElementById('work-feature');
+    if (!wrap) return null;
+    const p = projects.find(x => x.size === 'flagship');
+    if (!p) { wrap.innerHTML = ''; return null; }
 
-    if (P.setProjectsData) P.setProjectsData(projects);
+    const g = p.gallery || [];
+    const desktop = g[0] || p.cover;
+    const phone = p.featurePhone || g.find(src => /mobile/.test(src)) || '';
+    const meta = p.featureMeta || {};
+    const points = p.featurePoints || (p.scope || []).slice(0, 3);
+
+    wrap.innerHTML = `
+      <article class="work-feature fade-up">
+        <div class="wf-media">
+          <div class="wf-browser">
+            ${p.mediaNote ? `<span class="wf-tag">${escapeHTML(p.mediaNote)}</span>` : ''}
+            <img src="${escapeHTML(desktop)}" alt="${escapeHTML(p.title)} — main screen"
+                 width="1440" height="900" loading="lazy" decoding="async" />
+          </div>
+          ${phone ? `<div class="wf-phone"><img src="${escapeHTML(phone)}"
+                 alt="${escapeHTML(p.title)} on a phone" width="420" height="880"
+                 loading="lazy" decoding="async" /></div>` : ''}
+        </div>
+
+        <div class="wf-copy">
+          <p class="eyebrow">${escapeHTML(p.typeLabel || 'Flagship case study')}</p>
+          <h3>${escapeHTML(p.featureName || p.company)} <em>${escapeHTML(p.featureTitle || p.title)}</em></h3>
+          <p class="wf-lead">${escapeHTML(p.short || '')}</p>
+
+          <dl class="wf-meta">
+            ${Object.entries(meta).map(([k, v]) =>
+              `<div><dt>${escapeHTML(k)}</dt><dd>${escapeHTML(v)}</dd></div>`).join('')}
+          </dl>
+
+          <ul class="wf-points">
+            ${points.map(t => `<li>${escapeHTML(t)}</li>`).join('')}
+          </ul>
+
+          <a class="btn btn-primary" href="${escapeHTML(p.caseStudyUrl || '#work')}">
+            ${escapeHTML(p.caseStudyLabel || 'Explore the case study')}
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>`;
+
+    if (P.observeFadeUps) P.observeFadeUps();
+    return p;
+  }
+
+  /* ── Project (case-study) cards — the 6 canonical ────── */
+  function renderProjects(allProjects) {
+    const grid = document.getElementById('projects-grid');
+    if (!grid || !allProjects) return;
+
+    if (P.setProjectsData) P.setProjectsData(allProjects);
+
+    const featured = renderFeature(allProjects);
+    const projects = allProjects.filter(p => p !== featured);
 
     grid.innerHTML = projects.map((p, i) => {
       const cover      = p.cover || p.image;
@@ -132,7 +189,7 @@
     if (P.observeFadeUps) P.observeFadeUps();
     if (P.initTilt) P.initTilt(grid);
 
-    renderContext(projects);
+    renderContext(allProjects);
   }
 
   /* ── Secondary "Project Context & Business Domains" ──── */

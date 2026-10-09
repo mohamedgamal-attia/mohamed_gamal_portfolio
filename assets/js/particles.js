@@ -6,6 +6,14 @@
 (function () {
   'use strict';
 
+  /* Canvas colours come from the stylesheet, so the network motif
+     always matches the active palette instead of being hard-coded. */
+  const css = getComputedStyle(document.documentElement);
+  const gold = (css.getPropertyValue('--rgb-gold') || '227,179,117').trim();
+  const sage = (css.getPropertyValue('--rgb-sage') || '180,197,181').trim();
+  const NODE = `rgba(${gold}, 0.55)`;
+  const LINK = `rgba(${sage}, ALPHA)`;
+
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canvas = document.getElementById('hero-canvas');
   if (!canvas || reduce) return;
@@ -51,7 +59,7 @@
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(103, 232, 249, 0.65)';
+      ctx.fillStyle = NODE;
       ctx.fill();
 
       for (let j = i + 1; j < particles.length; j++) {
@@ -60,7 +68,7 @@
         const d2 = dx * dx + dy * dy;
         if (d2 < 15000) {
           const a = (1 - d2 / 15000) * 0.35;
-          ctx.strokeStyle = `rgba(90, 150, 240, ${a})`;
+          ctx.strokeStyle = LINK.replace('ALPHA', a);
           ctx.lineWidth = 1;
           ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
         }

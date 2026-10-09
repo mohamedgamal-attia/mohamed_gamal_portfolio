@@ -44,7 +44,22 @@
       "QWeb",
       "PostgreSQL",
       "Playwright"
-    ]
+    ],
+    "featureTitle": "Enterprise Employee Portal",
+    "featurePhone": "assets/images/projects/eghr/dashboard-mobile-ar.svg",
+    "mediaNote": "Interface schematic",
+    "featureMeta": {
+      "My role": "End-to-end delivery",
+      "Platform": "Odoo 18 · portal",
+      "Languages": "Arabic · English",
+      "Surface": "Responsive web"
+    },
+    "featurePoints": [
+      "Eleven HR services behind one dynamic registry — a twelfth needs no portal rewrite.",
+      "One request spine, split into My Requests and My Actions by record rules.",
+      "Attendance check-in validated against the office geofence on the server."
+    ],
+    "featureName": "EJAD EGHR"
   },
   {
     "id": "margins-real-estate-erp",
@@ -386,9 +401,9 @@
     "sectorLabel": "Visual Content Pack",
     "role": "Content & digital delivery — content structuring, visual system & asset production.",
     "short": "Turned 15 blog articles into a 24-page on-brand visual pack + 32 reusable images.",
-    "cover": "assets/images/projects/bluedez/bluedez-cover.png",
+    "cover": "assets/images/projects/bluedez/bluedez-cover.webp",
     "gallery": [
-      "assets/images/projects/bluedez/bluedez-cover.png",
+      "assets/images/projects/bluedez/bluedez-cover.webp",
       "assets/images/projects/bluedez/bluedez-screenshot-1.png",
       "assets/images/projects/bluedez/bluedez-screenshot-2.png",
       "assets/images/projects/bluedez/bluedez-screenshot-3.png"
