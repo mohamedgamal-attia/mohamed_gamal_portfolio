@@ -1,32 +1,50 @@
 /* =========================================================
-   layout.css — container, spacing, grids, divider
+   layout.css — container, section rhythm, section heads
    ========================================================= */
 
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 28px; }
+
+.section-pad { padding: clamp(72px, 9vw, 132px) 0; position: relative; }
+
+/* ── Section surfaces ────────────────────────────────────
+   Alternating bone / sage / plum is what gives the page its
+   editorial rhythm — no section repeats its neighbour.     */
+.section-sage { background: var(--surface-sage); }
+.section-dark {
+  background: var(--grad-plum);
+  color: var(--text-on-dark);
+}
+.section-deep { background: var(--bg-deep); color: var(--text-on-dark); overflow: hidden; }
+
+.section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4,
+.section-deep h1, .section-deep h2, .section-deep h3, .section-deep h4 { color: var(--text-on-dark); }
+.section-dark p, .section-deep p { color: var(--text-on-dark-2); }
+.section-dark .eyebrow, .section-deep .eyebrow { color: var(--accent-primary); }
+.section-dark h2 em, .section-deep h2 em { color: var(--accent-primary); }
+
+/* Hairline between light sections, so the rhythm reads without a box */
+.section-pad + .section-pad:not(.section-dark):not(.section-sage):not(.section-deep)::before,
+.section-sage + .section-pad::before {
+  content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 1px;
+  background: var(--border-soft);
 }
 
-.section-pad    { padding: 100px 0; }
-.section-pad-sm { padding: 70px 0; }
+/* ── Section heads ───────────────────────────────────────  */
+.sec-head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 68px); }
+.sec-head-center { margin-left: auto; margin-right: auto; text-align: center; }
+.sec-head-center .eyebrow { justify-content: center; }
+.sec-head h2 { margin-bottom: 18px; }
+.sec-lead { font-size: 1.06rem; max-width: 58ch; color: var(--text-secondary); }
+.section-dark .sec-lead, .section-deep .sec-lead { color: var(--text-on-dark-2); }
+.sec-head-center .sec-lead { margin-inline: auto; }
 
-.section-header { text-align: center; margin-bottom: 64px; }
-.section-header h2 { margin-bottom: 16px; }
-.section-header p {
-  max-width: 640px;
-  margin: 0 auto;
-  font-size: 1.05rem;
-  color: var(--text-light);
-}
-
-.divider {
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--blue), transparent);
-  opacity: .3;
-}
-
-/* Generic two-column grid */
+/* Generic grids kept for the data-driven partials */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+/* A thin rule with a gold travelling highlight — used between chapters */
+.beam-divider {
+  position: relative; height: 1px; border: 0; overflow: hidden;
+  background: var(--border-soft);
+}
+.section-dark .beam-divider, .section-deep .beam-divider { background: var(--border-on-dark); }

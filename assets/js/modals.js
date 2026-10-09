@@ -13,6 +13,7 @@
   const esc = (window.Portfolio && window.Portfolio.escapeHTML) || (s => String(s == null ? '' : s));
   let allProjects = [];
   let gImgs = [], gIdx = 0;
+  let lastFocus = null;
 
   window.Portfolio = window.Portfolio || {};
   window.Portfolio.setProjectsData = d => { allProjects = d; };
@@ -72,13 +73,27 @@
     setupGallery(p);
     switchTab('overview');
 
+    lastFocus = document.activeElement;
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    closeBtn.focus();
   }
 
   function closeModal() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  /* Keep Tab inside the dialog while it is open */
+  function trapFocus(e) {
+    const focusable = Array.prototype.filter.call(
+      overlay.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])'),
+      el => el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
 
   /* ── Tabs ───────────────────────────────────────────── */
@@ -131,6 +146,7 @@
   document.addEventListener('keydown', e => {
     if (!overlay.classList.contains('open')) return;
     if (e.key === 'Escape') closeModal();
+    else if (e.key === 'Tab') trapFocus(e);
     else if (e.key === 'ArrowLeft'  && gImgs.length > 1 && document.querySelector('[data-panel="gallery"].active')) gStep(-1);
     else if (e.key === 'ArrowRight' && gImgs.length > 1 && document.querySelector('[data-panel="gallery"].active')) gStep(1);
   });

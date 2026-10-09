@@ -23,28 +23,8 @@
     onScroll();
   }
 
-  /* ── Role rotator (subtle) ────────────────────────────── */
-  const roleEl = document.getElementById('hero-role-typed');
-  if (roleEl && !reduce) {
-    const roles = [
-      'Odoo Techno-Functional Consultant & Developer',
-      'Senior Odoo Enterprise Developer',
-      'ERP Solution Designer & Trainer',
-      'AI & Data Analyst',
-    ];
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % roles.length;
-      roleEl.style.opacity = '0';
-      roleEl.style.transform = 'translateY(6px)';
-      setTimeout(() => {
-        roleEl.textContent = roles[idx];
-        roleEl.style.opacity = '1';
-        roleEl.style.transform = 'none';
-      }, 320);
-    }, 2800);
-    roleEl.style.transition = 'opacity .32s ease, transform .32s ease';
-  }
+  /* The professional title is deliberately fixed — one claim, not a
+     carousel of competing ones. (Rotator removed.) */
 
   if (!fine || reduce) return; /* remaining effects are pointer/motion driven */
 
@@ -60,29 +40,24 @@
     el.addEventListener('mouseleave', () => { el.style.transform = ''; });
   });
 
-  /* ── Hero portrait tilt + layered mouse parallax ──────── */
-  const portrait = document.getElementById('hero-portrait');
+  /* ── Hero background parallax ─────────────────────────
+     The portrait composition itself is driven by hero.js, which
+     gives each layer its own Z plane; this only moves the
+     background rules behind it. */
   const hero = document.getElementById('hero');
   const parallaxEls = hero ? [...hero.querySelectorAll('[data-parallax]')] : [];
 
-  if (hero) {
+  if (hero && parallaxEls.length) {
     hero.addEventListener('mousemove', e => {
       const r = hero.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width - 0.5;
       const py = (e.clientY - r.top) / r.height - 0.5;
-
-      if (portrait) {
-        portrait.style.transform =
-          `rotateY(${px * 8}deg) rotateX(${-py * 8}deg) translateZ(0)`;
-      }
-      // depth parallax: move layers by mouse offset * speed
       parallaxEls.forEach(el => {
         const s = parseFloat(el.dataset.parallax) || 0;
-        el.style.transform = `translate3d(${px * s * 90}px, ${py * s * 90}px, 0)`;
+        el.style.transform = `translate3d(${px * s * 110}px, ${py * s * 110}px, 0)`;
       });
     });
     hero.addEventListener('mouseleave', () => {
-      if (portrait) portrait.style.transform = '';
       parallaxEls.forEach(el => { el.style.transform = ''; });
     });
   }

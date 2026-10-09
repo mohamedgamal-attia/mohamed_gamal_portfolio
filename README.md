@@ -1,74 +1,200 @@
-# Mohamed Gamal — Senior Odoo Developer Portfolio
+# Mohamed Gamal — Senior Odoo Developer & ERP Software Engineer
 
-A professional portfolio website for **Mohamed Gamal**, Senior Odoo Developer & ERP Software Developer.
+Portfolio site, plus the long-form case study for the **EJAD EGHR Enterprise Employee Portal**.
+
+**Live:** https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/
+**EGHR case study:** https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/projects/eghr.html
+
+![Portfolio social preview](assets/images/og/portfolio-og.jpg)
 
 ---
 
-## Run Locally
+## Design system
+
+The site runs on one warm, editorial palette — deep plum surfaces, bone and sage light
+surfaces, honey gold and burgundy accents. Every colour in the stylesheets resolves through
+a semantic token in `assets/css/variables.css`; the raw palette is written down exactly once.
+
+| Role | Token | Value |
+|------|-------|-------|
+| Page floor / hero / footer | `--bg-deep` | `#1b1319` |
+| Light page | `--bg-page` | `#f5f2df` (Bone) |
+| Raised dark surfaces | `--surface-dark-1..3` | `#241a22` → `#3a2a35` |
+| Sage section | `--surface-sage` | `#e6ece0` |
+| Primary accent (dark) | `--accent-primary` | `#e3b375` (Honey Gold) |
+| Primary accent (light) | `--accent-deep` | `#7c414c` (Burgundy) |
+| Secondary accent | `--accent-secondary` | `#b4c5b5` (Muted Sage) |
+| Highlight | `--accent-warm` | `#f6e3b8` (Pale Gold) |
+
+Type is **Fraunces** for display (the editorial voice) and **Inter** for interface. Motion
+tokens — durations, easing and the depth ramp — live in `assets/css/motion.css` behind a
+`prefers-reduced-motion` override that switches every effect off.
+
+Generated artwork reads from the same palette: both `scripts/generate_*_visuals.py` files
+and the hero canvas in `assets/js/particles.js` pull their colours from it, so a palette
+change propagates to the images without hand-editing SVG.
+
+---
+
+## Featured work
+
+| Project | Type | Stack | Detail |
+|---------|------|-------|--------|
+| **EJAD EGHR — Enterprise Employee Portal** | Flagship case study | Odoo 18 · Python · QWeb · PostgreSQL · Playwright | [projects/eghr.html](projects/eghr.html) |
+| Margins Real Estate ERP | Full ERP build | Odoo 17 · Python · PostgreSQL · QWeb | in-page modal |
+| DOTec Engineering ERP | Full ERP build | Odoo 18 · Python · PostgreSQL · REST API | in-page modal |
+| EjadTech — Government Digital Transformation | Odoo delivery | Odoo · Python · QWeb | in-page modal |
+| EJAD Digital Solutions — Odoo Enterprise Delivery | Odoo delivery | Odoo 17/18 · Python · QWeb | in-page modal |
+| Sunbelt Deals — Website asset curation | Digital delivery | Image pipeline · WebP | in-page modal |
+| BlueDez — Engineering blog content pack | Digital delivery | Content design · PDF | in-page modal |
+
+---
+
+## EGHR case study
+
+A dedicated page at `projects/eghr.html` covering the portal end to end: the business
+problem, my role, the design system, dashboard, request centre, attendance (including the
+full geofence state machine), the eleven employee services, announcements, Arabic/English
+and light/dark, mobile, architecture, engineering highlights and QA.
+
+### About its visuals
+
+The screens on that page are **interface schematics, not screenshots**. They encode the
+delivered portal's layout, information architecture, RTL mirroring, light/dark surfaces and
+attendance states; they do not reproduce live HR records, because real captures contain
+employee data. The page labels each one and says so in an on-page note.
+
+They are generated — rerun after editing the generator:
 
 ```bash
-cd /path/to/my_portfolio
-python3 -m http.server 8000
-# Open http://localhost:8000 in your browser
+python3 scripts/generate_eghr_visuals.py
 ```
 
-> **Important:** This site uses `@import` in CSS and `fetch()` for JSON — it requires an HTTP server. Opening `index.html` directly via `file://` will not work.
+To replace them with real captures, run the capture script from a machine that can reach a
+running EGHR instance, signed in as a demo/QA account. It masks personal-data selectors,
+writes optimised WebP next to the schematics, and repoints `projects/eghr.html` at them:
+
+```bash
+pip install playwright pillow && playwright install chromium
+export EGHR_URL=<the portal's local URL>
+export EGHR_DB=<the local database name>
+export EGHR_USER=<a demo/QA account>
+export EGHR_PASSWORD=...                 # from the environment; never commit it
+
+python3 scripts/capture_eghr_screenshots.py --list   # review the plan first
+python3 scripts/capture_eghr_screenshots.py
+```
+
+Check every capture by eye for personal data before committing.
+
+---
+
+## Homepage structure
+
+Proof first, then the offer, then the person:
+
+`Hero → Selected work (flagship feature + grid) → Services → How I work → About → Capabilities → Companies → Context → Experience → Start a project`
+
+The flagship feature block is rendered from the same `projects.json` entry as the grid, so
+the case study is described in exactly one place.
+
+---
+
+## Tech stack
+
+Static HTML, CSS and vanilla JS — no framework, no build step. Content for the project and
+company grids is data-driven from `assets/data/*.json`, rendered by `assets/js/data-loader.js`.
+
+| Layer | Notes |
+|-------|-------|
+| Markup | Two pages: `index.html` and `projects/eghr.html` |
+| Styles | CSS custom properties; `assets/css/style.css` is an `@import` manifest |
+| Motion | Shared duration/easing/depth tokens in `assets/css/motion.css`, with a `prefers-reduced-motion` override |
+| Depth | `assets/js/hero.js` puts each hero layer on its own Z plane, so the pointer parallaxes the plate, portrait, chip and flagship card independently rather than tilting one flat image. Max rotation 5°. |
+| Behaviour | Vanilla JS modules, each guarded for reduced motion and coarse pointers |
+| Images | Generated SVG (tiny, crisp at any size) plus real photo/asset packs; everything lazy-loaded below the fold |
+| Social | Open Graph / Twitter cards generated into `assets/images/og/` |
+
+---
+
+## Run locally
+
+```bash
+python3 -m http.server 8000
+# http://localhost:8000
+```
+
+> The site uses CSS `@import` and `fetch()` for JSON, so it needs an HTTP server.
+> Opening `index.html` over `file://` will not work.
+
+Everything is relative-path only, so it works unchanged under the
+`/mohamed_gamal_portfolio/` GitHub Pages sub-path.
+
+---
+
+## Checks
+
+```bash
+python3 scripts/validate_project.py      # JSON parses, assets resolve, anchors resolve, no external <img>
+```
+
+The repository was also checked with a Playwright audit covering eleven viewports
+(360–1920) on both pages: horizontal overflow, text overlap and clipping, broken or
+distorted images, console errors, dead links and dead fragments.
 
 ---
 
 ## Project Structure
 
 ```
-my_portfolio/
-├── index.html                    # Main page (no hardcoded project/company cards)
-├── my_img.png                    # Personal photo
-├── 0_Mohamed_Gamal_CV.pdf        # Downloadable CV
+mohamed_gamal_portfolio/
+├── index.html                       # Homepage
+├── projects/
+│   └── eghr.html                    # EGHR flagship case study
+├── my_img.png                       # Portrait
+├── 0_Mohamed_Gamal_CV.pdf           # Downloadable CV
 │
 ├── assets/
 │   ├── css/
-│   │   ├── style.css             # Entry point (@import only)
-│   │   ├── variables.css         # CSS custom properties (colors, shadows, radii)
-│   │   ├── base.css              # Reset, body, typography
-│   │   ├── layout.css            # Container, grid helpers, section padding
-│   │   ├── components.css        # Buttons, badges, navbar, modal, form, skeleton
-│   │   ├── sections.css          # Hero, stats, about, skills, companies, work, etc.
-│   │   └── responsive.css        # All @media queries
+│   │   ├── style.css                # @import manifest (homepage + shared)
+│   │   ├── variables.css            # Colour / radius / shadow tokens
+│   │   ├── motion.css               # Duration, easing, depth + reduced-motion
+│   │   ├── base.css · layout.css    # Reset, typography, container, grids
+│   │   ├── components.css           # Buttons, nav, modal, badges, skeletons
+│   │   ├── sections.css             # Per-section homepage styles
+│   │   ├── futuristic.css           # Aurora, kinetic type, glass, reveal
+│   │   ├── project-showcase.css     # Project cards, bento grid, context chips
+│   │   ├── carousels.css · cursor.css
+│   │   ├── responsive.css           # Breakpoints
+│   │   └── case-study.css           # Case-study page only
 │   │
 │   ├── js/
-│   │   ├── config.js             # window.Portfolio namespace, profile, filterTabs, dataFiles
-│   │   ├── animations.js         # Navbar scroll, back-to-top, fade-up, counter animation
-│   │   ├── modals.js             # Project detail modal (event-delegated, works on dynamic cards)
-│   │   ├── filters.js            # Filter tab logic (called by data-loader after render)
-│   │   ├── data-loader.js        # fetch() JSON → render company cards + project cards
-│   │   └── main.js               # Entry point: WhatsApp link injection, smooth scroll
+│   │   ├── config.js                # window.Portfolio namespace
+│   │   ├── animations.js            # Navbar, reveal, counters, mobile menu
+│   │   ├── effects.js · cursor.js · particles.js · tilt.js · carousels.js
+│   │   ├── modals.js                # Project modal (tabs, gallery, focus trap)
+│   │   ├── filters.js · data-loader.js · main.js
+│   │   └── case-study.js            # Gallery, lightbox, compare switches, progress
 │   │
-│   ├── data/
-│   │   ├── profile.json          # Personal info, skills, Odoo versions
-│   │   ├── companies.json        # 4 companies with logos, roles, descriptions
-│   │   ├── case-studies.json     # 4 featured ERP case studies (used by featured section)
-│   │   ├── projects.json         # All 25 project cards (type, categories, roleNote, sourceUrl)
-│   │   └── sources.json          # Image asset provenance (type, source, notes)
+│   ├── data/                        # profile / companies / case-studies / projects / sources
 │   │
 │   └── images/
-│       ├── companies/
-│       │   ├── ejadtech-logo.png         # Real PNG logo
-│       │   ├── ejad-digital-logo.png     # Real PNG logo
-│       │   ├── margins-logo.svg          # Premium SVG placeholder (real logo unavailable)
-│       │   └── dotec-logo.png            # Real PNG logo
+│       ├── favicon.svg
+│       ├── og/                      # Social preview cards
+│       ├── companies/               # Company logos
 │       └── projects/
-│           ├── *.svg                     # Premium generated SVG illustrations (ERP projects)
-│           ├── bluedez/                  # BlueDez content-pack images (real project assets)
-│           │   ├── bluedez-cover.png
-│           │   └── bluedez-screenshot-1..3.png
-│           └── sunbelt/                  # Sunbelt website asset-pack images (real project assets)
-│               ├── sunbelt-cover.webp
-│               ├── sunbelt-screenshot-1.webp
-│               ├── sunbelt-screenshot-2..3.jpg
-│               └── sunbelt-logo.png
+│           ├── eghr/                # EGHR interface schematics + card cover
+│           ├── generated/           # Generated ERP product visuals
+│           ├── bluedez/ · sunbelt/  # Real project asset packs
+│           └── *.svg
 │
 └── scripts/
-    ├── download_assets.py        # Try to download real company logos from official URLs
-    └── validate_project.py       # Pre-flight validation (JSON, images, no ext src, server)
+    ├── generate_eghr_visuals.py     # Builds the EGHR schematics
+    ├── capture_eghr_screenshots.py  # Replaces them with real captures
+    ├── generate_project_visuals.py  # Builds the other project covers
+    ├── validate_project.py          # Pre-flight checks
+    ├── download_assets.py           # Company logo refresh
+    └── audit_portfolio_data.py
 ```
 
 ---
@@ -111,7 +237,11 @@ Key fields per project:
 | `sourceUrl` | Enables "View Official Source" button in modal |
 | `sourceLinkLabel` | Label for the source button |
 | `cardDesc` | Short description shown on the card (120 chars max) |
-| `sectorLabel` | Sector emoji + label shown in card footer |
+| `sectorLabel` | Sector label shown in card footer |
+| `cover` | Card thumbnail (the validator checks it resolves) |
+| `caseStudyUrl` | When set, the whole card becomes a link to that page instead of opening the modal |
+| `caseStudyLabel` | CTA wording for such a card (default `Case Study`) |
+| `size` | `flagship` (full-width horizontal), `medium`, or `visual` |
 
 ### Featured Case Studies
 Edit `assets/data/case-studies.json`. These populate the `#featured` section cards (currently hardcoded in HTML for richer layout). To make featured cards dynamic too, update `data-loader.js` with a `renderCaseStudies()` function.
@@ -174,17 +304,14 @@ Two non-ERP projects are included in the `#work` grid and filterable via **Websi
 
 ## Scripts
 
-### Validate project integrity
-```bash
-python3 scripts/validate_project.py
-```
-Checks: JSON parse, image paths, no external img src, required files, local server.
-
-### Re-download company logos
-```bash
-python3 scripts/download_assets.py
-```
-Tries all known official logo URLs. Falls back gracefully to existing files if download fails.
+| Script | What it does |
+|--------|--------------|
+| `generate_eghr_visuals.py` | Rebuilds every EGHR interface schematic and the card cover |
+| `capture_eghr_screenshots.py` | Captures the real portal and repoints `projects/eghr.html` at it |
+| `generate_project_visuals.py` | Rebuilds the other project cover images |
+| `validate_project.py` | JSON parse, cover/gallery paths, case-study pages, broken local refs, required files |
+| `download_assets.py` | Refreshes company logos from their official URLs, falling back to what is on disk |
+| `audit_portfolio_data.py` | Cross-checks the data files against the rendered content |
 
 ---
 

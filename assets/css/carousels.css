@@ -54,7 +54,7 @@
 .carousel-dot.active { width: 26px; background: var(--grad-brand); }
 
 /* On-light dot variant */
-.carousel.on-light .carousel-dot { background: rgba(37,99,235,.2); }
+.carousel.on-light .carousel-dot { background: rgba(var(--rgb-burgundy),.2); }
 .carousel.on-light .carousel-dot.active { background: var(--grad-brand); }
 
 /* ── Career track (journey cards are the slides) ────────── */
@@ -65,15 +65,15 @@
   .journey-carousel .journey-card.carousel-slide { opacity: .6; transform: scale(.93); }
   .journey-carousel .journey-card.carousel-slide.is-active {
     opacity: 1; transform: scale(1);
-    border-color: rgba(34,211,238,.5);
-    box-shadow: 0 24px 60px -22px rgba(0,0,0,.6), 0 0 0 1px rgba(34,211,238,.35), 0 0 40px -6px rgba(34,211,238,.25);
+    border-color: rgba(var(--rgb-gold),.5);
+    box-shadow: 0 24px 60px -22px rgba(0,0,0,.6), 0 0 0 1px rgba(var(--rgb-gold),.35), 0 0 40px -6px rgba(var(--rgb-gold),.25);
   }
 }
 
 /* Progress delivery line under the career track */
 .journey-progress {
   height: 2px; margin: 4px 8px 0;
-  background: linear-gradient(90deg, var(--blue), rgba(37,99,235,.12));
+  background: linear-gradient(90deg, var(--blue), rgba(var(--rgb-burgundy),.12));
   border-radius: 2px; position: relative; overflow: hidden;
 }
 .journey-progress::after {

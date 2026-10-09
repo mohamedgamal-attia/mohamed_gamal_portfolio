@@ -25,20 +25,40 @@
     sections.forEach(s => {
       if (window.scrollY >= s.offsetTop - 130) current = s.id;
     });
-    navLinks.forEach(a => a.classList.toggle('active', a.dataset.section === current));
+    navLinks.forEach(a => {
+      const on = a.dataset.section === current;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
   }
 
   /* ── Mobile menu ──────────────────────────────────────── */
   const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  hamburger.addEventListener('click', () => {
-    const open = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', open);
-  });
+  function setMenu(open) {
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  }
+  hamburger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
   document.querySelectorAll('.mobile-menu a').forEach(a => {
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    a.addEventListener('click', () => setMenu(false));
   });
+  /* Escape closes the menu and hands focus back to the toggle */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      setMenu(false);
+      hamburger.focus();
+    }
+  });
+  /* Never leave the overlay open when the desktop nav comes back.
+     Guarded: engines without MediaQueryList.addEventListener must not
+     abort this IIFE, or the reveal observer below never runs. */
+  const desktopMQ = window.matchMedia('(min-width: 769px)');
+  const onDesktop = e => { if (e.matches) setMenu(false); };
+  if (desktopMQ.addEventListener) desktopMQ.addEventListener('change', onDesktop);
+  else if (desktopMQ.addListener) desktopMQ.addListener(onDesktop);
 
   /* ── Scroll-reveal (IntersectionObserver) ─────────────── */
   const fadeObserver = new IntersectionObserver(

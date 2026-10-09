@@ -9,7 +9,7 @@ Checks:
   1. All JSON data files parse without errors
   2. Every project image path in projects.json exists on disk
   3. Every company logo path in companies.json exists on disk
-  4. index.html contains no external <img src="http..."> references
+  4. Every HTML page is free of external <img src> and has no broken local refs
   5. All required JS and CSS files exist
   6. Local server is reachable on http://localhost:8000 (optional)
 
@@ -62,13 +62,26 @@ for rel in json_files:
 print("\n[2] Project images")
 projects = parsed.get("assets/data/projects.json", [])
 if isinstance(projects, list):
-    missing = [(p.get("id"), p.get("image")) for p in projects
-               if not os.path.exists(os.path.join(ROOT, p.get("image", "")))]
+    missing = []
+    for p in projects:
+        cover = p.get("cover") or p.get("image")
+        if not cover:
+            missing.append((p.get("id"), "<no cover/image field>"))
+        elif not os.path.exists(os.path.join(ROOT, cover)):
+            missing.append((p.get("id"), cover))
     if missing:
         for pid, img in missing:
-            fail(f"Missing image for '{pid}': {img}")
+            fail(f"Missing cover for '{pid}': {img}")
     else:
-        ok(f"All {len(projects)} project image paths exist")
+        ok(f"All {len(projects)} project cover paths exist")
+
+    # Case-study pages referenced from the grid must exist
+    for p in projects:
+        url = p.get("caseStudyUrl")
+        if url and not os.path.exists(os.path.join(ROOT, url)):
+            fail(f"Missing case-study page for '{p.get('id')}': {url}")
+        elif url:
+            ok(f"Case-study page for '{p.get('id')}': {url}")
     # gallery images
     gal_missing = []
     gal_count = 0
@@ -102,20 +115,67 @@ else:
     warn("companies.json is not a list")
 
 
-# ── 4. No external <img> in index.html ───────────────────
-print("\n[4] External images in index.html")
-html_path = os.path.join(ROOT, "index.html")
-if os.path.exists(html_path):
+# ── 4. HTML pages: no external images, no broken local assets ──
+print("\n[4] HTML pages")
+pages = ["index.html", "projects/eghr.html"]
+for rel in pages:
+    html_path = os.path.join(ROOT, rel)
+    if not os.path.exists(html_path):
+        fail(f"{rel} not found")
+        continue
     with open(html_path) as f:
         html = f.read()
+
     ext_imgs = re.findall(r'<img[^>]+src=["\']https?://[^"\']+["\']', html)
-    if ext_imgs:
-        for m in ext_imgs:
-            fail(f"External img src: {m[:120]}")
-    else:
-        ok("No external <img src> found in index.html")
-else:
-    fail("index.html not found")
+    for m in ext_imgs:
+        fail(f"{rel}: external img src: {m[:110]}")
+    if not ext_imgs:
+        ok(f"{rel}: no external <img src>")
+
+    # Every local src/href must resolve, relative to the page. Fragments and
+    # query strings are stripped first rather than excluded, so same-page
+    # anchors are checked too instead of being quietly skipped.
+    base = os.path.dirname(html_path)
+    refs = re.findall(r'(?:\bsrc|\bhref)=["\']([^"\']+)["\']', html)
+    local, anchors = set(), set()
+    for raw in refs:
+        raw = raw.strip()
+        if raw.startswith(("http:", "https:", "//", "mailto:", "tel:", "data:", "javascript:")):
+            continue
+        if raw.startswith("#"):
+            anchors.add(raw[1:])
+            continue
+        path_part = raw.split("#", 1)[0].split("?", 1)[0]
+        if not path_part:
+            continue
+        frag = raw.split("#", 1)[1] if "#" in raw else ""
+        local.add((path_part, frag))
+
+    broken = sorted({p_ for p_, _ in local
+                     if not os.path.exists(os.path.normpath(os.path.join(base, p_)))})
+    for r in broken:
+        fail(f"{rel}: broken local reference: {r}")
+    if not broken:
+        ok(f"{rel}: all {len(local)} local file references resolve")
+
+    # same-page anchors must have a target
+    ids = set(re.findall(r'\bid=["\']([^"\']+)["\']', html))
+    dead = sorted(a for a in anchors if a and a not in ids)
+    for a in dead:
+        fail(f"{rel}: anchor #{a} has no target")
+    if not dead:
+        ok(f"{rel}: all {len(anchors)} same-page anchors resolve")
+
+    # cross-page anchors (e.g. ../index.html#work)
+    for p_, frag in sorted(local):
+        if not frag or not p_.endswith(".html"):
+            continue
+        tgt = os.path.normpath(os.path.join(base, p_))
+        if not os.path.exists(tgt):
+            continue
+        with open(tgt) as tf:
+            if frag not in set(re.findall(r'\bid=["\']([^"\']+)["\']', tf.read())):
+                fail(f"{rel}: {p_}#{frag} — target page has no id '{frag}'")
 
 
 # ── 5. Required files ─────────────────────────────────────
@@ -133,6 +193,13 @@ required = [
     "assets/css/project-showcase.css",
     "assets/css/carousels.css",
     "assets/css/cursor.css",
+    "assets/css/motion.css",
+    "assets/css/case-study.css",
+    "projects/eghr.html",
+    "assets/images/favicon.svg",
+    "assets/images/og/portfolio-og.jpg",
+    "assets/images/og/eghr-og.jpg",
+    "assets/js/case-study.js",
     "assets/js/config.js",
     "assets/js/animations.js",
     "assets/js/effects.js",

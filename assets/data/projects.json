@@ -1,11 +1,73 @@
 [
   {
+    "id": "ejad-eghr-employee-portal",
+    "title": "EJAD EGHR — Enterprise Employee Portal",
+    "company": "EJAD Digital Solutions",
+    "country": "Saudi Arabia",
+    "type": "erp-system",
+    "size": "flagship",
+    "categories": [
+      "erp-systems",
+      "odoo-delivery"
+    ],
+    "typeLabel": "Flagship Case Study",
+    "sectorLabel": "HR · Employee Self-Service",
+    "caseStudyUrl": "projects/eghr.html",
+    "caseStudyLabel": "Explore Case Study",
+    "role": "Business analysis, Odoo backend development, portal architecture, UI/UX implementation, responsive frontend, security, QA and deployment support.",
+    "short": "A portal-first HR experience built on Odoo 18 with dynamic employee services, approvals, geofenced attendance, bilingual UX and announcements.",
+    "cover": "assets/images/projects/eghr/eghr-cover.svg",
+    "gallery": [
+      "assets/images/projects/eghr/dashboard-desktop-en-dark.svg",
+      "assets/images/projects/eghr/dashboard-desktop-ar-light.svg",
+      "assets/images/projects/eghr/requests-desktop-en-dark.svg",
+      "assets/images/projects/eghr/attendance-desktop-en-dark.svg",
+      "assets/images/projects/eghr/services-desktop-en-dark.svg",
+      "assets/images/projects/eghr/announcements-desktop-en-dark.svg"
+    ],
+    "overview": "A fully branded Odoo 18 employee self-service platform. Employees check in against a server-validated geofence, raise any of eleven HR requests, follow the approval timeline, and read announcements targeted at them — in Arabic or English, light or dark, on a phone or a desktop. The Odoo back office stays hidden behind the portal.",
+    "scope": [
+      "Dynamic employee-service registry (11 services)",
+      "Unified My Requests / My Actions request spine",
+      "Server-side attendance geofencing",
+      "Arabic RTL + English LTR from one template set",
+      "Light / dark theme tokens",
+      "Targeted bilingual announcements",
+      "Permission-aware portal controllers & record rules",
+      "Responsive employee journeys (360–1920 px)",
+      "Odoo-core-safe custom modules"
+    ],
+    "impact": "Replaced back-office data entry with a portal employees can actually use: one place to check in, raise a request, follow its approval and read what HR published — extensible by configuration rather than by a portal rewrite.",
+    "tags": [
+      "Odoo 18",
+      "Python",
+      "QWeb",
+      "PostgreSQL",
+      "Playwright"
+    ],
+    "featureTitle": "Enterprise Employee Portal",
+    "featurePhone": "assets/images/projects/eghr/dashboard-mobile-ar.svg",
+    "mediaNote": "Interface schematic",
+    "featureMeta": {
+      "My role": "End-to-end delivery",
+      "Platform": "Odoo 18 · portal",
+      "Languages": "Arabic · English",
+      "Surface": "Responsive web"
+    },
+    "featurePoints": [
+      "Eleven HR services behind one dynamic registry — a twelfth needs no portal rewrite.",
+      "One request spine, split into My Requests and My Actions by record rules.",
+      "Attendance check-in validated against the office geofence on the server."
+    ],
+    "featureName": "EJAD EGHR"
+  },
+  {
     "id": "margins-real-estate-erp",
     "title": "Margins Real Estate ERP System",
     "company": "Margins Developments",
     "country": "Egypt",
     "type": "erp-system",
-    "size": "flagship",
+    "size": "medium",
     "categories": [
       "erp-systems"
     ],
@@ -70,7 +132,7 @@
     "company": "DOTec Engineering",
     "country": "United States",
     "type": "erp-system",
-    "size": "flagship",
+    "size": "medium",
     "categories": [
       "erp-systems"
     ],
@@ -339,9 +401,9 @@
     "sectorLabel": "Visual Content Pack",
     "role": "Content & digital delivery — content structuring, visual system & asset production.",
     "short": "Turned 15 blog articles into a 24-page on-brand visual pack + 32 reusable images.",
-    "cover": "assets/images/projects/bluedez/bluedez-cover.png",
+    "cover": "assets/images/projects/bluedez/bluedez-cover.webp",
     "gallery": [
-      "assets/images/projects/bluedez/bluedez-cover.png",
+      "assets/images/projects/bluedez/bluedez-cover.webp",
       "assets/images/projects/bluedez/bluedez-screenshot-1.png",
       "assets/images/projects/bluedez/bluedez-screenshot-2.png",
       "assets/images/projects/bluedez/bluedez-screenshot-3.png"

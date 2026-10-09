@@ -27,7 +27,7 @@
 
         // Show/hide no-results message
         const noResults = document.getElementById('no-results-msg');
-        if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
+        if (noResults) noResults.hidden = visible !== 0;
       });
     });
   }
