@@ -2,7 +2,7 @@
    hero.js — layered pointer depth for the hero composition
    Each child of [data-depth] is pushed to its own Z plane, so
    moving the pointer parallaxes the plate, portrait, chip and
-   flagship card by different amounts instead of tilting one
+   depth layers by different amounts instead of tilting one
    flat image. Pointer-driven only; skipped for coarse
    pointers and prefers-reduced-motion.
    ========================================================= */

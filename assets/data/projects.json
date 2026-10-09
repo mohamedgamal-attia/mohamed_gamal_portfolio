@@ -5,15 +5,15 @@
     "company": "EJAD Digital Solutions",
     "country": "Saudi Arabia",
     "type": "erp-system",
-    "size": "flagship",
+    "size": "large",
     "categories": [
-      "erp-systems",
-      "odoo-delivery"
+      "odoo-erp",
+      "portals-web"
     ],
-    "typeLabel": "Flagship Case Study",
+    "typeLabel": "Employee Portal · Odoo",
     "sectorLabel": "HR · Employee Self-Service",
     "caseStudyUrl": "projects/eghr.html",
-    "caseStudyLabel": "Explore Case Study",
+    "caseStudyLabel": "View Case Study",
     "role": "Business analysis, Odoo backend development, portal architecture, UI/UX implementation, responsive frontend, security, QA and deployment support.",
     "short": "A portal-first HR experience built on Odoo 18 with dynamic employee services, approvals, geofenced attendance, bilingual UX and announcements.",
     "cover": "assets/images/projects/eghr/eghr-cover.svg",
@@ -45,86 +45,11 @@
       "PostgreSQL",
       "Playwright"
     ],
-    "featureTitle": "Enterprise Employee Portal",
-    "featurePhone": "assets/images/projects/eghr/dashboard-mobile-ar.svg",
     "mediaNote": "Interface schematic",
-    "featureMeta": {
-      "My role": "End-to-end delivery",
-      "Platform": "Odoo 18 · portal",
-      "Languages": "Arabic · English",
-      "Surface": "Responsive web"
-    },
-    "featurePoints": [
-      "Eleven HR services behind one dynamic registry — a twelfth needs no portal rewrite.",
-      "One request spine, split into My Requests and My Actions by record rules.",
-      "Attendance check-in validated against the office geofence on the server."
-    ],
-    "featureName": "EJAD EGHR"
-  },
-  {
-    "id": "margins-real-estate-erp",
-    "title": "Margins Real Estate ERP System",
-    "company": "Margins Developments",
-    "country": "Egypt",
-    "type": "erp-system",
-    "size": "medium",
-    "categories": [
-      "erp-systems"
-    ],
-    "typeLabel": "Full ERP Build",
-    "sectorLabel": "Real Estate",
-    "role": "Odoo Techno-Functional Developer — full internal ERP, built from scratch.",
-    "short": "Built the internal real-estate ERP end-to-end — CRM, reservations, contracts, payments.",
-    "cover": "assets/images/projects/generated/margins-erp.svg",
-    "gallery": [
-      "assets/images/projects/generated/margins-erp.svg",
-      "assets/images/projects/generated/margins-erp-3.svg",
-      "assets/images/projects/generated/margins-erp-2.svg",
-      "assets/images/projects/generated/margins-erp-4.svg"
-    ],
-    "overview": "The complete internal Odoo ERP for a real-estate developer — from lead capture to contract generation and payment tracking. I owned requirements, data model, modules, reports, automation and go-live.",
-    "scope": [
-      "Real-estate CRM & sales pipeline",
-      "Unit / property management",
-      "Reservation & approval workflow",
-      "Broker management & commissions",
-      "Contract generation + QWeb reports",
-      "Payment-milestone tracking & automation",
-      "Role-based access & record rules"
-    ],
-    "impact": "Replaced fragmented spreadsheets with a unified ERP — fewer errors, clearer pipeline, and automated reporting for management.",
-    "contextNote": "The developments below are Margins' public real-estate projects, shown as business context. My work was the internal ERP that manages them — not the construction.",
-    "subProjects": [
-      {
-        "name": "ZIA Business Complex",
-        "sub": "New Administrative Capital",
-        "sourceUrl": "https://marginsdevelopments.com/"
-      },
-      {
-        "name": "Oaks Egypt",
-        "sub": "New Capital",
-        "sourceUrl": "https://marginsdevelopments.com/"
-      },
-      {
-        "name": "Lusail Residence",
-        "sub": "New Cairo",
-        "sourceUrl": "https://marginsdevelopments.com/"
-      },
-      {
-        "name": "Sheraton Residences",
-        "sub": "Mostakbal City",
-        "sourceUrl": "https://marginsdevelopments.com/projects/sheraton-residences"
-      }
-    ],
-    "tags": [
-      "Odoo 17",
-      "Python",
-      "PostgreSQL",
-      "QWeb",
-      "Real Estate"
-    ],
-    "sourceUrl": "https://marginsdevelopments.com/",
-    "sourceLabel": "Margins Developments"
+    "accent": "#0e7390",
+    "accentOnDark": "#118eb0",
+    "accentSoft": "rgba(14,116,144,.12)",
+    "accentSource": "EJAD product teal — the palette the EGHR portal shipped with"
   },
   {
     "id": "dotec-engineering-erp",
@@ -134,7 +59,7 @@
     "type": "erp-system",
     "size": "medium",
     "categories": [
-      "erp-systems"
+      "odoo-erp"
     ],
     "typeLabel": "Full ERP Build",
     "sectorLabel": "Engineering ERP",
@@ -209,7 +134,82 @@
       "Engineering"
     ],
     "sourceUrl": "https://dotecengineering.com/",
-    "sourceLabel": "DOTec Engineering"
+    "sourceLabel": "DOTec Engineering",
+    "accent": "#0019d3",
+    "accentOnDark": "#6276ff",
+    "accentSoft": "rgba(0,26,211,.10)",
+    "accentSource": "sampled from the real DOTec logo (#001ad3)",
+    "caseStudyLabel": "View Case Study"
+  },
+  {
+    "id": "margins-real-estate-erp",
+    "title": "Margins Real Estate ERP System",
+    "company": "Margins Developments",
+    "country": "Egypt",
+    "type": "erp-system",
+    "size": "medium",
+    "categories": [
+      "odoo-erp"
+    ],
+    "typeLabel": "Full ERP Build",
+    "sectorLabel": "Real Estate",
+    "role": "Odoo Techno-Functional Developer — full internal ERP, built from scratch.",
+    "short": "Built the internal real-estate ERP end-to-end — CRM, reservations, contracts, payments.",
+    "cover": "assets/images/projects/generated/margins-erp.svg",
+    "gallery": [
+      "assets/images/projects/generated/margins-erp.svg",
+      "assets/images/projects/generated/margins-erp-3.svg",
+      "assets/images/projects/generated/margins-erp-2.svg",
+      "assets/images/projects/generated/margins-erp-4.svg"
+    ],
+    "overview": "The complete internal Odoo ERP for a real-estate developer — from lead capture to contract generation and payment tracking. I owned requirements, data model, modules, reports, automation and go-live.",
+    "scope": [
+      "Real-estate CRM & sales pipeline",
+      "Unit / property management",
+      "Reservation & approval workflow",
+      "Broker management & commissions",
+      "Contract generation + QWeb reports",
+      "Payment-milestone tracking & automation",
+      "Role-based access & record rules"
+    ],
+    "impact": "Replaced fragmented spreadsheets with a unified ERP — fewer errors, clearer pipeline, and automated reporting for management.",
+    "contextNote": "The developments below are Margins' public real-estate projects, shown as business context. My work was the internal ERP that manages them — not the construction.",
+    "subProjects": [
+      {
+        "name": "ZIA Business Complex",
+        "sub": "New Administrative Capital",
+        "sourceUrl": "https://marginsdevelopments.com/"
+      },
+      {
+        "name": "Oaks Egypt",
+        "sub": "New Capital",
+        "sourceUrl": "https://marginsdevelopments.com/"
+      },
+      {
+        "name": "Lusail Residence",
+        "sub": "New Cairo",
+        "sourceUrl": "https://marginsdevelopments.com/"
+      },
+      {
+        "name": "Sheraton Residences",
+        "sub": "Mostakbal City",
+        "sourceUrl": "https://marginsdevelopments.com/projects/sheraton-residences"
+      }
+    ],
+    "tags": [
+      "Odoo 17",
+      "Python",
+      "PostgreSQL",
+      "QWeb",
+      "Real Estate"
+    ],
+    "sourceUrl": "https://marginsdevelopments.com/",
+    "sourceLabel": "Margins Developments",
+    "accent": "#8b1919",
+    "accentOnDark": "#df5454",
+    "accentSoft": "rgba(139,26,26,.10)",
+    "accentSource": "from the Margins placeholder mark — no real logo is publicly available",
+    "caseStudyLabel": "View Case Study"
   },
   {
     "id": "ejadtech-gov-delivery",
@@ -219,7 +219,8 @@
     "type": "odoo-work",
     "size": "medium",
     "categories": [
-      "odoo-delivery"
+      "odoo-erp",
+      "integrations"
     ],
     "typeLabel": "Odoo Delivery Team",
     "sectorLabel": "Government · Digital Transformation",
@@ -278,7 +279,12 @@
       "QWeb"
     ],
     "sourceUrl": "https://ejadtech.sa/",
-    "sourceLabel": "EjadTech"
+    "sourceLabel": "EjadTech",
+    "accent": "#007a71",
+    "accentOnDark": "#00a89c",
+    "accentSoft": "rgba(0,168,156,.12)",
+    "accentSource": "sampled from the real EjadTech Odoo backend screenshot",
+    "caseStudyLabel": "View Case Study"
   },
   {
     "id": "ejad-digital-delivery",
@@ -288,7 +294,8 @@
     "type": "odoo-work",
     "size": "medium",
     "categories": [
-      "odoo-delivery"
+      "odoo-erp",
+      "integrations"
     ],
     "typeLabel": "Senior Odoo Delivery",
     "sectorLabel": "Odoo Silver Partner",
@@ -341,7 +348,12 @@
       "Integration"
     ],
     "sourceUrl": "https://www.odoo.com/partners/ejad-digital-solutions-3221859",
-    "sourceLabel": "EJAD on Odoo Partner Directory"
+    "sourceLabel": "EJAD on Odoo Partner Directory",
+    "accent": "#0e7390",
+    "accentOnDark": "#118eb0",
+    "accentSoft": "rgba(14,116,144,.12)",
+    "accentSource": "EJAD product teal",
+    "caseStudyLabel": "View Case Study"
   },
   {
     "id": "sunbelt-website-assets",
@@ -349,9 +361,9 @@
     "company": "Sunbelt Deals",
     "country": "United States",
     "type": "website-project",
-    "size": "visual",
+    "size": "wide",
     "categories": [
-      "digital-delivery"
+      "portals-web"
     ],
     "typeLabel": "Website / Digital Delivery",
     "sectorLabel": "Website Asset Pack",
@@ -385,7 +397,12 @@
       "Digital Delivery"
     ],
     "sourceUrl": "https://sunbeltdeals.com/",
-    "sourceLabel": "Sunbelt Deals Website"
+    "sourceLabel": "Sunbelt Deals Website",
+    "accent": "#543c24",
+    "accentOnDark": "#a97948",
+    "accentSoft": "rgba(84,60,36,.12)",
+    "accentSource": "sampled from the real Sunbelt site capture",
+    "caseStudyLabel": "View Case Study"
   },
   {
     "id": "bluedez-content-pack",
@@ -393,9 +410,9 @@
     "company": "BlueDez Engineered Solutions",
     "country": "United States",
     "type": "content-project",
-    "size": "visual",
+    "size": "medium",
     "categories": [
-      "digital-delivery"
+      "digital-content"
     ],
     "typeLabel": "Content / Branding",
     "sectorLabel": "Visual Content Pack",
@@ -428,6 +445,11 @@
       "Digital Delivery"
     ],
     "sourceUrl": "https://bluedez.com/blog",
-    "sourceLabel": "BlueDez Blog"
+    "sourceLabel": "BlueDez Blog",
+    "accent": "#002348",
+    "accentOnDark": "#007fff",
+    "accentSoft": "rgba(0,36,72,.10)",
+    "accentSource": "sampled from the real BlueDez site capture",
+    "caseStudyLabel": "View Case Study"
   }
 ]

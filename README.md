@@ -1,6 +1,11 @@
-# Mohamed Gamal — Senior Odoo Developer & ERP Software Engineer
+# Mohamed Gamal — Senior Software Engineer & Odoo / ERP Specialist
 
 Portfolio site, plus the long-form case study for the **EJAD EGHR Enterprise Employee Portal**.
+
+Senior Software Engineer and Odoo / ERP specialist — **4+ years**, **Odoo 14–20**, delivery
+across Saudi Arabia, Egypt and the United States. ERP and portals are the deepest
+specialisation; the work also covers web applications, backend services and APIs,
+integrations, automation and data engineering.
 
 **Live:** https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/
 **EGHR case study:** https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/projects/eghr.html
@@ -11,27 +16,55 @@ Portfolio site, plus the long-form case study for the **EJAD EGHR Enterprise Emp
 
 ## Design system
 
-The site runs on one warm, editorial palette — deep plum surfaces, bone and sage light
-surfaces, honey gold and burgundy accents. Every colour in the stylesheets resolves through
-a semantic token in `assets/css/variables.css`; the raw palette is written down exactly once.
+### Two palettes, and the line between them
+
+The portfolio is the **gallery**; each project is the **artwork**. The gallery has one
+consistent room — the palette below. The artwork keeps its own colours.
+
+The portfolio palette dresses navigation, typography, rules, personal CTAs, card frames and
+the footer. It is never painted onto a project's screenshots, logos or covers. Project
+colour arrives separately, through `--pj-*` custom properties set per card from
+`assets/data/projects.json`, and through `--cs-accent` on a case-study page.
 
 | Role | Token | Value |
 |------|-------|-------|
-| Page floor / hero / footer | `--bg-deep` | `#1b1319` |
-| Light page | `--bg-page` | `#f5f2df` (Bone) |
-| Raised dark surfaces | `--surface-dark-1..3` | `#241a22` → `#3a2a35` |
-| Sage section | `--surface-sage` | `#e6ece0` |
-| Primary accent (dark) | `--accent-primary` | `#e3b375` (Honey Gold) |
-| Primary accent (light) | `--accent-deep` | `#7c414c` (Burgundy) |
-| Secondary accent | `--accent-secondary` | `#b4c5b5` (Muted Sage) |
-| Highlight | `--accent-warm` | `#f6e3b8` (Pale Gold) |
+| Page floor / hero / footer | `--bg-deep` | `#171717` (Ink) |
+| Light page | `--bg-page` | `#faf7f1` (Paper) |
+| Raised dark surfaces | `--surface-dark-1..3` | `#1d1b1a` → `#302c2a` (Warm Charcoal) |
+| Warm ivory surface | `--surface-3` | `#f3efe6` |
+| Primary accent (dark surfaces) | `--accent-primary` | `#c99a57` (Personal Gold) |
+| Primary accent (light surfaces) | `--accent-deep` | `#653b46` (Deep Burgundy) |
+| Secondary accent | `--accent-secondary` | `#a7b0a1` (Muted Sage) |
+| Muted text | `--text-muted` | `#6b655e` |
+
+Gold is 7.0:1 on ink but only 2.4:1 on paper, so it is a dark-surface accent and never
+light-surface body text; burgundy (8.7:1 on paper) carries the light surfaces.
+
+### Project colour
+
+Each project records its own accent and where that colour came from:
+
+| Project | Accent | Source |
+|---|---|---|
+| EJAD EGHR | `#0e7390` | EJAD product teal |
+| EJAD Digital | `#0e7390` | EJAD product teal |
+| EjadTech | `#007a71` | sampled from the real EjadTech Odoo backend screenshot |
+| DOTec | `#0019d3` | sampled from the real DOTec logo (`#001ad3`) |
+| Margins | `#8b1919` | from the Margins placeholder mark — no real logo is public |
+| Sunbelt Deals | `#543c24` | sampled from the real site capture |
+| BlueDez | `#002348` | sampled from the real site capture |
+
+Accents paint hairlines, small type and arrows. No screenshot is filtered or hue-rotated and
+no logo is recoloured. Where a logo sits on a dark plate it is because the artwork is white
+or near-white ink and would otherwise be invisible — the plate is a contrast surface, not
+branding.
 
 Type is **Fraunces** for display (the editorial voice) and **Inter** for interface. Motion
 tokens — durations, easing and the depth ramp — live in `assets/css/motion.css` behind a
 `prefers-reduced-motion` override that switches every effect off.
 
 Generated artwork reads from the same palette: both `scripts/generate_*_visuals.py` files
-and the hero canvas in `assets/js/particles.js` pull their colours from it, so a palette
+pull their colours from it, so a palette
 change propagates to the images without hand-editing SVG.
 
 ---
@@ -40,7 +73,7 @@ change propagates to the images without hand-editing SVG.
 
 | Project | Type | Stack | Detail |
 |---------|------|-------|--------|
-| **EJAD EGHR — Enterprise Employee Portal** | Flagship case study | Odoo 18 · Python · QWeb · PostgreSQL · Playwright | [projects/eghr.html](projects/eghr.html) |
+| **EJAD EGHR — Enterprise Employee Portal** | Case study | Odoo 18 · Python · QWeb · PostgreSQL · Playwright | [projects/eghr.html](projects/eghr.html) |
 | Margins Real Estate ERP | Full ERP build | Odoo 17 · Python · PostgreSQL · QWeb | in-page modal |
 | DOTec Engineering ERP | Full ERP build | Odoo 18 · Python · PostgreSQL · REST API | in-page modal |
 | EjadTech — Government Digital Transformation | Odoo delivery | Odoo · Python · QWeb | in-page modal |
@@ -93,9 +126,9 @@ Check every capture by eye for personal data before committing.
 
 Proof first, then the offer, then the person:
 
-`Hero → Selected work (flagship feature + grid) → Services → How I work → About → Capabilities → Companies → Context → Experience → Start a project`
+`Hero → Selected work → What I build → Experience & delivery → How I work → Start a project`
 
-The flagship feature block is rendered from the same `projects.json` entry as the grid, so
+Every project card is rendered from the same `projects.json` entry, so
 the case study is described in exactly one place.
 
 ---
@@ -108,9 +141,9 @@ company grids is data-driven from `assets/data/*.json`, rendered by `assets/js/d
 | Layer | Notes |
 |-------|-------|
 | Markup | Two pages: `index.html` and `projects/eghr.html` |
-| Styles | CSS custom properties; `assets/css/style.css` is an `@import` manifest |
+| Styles | CSS custom properties; each partial is `<link>`-ed directly (an `@import` manifest serialised the downloads) |
 | Motion | Shared duration/easing/depth tokens in `assets/css/motion.css`, with a `prefers-reduced-motion` override |
-| Depth | `assets/js/hero.js` puts each hero layer on its own Z plane, so the pointer parallaxes the plate, portrait, chip and flagship card independently rather than tilting one flat image. Max rotation 5°. |
+| Depth | `assets/js/hero.js` puts each hero layer on its own Z plane, so the pointer parallaxes the plate, portrait and chip independently rather than tilting one flat image. Max rotation 5°. |
 | Behaviour | Vanilla JS modules, each guarded for reduced motion and coarse pointers |
 | Images | Generated SVG (tiny, crisp at any size) plus real photo/asset packs; everything lazy-loaded below the fold |
 | Social | Open Graph / Twitter cards generated into `assets/images/og/` |
@@ -150,13 +183,12 @@ distorted images, console errors, dead links and dead fragments.
 mohamed_gamal_portfolio/
 ├── index.html                       # Homepage
 ├── projects/
-│   └── eghr.html                    # EGHR flagship case study
+│   └── eghr.html                    # EGHR case study
 ├── my_img.png                       # Portrait
 ├── 0_Mohamed_Gamal_CV.pdf           # Downloadable CV
 │
 ├── assets/
 │   ├── css/
-│   │   ├── style.css                # @import manifest (homepage + shared)
 │   │   ├── variables.css            # Colour / radius / shadow tokens
 │   │   ├── motion.css               # Duration, easing, depth + reduced-motion
 │   │   ├── base.css · layout.css    # Reset, typography, container, grids
@@ -164,14 +196,14 @@ mohamed_gamal_portfolio/
 │   │   ├── sections.css             # Per-section homepage styles
 │   │   ├── futuristic.css           # Aurora, kinetic type, glass, reveal
 │   │   ├── project-showcase.css     # Project cards, bento grid, context chips
-│   │   ├── carousels.css · cursor.css
+│   │   ├── carousels.css
 │   │   ├── responsive.css           # Breakpoints
 │   │   └── case-study.css           # Case-study page only
 │   │
 │   ├── js/
 │   │   ├── config.js                # window.Portfolio namespace
 │   │   ├── animations.js            # Navbar, reveal, counters, mobile menu
-│   │   ├── effects.js · cursor.js · particles.js · tilt.js · carousels.js
+│   │   ├── effects.js · tilt.js · carousels.js
 │   │   ├── modals.js                # Project modal (tabs, gallery, focus trap)
 │   │   ├── filters.js · data-loader.js · main.js
 │   │   └── case-study.js            # Gallery, lightbox, compare switches, progress
@@ -241,7 +273,7 @@ Key fields per project:
 | `cover` | Card thumbnail (the validator checks it resolves) |
 | `caseStudyUrl` | When set, the whole card becomes a link to that page instead of opening the modal |
 | `caseStudyLabel` | CTA wording for such a card (default `Case Study`) |
-| `size` | `flagship` (full-width horizontal), `medium`, or `visual` |
+| `size` | `large` / `wide` (two grid columns), or `medium` (one) |
 
 ### Featured Case Studies
 Edit `assets/data/case-studies.json`. These populate the `#featured` section cards (currently hardcoded in HTML for richer layout). To make featured cards dynamic too, update `data-loader.js` with a `renderCaseStudies()` function.
@@ -267,7 +299,6 @@ Current categories:
 - All components (buttons, modal, form, badges): `assets/css/components.css`
 - Per-section styles: `assets/css/sections.css`
 - Mobile breakpoints: `assets/css/responsive.css`
-- Do not edit `style.css` — it only contains 6 `@import` lines.
 
 ---
 

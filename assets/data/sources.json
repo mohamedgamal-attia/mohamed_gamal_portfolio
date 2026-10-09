@@ -1,347 +1,401 @@
 {
-  "_comment": "Image asset provenance for the portfolio. Updated: 2026-10-09 (warm plum/bone/sage/gold redesign).",
-  "generatedProjectVisuals": {
-    "_comment": "Illustrative ERP/product cover images generated locally — no real client screenshots exist or are safe to publish. Produced by scripts/generate_project_visuals.py as SVG. They show STRUCTURE only: every figure is rendered as a placeholder bar rather than a number, so nothing on them can be read as a reported metric.",
-    "directory": "assets/images/projects/generated/",
-    "type": "generated-svg-dashboard",
-    "generator": "scripts/generate_project_visuals.py",
-    "count": 34,
-    "usedFor": [
-      "margins-erp",
-      "dotec-erp",
-      "ejad-digital-odoo-work",
-      "ejad-erp-implementations",
-      "ejad-internal-erp",
-      "creatio-automation",
-      "visitor-service-robot",
-      "vro-ministry-media",
-      "tasharuk-platform",
-      "zeraei-platform",
-      "ejadx-platform",
-      "tawajod-platform",
-      "ejadtech-odoo-work",
-      "and 12 public-context real-estate / engineering covers"
-    ],
-    "realLogosKeptInGalleries": [
-      "assets/images/projects/zeraei-platform.png (MEWA ministry logo)",
-      "assets/images/projects/ejadx-platform.png (EjadTech logo)",
-      "assets/images/projects/tawajod-platform.png (EjadTech logo)"
-    ],
-    "brandCovers": {
-      "_comment": "Website-style covers that EMBED the real local logo asset (base64) — real brand marks, not generic charts. Used as the primary cover for EjadTech, EJAD Digital, and a gallery item for DOTec.",
-      "ejadtech-brand.svg": "embeds real EjadTech logo (assets/images/projects/ejadtech-odoo-work.webp)",
-      "ejad-brand.svg": "embeds real EJAD Digital logo (assets/images/companies/ejad-digital-logo.png)",
-      "dotec-brand.svg": "embeds real DOTec logo (assets/images/companies/dotec-logo.png)"
-    }
-  },
-  "companies": [
-    {
-      "file": "assets/images/companies/ejadtech-logo.png",
-      "type": "real-logo",
-      "format": "PNG",
-      "size": "256x256",
-      "bytes": 6078,
-      "source": "https://ejadtech.sa/ (Odoo backend footer logo via /web/image/ endpoint)",
-      "notes": "Downloaded from the EjadTech Odoo backend. Actual PNG bytes; file saved as .png."
-    },
-    {
-      "file": "assets/images/companies/ejad-digital-logo.png",
-      "type": "real-logo",
-      "format": "PNG",
-      "size": "850x245",
-      "bytes": 16519,
-      "source": "https://ejad.sa/wp-content/uploads/2024/10/logo-w-l.png"
-    },
-    {
-      "file": "assets/images/companies/margins-logo.svg",
-      "type": "generated-svg-placeholder",
-      "notes": "Real Margins Developments logo not publicly accessible (all attempted wp-content paths returned 404). Premium branded SVG placeholder generated using company name and industry colors."
-    },
-    {
-      "file": "assets/images/companies/dotec-logo.png",
-      "type": "real-logo",
-      "format": "PNG",
-      "size": "268x92",
-      "bytes": 6357,
-      "source": "https://dotecengineering.com/wp-content/uploads/logo-main.png"
-    },
-    {
-      "file": "assets/images/companies/ejadtech-placeholder.svg",
-      "type": "generated-svg-placeholder",
-      "notes": "Fallback shown if ejadtech-logo.png fails to load. Generated SVG placeholder."
-    },
-    {
-      "file": "assets/images/companies/ejad-digital-placeholder.svg",
-      "type": "generated-svg-placeholder",
-      "notes": "Fallback shown if ejad-digital-logo.png fails to load. Generated SVG placeholder."
-    },
-    {
-      "file": "assets/images/companies/dotec-placeholder.svg",
-      "type": "generated-svg-placeholder",
-      "notes": "Fallback shown if dotec-logo.png fails to load. Generated SVG placeholder."
-    }
+ "_comment": "Image asset provenance for the portfolio. Updated: 2026-10-09 (neutral portfolio shell; per-project brand colour restored).",
+ "generatedProjectVisuals": {
+  "_comment": "Illustrative ERP/product cover images generated locally — no real client screenshots exist or are safe to publish. Produced by scripts/generate_project_visuals.py as SVG. They show STRUCTURE only: every figure is rendered as a placeholder bar rather than a number, so nothing on them can be read as a reported metric.",
+  "directory": "assets/images/projects/generated/",
+  "type": "generated-svg-dashboard",
+  "generator": "scripts/generate_project_visuals.py",
+  "count": 34,
+  "usedFor": [
+   "margins-erp",
+   "dotec-erp",
+   "ejad-digital-odoo-work",
+   "ejad-erp-implementations",
+   "ejad-internal-erp",
+   "creatio-automation",
+   "visitor-service-robot",
+   "vro-ministry-media",
+   "tasharuk-platform",
+   "zeraei-platform",
+   "ejadx-platform",
+   "tawajod-platform",
+   "ejadtech-odoo-work",
+   "and 12 public-context real-estate / engineering covers"
   ],
-  "projects": [
-    {
-      "file": "assets/images/projects/margins-erp-system.svg",
-      "type": "generated-svg",
-      "notes": "Premium SVG generated with Margins Developments brand colors"
-    },
-    {
-      "file": "assets/images/projects/dotec-erp-system.svg",
-      "type": "generated-svg",
-      "notes": "Premium SVG generated with DOTec Engineering brand colors"
-    },
-    {
-      "file": "assets/images/projects/ejadtech-odoo-work.webp",
-      "type": "official-screenshot",
-      "format": "PNG",
-      "size": "2312x534",
-      "bytes": 100370,
-      "source": "http://ejadtech.sa/web/image/website/1/social_default_image?unique=d74c65d",
-      "notes": "EjadTech official social banner image downloaded from their Odoo website backend. Used for EjadTech Odoo Work case study and related cards."
-    },
-    {
-      "file": "assets/images/projects/zeraei-platform.png",
-      "type": "official-screenshot",
-      "format": "PNG",
-      "size": "1206x627",
-      "bytes": 78269,
-      "source": "https://www.mewa.gov.sa/_layouts/15/MewaPortal/mewa-branding/images/default-metatag-image.png",
-      "notes": "Official OG/meta image from MEWA (Ministry of Environment, Water and Agriculture) website. Used as Zeraei Platform context image since MEWA is the platform's government client."
-    },
-    {
-      "file": "assets/images/projects/vro-ministry-media.svg",
-      "type": "generated-svg",
-      "notes": "Saudi Ministry of Media website (media.gov.sa) was unreachable. Generated SVG placeholder used."
-    },
-    {
-      "file": "assets/images/projects/tasharuk-platform.svg",
-      "type": "official-logo-svg",
-      "format": "SVG",
-      "bytes": 48687,
-      "source": "https://najran.gov.sa/assets/core/collection/assets/Najran-Municipality.svg",
-      "notes": "Official Najran Municipality SVG logo from their government website. Contains an embedded base64 PNG (36KB). Used for Tasharuk Platform since Najran Region Emirate is the government client."
-    },
-    {
-      "file": "assets/images/projects/ejadx-platform.png",
-      "type": "official-screenshot",
-      "format": "PNG",
-      "size": "2312x534",
-      "bytes": 100370,
-      "source": "http://ejadtech.sa/web/image/website/1/social_default_image?unique=d74c65d",
-      "notes": "EjadTech official social banner image. EjadX is EjadTech's own innovation platform."
-    },
-    {
-      "file": "assets/images/projects/tawajod-platform.png",
-      "type": "official-screenshot",
-      "format": "PNG",
-      "size": "2312x534",
-      "bytes": 100370,
-      "source": "http://ejadtech.sa/web/image/website/1/social_default_image?unique=d74c65d",
-      "notes": "EjadTech official social banner image. Tawajod is delivered through EjadTech."
-    },
-    {
-      "file": "assets/images/projects/ejad-digital-odoo-work.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/ejad-erp-implementations.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/ejad-internal-erp.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/visitor-service-robot.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/creatio-automation.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/zia-business-complex.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/oaks-egypt.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/lusail-residence.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/sheraton-residences.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/cargill-engineering.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/johnson-controls.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/pb-lodge.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/container-home-design.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/smurfit-stone.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/aerofil-technologies.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/reckitt-benckiser.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/city-grocers.svg",
-      "type": "generated-svg"
-    },
-    {
-      "file": "assets/images/projects/bluedez/bluedez-cover.webp",
-      "type": "local-project-asset",
-      "format": "PNG",
-      "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/01-cover.png",
-      "notes": "Cover page of the BlueDez Blog Content Pack produced by Mohamed Gamal. Resized from 3840×2160 to 1600px wide for web. Original content sourced from bluedez.com/blog."
-    },
-    {
-      "file": "assets/images/projects/bluedez/bluedez-screenshot-1.png",
-      "type": "local-project-asset",
-      "format": "PNG",
-      "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/08-who-needs-a-structural-engineer.png",
-      "notes": "Interior page (five audience cards) from the BlueDez content pack. Resized to 1600px wide for web."
-    },
-    {
-      "file": "assets/images/projects/bluedez/bluedez-screenshot-2.png",
-      "type": "local-project-asset",
-      "format": "PNG",
-      "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/20-timeline-project-lifecycle.png",
-      "notes": "Project-lifecycle timeline page from the BlueDez content pack. Resized to 1600px wide for web."
-    },
-    {
-      "file": "assets/images/projects/bluedez/bluedez-screenshot-3.png",
-      "type": "local-project-asset",
-      "format": "PNG",
-      "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/04-story-flow.png",
-      "notes": "Narrative story-flow page from the BlueDez content pack. Resized to 1600px wide for web."
-    },
-    {
-      "file": "assets/images/projects/sunbelt/sunbelt-cover.webp",
-      "type": "local-project-asset",
-      "format": "WebP",
-      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-hero-liquidation-warehouse-1600.webp",
-      "notes": "Primary hero image (web-optimized 1600×900 WebP) from the Sunbelt Website Asset Pack curated by Mohamed Gamal for the sunbeltdeals.com redesign. Copied as-is."
-    },
-    {
-      "file": "assets/images/projects/sunbelt/sunbelt-screenshot-1.webp",
-      "type": "local-project-asset",
-      "format": "WebP",
-      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-hero-warehouse-variety-1600.webp",
-      "notes": "Warehouse-variety hero (web-optimized 1600×900 WebP) from the Sunbelt asset pack. Copied as-is."
-    },
-    {
-      "file": "assets/images/projects/sunbelt/sunbelt-screenshot-2.jpg",
-      "type": "local-project-asset",
-      "format": "JPG",
-      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-thumb-amazon-returns-700.jpg",
-      "notes": "Proven real merchandise photo (Amazon-returns pallet, live shop product) — web thumbnail from the Sunbelt asset pack. Copied as-is."
-    },
-    {
-      "file": "assets/images/projects/sunbelt/sunbelt-screenshot-3.jpg",
-      "type": "local-project-asset",
-      "format": "JPG",
-      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-thumb-dollar-general-700.jpg",
-      "notes": "Proven real merchandise photo (Dollar General pallet, live shop product) — web thumbnail from the Sunbelt asset pack. Copied as-is."
-    },
-    {
-      "file": "assets/images/projects/sunbelt/sunbelt-logo.png",
-      "type": "local-project-asset",
-      "format": "PNG",
-      "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-logo.png",
-      "notes": "Sunbelt Deals brand logo from the asset pack's brand kit. Copied as-is."
-    }
+  "realLogosKeptInGalleries": [
+   "assets/images/projects/zeraei-platform.png (MEWA ministry logo)",
+   "assets/images/projects/ejadx-platform.png (EjadTech logo)",
+   "assets/images/projects/tawajod-platform.png (EjadTech logo)"
   ],
-  "placeholders": [
-    {
-      "file": "assets/images/placeholders/generic.svg",
-      "type": "generated-svg",
-      "notes": "Generic fallback shown by data-loader.js onerror handler if any project image fails to load."
-    }
-  ],
-  "personal": [
-    {
-      "file": "my_img.png",
-      "type": "personal-photo",
-      "notes": "Developer's personal photo, provided by user."
-    },
-    {
-      "file": "0_Mohamed_Gamal_CV.pdf",
-      "type": "cv",
-      "notes": "Developer CV, provided by user."
-    }
-  ],
-  "eghrInterfaceSchematics": {
-    "_comment": "Interface schematics for the EJAD EGHR employee portal case study. These are DIAGRAMS, not screenshots: they encode the delivered portal's layout, information architecture, RTL mirroring, light/dark surfaces and attendance state machine, without reproducing live HR records. Live captures contain employee data and are not published. The case-study page labels every one of them 'Schematic' and says so in an on-page note.",
-    "directory": "assets/images/projects/eghr/",
-    "type": "generated-svg-schematic",
-    "generator": "scripts/generate_eghr_visuals.py",
-    "count": 31,
-    "usedFor": [
-      "ejad-eghr-employee-portal",
-      "projects/eghr.html"
-    ],
-    "replaceWith": "scripts/capture_eghr_screenshots.py — run against a reachable EGHR instance with a demo/QA account; it writes optimised WebP next to these and repoints projects/eghr.html."
-  },
-  "socialPreviews": {
-    "_comment": "Open Graph / Twitter card images, composed locally from portfolio assets in the current palette. No private data.",
-    "directory": "assets/images/og/",
-    "type": "generated-jpeg",
-    "files": [
-      "portfolio-og.jpg",
-      "eghr-og.jpg"
-    ]
-  },
-  "portrait": {
-    "_comment": "Real photograph of Mohamed Gamal. my_img.png at the repo root is the master; the served variants are resized/compressed from it and are what the pages load.",
-    "master": "my_img.png",
-    "directory": "assets/images/portrait/",
-    "files": [
-      "mohamed-gamal-400.webp",
-      "mohamed-gamal-560.webp",
-      "mohamed-gamal-728.webp",
-      "mohamed-gamal-728.jpg"
-    ],
-    "type": "real-photo"
-  },
-  "palette": {
-    "_comment": "Every generated image is produced from the same semantic palette as the stylesheets, so a palette change regenerates the artwork rather than leaving stale colours behind.",
-    "source": "assets/css/variables.css",
-    "generators": [
-      "scripts/generate_project_visuals.py",
-      "scripts/generate_eghr_visuals.py"
-    ],
-    "runtime": "assets/js/particles.js reads --rgb-gold / --rgb-sage at load"
-  },
-  "companyLogos": {
-    "_comment": "The supplied company marks are knockout logos — white or near-white ink on transparency. They are shown on a dark plum plate; on the previous bone plate the EJAD Digital mark was invisible. No logo is recreated or altered.",
-    "directory": "assets/images/companies/",
-    "inkLightness": {
-      "ejad-digital-logo.png": "255 (white knockout)",
-      "ejadtech-logo.png": "204 (light)",
-      "dotec-logo.png": "196 (light)",
-      "margins-logo.svg": "self-backgrounded placeholder — real mark unavailable"
-    }
+  "brandCovers": {
+   "_comment": "Website-style covers that EMBED the real local logo asset (base64) — real brand marks, not generic charts. Used as the primary cover for EjadTech, EJAD Digital, and a gallery item for DOTec.",
+   "ejadtech-brand.svg": "embeds real EjadTech logo (assets/images/projects/ejadtech-odoo-work.webp)",
+   "ejad-brand.svg": "embeds real EJAD Digital logo (assets/images/companies/ejad-digital-logo.png)",
+   "dotec-brand.svg": "embeds real DOTec logo (assets/images/companies/dotec-logo.png)"
   }
+ },
+ "companies": [
+  {
+   "file": "assets/images/companies/ejadtech-logo.png",
+   "type": "real-logo",
+   "format": "PNG",
+   "size": "256x256",
+   "bytes": 6078,
+   "source": "https://ejadtech.sa/ (Odoo backend footer logo via /web/image/ endpoint)",
+   "notes": "Downloaded from the EjadTech Odoo backend. Actual PNG bytes; file saved as .png."
+  },
+  {
+   "file": "assets/images/companies/ejad-digital-logo.png",
+   "type": "real-logo",
+   "format": "PNG",
+   "size": "850x245",
+   "bytes": 16519,
+   "source": "https://ejad.sa/wp-content/uploads/2024/10/logo-w-l.png"
+  },
+  {
+   "file": "assets/images/companies/margins-logo.svg",
+   "type": "generated-svg-placeholder",
+   "notes": "Real Margins Developments logo not publicly accessible (all attempted wp-content paths returned 404). This is a generated placeholder, NOT the company's mark, and its colours are not claimed as Margins' brand colours."
+  },
+  {
+   "file": "assets/images/companies/dotec-logo.png",
+   "type": "real-logo",
+   "format": "PNG",
+   "size": "268x92",
+   "bytes": 6357,
+   "source": "https://dotecengineering.com/wp-content/uploads/logo-main.png"
+  },
+  {
+   "file": "assets/images/companies/ejadtech-placeholder.svg",
+   "type": "generated-svg-placeholder",
+   "notes": "Fallback shown if ejadtech-logo.png fails to load. Generated SVG placeholder."
+  },
+  {
+   "file": "assets/images/companies/ejad-digital-placeholder.svg",
+   "type": "generated-svg-placeholder",
+   "notes": "Fallback shown if ejad-digital-logo.png fails to load. Generated SVG placeholder."
+  },
+  {
+   "file": "assets/images/companies/dotec-placeholder.svg",
+   "type": "generated-svg-placeholder",
+   "notes": "Fallback shown if dotec-logo.png fails to load. Generated SVG placeholder."
+  }
+ ],
+ "projects": [
+  {
+   "file": "assets/images/projects/margins-erp-system.svg",
+   "type": "generated-svg",
+   "notes": "Premium SVG generated with Margins Developments brand colors"
+  },
+  {
+   "file": "assets/images/projects/dotec-erp-system.svg",
+   "type": "generated-svg",
+   "notes": "Premium SVG generated with DOTec Engineering brand colors"
+  },
+  {
+   "file": "assets/images/projects/ejadtech-odoo-work.webp",
+   "type": "official-screenshot",
+   "format": "PNG",
+   "size": "2312x534",
+   "bytes": 100370,
+   "source": "http://ejadtech.sa/web/image/website/1/social_default_image?unique=d74c65d",
+   "notes": "EjadTech official social banner image downloaded from their Odoo website backend. Used for EjadTech Odoo Work case study and related cards."
+  },
+  {
+   "file": "assets/images/projects/zeraei-platform.png",
+   "type": "official-screenshot",
+   "format": "PNG",
+   "size": "1206x627",
+   "bytes": 78269,
+   "source": "https://www.mewa.gov.sa/_layouts/15/MewaPortal/mewa-branding/images/default-metatag-image.png",
+   "notes": "Official OG/meta image from MEWA (Ministry of Environment, Water and Agriculture) website. Used as Zeraei Platform context image since MEWA is the platform's government client."
+  },
+  {
+   "file": "assets/images/projects/vro-ministry-media.svg",
+   "type": "generated-svg",
+   "notes": "Saudi Ministry of Media website (media.gov.sa) was unreachable. Generated SVG placeholder used."
+  },
+  {
+   "file": "assets/images/projects/tasharuk-platform.svg",
+   "type": "official-logo-svg",
+   "format": "SVG",
+   "bytes": 48687,
+   "source": "https://najran.gov.sa/assets/core/collection/assets/Najran-Municipality.svg",
+   "notes": "Official Najran Municipality SVG logo from their government website. Contains an embedded base64 PNG (36KB). Used for Tasharuk Platform since Najran Region Emirate is the government client."
+  },
+  {
+   "file": "assets/images/projects/ejadx-platform.png",
+   "type": "official-screenshot",
+   "format": "PNG",
+   "size": "2312x534",
+   "bytes": 100370,
+   "source": "http://ejadtech.sa/web/image/website/1/social_default_image?unique=d74c65d",
+   "notes": "EjadTech official social banner image. EjadX is EjadTech's own innovation platform."
+  },
+  {
+   "file": "assets/images/projects/tawajod-platform.png",
+   "type": "official-screenshot",
+   "format": "PNG",
+   "size": "2312x534",
+   "bytes": 100370,
+   "source": "http://ejadtech.sa/web/image/website/1/social_default_image?unique=d74c65d",
+   "notes": "EjadTech official social banner image. Tawajod is delivered through EjadTech."
+  },
+  {
+   "file": "assets/images/projects/ejad-digital-odoo-work.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/ejad-erp-implementations.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/ejad-internal-erp.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/visitor-service-robot.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/creatio-automation.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/zia-business-complex.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/oaks-egypt.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/lusail-residence.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/sheraton-residences.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/cargill-engineering.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/johnson-controls.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/pb-lodge.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/container-home-design.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/smurfit-stone.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/aerofil-technologies.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/reckitt-benckiser.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/city-grocers.svg",
+   "type": "generated-svg"
+  },
+  {
+   "file": "assets/images/projects/bluedez/bluedez-cover.webp",
+   "type": "local-project-asset",
+   "format": "PNG",
+   "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/01-cover.png",
+   "notes": "Cover page of the BlueDez Blog Content Pack produced by Mohamed Gamal. Resized from 3840×2160 to 1600px wide for web. Original content sourced from bluedez.com/blog."
+  },
+  {
+   "file": "assets/images/projects/bluedez/bluedez-screenshot-1.png",
+   "type": "local-project-asset",
+   "format": "PNG",
+   "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/08-who-needs-a-structural-engineer.png",
+   "notes": "Interior page (five audience cards) from the BlueDez content pack. Resized to 1600px wide for web."
+  },
+  {
+   "file": "assets/images/projects/bluedez/bluedez-screenshot-2.png",
+   "type": "local-project-asset",
+   "format": "PNG",
+   "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/20-timeline-project-lifecycle.png",
+   "notes": "Project-lifecycle timeline page from the BlueDez content pack. Resized to 1600px wide for web."
+  },
+  {
+   "file": "assets/images/projects/bluedez/bluedez-screenshot-3.png",
+   "type": "local-project-asset",
+   "format": "PNG",
+   "source": "/Users/mohamedgamalattiya/Downloads/BlueDez_Blog_Content_Pack/images/04-story-flow.png",
+   "notes": "Narrative story-flow page from the BlueDez content pack. Resized to 1600px wide for web."
+  },
+  {
+   "file": "assets/images/projects/sunbelt/sunbelt-cover.webp",
+   "type": "local-project-asset",
+   "format": "WebP",
+   "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-hero-liquidation-warehouse-1600.webp",
+   "notes": "Primary hero image (web-optimized 1600×900 WebP) from the Sunbelt Website Asset Pack curated by Mohamed Gamal for the sunbeltdeals.com redesign. Copied as-is."
+  },
+  {
+   "file": "assets/images/projects/sunbelt/sunbelt-screenshot-1.webp",
+   "type": "local-project-asset",
+   "format": "WebP",
+   "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-hero-warehouse-variety-1600.webp",
+   "notes": "Warehouse-variety hero (web-optimized 1600×900 WebP) from the Sunbelt asset pack. Copied as-is."
+  },
+  {
+   "file": "assets/images/projects/sunbelt/sunbelt-screenshot-2.jpg",
+   "type": "local-project-asset",
+   "format": "JPG",
+   "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-thumb-amazon-returns-700.jpg",
+   "notes": "Proven real merchandise photo (Amazon-returns pallet, live shop product) — web thumbnail from the Sunbelt asset pack. Copied as-is."
+  },
+  {
+   "file": "assets/images/projects/sunbelt/sunbelt-screenshot-3.jpg",
+   "type": "local-project-asset",
+   "format": "JPG",
+   "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-thumb-dollar-general-700.jpg",
+   "notes": "Proven real merchandise photo (Dollar General pallet, live shop product) — web thumbnail from the Sunbelt asset pack. Copied as-is."
+  },
+  {
+   "file": "assets/images/projects/sunbelt/sunbelt-logo.png",
+   "type": "local-project-asset",
+   "format": "PNG",
+   "source": "/Users/mohamedgamalattiya/Downloads/Sunbelt_Website_Asset_Pack/07_WEB_OPTIMIZED/sunbelt-logo.png",
+   "notes": "Sunbelt Deals brand logo from the asset pack's brand kit. Copied as-is."
+  }
+ ],
+ "placeholders": [
+  {
+   "file": "assets/images/placeholders/generic.svg",
+   "type": "generated-svg",
+   "notes": "Generic fallback shown by data-loader.js onerror handler if any project image fails to load."
+  }
+ ],
+ "personal": [
+  {
+   "file": "my_img.png",
+   "type": "personal-photo",
+   "notes": "Developer's personal photo, provided by user."
+  },
+  {
+   "file": "0_Mohamed_Gamal_CV.pdf",
+   "type": "cv",
+   "notes": "Developer CV, provided by user."
+  }
+ ],
+ "eghrInterfaceSchematics": {
+  "_comment": "Interface schematics for the EJAD EGHR employee portal case study. These are DIAGRAMS, not screenshots: they encode the delivered portal's layout, information architecture, RTL mirroring, light/dark surfaces and attendance state machine, without reproducing live HR records. Live captures contain employee data and are not published. The case-study page labels every one of them 'Schematic' and says so in an on-page note.",
+  "directory": "assets/images/projects/eghr/",
+  "type": "generated-svg-schematic",
+  "generator": "scripts/generate_eghr_visuals.py",
+  "count": 31,
+  "usedFor": [
+   "ejad-eghr-employee-portal",
+   "projects/eghr.html"
+  ],
+  "replaceWith": "scripts/capture_eghr_screenshots.py — run against a reachable EGHR instance with a demo/QA account; it writes optimised WebP next to these and repoints projects/eghr.html."
+ },
+ "socialPreviews": {
+  "_comment": "Open Graph / Twitter card images, composed locally from portfolio assets in the current palette. No private data.",
+  "directory": "assets/images/og/",
+  "type": "generated-jpeg",
+  "files": [
+   "portfolio-og.jpg",
+   "eghr-og.jpg"
+  ]
+ },
+ "portrait": {
+  "_comment": "Real photograph of Mohamed Gamal. my_img.png at the repo root is the master; the served variants are resized/compressed from it and are what the pages load.",
+  "master": "my_img.png",
+  "directory": "assets/images/portrait/",
+  "files": [
+   "mohamed-gamal-400.webp",
+   "mohamed-gamal-560.webp",
+   "mohamed-gamal-728.webp",
+   "mohamed-gamal-728.jpg"
+  ],
+  "type": "real-photo"
+ },
+ "palette": {
+  "_comment": "Every generated image is produced from the same semantic palette as the stylesheets, so a palette change regenerates the artwork rather than leaving stale colours behind.",
+  "source": "assets/css/variables.css",
+  "generators": [
+   "scripts/generate_project_visuals.py",
+   "scripts/generate_eghr_visuals.py"
+  ],
+  "runtime": "assets/js/particles.js reads --rgb-gold / --rgb-sage at load"
+ },
+ "companyLogos": {
+  "_comment": "The supplied company marks are knockout logos — white or near-white ink on transparency. They are shown on a dark plum plate; on the previous bone plate the EJAD Digital mark was invisible. No logo is recreated or altered.",
+  "directory": "assets/images/companies/",
+  "inkLightness": {
+   "ejad-digital-logo.png": "255 (white knockout)",
+   "ejadtech-logo.png": "204 (light)",
+   "dotec-logo.png": "196 (light)",
+   "margins-logo.svg": "self-backgrounded placeholder — real mark unavailable"
+  }
+ },
+ "brandPolicy": {
+  "_comment": "The portfolio is the gallery, each project is the artwork (see docs/portfolio_review_2026_10.md).",
+  "rules": [
+   "No project screenshot is filtered, hue-rotated or recoloured.",
+   "No logo is recoloured. Where a logo sits on a dark plate it is because the supplied artwork is white or near-white ink; the plate is a contrast surface, not brand colour.",
+   "Generated covers use the PROJECT's own brand hue, not the portfolio palette.",
+   "Generated covers are illustrative structure, never presented as product screenshots; every figure renders as a placeholder bar so nothing reads as a reported metric."
+  ],
+  "projectAccents": {
+   "ejad-eghr-employee-portal": {
+    "accent": "#0e7390",
+    "source": "EJAD product teal — the palette the EGHR portal shipped with (restored; a previous pass had retinted it to the portfolio's plum/gold)"
+   },
+   "ejad-digital-delivery": {
+    "accent": "#0e7390",
+    "source": "EJAD product teal"
+   },
+   "ejadtech-gov-delivery": {
+    "accent": "#007a71",
+    "source": "pixel-sampled from assets/images/projects/ejadtech-odoo-work.webp, a real EjadTech Odoo backend screenshot (#00b4a8 / #009090)"
+   },
+   "dotec-engineering-erp": {
+    "accent": "#0019d3",
+    "source": "pixel-sampled from the real DOTec logo, assets/images/companies/dotec-logo.png (#001ad3)"
+   },
+   "margins-real-estate-erp": {
+    "accent": "#8b1919",
+    "source": "taken from the Margins PLACEHOLDER mark. Margins' real logo is not publicly reachable, so this is not claimed as their brand colour."
+   },
+   "sunbelt-website-assets": {
+    "accent": "#543c24",
+    "source": "pixel-sampled from the real Sunbelt site capture"
+   },
+   "bluedez-content-pack": {
+    "accent": "#002348",
+    "source": "pixel-sampled from the real BlueDez site capture"
+   }
+  },
+  "notVerifiable": [
+   "EJAD's official brand hex values: ejad.sa is blocked by this environment's network policy (connect_rejected). The teal is the product's own, corroborated by the EjadTech backend screenshot above; it is not presented as a sampled brand token."
+  ]
+ },
+ "heroArt": {
+  "file": "assets/images/hero-constellation.svg",
+  "type": "generated-svg-decoration",
+  "generator": "inline, deterministic (random.seed(20261009)) — see docs/performance_review.md",
+  "notes": "Static replacement for the animated hero <canvas>. The canvas alone turned a 3s desktop scroll from 2/179 late frames into 47/132."
+ },
+ "iconSprite": {
+  "file": "assets/icons.svg",
+  "type": "third-party-svg",
+  "source": "Font Awesome Free 6.5.0 (CC BY 4.0 for icons), @fortawesome/fontawesome-free npm package",
+  "notes": "22 symbols extracted from the package's own SVGs and inlined into both pages, replacing a ~110 KB CDN stylesheet plus webfonts."
+ }
 }

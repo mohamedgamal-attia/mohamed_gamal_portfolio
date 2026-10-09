@@ -18,6 +18,9 @@
   'use strict';
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Under reduced motion the carousel still moves — it just arrives instead
+     of gliding. */
+  const SB = reduce ? 'auto' : 'smooth';
 
   function init(root) {
     (root || document).querySelectorAll('[data-carousel]').forEach(setup);
@@ -34,8 +37,6 @@
     const dotsWrap = el.querySelector('.carousel-dots');
     if (!track || !slides.length) return;
 
-    const interval = parseInt(el.dataset.carouselAuto, 10) || 4000;
-    let timer = null, paused = false;
 
     const step = () => {
       const s = slides[0];
@@ -45,8 +46,8 @@
     const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
 
     function go(dir) {
-      if (dir > 0 && atEnd()) track.scrollTo({ left: 0, behavior: 'smooth' });
-      else track.scrollBy({ left: dir * step(), behavior: 'smooth' });
+      if (dir > 0 && atEnd()) track.scrollTo({ left: 0, behavior: SB });
+      else track.scrollBy({ left: dir * step(), behavior: SB });
     }
 
     /* Dots — one per slide */
@@ -76,7 +77,7 @@
     next && next.addEventListener('click', () => { go(1); restart(); });
     dots.forEach(d => d.addEventListener('click', () => {
       const s = slides[+d.dataset.i];
-      track.scrollTo({ left: s.offsetLeft - (track.clientWidth - s.offsetWidth) / 2, behavior: 'smooth' });
+      track.scrollTo({ left: s.offsetLeft - (track.clientWidth - s.offsetWidth) / 2, behavior: SB });
       restart();
     }));
 
@@ -112,24 +113,12 @@
       else if (e.key === 'ArrowRight') { go(1); restart(); }
     });
 
-    /* Autoplay + pause */
-    function start() {
-      if (reduce || timer) return;
-      timer = setInterval(() => { if (!paused) go(1); }, interval);
-    }
-    function stop() { clearInterval(timer); timer = null; }
-    function restart() { stop(); start(); }
-
-    ['mouseenter', 'focusin', 'pointerdown'].forEach(ev => el.addEventListener(ev, () => { paused = true; }));
-    ['mouseleave', 'focusout'].forEach(ev => el.addEventListener(ev, () => { paused = false; }));
-    window.addEventListener('pointerup', () => { paused = false; });
-
-    /* Pause when off-screen */
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(es => es.forEach(e => {
-        if (e.isIntersecting) start(); else stop();
-      }), { threshold: 0 }).observe(el);
-    } else start();
+    /* No autoplay. A timer that advances a carousel forever is a continuous
+       transform loop the reader never asked for, and it steals focus from
+       whatever they were actually reading. Navigation is the buttons, the
+       arrow keys, drag, and native scroll-snap. restart() is kept as a no-op
+       so the keyboard handlers above read the same either way. */
+    function restart() {}
 
     syncActive();
   }

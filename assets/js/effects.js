@@ -1,6 +1,6 @@
 /* =========================================================
    effects.js — futuristic micro-interactions
-   scroll progress · particles · magnetic buttons ·
+   scroll progress · magnetic buttons ·
    hero tilt/parallax · card cursor-glow · role rotator
    All effects respect prefers-reduced-motion.
    ========================================================= */

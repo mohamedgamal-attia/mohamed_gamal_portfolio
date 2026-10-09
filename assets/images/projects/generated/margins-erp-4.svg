@@ -2,20 +2,20 @@
   
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1b1319"/>
-      <stop offset="1" stop-color="#241a22"/>
+      <stop offset="0" stop-color="#190f10"/>
+      <stop offset="1" stop-color="#261718"/>
     </linearGradient>
     <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8e3b45"/>
-      <stop offset="1" stop-color="#a64b56"/>
+      <stop offset="0" stop-color="#c0392b"/>
+      <stop offset="1" stop-color="#e0695c"/>
     </linearGradient>
     <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0.09"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#8e3b45" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#8e3b45" stop-opacity="0"/>
+      <stop offset="0" stop-color="#c0392b" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#c0392b" stop-opacity="0"/>
     </radialGradient>
     <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="18"/>
@@ -30,38 +30,38 @@
   <ellipse cx="120" cy="90" rx="360" ry="300" fill="url(#glow)" filter="url(#soft)" opacity="0.9"/>
   <ellipse cx="1120" cy="720" rx="380" ry="300" fill="url(#glow)" filter="url(#soft)" opacity="0.6"/>
   <g transform="translate(100,64)">
-    <rect x="0" y="0" width="1000" height="52" rx="16" fill="#3a2a35"/>
-    <rect x="0" y="26" width="1000" height="26" fill="#3a2a35"/>
+    <rect x="0" y="0" width="1000" height="52" rx="16" fill="#3f282a"/>
+    <rect x="0" y="26" width="1000" height="26" fill="#3f282a"/>
     <circle cx="30" cy="26" r="6" fill="#ff5f57"/>
     <circle cx="52" cy="26" r="6" fill="#febc2e"/>
     <circle cx="74" cy="26" r="6" fill="#28c840"/>
-    <rect x="360" y="15" width="280" height="22" rx="11" fill="#1b1319" opacity="0.6"/>
+    <rect x="360" y="15" width="280" height="22" rx="11" fill="#190f10" opacity="0.6"/>
     <text x="500" y="30" font-family="Inter,Segoe UI,sans-serif" font-size="12"
-          fill="#a8939e" text-anchor="middle">margins.odoo · Reports</text>
+          fill="#9d9a96" text-anchor="middle">margins.odoo · Reports</text>
     <rect x="836" y="14" width="150" height="24" rx="12" fill="url(#acc)" opacity="0.92"/>
     <text x="911.0" y="30" font-family="Inter,sans-serif" font-size="11" font-weight="700"
-          fill="#140d13" text-anchor="middle" letter-spacing="0.5">QWEB REPORTING</text><rect x="0" y="70" width="88" height="480" rx="16" fill="#2e2029"/><rect x="18" y="90" width="52" height="34" rx="10" fill="url(#acc)" opacity="1"/><rect x="30" y="101" width="28" height="4" rx="2" fill="#140d13" opacity="0.9"/><rect x="18" y="138" width="52" height="34" rx="10" fill="#3a2a35" opacity="0.8"/><rect x="30" y="149" width="28" height="4" rx="2" fill="#a8939e" opacity="0.9"/><rect x="18" y="186" width="52" height="34" rx="10" fill="#3a2a35" opacity="0.8"/><rect x="30" y="197" width="28" height="4" rx="2" fill="#a8939e" opacity="0.9"/><rect x="18" y="234" width="52" height="34" rx="10" fill="#3a2a35" opacity="0.8"/><rect x="30" y="245" width="28" height="4" rx="2" fill="#a8939e" opacity="0.9"/><rect x="18" y="282" width="52" height="34" rx="10" fill="#3a2a35" opacity="0.8"/><rect x="30" y="293" width="28" height="4" rx="2" fill="#a8939e" opacity="0.9"/><rect x="18" y="330" width="52" height="34" rx="10" fill="#3a2a35" opacity="0.8"/><rect x="30" y="341" width="28" height="4" rx="2" fill="#a8939e" opacity="0.9"/>
-    <rect x="108" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#4a3542" stroke-width="1"/>
+          fill="#ffffff" text-anchor="middle" letter-spacing="0.5">QWEB REPORTING</text><rect x="0" y="70" width="88" height="480" rx="16" fill="#311e20"/><rect x="18" y="90" width="52" height="34" rx="10" fill="url(#acc)" opacity="1"/><rect x="30" y="101" width="28" height="4" rx="2" fill="#ffffff" opacity="0.9"/><rect x="18" y="138" width="52" height="34" rx="10" fill="#3f282a" opacity="0.8"/><rect x="30" y="149" width="28" height="4" rx="2" fill="#9d9a96" opacity="0.9"/><rect x="18" y="186" width="52" height="34" rx="10" fill="#3f282a" opacity="0.8"/><rect x="30" y="197" width="28" height="4" rx="2" fill="#9d9a96" opacity="0.9"/><rect x="18" y="234" width="52" height="34" rx="10" fill="#3f282a" opacity="0.8"/><rect x="30" y="245" width="28" height="4" rx="2" fill="#9d9a96" opacity="0.9"/><rect x="18" y="282" width="52" height="34" rx="10" fill="#3f282a" opacity="0.8"/><rect x="30" y="293" width="28" height="4" rx="2" fill="#9d9a96" opacity="0.9"/><rect x="18" y="330" width="52" height="34" rx="10" fill="#3f282a" opacity="0.8"/><rect x="30" y="341" width="28" height="4" rx="2" fill="#9d9a96" opacity="0.9"/>
+    <rect x="108" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#523436" stroke-width="1"/>
     <text x="126" y="108" font-family="Inter,sans-serif" font-size="10.5" font-weight="700"
-          letter-spacing="1.1" fill="#a8939e">REPORTS</text>
-    <rect x="126" y="118" width="86" height="15" rx="7" fill="#ddd0d4" opacity="0.55"/>
+          letter-spacing="1.1" fill="#9d9a96">REPORTS</text>
+    <rect x="126" y="118" width="86" height="15" rx="7" fill="#d6d4d0" opacity="0.55"/>
     <rect x="126" y="163.51687376524464" width="10" height="4.483126234755353" rx="3" fill="url(#acc)" opacity="0.36"/><rect x="140" y="148.4215320420715" width="10" height="19.578467957928485" rx="3" fill="url(#acc)" opacity="0.74"/><rect x="154" y="154.7749770112607" width="10" height="13.2250229887393" rx="3" fill="url(#acc)" opacity="0.58"/><rect x="168" y="159.6911260075659" width="10" height="8.308873992434073" rx="3" fill="url(#acc)" opacity="0.46"/><rect x="182" y="157.93618577117837" width="10" height="10.063814228821638" rx="3" fill="url(#acc)" opacity="0.50"/><rect x="196" y="152.96572769715794" width="10" height="15.03427230284207" rx="3" fill="url(#acc)" opacity="0.63"/>
-    <rect x="320" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#4a3542" stroke-width="1"/>
+    <rect x="320" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#523436" stroke-width="1"/>
     <text x="338" y="108" font-family="Inter,sans-serif" font-size="10.5" font-weight="700"
-          letter-spacing="1.1" fill="#a8939e">CONTRACTS PDF</text>
-    <rect x="338" y="118" width="98" height="15" rx="7" fill="#ddd0d4" opacity="0.55"/>
+          letter-spacing="1.1" fill="#9d9a96">CONTRACTS PDF</text>
+    <rect x="338" y="118" width="98" height="15" rx="7" fill="#d6d4d0" opacity="0.55"/>
     <rect x="338" y="156.63106071434765" width="10" height="11.368939285652347" rx="3" fill="url(#acc)" opacity="0.53"/><rect x="352" y="144.65693181753875" width="10" height="23.343068182461252" rx="3" fill="url(#acc)" opacity="0.83"/><rect x="366" y="158.77865082138828" width="10" height="9.221349178611728" rx="3" fill="url(#acc)" opacity="0.48"/><rect x="380" y="159.59238995729646" width="10" height="8.407610042703553" rx="3" fill="url(#acc)" opacity="0.46"/><rect x="394" y="151.6383958708533" width="10" height="16.361604129146723" rx="3" fill="url(#acc)" opacity="0.66"/><rect x="408" y="149.13539519542587" width="10" height="18.864604804574135" rx="3" fill="url(#acc)" opacity="0.72"/>
-    <rect x="532" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#4a3542" stroke-width="1"/>
+    <rect x="532" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#523436" stroke-width="1"/>
     <text x="550" y="108" font-family="Inter,sans-serif" font-size="10.5" font-weight="700"
-          letter-spacing="1.1" fill="#a8939e">ROLES</text>
-    <rect x="550" y="118" width="82" height="15" rx="7" fill="#ddd0d4" opacity="0.55"/>
+          letter-spacing="1.1" fill="#9d9a96">ROLES</text>
+    <rect x="550" y="118" width="82" height="15" rx="7" fill="#d6d4d0" opacity="0.55"/>
     <rect x="550" y="144.79716979056923" width="10" height="23.202830209430786" rx="3" fill="url(#acc)" opacity="0.83"/><rect x="564" y="145.9300297610069" width="10" height="22.069970238993093" rx="3" fill="url(#acc)" opacity="0.80"/><rect x="578" y="155.625457664746" width="10" height="12.37454233525401" rx="3" fill="url(#acc)" opacity="0.56"/><rect x="592" y="159.11416812514904" width="10" height="8.88583187485095" rx="3" fill="url(#acc)" opacity="0.47"/><rect x="606" y="144.7585474556534" width="10" height="23.241452544346608" rx="3" fill="url(#acc)" opacity="0.83"/><rect x="620" y="151.2880372129357" width="10" height="16.711962787064298" rx="3" fill="url(#acc)" opacity="0.67"/>
-    <rect x="744" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#4a3542" stroke-width="1"/>
+    <rect x="744" y="84" width="196" height="96" rx="14" fill="url(#glass)" stroke="#523436" stroke-width="1"/>
     <text x="762" y="108" font-family="Inter,sans-serif" font-size="10.5" font-weight="700"
-          letter-spacing="1.1" fill="#a8939e">ACCESS RULES</text>
-    <rect x="762" y="118" width="96" height="15" rx="7" fill="#ddd0d4" opacity="0.55"/>
+          letter-spacing="1.1" fill="#9d9a96">ACCESS RULES</text>
+    <rect x="762" y="118" width="96" height="15" rx="7" fill="#d6d4d0" opacity="0.55"/>
     <rect x="762" y="144.9650397552061" width="10" height="23.034960244793883" rx="3" fill="url(#acc)" opacity="0.83"/><rect x="776" y="150.7170209813494" width="10" height="17.282979018650597" rx="3" fill="url(#acc)" opacity="0.68"/><rect x="790" y="150.32074553065928" width="10" height="17.679254469340727" rx="3" fill="url(#acc)" opacity="0.69"/><rect x="804" y="161.5982833225131" width="10" height="6.401716677486883" rx="3" fill="url(#acc)" opacity="0.41"/><rect x="818" y="154.27227755387668" width="10" height="13.727722446123327" rx="3" fill="url(#acc)" opacity="0.59"/><rect x="832" y="162.62040261787757" width="10" height="5.37959738212243" rx="3" fill="url(#acc)" opacity="0.38"/>
-    <rect x="108" y="196" width="470" height="190" rx="16" fill="url(#glass)" stroke="#4a3542" stroke-width="1"/>
-    <text x="128" y="226" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#f6f1e4">Revenue by stage</text>
-    <line x1="126" y1="266" x2="560" y2="266" stroke="#4a3542" stroke-opacity="0.5" stroke-width="1"/><line x1="126" y1="296" x2="560" y2="296" stroke="#4a3542" stroke-opacity="0.5" stroke-width="1"/><line x1="126" y1="326" x2="560" y2="326" stroke="#4a3542" stroke-opacity="0.5" stroke-width="1"/><rect x="128" y="297" width="34" height="65" rx="5" fill="url(#acc)"/><rect x="195" y="264" width="34" height="98" rx="5" fill="url(#acc)"/><rect x="262" y="308" width="34" height="54" rx="5" fill="url(#acc)"/><rect x="329" y="243" width="34" height="119" rx="5" fill="url(#acc)"/><rect x="397" y="275" width="34" height="87" rx="5" fill="url(#acc)"/><rect x="464" y="232" width="34" height="130" rx="5" fill="url(#acc)"/><rect x="531" y="286" width="34" height="76" rx="5" fill="url(#acc)"/><circle cx="760" cy="292" r="66" fill="none" stroke="#3a2a35" stroke-width="18"/><path d="M 760.0 226.0 A 66 66 0 1 1 751.7 357.5" fill="none" stroke="#8e3b45" stroke-width="18" stroke-linecap="round"/><path d="M 751.7 357.5 A 66 66 0 0 1 697.2 271.6" fill="none" stroke="#e3b375" stroke-width="18" stroke-linecap="round"/><path d="M 697.2 271.6 A 66 66 0 0 1 760.0 226.0" fill="none" stroke="#836773" stroke-width="18" stroke-linecap="round"/><rect x="736" y="285" width="48" height="13" rx="6" fill="#ddd0d4" opacity="0.45"/><rect x="620" y="196" width="272" height="190" rx="16" fill="url(#glass)" stroke="#4a3542" stroke-width="1"/><text x="640" y="226" font-family="Inter" font-size="14" font-weight="600" fill="#f6f1e4">Distribution</text><rect x="108" y="400" width="784" height="150" rx="16" fill="url(#glass)" stroke="#4a3542" stroke-width="1"/><rect x="126" y="420" width="240" height="8" rx="4" fill="#a8939e"/><rect x="420" y="420" width="150" height="8" rx="4" fill="#4a3542"/><rect x="620" y="420" width="120" height="8" rx="4" fill="#4a3542"/><rect x="800" y="416" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="450" width="240" height="8" rx="4" fill="#4a3542"/><rect x="420" y="450" width="150" height="8" rx="4" fill="#4a3542"/><rect x="620" y="450" width="120" height="8" rx="4" fill="#4a3542"/><rect x="800" y="446" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="480" width="240" height="8" rx="4" fill="#4a3542"/><rect x="420" y="480" width="150" height="8" rx="4" fill="#4a3542"/><rect x="620" y="480" width="120" height="8" rx="4" fill="#4a3542"/><rect x="800" y="476" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="510" width="240" height="8" rx="4" fill="#4a3542"/><rect x="420" y="510" width="150" height="8" rx="4" fill="#4a3542"/><rect x="620" y="510" width="120" height="8" rx="4" fill="#4a3542"/><rect x="800" y="506" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/></g>
+    <rect x="108" y="196" width="470" height="190" rx="16" fill="url(#glass)" stroke="#523436" stroke-width="1"/>
+    <text x="128" y="226" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#f2f1ee">Revenue by stage</text>
+    <line x1="126" y1="266" x2="560" y2="266" stroke="#523436" stroke-opacity="0.5" stroke-width="1"/><line x1="126" y1="296" x2="560" y2="296" stroke="#523436" stroke-opacity="0.5" stroke-width="1"/><line x1="126" y1="326" x2="560" y2="326" stroke="#523436" stroke-opacity="0.5" stroke-width="1"/><rect x="128" y="297" width="34" height="65" rx="5" fill="url(#acc)"/><rect x="195" y="264" width="34" height="98" rx="5" fill="url(#acc)"/><rect x="262" y="308" width="34" height="54" rx="5" fill="url(#acc)"/><rect x="329" y="243" width="34" height="119" rx="5" fill="url(#acc)"/><rect x="397" y="275" width="34" height="87" rx="5" fill="url(#acc)"/><rect x="464" y="232" width="34" height="130" rx="5" fill="url(#acc)"/><rect x="531" y="286" width="34" height="76" rx="5" fill="url(#acc)"/><circle cx="760" cy="292" r="66" fill="none" stroke="#3f282a" stroke-width="18"/><path d="M 760.0 226.0 A 66 66 0 1 1 751.7 357.5" fill="none" stroke="#c0392b" stroke-width="18" stroke-linecap="round"/><path d="M 751.7 357.5 A 66 66 0 0 1 697.2 271.6" fill="none" stroke="#d57c73" stroke-width="18" stroke-linecap="round"/><path d="M 697.2 271.6 A 66 66 0 0 1 760.0 226.0" fill="none" stroke="#83271d" stroke-width="18" stroke-linecap="round"/><rect x="736" y="285" width="48" height="13" rx="6" fill="#d6d4d0" opacity="0.45"/><rect x="620" y="196" width="272" height="190" rx="16" fill="url(#glass)" stroke="#523436" stroke-width="1"/><text x="640" y="226" font-family="Inter" font-size="14" font-weight="600" fill="#f2f1ee">Distribution</text><rect x="108" y="400" width="784" height="150" rx="16" fill="url(#glass)" stroke="#523436" stroke-width="1"/><rect x="126" y="420" width="240" height="8" rx="4" fill="#9d9a96"/><rect x="420" y="420" width="150" height="8" rx="4" fill="#523436"/><rect x="620" y="420" width="120" height="8" rx="4" fill="#523436"/><rect x="800" y="416" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="450" width="240" height="8" rx="4" fill="#523436"/><rect x="420" y="450" width="150" height="8" rx="4" fill="#523436"/><rect x="620" y="450" width="120" height="8" rx="4" fill="#523436"/><rect x="800" y="446" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="480" width="240" height="8" rx="4" fill="#523436"/><rect x="420" y="480" width="150" height="8" rx="4" fill="#523436"/><rect x="620" y="480" width="120" height="8" rx="4" fill="#523436"/><rect x="800" y="476" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/><rect x="126" y="510" width="240" height="8" rx="4" fill="#523436"/><rect x="420" y="510" width="150" height="8" rx="4" fill="#523436"/><rect x="620" y="510" width="120" height="8" rx="4" fill="#523436"/><rect x="800" y="506" width="70" height="18" rx="9" fill="url(#acc)" opacity="0.85"/></g>
 </svg>

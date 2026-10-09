@@ -26,20 +26,30 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets/images/projects/eghr")
 os.makedirs(OUT, exist_ok=True)
 
-# ── palettes ────────────────────────────────────────────────
+# ── EGHR product palette ────────────────────────────────────
+# These are the PRODUCT's colours, not the portfolio's (§13, §52).
+#
+# EGHR is an EJAD product and EJAD's identity is teal. The previous pass
+# retinted these screens into the portfolio's plum and gold, which made a
+# client's product look like this website — the exact thing the review
+# rejected. This restores the teal the portal shipped with, corroborated by
+# the real EjadTech Odoo backend screenshot (assets/images/projects/
+# ejadtech-odoo-work.webp), whose UI samples to #00b4a8 / #009090.
+#
+# Red appears where EJAD uses it: as the alert/rejection state.
 PAL = {
     "dark": dict(
-        back="#1b1319", shell="#241a22", panel="#2e2029", panel2="#3a2a35",
-        line="#4a3542", txt="#f6f1e4", txt2="#ddd0d4", txt3="#a8939e",
-        acc="#e3b375", acc2="#7c414c", chip="#352531", skel="#44313d",
+        back="#07171c", shell="#0b2129", panel="#102e38", panel2="#17414e",
+        line="#1e5565", txt="#eef6f7", txt2="#c4dade", txt3="#8fb0b7",
+        acc="#17b3a6", acc2="#0e7490", chip="#123742", skel="#1a4c5a",
     ),
     "light": dict(
-        back="#ece7d2", shell="#ffffff", panel="#ffffff", panel2="#faf7e9",
-        line="#e2dcc6", txt="#241a22", txt2="#5c4b55", txt3="#8a7682",
-        acc="#9a5a28", acc2="#7c414c", chip="#f3eedb", skel="#e6e0ca",
+        back="#eef4f5", shell="#ffffff", panel="#ffffff", panel2="#f5fafb",
+        line="#d8e6e9", txt="#0d2b33", txt2="#3d5b63", txt3="#6b868d",
+        acc="#0e7490", acc2="#00695f", chip="#e4f1f2", skel="#dbeaec",
     ),
 }
-OK, WARN, DANGER, INFO, VIOLET = "#5b7a5a", "#b8893f", "#8e3b45", "#7c414c", "#836773"
+OK, WARN, DANGER, INFO, VIOLET = "#2f9e6a", "#c08422", "#c0392b", "#0e7490", "#5b7a94"
 
 FS = "Inter,'Segoe UI',system-ui,sans-serif"
 FA = "'Segoe UI','Tahoma',Arial,sans-serif"   # has Arabic glyphs on most systems
@@ -1098,7 +1108,7 @@ def cover():
   <!-- copy -->
   <rect x="72" y="92" width="196" height="36" rx="18" fill="{p['acc2']}" opacity="0.18"/>
   <rect x="72" y="92" width="196" height="36" rx="18" fill="none" stroke="{p['acc']}" stroke-opacity="0.5"/>
-  {t(170, 115, "FLAGSHIP CASE STUDY", 11.5, "800", p['acc'], "middle")}
+  {t(170, 115, "EMPLOYEE PORTAL", 11.5, "800", p['acc'], "middle")}
   {t(72, 196, "EJAD EGHR", 52, "800", "#ffffff")}
   {t(72, 248, "Enterprise Employee Portal", 27, "700", p['acc'])}
   {t(72, 306, "Portal-first HR self-service on Odoo 18 \u2014", 16, "500", p['txt2'])}

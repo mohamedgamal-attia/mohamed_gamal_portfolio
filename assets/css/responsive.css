@@ -6,7 +6,6 @@
    ========================================================= */
 
 @media (max-width: 1180px) {
-  .nav-flagship { display: none; }
   .contact-rows a { grid-template-columns: 170px minmax(0, 1fr) 24px; }
 }
 
@@ -54,7 +53,7 @@
   .hero-visual { width: min(300px, 70vw); }
   .hv-plate { inset: 24px -16px -20px 20px; }
   /* Keep the floating layers off the face: the chip sits above the frame
-     and the flagship card tucks into the lower corner. */
+     and the depth layers tuck into the lower corner. */
   .hv-flag { left: -10px; bottom: 8px; width: 156px; padding: 12px 13px; }
   .hv-flag b { font-size: .96rem; }
   .hv-flag-sub { font-size: .7rem; }

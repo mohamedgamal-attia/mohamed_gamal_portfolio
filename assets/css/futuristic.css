@@ -66,5 +66,4 @@
   }
   .beam-divider::after, .cue-line::after, .marquee-track { animation: none !important; }
   .tilt-3d { transform: none !important; }
-  #cursor-dot, #cursor-ring { display: none !important; }
 }

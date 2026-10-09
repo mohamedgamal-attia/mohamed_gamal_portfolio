@@ -1,8 +1,8 @@
 {
   "name": "Mohamed Gamal",
-  "title": "Senior Odoo Developer & ERP Software Engineer",
-  "subtitle": "Senior Odoo Developer · AI & Data Analyst",
-  "experienceYears": "3+",
+  "title": "Senior Software Engineer & Odoo / ERP Specialist",
+  "subtitle": "Enterprise systems · Portals & web · Backend, integrations & data",
+  "experienceYears": "4+",
   "location": "Cairo, Egypt",
   "openTo": "Open to Remote & Relocation",
   "email": "mohammedgamal37l30@gmail.com",
@@ -14,18 +14,11 @@
   "github": "https://github.com/mohamedgamal-attia",
   "cv": "0_Mohamed_Gamal_CV.pdf",
   "photo": "assets/images/portrait/mohamed-gamal-728.jpg",
-  "headline": "I turn business requirements into production-grade Odoo Enterprise systems — custom modules, workflows, REST integrations and training — powered by Python, PostgreSQL and Applied AI.",
-  "odooVersions": [
-    "Odoo 14",
-    "Odoo 15",
-    "Odoo 16",
-    "Odoo 17",
-    "Odoo 18",
-    "Odoo 19"
-  ],
+  "headline": "I build software that connects business workflows to reliable systems — from Odoo and ERP platforms to web applications, backend services, integrations, automation and data pipelines.",
+  "odooVersions": "14–20",
   "about": [
-    "I'm Mohamed Gamal, a Senior Odoo Developer with 3+ years of hands-on experience designing, building, and delivering custom ERP systems. I work at the intersection of business process design and technical implementation — translating real operational needs into clean, maintainable Odoo modules.",
-    "My approach is business-first: I map workflows and requirements before writing a single line of code, ensuring the final system is both technically robust and genuinely useful to the people who use it every day."
+    "I'm Mohamed Gamal, a software engineer with 4+ years building systems that go into production. Odoo and ERP is my deepest specialisation — and it sits inside broader engineering work: employee and customer portals, backend services and APIs, integrations, workflow automation and data pipelines.",
+    "My approach is business-first: I map the workflow and the requirements before writing a line of code, so the system that ships is both technically sound and genuinely usable by the people in it every day. A data background before ERP is why reporting and performance tend to be the parts clients comment on."
   ],
   "highlights": [
     {

@@ -1,15 +1,30 @@
 /* =========================================================
    case-study.css — long-form project case study
    Loaded only by pages under projects/. Depends on
-   variables.css + motion.css (both come in via style.css).
+   variables.css + motion.css (both linked ahead of this file).
    ========================================================= */
+
+/* ── Project accent (§17, §51) ───────────────────────────
+   The page keeps the PORTFOLIO's typography, navigation and
+   neutral shell. The PROJECT supplies the accent on its own
+   media: device chrome, stage glow, media hairlines.
+
+   EGHR is an EJAD product and EJAD is teal — see
+   scripts/generate_eghr_visuals.py for the provenance. A
+   different case study sets --cs-accent to its own brand and
+   inherits the same frame.                                   */
+.cs-page {
+  --cs-accent:      #17b3a6;
+  --cs-accent-deep: #0e7490;
+  --rgb-cs-accent:  23, 179, 166;
+}
 
 /* ── Page canvas ─────────────────────────────────────────── */
 .cs-page {
   background:
-    radial-gradient(880px 560px at 82% -8%, rgba(var(--rgb-gold), .16), transparent 68%),
-    radial-gradient(760px 520px at 4% 22%, rgba(var(--rgb-burgundy), .30), transparent 72%),
-    linear-gradient(180deg, #1b1319 0%, #241a22 44%, #1b1319 100%);
+    radial-gradient(880px 560px at 82% -8%, rgba(var(--rgb-cs-accent), .10), transparent 68%),
+    radial-gradient(760px 520px at 4% 22%, rgba(var(--rgb-cs-accent), .07), transparent 72%),
+    linear-gradient(180deg, var(--bg-deep) 0%, var(--surface-dark-1) 44%, var(--bg-deep) 100%);
   color: var(--text-on-dark);
   min-height: 100vh;
 }
@@ -30,8 +45,9 @@
 /* ── Case-study nav ──────────────────────────────────────── */
 .cs-nav {
   position: sticky; top: 0; z-index: 900;
-  background: rgba(var(--rgb-deep), .72);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  /* Full-width sticky bar: opaque, so scrolling never re-blurs the page
+     behind it. */
+  background: rgba(var(--rgb-deep), .96);
   border-bottom: 1px solid rgba(var(--rgb-gold-pale), .08);
 }
 .cs-nav-inner {
@@ -154,15 +170,17 @@
 /* ── Device frames ───────────────────────────────────────── */
 .frame {
   position: relative; border-radius: var(--radius); overflow: hidden;
-  background: var(--surface-dark-2); border: 1px solid rgba(var(--rgb-gold), .2);
+  background: var(--surface-dark-2); border: 1px solid rgba(var(--rgb-cs-accent), .22);
   box-shadow: var(--depth-3), var(--edge-light);
 }
 .frame img { width: 100%; height: auto; display: block; }
 
 .frame-phone {
   position: relative; border-radius: 30px; padding: 9px;
-  background: linear-gradient(160deg, #4a3542, #241a22);
-  border: 1px solid rgba(var(--rgb-gold), .26);
+  /* A phone bezel is hardware, not branding: neutral graphite, so it never
+     competes with the product colours on the screen inside it. */
+  background: linear-gradient(160deg, #3a3a3f, #1c1c1f);
+  border: 1px solid rgba(255, 255, 255, .10);
   box-shadow: var(--depth-3), var(--edge-light);
 }
 .frame-phone::before {
@@ -199,7 +217,7 @@
 }
 .cs-stage::after {
   content: ''; position: absolute; inset: 14% 8% -6%;
-  background: radial-gradient(60% 60% at 50% 50%, rgba(var(--rgb-burgundy), .36), transparent 72%);
+  background: radial-gradient(60% 60% at 50% 50%, rgba(var(--rgb-cs-accent), .22), transparent 72%);
   filter: blur(42px); z-index: -1;
 }
 
@@ -256,15 +274,18 @@
 }
 .cs-card h3 { font-size: 1rem; color: #fff; margin-bottom: 9px; }
 .cs-card p { font-size: .9rem; margin: 0; line-height: 1.62; }
-.cs-card-ico {
-  width: 40px; height: 40px; border-radius: 12px; margin-bottom: 16px;
-  display: grid; place-items: center; font-size: 1.05rem;
-  background: rgba(var(--rgb-burgundy), .18); border: 1px solid rgba(var(--rgb-burgundy), .36);
-}
+/* The numeral IS the card's mark. These cards used to carry an emoji on a
+   tinted plate above the heading; eight emoji in a row is the single most
+   recognisable "generated page" tell, and the numbering already did the
+   job of marking each card. */
 .cs-card-num {
-  position: absolute; top: 18px; right: 20px;
-  font-family: var(--font-mono); font-size: .72rem; font-weight: 700;
-  color: rgba(255, 255, 255, .16);
+  display: block; margin-bottom: 14px;
+  font-family: var(--font-mono); font-size: .78rem; font-weight: 700;
+  letter-spacing: .12em; color: var(--accent-primary);
+}
+.cs-card-num::after {
+  content: ''; display: block; width: 26px; height: 2px; margin-top: 10px;
+  background: currentColor; opacity: .45;
 }
 
 /* ── Role / highlight tag lists ──────────────────────────── */
@@ -341,7 +362,7 @@
   display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
   font-size: .78rem; font-weight: 700; color: #fff;
   padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(var(--rgb-gold-pale), .22);
-  background: rgba(var(--rgb-deep), .78); backdrop-filter: blur(10px);
+  background: rgba(var(--rgb-deep), .90);
   transition: all var(--motion-base) var(--ease-standard);
 }
 .gal-open:hover { background: var(--blue); border-color: transparent; }
@@ -559,8 +580,7 @@
   position: absolute; top: 12px; left: 12px; z-index: 2;
   font-size: .62rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
   color: var(--on-dark-2); padding: 5px 11px; border-radius: 999px;
-  background: rgba(var(--rgb-deep), .82); border: 1px solid rgba(var(--rgb-gold-pale), .17);
-  backdrop-filter: blur(8px);
+  background: rgba(var(--rgb-deep), .92); border: 1px solid rgba(var(--rgb-gold-pale), .17);
 }
 
 /* ── Closing CTA ─────────────────────────────────────────── */

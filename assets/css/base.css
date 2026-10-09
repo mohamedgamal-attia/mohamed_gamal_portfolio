@@ -88,3 +88,31 @@ p { line-height: 1.7; color: var(--text-secondary); }
   transition: top var(--motion-base, .18s) var(--ease-standard, ease);
 }
 .skip-link:focus { top: 0; }
+
+/* ═══════════════════════════════════════════════════════════
+   Below-fold rendering (P9)
+   The browser skips layout and paint for these sections until
+   they come near the viewport. contain-intrinsic-size supplies
+   a placeholder height so the scrollbar does not jump as each
+   one is realised — without it, content-visibility causes
+   exactly the scroll instability it is meant to relieve.
+
+   Only sections BELOW the fold are listed. #hero and #work are
+   deliberately absent: the hero is the LCP element, and the
+   work grid is immediately under it.
+   ═══════════════════════════════════════════════════════════ */
+[data-cv] {
+  content-visibility: auto;
+  /* The `auto` keyword makes the browser remember each section's real height
+     after its first render, so the placeholder below is only ever used once.
+     1400px is close to the measured desktop heights (1149–1526px), which
+     keeps the cold-load scrollbar honest. animations.js realises these
+     sections around an anchor jump; see the note there. */
+  contain-intrinsic-size: auto 1400px;
+}
+/* Set while an in-page jump is in flight, so offsets are measured against
+   real heights rather than the placeholder. */
+.anchor-jump [data-cv] { content-visibility: visible; }
+
+/* The modal and its overlay must stay measurable even while closed, so they
+   are never given content-visibility. */

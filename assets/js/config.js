@@ -7,9 +7,9 @@ window.Portfolio = {
 
   profile: {
     name:       'Mohamed Gamal',
-    title:      'Senior Odoo Developer & ERP Software Engineer',
-    subtitle:   'Enterprise systems · Employee portals · Integrations',
-    experience: '3+ Years',
+    title:      'Senior Software Engineer & Odoo / ERP Specialist',
+    subtitle:   'Enterprise systems · Portals & web · Backend, integrations & data',
+    experience: '4+ Years',
     location:   'Cairo, Egypt',
     email:      'mohammedgamal37l30@gmail.com',
     phone1:     '+201102672347',
@@ -18,32 +18,33 @@ window.Portfolio = {
     github:     'https://github.com/mohamedgamal-attia',
     cv:         '0_Mohamed_Gamal_CV.pdf',
     photo:      'assets/images/portrait/mohamed-gamal-728.jpg',
-    headline:   'I turn business requirements into production-grade Odoo Enterprise systems — custom modules, workflows, REST integrations and training — powered by Python, PostgreSQL and Applied AI.',
-    odooVersions: ['Odoo 14', 'Odoo 15', 'Odoo 16', 'Odoo 17', 'Odoo 18', 'Odoo 19'],
+    headline:   'I build software that connects business workflows to reliable systems — from Odoo and ERP platforms to web applications, backend services, integrations, automation and data pipelines.',
+    odooVersions: ['Odoo 14', 'Odoo 15', 'Odoo 16', 'Odoo 17', 'Odoo 18', 'Odoo 19', 'Odoo 20'],
   },
 
   stats: [
-    { value: 4,    suffix: '',  label: 'Companies',       display: '4' },
-    { value: 3,    suffix: '+', label: 'Years Experience', display: '3+' },
-    { value: null, suffix: '',  label: 'Odoo Versions',    display: '14–19' },
-    { value: 4,    suffix: '',  label: 'Business Domains', display: '4' },
+    { value: 4,    suffix: '+', label: 'Years Experience', display: '4+' },
+    { value: null, suffix: '',  label: 'Odoo Versions',    display: '14–20' },
+    { value: null, suffix: '',  label: 'Delivery',         display: 'Enterprise / Web / Data' },
+    { value: 3,    suffix: '',  label: 'Countries',        display: '3' },
   ],
 
   navItems: [
-    { href: '#about',      label: 'About' },
-    { href: '#skills',     label: 'Skills' },
-    { href: '#companies',  label: 'Companies' },
     { href: '#work',       label: 'Work' },
-    { href: '#context',    label: 'Context' },
+    { href: '#services',   label: 'Services' },
     { href: '#experience', label: 'Experience' },
     { href: '#contact',    label: 'Contact' },
   ],
 
+  /* §43 — only categories with real projects behind them. There is no
+     data-engineering PROJECT card, so there is no data-engineering filter;
+     that work is surfaced in What I Build and in the experience timeline. */
   filterTabs: [
-    { filter: 'all',              label: 'All' },
-    { filter: 'erp-systems',      label: 'ERP Systems' },
-    { filter: 'odoo-delivery',    label: 'Odoo Delivery' },
-    { filter: 'digital-delivery', label: 'Digital Delivery' },
+    { filter: 'all',             label: 'All' },
+    { filter: 'odoo-erp',        label: 'Odoo & ERP' },
+    { filter: 'portals-web',     label: 'Portals / Web' },
+    { filter: 'integrations',    label: 'Integrations / Automation' },
+    { filter: 'digital-content', label: 'Digital & Content' },
   ],
 
   dataFiles: {

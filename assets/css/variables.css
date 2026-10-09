@@ -1,112 +1,118 @@
 /* =========================================================
    variables.css — the design system
    -----------------------------------------------------------
-   One warm, editorial palette: deep plum surfaces, bone and
-   sage light surfaces, honey gold and burgundy accents.
+   PORTFOLIO SHELL ONLY. One neutral, editorial identity:
+   ink and warm charcoal surfaces, paper and warm ivory light
+   surfaces, a single personal gold and a deep burgundy accent.
+
+   This palette dresses the GALLERY — navigation, typography,
+   rules, personal CTAs, card frames, footer. It must never be
+   painted onto the ARTWORK: project screenshots, logos and
+   covers keep their own colours. Per-project colour arrives
+   through the --pj-* tokens at the bottom of this file, set
+   per card from project data.
+
    Everything downstream reads SEMANTIC tokens; the raw palette
    below is the only place a literal colour is written.
    ========================================================= */
 
 :root {
 
-  /* ── Raw palette ───────────────────────────────────────
-     Supplied reference, plus the darker plums and the two
-     deeper neutrals needed to keep text above WCAG AA.      */
-  --p-bone:        #f5f2df;   /* Ivory / Bone      */
-  --p-ivory:       #fbf9ee;
-  --p-sage-soft:   #d8e3d2;   /* Soft Sage         */
-  --p-sage-muted:  #b4c5b5;   /* Muted Sage        */
-  --p-sage-stone:  #acb9b0;   /* Stone Sage        */
-  --p-mauve:       #836773;   /* Dusty Mauve       */
-  --p-plum:        #483440;   /* Deep Plum         */
-  --p-plum-deep:   #2e2029;
-  --p-plum-black:  #211720;
-  --p-burgundy:    #563339;   /* Burgundy          */
-  --p-gold-pale:   #f6e3b8;   /* Pale Gold         */
-  --p-gold:        #e3b375;   /* Honey Gold        */
-  --p-sand:        #d0b08a;   /* Warm Sand         */
+  /* ── Raw palette ───────────────────────────────────────  */
+  --p-ink:        #171717;   /* Ink / Graphite    */
+  --p-charcoal:   #242120;   /* Warm Charcoal     */
+  --p-ivory:      #f3efe6;   /* Warm Ivory        */
+  --p-paper:      #faf7f1;   /* Paper             */
+  --p-stone:      #d7d0c4;   /* Stone             */
+  --p-sage:       #a7b0a1;   /* Muted Sage        */
+  --p-gold:       #c99a57;   /* Personal Gold     */
+  --p-burgundy:   #653b46;   /* Deep Burgundy     */
+  --p-muted:      #6b655e;   /* Muted Text (AA on every light surface) */
 
   /* ── Surfaces ──────────────────────────────────────────  */
-  --bg-deep:          #1b1319;   /* page floor, hero, footer  */
-  --bg-page:          var(--p-bone);
-  --surface-dark-1:   #241a22;
-  --surface-dark-2:   #2e2029;
-  --surface-dark-3:   #3a2a35;
-  --surface-elevated: #452f3e;
+  --bg-deep:          var(--p-ink);      /* nav, hero, footer  */
+  --bg-page:          var(--p-paper);
+  --surface-dark-1:   #1d1b1a;
+  --surface-dark-2:   var(--p-charcoal);
+  --surface-dark-3:   #302c2a;
+  --surface-elevated: #3b3633;
   --surface-1:        #ffffff;
-  --surface-2:        #faf7e9;
-  --surface-3:        #ece7d2;
-  --surface-sage:     #e6ece0;
+  --surface-2:        var(--p-paper);
+  --surface-3:        var(--p-ivory);
+  --surface-sage:     #e7eae3;
 
   /* ── Text ──────────────────────────────────────────────  */
-  --text-primary:     #241a22;
-  --text-secondary:   #5c4b55;
-  --text-muted:       #756270;
-  --text-on-dark:     #f6f1e4;
-  --text-on-dark-2:   #ddd0d4;
-  --text-on-dark-3:   #b4a2ab;
+  --text-primary:     var(--p-ink);
+  --text-secondary:   #4a453f;
+  --text-muted:       var(--p-muted);
+  --text-on-dark:     var(--p-ivory);
+  --text-on-dark-2:   #d2cbc3;
+  --text-on-dark-3:   #a8a099;
 
   /* ── Borders & rules ───────────────────────────────────  */
-  --border-soft:      #e2dcc6;
-  --border-strong:    #cfc6ab;
-  --border-on-dark:   rgba(246, 227, 184, .14);
-  --border-on-dark-2: rgba(246, 227, 184, .26);
+  --border-soft:      #e4ded2;
+  --border-strong:    var(--p-stone);
+  --border-on-dark:   rgba(243, 239, 230, .13);
+  --border-on-dark-2: rgba(243, 239, 230, .24);
 
-  /* ── Accents ───────────────────────────────────────────  */
-  --accent-primary:   #e3b375;   /* honey gold — dark surfaces */
-  --accent-deep:      #7c414c;   /* burgundy  — light surfaces */
-  --accent-deep-hi:   #96505c;
-  --accent-secondary: #b4c5b5;   /* muted sage                 */
-  --accent-warm:      #f6e3b8;   /* pale gold highlight        */
-  --accent-mauve:     #9c7d8b;
-  /* On-dark variants of the colours whose light-surface versions are too
-     dark to read on plum. */
-  --on-dark-mauve:    #c9a7b4;
-  --on-dark-sage:     #a7bda8;
-  --on-dark-rose:     #d99aa6;
+  /* ── Accents ───────────────────────────────────────────
+     Gold is 7.04:1 on ink but only 2.38:1 on paper, so it is
+     a DARK-SURFACE accent and a decorative mark on light.
+     Burgundy is 8.66:1 on paper — the light-surface accent.  */
+  --accent-primary:   var(--p-gold);
+  --accent-deep:      var(--p-burgundy);
+  --accent-deep-hi:   #7d4a57;
+  --accent-secondary: var(--p-sage);
+  --accent-warm:      #e4c893;
+  --accent-mauve:     #8c7a80;
+  --on-dark-mauve:    #bda9b0;
+  --on-dark-sage:     var(--p-sage);
+  --on-dark-rose:     #d2a0aa;
 
   /* ── Status ────────────────────────────────────────────  */
-  --success: #5b7a5a;
-  --warning: #b8893f;
+  --success: #4f6b4e;
+  --warning: #9b7433;
   --danger:  #8e3b45;
-  --info:    #6e5c78;
-  --focus:   #e3b375;
+  --info:    #5c5a64;
+  --focus:   var(--p-gold);
 
   /* ── RGB channels, for tinting with alpha ──────────────  */
-  --rgb-gold:      227, 179, 117;
-  --rgb-gold-pale: 246, 227, 184;
-  --rgb-sage:      180, 197, 181;
-  --rgb-mauve:     131, 103, 115;
-  --rgb-burgundy:  124, 65, 76;
-  --rgb-plum:      72, 52, 64;
-  --rgb-deep:      27, 19, 25;
-  --rgb-success:   91, 122, 90;
-  --rgb-warning:   184, 137, 63;
+  --rgb-gold:      201, 154, 87;
+  --rgb-gold-pale: 228, 200, 147;
+  --rgb-sage:      167, 176, 161;
+  --rgb-stone:     215, 208, 196;
+  --rgb-mauve:     140, 122, 128;
+  --rgb-burgundy:  101, 59, 70;
+  --rgb-ink:       23, 23, 23;
+  --rgb-charcoal:  36, 33, 32;
+  --rgb-ivory:     243, 239, 230;
+  --rgb-success:   79, 107, 78;
+  --rgb-warning:   155, 116, 51;
   --rgb-danger:    142, 59, 69;
 
-  /* ── Gradients ─────────────────────────────────────────  */
-  --grad-warm:   linear-gradient(118deg, #7c414c 0%, #9c7d8b 48%, #e3b375 100%);
-  --grad-gold:   linear-gradient(118deg, #d79f5c 0%, #f6e3b8 100%);
-  --grad-plum:   linear-gradient(160deg, #2e2029 0%, #1b1319 60%, #241a22 100%);
-  --grad-text:   linear-gradient(100deg, #f6f1e4 0%, #f6e3b8 52%, #d8e3d2 100%);
+  /* ── Gradients — restrained; no aurora smears ──────────  */
+  --grad-warm:   linear-gradient(118deg, #653b46 0%, #8c7a80 52%, #c99a57 100%);
+  --grad-gold:   linear-gradient(118deg, #bd8c4a 0%, #e4c893 100%);
+  --grad-ink:    linear-gradient(160deg, #242120 0%, #171717 62%, #1d1b1a 100%);
+  --grad-text:   linear-gradient(100deg, #f3efe6 0%, #e4c893 54%, #d7d0c4 100%);
   --grad-rule:   linear-gradient(90deg, transparent, var(--accent-primary), transparent);
-  /* Button fill: every stop clears 4.5:1 against bone-white text */
-  --grad-cta:    linear-gradient(118deg, #6d3743 0%, #83414f 55%, #96505c 100%);
+  /* Button fill: every stop clears 4.5:1 against ivory text */
+  --grad-cta:    linear-gradient(118deg, #5a343e 0%, #6d4049 55%, #7d4a57 100%);
 
-  /* ── Depth — warm shadows, never neutral grey ──────────  */
-  --shadow-sm: 0 1px 3px rgba(27, 19, 25, .10), 0 1px 2px rgba(27, 19, 25, .06);
-  --shadow-md: 0 6px 20px -6px rgba(27, 19, 25, .18);
-  --shadow-lg: 0 18px 48px -14px rgba(27, 19, 25, .28);
-  --shadow-xl: 0 34px 80px -24px rgba(27, 19, 25, .40);
-  --shadow-warm: 0 26px 70px -22px rgba(124, 65, 76, .50);
-  --glow-gold: 0 0 36px rgba(227, 179, 117, .34);
-  --glow-sage: 0 0 30px rgba(180, 197, 181, .26);
-  --edge-light: inset 0 1px 0 rgba(246, 227, 184, .12);
+  /* ── Depth — warm-neutral shadows ──────────────────────  */
+  --shadow-sm: 0 1px 3px rgba(23, 23, 23, .09), 0 1px 2px rgba(23, 23, 23, .05);
+  --shadow-md: 0 6px 20px -6px rgba(23, 23, 23, .16);
+  --shadow-lg: 0 18px 48px -14px rgba(23, 23, 23, .24);
+  --shadow-xl: 0 34px 80px -24px rgba(23, 23, 23, .34);
+  --shadow-warm: 0 26px 70px -22px rgba(101, 59, 70, .42);
+  --glow-gold: 0 0 32px rgba(201, 154, 87, .28);
+  --glow-sage: 0 0 28px rgba(167, 176, 161, .22);
+  --edge-light: inset 0 1px 0 rgba(243, 239, 230, .11);
 
   /* ── Glass on dark ─────────────────────────────────────  */
-  --glass-bg:     rgba(246, 227, 184, .045);
-  --glass-bg-2:   rgba(246, 227, 184, .085);
-  --glass-border: rgba(246, 227, 184, .13);
+  --glass-bg:     rgba(243, 239, 230, .045);
+  --glass-bg-2:   rgba(243, 239, 230, .085);
+  --glass-border: rgba(243, 239, 230, .13);
 
   /* ── Radii — editorial, not pill-everything ────────────  */
   --radius-xs:  6px;
@@ -128,11 +134,26 @@
   --ease-spring:   cubic-bezier(.34, 1.56, .64, 1);
 
 
+  /* ═══ Per-project accent defaults ═══════════════════════
+     Each project card and case-study hero re-declares these
+     from its own brand data (projects.json → accent /
+     accentSoft / surface). The defaults below are the neutral
+     shell values, so a project with no recorded brand colour
+     simply inherits the gallery's own neutral frame.
+
+     These drive HAIRLINES, SMALL MARKERS and GLOWS only —
+     never a filter or overlay on a screenshot or a logo.      */
+  --pj-accent:      var(--accent-deep);
+  --pj-accent-soft: rgba(101, 59, 70, .12);
+  --pj-surface:     var(--surface-3);
+  --pj-on-dark:     var(--accent-primary);
+
+
   /* ═══ Compatibility layer ═══════════════════════════════
-     The older partials still speak in --navy/--blue/--gold.
+     Older partials still speak in --navy/--blue/--gold.
      Re-pointing those names at the new palette re-skins them
      in one place instead of a thousand find-and-replaces.
-     New work should use the semantic tokens above.          */
+     New work should use the semantic tokens above.           */
   --navy:       var(--bg-deep);
   --navy-mid:   var(--surface-dark-2);
   --navy-light: var(--surface-dark-3);
@@ -150,6 +171,11 @@
   --red:        var(--danger);
   --orange:     var(--warning);
 
+  /* The old --rgb-plum / --rgb-deep names are still referenced by
+     case-study.css and project-showcase.css. */
+  --rgb-plum:   var(--rgb-charcoal);
+  --rgb-deep:   var(--rgb-ink);
+
   --white:    #ffffff;
   --gray-50:  var(--surface-2);
   --gray-100: var(--surface-2);
@@ -164,11 +190,10 @@
   --text-mid:   var(--text-secondary);
   --text-light: var(--text-muted);
 
-  --radius-xs-legacy: var(--radius-xs);
-
   --grad-brand:     var(--grad-warm);
   --grad-brand-btn: var(--grad-cta);
-  --grad-aurora:    linear-gradient(118deg, #7c414c, #9c7d8b, #e3b375, #7c414c);
+  --grad-plum:      var(--grad-ink);
+  --grad-aurora:    var(--grad-warm);
 
   --on-dark:       var(--text-on-dark);
   --on-dark-2:     var(--text-on-dark-2);

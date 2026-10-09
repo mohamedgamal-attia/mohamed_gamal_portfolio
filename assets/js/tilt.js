@@ -1,6 +1,12 @@
 /* =========================================================
-   tilt.js — 3D hover tilt + mouse-tracked glow for cards
+   tilt.js — 3D hover tilt + mouse-tracked glow, OPT-IN
    Sets --mx/--my (px) for glow borders and rotateX/Y transforms.
+
+   Interactive tilt is reserved for a couple of deliberate
+   surfaces, marked [data-tilt] in the markup. It used to bind a
+   pointermove handler to every project, company, value and
+   skill card on the page, which meant a dozen handlers all
+   writing custom properties during a hover-scroll.
    ========================================================= */
 (function () {
   'use strict';
@@ -8,7 +14,7 @@
   const fine   = window.matchMedia('(pointer: fine)').matches;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const SEL = '.project-card, .company-card, .featured-card, .value-card, .cta-card, .impact-card, .skill-group';
+  const SEL = '[data-tilt]';
   const MAX = 7; // deg
 
   function bind(card) {

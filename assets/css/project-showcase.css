@@ -1,77 +1,30 @@
 /* =========================================================
-   project-showcase.css — the flagship feature block and the
-   project card grid behind it.
+   project-showcase.css — the project card grid, its filters
+   and the per-card media treatment.
    ========================================================= */
 
-/* ═══ Flagship feature ═══════════════════════════════════
-   Hand-composed, deliberately unlike the cards below it.   */
-.work-feature {
-  display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
-  gap: clamp(32px, 4vw, 64px); align-items: center;
-  padding: clamp(28px, 3.4vw, 48px);
-  border-radius: var(--radius-xl);
-  background: var(--grad-plum);
-  border: 1px solid rgba(var(--rgb-gold), .2);
-  box-shadow: var(--shadow-xl);
-  position: relative; overflow: hidden;
-}
-.work-feature::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(620px 420px at 88% -10%, rgba(var(--rgb-gold), .18), transparent 66%),
-    radial-gradient(520px 420px at 4% 108%, rgba(var(--rgb-burgundy), .3), transparent 70%);
-}
-.work-feature > * { position: relative; z-index: 1; }
-
-.wf-media { position: relative; perspective: 1500px; padding-bottom: 6%; }
-.wf-media .wf-browser {
-  position: relative; border-radius: var(--radius); overflow: hidden;
-  border: 1px solid rgba(var(--rgb-gold), .22);
-  box-shadow: 0 46px 92px -36px rgba(0, 0, 0, .85), var(--edge-light);
-  transform: rotateY(-6deg) rotateX(2.5deg); transform-origin: 62% 50%;
-  transition: transform var(--motion-slow, .5s) var(--ease-emphasis, ease);
-}
-.wf-media:hover .wf-browser { transform: rotateY(-3deg) rotateX(1.2deg); }
-.wf-browser img { width: 100%; height: auto; display: block; }
-.wf-phone {
-  position: absolute; right: -2%; bottom: 0; width: 23%; min-width: 118px; z-index: 3;
-  border-radius: 20px; padding: 6px;
-  background: linear-gradient(160deg, #4a3542, #241a22);
-  border: 1px solid rgba(var(--rgb-gold), .28);
-  box-shadow: 0 34px 70px -24px rgba(0, 0, 0, .9);
-}
-.wf-phone img { width: 100%; height: auto; display: block; border-radius: 15px; }
-.wf-tag {
-  position: absolute; top: 12px; left: 12px; z-index: 4;
-  font-size: .6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--text-on-dark-2); padding: 5px 11px; border-radius: 999px;
-  background: rgba(27, 19, 25, .85); border: 1px solid var(--border-on-dark-2);
-  backdrop-filter: blur(8px);
-}
-
-.wf-copy .eyebrow { color: var(--accent-primary); }
-.wf-copy h3 {
-  font-family: var(--font-display); font-weight: 600;
-  font-size: clamp(1.55rem, 2.5vw, 2.1rem); line-height: 1.14;
-  color: var(--text-on-dark); margin-bottom: 14px;
-}
-.wf-copy h3 em { font-style: italic; font-weight: 500; color: var(--accent-primary); }
-.wf-lead { font-size: 1rem; color: var(--text-on-dark-2); max-width: 46ch; margin-bottom: 24px; }
-
-.wf-meta {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px;
-  padding: 20px 0; margin-bottom: 24px;
-  border-top: 1px solid var(--border-on-dark); border-bottom: 1px solid var(--border-on-dark);
-}
-.wf-meta dt { font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-on-dark-3); margin-bottom: 5px; }
-.wf-meta dd { font-size: .88rem; font-weight: 600; color: var(--text-on-dark); }
-
-.wf-points { display: grid; gap: 9px; margin-bottom: 28px; }
-.wf-points li { display: flex; gap: 11px; font-size: .9rem; color: var(--text-on-dark-2); }
-.wf-points li::before { content: '—'; color: var(--accent-primary); flex: none; }
-
 /* ═══ Card grid ══════════════════════════════════════════ */
-.projects-grid.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+/* Composition varies by card, not by ranking (§42): two cards take a double
+   column so the grid has rhythm, and 7 projects tile 3 rows exactly with no
+   hole at the end. `dense` backfills when a filter removes cards, which is
+   what otherwise leaves gaps mid-grid. */
+.projects-grid.bento {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  grid-auto-flow: row dense;
+}
+.projects-grid.bento .card-large,
+.projects-grid.bento .card-wide { grid-column: span 2; }
+
+@media (max-width: 1024px) {
+  .projects-grid.bento { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid.bento .card-large,
+  .projects-grid.bento .card-wide { grid-column: span 2; }
+}
+@media (max-width: 680px) {
+  .projects-grid.bento { grid-template-columns: 1fr; }
+  .projects-grid.bento .card-large,
+  .projects-grid.bento .card-wide { grid-column: span 1; }
+}
 
 .project-card {
   position: relative; display: flex; flex-direction: column; overflow: hidden;
@@ -87,6 +40,21 @@
 }
 .project-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .project-card.hidden { display: none; }
+
+/* ── Per-project accent (§16) ────────────────────────────
+   Declared HERE, not in sections.css: .project-card above sets `border`
+   as a shorthand, and this file loads after sections.css, so an equal-
+   specificity border-top declared there was silently reset. The accent
+   paints a hairline, the small type line and the arrow — it is never a
+   filter or overlay on the screenshot, which keeps its own colours. */
+.project-card { border-top: 2px solid var(--pj-accent, var(--border-strong)); }
+.project-card .project-card-sector { color: var(--pj-accent, var(--text-muted)); }
+.project-card .project-card-cta { color: var(--pj-accent, var(--accent-deep)); }
+.project-card .card-type-badge { border-color: var(--pj-on-dark, var(--accent-primary)); }
+@media (hover: hover) and (pointer: fine) {
+  /* border-color after the generic hover rule above, which sets it too. */
+  .project-card:hover { border-color: var(--pj-accent, var(--accent-deep)); }
+}
 .project-card[data-type="public-context"] { border-style: dashed; }
 
 .project-card-img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface-dark-2); }
@@ -94,15 +62,15 @@
   transition: transform var(--motion-slow, .5s) var(--ease-emphasis, ease); }
 .project-card:hover .project-card-img img { transform: scale(1.045); }
 .project-card-scrim { position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(27, 19, 25, .55) 0%, transparent 52%); }
+  background: linear-gradient(to top, rgba(var(--rgb-ink), .55) 0%, transparent 52%); }
 
 .card-type-badge {
   position: absolute; top: 12px; left: 12px; right: auto; z-index: 2;
   display: inline-block; width: auto;
   padding: 5px 12px; border-radius: 999px;
   font-size: .64rem; font-weight: 700; text-transform: uppercase; letter-spacing: .11em;
-  background: rgba(27, 19, 25, .8); color: var(--accent-warm);
-  border: 1px solid rgba(var(--rgb-gold), .34); backdrop-filter: blur(6px);
+  background: rgba(var(--rgb-ink), .88); color: var(--accent-warm);
+  border: 1px solid rgba(var(--rgb-gold), .34);
 }
 .card-type-badge.erp-system { background: var(--grad-gold); color: #35241c; border-color: transparent; }
 
@@ -110,12 +78,12 @@
   position: absolute; bottom: 12px; left: 12px; z-index: 2;
   display: inline-flex; align-items: center; gap: 6px;
   padding: 4px 11px; border-radius: 999px;
-  background: rgba(27, 19, 25, .74); color: #fff; backdrop-filter: blur(6px);
+  background: rgba(var(--rgb-ink), .86); color: #fff;
   font-size: .68rem; font-weight: 600;
 }
 .project-card-overlay {
   position: absolute; inset: 0; display: grid; place-items: center; z-index: 2;
-  background: rgba(27, 19, 25, .62); opacity: 0;
+  background: rgba(var(--rgb-ink), .62); opacity: 0;
   transition: opacity var(--motion-medium, .28s) var(--ease-standard, ease);
 }
 .project-card:hover .project-card-overlay,
@@ -205,14 +173,14 @@ a.modal-ctx-item:hover { border-color: var(--accent-deep); }
   position: absolute; top: 50%; transform: translateY(-50%);
   width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer;
   display: grid; place-items: center; color: #fff;
-  background: rgba(27, 19, 25, .7);
+  background: rgba(var(--rgb-ink), .7);
 }
 .gallery-nav:hover { background: var(--accent-deep); }
 .gallery-prev { left: 12px; } .gallery-next { right: 12px; }
 .gallery-count {
   position: absolute; right: 12px; bottom: 12px;
   font-size: .72rem; font-weight: 700; color: #fff;
-  background: rgba(27, 19, 25, .7); padding: 4px 10px; border-radius: 999px;
+  background: rgba(var(--rgb-ink), .7); padding: 4px 10px; border-radius: 999px;
 }
 .modal-thumbs { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 .modal-thumb {

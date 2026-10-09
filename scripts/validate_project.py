@@ -182,7 +182,6 @@ for rel in pages:
 print("\n[5] Required files")
 required = [
     "index.html",
-    "assets/css/style.css",
     "assets/css/variables.css",
     "assets/css/base.css",
     "assets/css/layout.css",
@@ -192,7 +191,6 @@ required = [
     "assets/css/futuristic.css",
     "assets/css/project-showcase.css",
     "assets/css/carousels.css",
-    "assets/css/cursor.css",
     "assets/css/motion.css",
     "assets/css/case-study.css",
     "projects/eghr.html",
@@ -203,8 +201,6 @@ required = [
     "assets/js/config.js",
     "assets/js/animations.js",
     "assets/js/effects.js",
-    "assets/js/cursor.js",
-    "assets/js/particles.js",
     "assets/js/tilt.js",
     "assets/js/carousels.js",
     "assets/js/modals.js",

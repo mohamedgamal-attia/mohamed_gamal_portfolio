@@ -34,6 +34,10 @@ def _data_uri(rel):
 def brand_cover(fname, logo_rel, domain, title, tagline, accent, accent2,
                 chips, logo_w=520, logo_h=180):
     """Premium website-style brand cover built around a REAL local logo asset."""
+    # Same per-project shell as the dashboards. Without this the brand covers
+    # inherited whichever project was themed last, so all three came out in
+    # DOTec blue regardless of whose logo they carried.
+    set_theme(accent)
     uri = _data_uri(logo_rel)
     lx = (W - logo_w) / 2
     chip_html, cx = "", (W - (len(chips) * 172)) / 2
@@ -70,16 +74,70 @@ def brand_cover(fname, logo_rel, domain, title, tagline, accent, accent2,
 
 W, H = 1200, 750
 
-# ── shared palette ──────────────────────────────────────────
-# Warm plum surfaces + bone type, matching assets/css/variables.css.
-INK      = "#1b1319"
-INK2     = "#241a22"
-PANEL    = "#2e2029"
-PANEL2   = "#3a2a35"
-LINE     = "#4a3542"
-TXT      = "#f6f1e4"
-TXT2     = "#ddd0d4"
-TXT3     = "#a8939e"
+# ── per-project surfaces ────────────────────────────────────
+# IMPORTANT: these are NOT the portfolio palette.
+#
+# The portfolio is the gallery; each project is the artwork. A cover
+# painted in the site's own plum and gold erases the client's identity and
+# makes every card look like the same product — which is exactly what the
+# October 2026 review rejected.
+#
+# So the dark shell is rebuilt per project by tinting a near-black toward
+# that project's own brand hue (set_theme below). DOTec reads blue because
+# its logo is #001ad3; EJAD and EjadTech read teal because that is what
+# their real product screenshots sample to; Margins reads red. The type
+# ramp stays neutral so labels remain legible on every one of them.
+TXT      = "#f2f1ee"
+TXT2     = "#d6d4d0"
+TXT3     = "#9d9a96"
+
+# Set by set_theme(); the drawing helpers read them at call time.
+INK = INK2 = PANEL = PANEL2 = LINE = "#111111"
+
+
+def _rgb(h):
+    h = h.lstrip("#")
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def _mix(a, b, t):
+    """Blend hex colour a toward b by t (0..1)."""
+    ra, ga, ba = _rgb(a)
+    rb, gb, bb = _rgb(b)
+    return "#%02x%02x%02x" % (
+        round(ra + (rb - ra) * t),
+        round(ga + (gb - ga) * t),
+        round(ba + (bb - ba) * t),
+    )
+
+
+def _ink_on(c):
+    """Readable text colour for a filled accent pill.
+
+    The accents span a wide lightness range — Margins red and DOTec blue are
+    dark, EJAD teal is mid, amber is light — so a single fixed ink fails on
+    one end or the other. Pick by relative luminance instead."""
+    r, g, b = (v / 255 for v in _rgb(c))
+    f = lambda v: v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+    lum = 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+    return "#0c0c0e" if lum > 0.42 else "#ffffff"
+
+
+def set_theme(brand):
+    """Rebuild the dark shell around one project's brand hue.
+
+    The tint strengths stay low on purpose: enough that two covers side by
+    side are obviously different products, not so much that the UI reads as
+    a colour wash."""
+    global INK, INK2, PANEL, PANEL2, LINE
+    INK    = _mix("#0c0c0e", brand, 0.07)
+    INK2   = _mix("#131316", brand, 0.11)
+    PANEL  = _mix("#1a1a1e", brand, 0.14)
+    PANEL2 = _mix("#25252a", brand, 0.17)
+    LINE   = _mix("#333339", brand, 0.22)
+
+
+set_theme("#777777")
 
 
 def _defs(accent, accent2):
@@ -136,7 +194,7 @@ def _chrome(title, badge, accent):
           fill="{TXT3}" text-anchor="middle">{title}</text>
     <rect x="{986 - _bw(badge)}" y="14" width="{_bw(badge)}" height="24" rx="12" fill="url(#acc)" opacity="0.92"/>
     <text x="{986 - _bw(badge) / 2}" y="30" font-family="Inter,sans-serif" font-size="11" font-weight="700"
-          fill="#140d13" text-anchor="middle" letter-spacing="0.5">{badge}</text>'''
+          fill="{_ink_on(accent)}" text-anchor="middle" letter-spacing="0.5">{badge}</text>'''
 
 
 def _sidebar(accent):
@@ -147,7 +205,7 @@ def _sidebar(accent):
         fill = "url(#acc)" if active else PANEL2
         op = "1" if active else "0.8"
         items += f'<rect x="18" y="{y}" width="52" height="34" rx="10" fill="{fill}" opacity="{op}"/>'
-        items += f'<rect x="30" y="{y+11}" width="28" height="4" rx="2" fill="{"#140d13" if active else TXT3}" opacity="0.9"/>'
+        items += f'<rect x="30" y="{y+11}" width="28" height="4" rx="2" fill="{_ink_on(accent) if active else TXT3}" opacity="0.9"/>'
     return f'<rect x="0" y="70" width="88" height="480" rx="16" fill="{PANEL}"/>{items}'
 
 
@@ -240,7 +298,12 @@ def _donut(cx, cy, r, accent, segs):
     out = f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{PANEL2}" stroke-width="18"/>'
     total = sum(s for s, _ in segs)
     ang = -90
-    cols = [accent, "#e3b375", "#836773", "#f6e3b8"]
+    # Segments are tints/shades of the project's OWN accent, so a chart never
+    # smuggles the portfolio's gold and plum onto a client's cover.
+    cols = [accent,
+            _mix(accent, "#ffffff", 0.34),
+            _mix(accent, "#000000", 0.32),
+            _mix(accent, "#ffffff", 0.62)]
     for i, (s, _) in enumerate(segs):
         frac = s / total
         a2 = ang + frac * 360
@@ -256,6 +319,8 @@ def _donut(cx, cy, r, accent, segs):
 
 
 def erp_dashboard(fname, title, badge, accent, accent2, kpis, chart, layout="kanban"):
+    """Illustrative ERP dashboard cover, themed to the project's own brand."""
+    set_theme(accent)
     random.seed(sum(ord(c) for c in fname))
     spark = lambda: [random.random() for _ in range(6)]
     body = f'<g transform="translate(100,64)">'
@@ -298,6 +363,8 @@ def erp_dashboard(fname, title, badge, accent, accent2, kpis, chart, layout="kan
 
 
 def context_cover(fname, title, sector, accent, accent2, motif="building"):
+    """Illustrative sector cover for a public-context project."""
+    set_theme(accent)
     """Branded business-context cover with an honest small ERP inset."""
     if motif == "building":
         art = ''
@@ -342,7 +409,7 @@ def context_cover(fname, title, sector, accent, accent2, motif="building"):
   {_backdrop(accent)}
   {art}
   <rect x="80" y="70" width="150" height="30" rx="15" fill="url(#acc)" opacity="0.9"/>
-  <text x="155" y="90" font-family="Inter" font-size="12" font-weight="700" fill="#140d13" text-anchor="middle" letter-spacing="0.5">{sector}</text>
+  <text x="155" y="90" font-family="Inter" font-size="12" font-weight="700" fill="{_ink_on(accent)}" text-anchor="middle" letter-spacing="0.5">{sector}</text>
   <text x="80" y="150" font-family="Inter,Segoe UI,sans-serif" font-size="46" font-weight="700" fill="{TXT}">{title}</text>
   {inset}
 </svg>'''
@@ -351,30 +418,55 @@ def context_cover(fname, title, sector, accent, accent2, motif="building"):
     return fname
 
 
-BLUE, CYAN = "#7c414c", "#e3b375"
-VIOLET     = "#836773"
-GREEN      = "#5b7a5a"
-GOLD       = "#e3b375"
-ROSE       = "#8e3b45"
+# ── Per-project brand colours (§13, §16) ────────────────────
+# Each value is traceable to the project itself, not chosen to match the
+# portfolio. Provenance is recorded in assets/data/sources.json.
+#
+#   DOTEC    sampled from the real DOTec logo (#001ad3)
+#   EJAD     the teal the EGHR portal shipped with; corroborated by the
+#            real EjadTech Odoo backend screenshot, which samples to
+#            #00b4a8 / #009090
+#   MARGINS  from the Margins placeholder mark — Margins' real logo is not
+#            publicly available, which sources.json states plainly
+#   GOV      the Saudi government platforms' own green
+DOTEC      = "#2b5cff"   # lifted from #001ad3 for legibility on dark
+DOTEC2     = "#6f8cff"
+EJAD       = "#00a89c"
+EJAD2      = "#4fd6cc"
+MARGINS    = "#c0392b"
+MARGINS2   = "#e0695c"
+GOV        = "#2f9e6a"
+GOV2       = "#64c79a"
+AMBER      = "#d9a441"
+AMBER2     = "#f0cf94"
+SLATE      = "#5b6b84"
+SLATE2     = "#92a3bd"
+
+# Legacy aliases used further down the call list.
+BLUE, CYAN = DOTEC, DOTEC2
+VIOLET     = SLATE
+GREEN      = GOV
+GOLD       = AMBER
+ROSE       = MARGINS
 
 def main():
     made = []
-    # ── Flagship ERP builds ──
+    # ── Full ERP builds ──
     made.append(erp_dashboard("margins-erp.svg", "margins.odoo · Real Estate", "REAL ESTATE ERP",
-        ROSE, "#a64b56",
+        MARGINS, MARGINS2,
         [("EGP 48M","Sales Pipeline"),("312","Units"),("87","Reservations"),("24","Brokers")],
         chart="line", layout="kanban"))
     made.append(erp_dashboard("dotec-erp.svg", "dotec.odoo · Engineering", "ENGINEERING ERP",
         BLUE, CYAN,
         [("46","Active Projects"),("128","Consultants"),("$2.4M","Billed"),("5","Disciplines")],
         chart="bar", layout="table"))
-    # Flagship alt views (for galleries)
+    # Alternate views (for galleries)
     made.append(erp_dashboard("margins-erp-2.svg", "margins.odoo · Reservations", "PAYMENT TRACKING",
-        ROSE, "#a64b56",
+        MARGINS, MARGINS2,
         [("EGP 12M","Collected"),("64","Installments"),("9","Overdue"),("QWeb","Receipts")],
         chart="bar", layout="table"))
     made.append(erp_dashboard("margins-erp-3.svg", "margins.odoo · CRM Pipeline", "SALES CRM",
-        ROSE, "#a64b56",
+        MARGINS, MARGINS2,
         [("214","Leads"),("38","Opportunities"),("22%","Win Rate"),("Auto","Nurture")],
         chart="line", layout="kanban"))
     made.append(erp_dashboard("dotec-erp-2.svg", "dotec.odoo · Timesheets", "WORKLOAD & EXPENSES",
@@ -386,7 +478,7 @@ def main():
         [("46","Projects"),("212","Milestones"),("Docs","Managed"),("RBAC","Security")],
         chart="bar", layout="table"))
     made.append(erp_dashboard("margins-erp-4.svg", "margins.odoo · Reports", "QWEB REPORTING",
-        ROSE, "#a64b56",
+        MARGINS, MARGINS2,
         [("48","Reports"),("Contracts","PDF"),("Roles","6"),("Access","Rules")],
         chart="bar", layout="table"))
     made.append(erp_dashboard("dotec-erp-4.svg", "dotec.odoo · Integrations", "REST & ACCESS",
@@ -396,48 +488,48 @@ def main():
 
     # ── Odoo work (SVG placeholders → dashboards) ──
     made.append(erp_dashboard("ejad-digital-odoo-work.svg", "ejad.odoo · Multi-Client", "ODOO SILVER PARTNER",
-        GREEN, "#6f8a6e",
+        EJAD, EJAD2,
         [("14","Clients"),("60+","Modules"),("QWeb","Reports"),("", "Releases")],
         chart="bar", layout="kanban"))
     made.append(erp_dashboard("ejad-erp-implementations.svg", "ejad.odoo · Implementations", "MULTI-CLIENT ERP",
-        BLUE, CYAN,
+        EJAD, EJAD2,
         [("CRM","+ HR"),("32","Workflows"),("Access","Rules"),("Cron","Jobs")],
         chart="line", layout="table"))
     made.append(erp_dashboard("ejad-internal-erp.svg", "ejad.odoo · Internal Tools", "INTERNAL CUSTOMIZATION",
-        VIOLET, "#9c7d8b",
+        EJAD, EJAD2,
         [("18","Modules"),("240","Commits"),("PDF","Templates"),("Chatter","Mail")],
         chart="bar", layout="kanban"))
     made.append(erp_dashboard("creatio-automation.svg", "odoo × creatio · BPM", "BUSINESS AUTOMATION",
-        CYAN, "#f6e3b8",
+        EJAD, EJAD2,
         [("Sync","Real-time"),("22","Flows"),("2","Systems"),("0","Manual")],
         chart="line", layout="table"))
     made.append(erp_dashboard("visitor-service-robot.svg", "grand-mosque · Visitors", "VISITOR MANAGEMENT",
-        GOLD, "#f6e3b8",
+        AMBER, AMBER2,
         [("1.2M","Visitors"),("340","Services/day"),("AI","Assist"),("Live","Reports")],
         chart="bar", layout="kanban"))
     made.append(erp_dashboard("vro-ministry-media.svg", "ministry-of-media · VRO", "GOVERNMENT · MEDIA",
-        VIOLET, "#836773",
+        SLATE, SLATE2,
         [("Licensing","Digital"),("Approvals","Workflow"),("Roles","RBAC"),("Reports","QWeb")],
         chart="line", layout="table"))
     made.append(erp_dashboard("tasharuk-platform.svg", "najran · Tasharuk", "GOVERNMENT · COMMUNITY",
-        GREEN, "#6f8a6e",
+        GOV, GOV2,
         [("Citizens","Engaged"),("Regional","Services"),("Access","Managed"),("Data","Exports")],
         chart="bar", layout="kanban"))
 
     made.append(erp_dashboard("zeraei-platform.svg", "mewa · Zeraei", "GOVERNMENT · AGRICULTURE",
-        GREEN, "#6f8a6e",
+        GOV, GOV2,
         [("Farmers","Onboarded"),("Services","Digital"),("Subsidies","Tracked"),("Reports","QWeb")],
         chart="line", layout="table"))
     made.append(erp_dashboard("ejadx-platform.svg", "ejadx · Acceleration", "INNOVATION PLATFORM",
-        CYAN, "#f6e3b8",
+        EJAD, EJAD2,
         [("Clients","Onboarded"),("APIs","Integrated"),("Flows","Automated"),("Live","Analytics")],
         chart="bar", layout="kanban"))
     made.append(erp_dashboard("tawajod-platform.svg", "tawajod · Presence", "DIGITAL SERVICES",
-        VIOLET, "#9c7d8b",
+        SLATE, SLATE2,
         [("Multi","Client"),("Services","Managed"),("Cron","Jobs"),("Dashboards","Live")],
         chart="line", layout="table"))
     made.append(erp_dashboard("ejadtech-odoo-work.svg", "ejadtech · Government", "DIGITAL TRANSFORMATION",
-        BLUE, CYAN,
+        EJAD, EJAD2,
         [("5","Ministries"),("Workflows","Automated"),("Approvals","Chained"),("RBAC","Secured")],
         chart="bar", layout="kanban"))
 
@@ -449,7 +541,7 @@ def main():
         ("sheraton-residences.svg",  "Sheraton Residences",  "MOSTAKBAL CITY"),
     ]
     for fn, ti, se in re_ctx:
-        made.append(context_cover(fn, ti, se, ROSE, "#a64b56", motif="building"))
+        made.append(context_cover(fn, ti, se, MARGINS, MARGINS2, motif="building"))
 
     eng_ctx = [
         ("cargill-engineering.svg",   "Cargill",             "ROBOTICS / CONVEYOR"),
@@ -468,11 +560,11 @@ def main():
     made.append(brand_cover("ejadtech-brand.svg",
         "assets/images/projects/ejadtech-odoo-work.webp", "ejadtech.sa",
         "EjadTech", "Government Digital Transformation · Odoo Delivery",
-        CYAN, "#7c414c", ["Odoo", "Gov Platforms", "KSA"], logo_w=560, logo_h=132))
+        EJAD, EJAD2, ["Odoo", "Gov Platforms", "KSA"], logo_w=560, logo_h=132))
     made.append(brand_cover("ejad-brand.svg",
         "assets/images/companies/ejad-digital-logo.png", "ejad.sa",
         "EJAD Digital Solutions", "Odoo Silver Partner · Enterprise ERP Delivery",
-        GREEN, "#6f8a6e", ["Silver Partner", "Odoo 14–18", "Creatio"], logo_w=500, logo_h=145))
+        EJAD, EJAD2, ["Silver Partner", "Odoo 14–20", "Creatio"], logo_w=500, logo_h=145))
     made.append(brand_cover("dotec-brand.svg",
         "assets/images/companies/dotec-logo.png", "dotecengineering.com",
         "DOTec Engineering", "Internal ERP · Project Lifecycle",

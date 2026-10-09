@@ -1,0 +1,145 @@
+{
+  "measuredAt": "2026-10-09T06:41:28.337Z",
+  "pages": {
+    "homepage": {
+      "desktop-1440": {
+        "loadWallMs": 635,
+        "domContentLoaded": 628,
+        "load": 630,
+        "firstPaint": 720,
+        "longTasks": 5,
+        "longTasksOver50": 5,
+        "longTaskTotalMs": 590,
+        "lcp": 720,
+        "cls": 0,
+        "images": 16,
+        "domNodes": 996,
+        "idleRafTicksIn2s": 154,
+        "bytes": {
+          "js": 45,
+          "css": 194,
+          "image": 219,
+          "font": 0,
+          "html": 44,
+          "other": 400
+        },
+        "totalKB": 902,
+        "requests": 46,
+        "failedRequests": 0,
+        "consoleErrors": 0,
+        "consoleErrorSamples": [],
+        "scroll": {
+          "frames": 115,
+          "dropped": 60,
+          "badlyDropped": 1,
+          "worst": 67,
+          "median": 33
+        }
+      },
+      "mobile-390": {
+        "loadWallMs": 223,
+        "domContentLoaded": 217,
+        "load": 217,
+        "firstPaint": 188,
+        "longTasks": 2,
+        "longTasksOver50": 2,
+        "longTaskTotalMs": 267,
+        "lcp": 188,
+        "cls": 0,
+        "images": 16,
+        "domNodes": 994,
+        "idleRafTicksIn2s": 120,
+        "bytes": {
+          "js": 45,
+          "css": 194,
+          "image": 127,
+          "font": 0,
+          "html": 44,
+          "other": 400
+        },
+        "totalKB": 810,
+        "requests": 43,
+        "failedRequests": 0,
+        "consoleErrors": 0,
+        "consoleErrorSamples": [],
+        "scroll": {
+          "frames": 181,
+          "dropped": 0,
+          "badlyDropped": 0,
+          "worst": 17,
+          "median": 17
+        }
+      }
+    },
+    "eghr-case": {
+      "desktop-1440": {
+        "loadWallMs": 440,
+        "domContentLoaded": 438,
+        "load": 438,
+        "firstPaint": 244,
+        "longTasks": 2,
+        "longTasksOver50": 2,
+        "longTaskTotalMs": 184,
+        "lcp": 244,
+        "cls": 0.0002,
+        "images": 67,
+        "domNodes": 833,
+        "idleRafTicksIn2s": 0,
+        "bytes": {
+          "js": 12,
+          "css": 225,
+          "image": 267,
+          "font": 0,
+          "html": 60,
+          "other": 266
+        },
+        "totalKB": 830,
+        "requests": 41,
+        "failedRequests": 0,
+        "consoleErrors": 0,
+        "consoleErrorSamples": [],
+        "scroll": {
+          "frames": 182,
+          "dropped": 0,
+          "badlyDropped": 0,
+          "worst": 17,
+          "median": 17
+        }
+      },
+      "mobile-390": {
+        "loadWallMs": 346,
+        "domContentLoaded": 345,
+        "load": 345,
+        "firstPaint": 176,
+        "longTasks": 2,
+        "longTasksOver50": 2,
+        "longTaskTotalMs": 128,
+        "lcp": 176,
+        "cls": 0,
+        "images": 67,
+        "domNodes": 833,
+        "idleRafTicksIn2s": 0,
+        "bytes": {
+          "js": 12,
+          "css": 225,
+          "image": 267,
+          "font": 0,
+          "html": 60,
+          "other": 266
+        },
+        "totalKB": 830,
+        "requests": 41,
+        "failedRequests": 0,
+        "consoleErrors": 0,
+        "consoleErrorSamples": [],
+        "scroll": {
+          "frames": 182,
+          "dropped": 0,
+          "badlyDropped": 0,
+          "worst": 17,
+          "median": 17
+        }
+      }
+    }
+  }
+}

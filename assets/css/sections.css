@@ -33,7 +33,6 @@
   mask-image: radial-gradient(70% 70% at 55% 42%, #000 20%, transparent 100%);
 }
 /* The node motif is a texture, not the show — kept faint on purpose. */
-.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .3; pointer-events: none; }
 
 #hero .container { position: relative; z-index: 2; }
 .hero-inner {
@@ -78,7 +77,7 @@
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-bottom: 42px; }
 
 .hero-proof {
-  display: grid; grid-template-columns: repeat(4, auto); gap: 18px 34px;
+  display: grid; grid-template-columns: repeat(4, auto); gap: 18px 30px;
   justify-content: start;
   padding-top: 26px; border-top: 1px solid var(--border-on-dark);
 }
@@ -86,7 +85,15 @@
   font-size: .64rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
   color: var(--text-on-dark-3); margin-bottom: 5px;
 }
-.hero-proof dd { font-size: 1.02rem; font-weight: 700; color: var(--text-on-dark); }
+/* nowrap: these are short facts, and letting "ERP · Web · Data" break
+   mid-phrase made the row look broken rather than wrapped. */
+.hero-proof dd {
+  font-size: 1.02rem; font-weight: 700; color: var(--text-on-dark);
+  white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+@media (max-width: 520px) {
+  .hero-proof { grid-template-columns: repeat(2, auto); }
+}
 
 /* ── Layered portrait composition ────────────────────────
    The perspective lives on the WRAPPER, never on the element being
@@ -131,26 +138,9 @@
   position: absolute; top: 26px; right: -34px;
   font-size: .72rem; font-weight: 600; letter-spacing: .02em; color: var(--text-on-dark);
   padding: 10px 15px; border-radius: 999px; white-space: nowrap;
-  background: rgba(27, 19, 25, .8); border: 1px solid rgba(var(--rgb-gold), .3);
-  backdrop-filter: blur(10px); box-shadow: var(--shadow-lg);
+  background: rgba(var(--rgb-ink), .90); border: 1px solid rgba(var(--rgb-gold), .3);
+  box-shadow: var(--shadow-lg);
 }
-.hv-flag {
-  position: absolute; left: -40px; bottom: 34px; width: 212px;
-  display: flex; flex-direction: column; gap: 2px;
-  padding: 16px 18px; border-radius: var(--radius);
-  background: rgba(27, 19, 25, .86); border: 1px solid rgba(var(--rgb-gold), .3);
-  backdrop-filter: blur(14px); box-shadow: var(--shadow-xl);
-  transition: border-color var(--motion-medium, .28s) var(--ease-standard, ease),
-              box-shadow var(--motion-medium, .28s) var(--ease-emphasis, ease);
-}
-.hv-flag:hover { border-color: var(--accent-primary); box-shadow: var(--shadow-xl), var(--glow-gold); }
-.hv-flag-k { font-size: .6rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-primary); }
-.hv-flag b { font-family: var(--font-display); font-size: 1.14rem; font-weight: 600; color: var(--text-on-dark); }
-.hv-flag-sub { font-size: .75rem; color: var(--text-on-dark-3); }
-.hv-flag-go { margin-top: 8px; font-size: .76rem; font-weight: 600; color: var(--accent-warm); display: inline-flex; align-items: center; gap: 7px; }
-.hv-flag-go i { transition: transform var(--motion-base, .18s) var(--ease-standard, ease); }
-.hv-flag:hover .hv-flag-go i { transform: translateX(4px); }
-
 .hero-cue {
   position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
   display: inline-flex; flex-direction: column; align-items: center; gap: 10px; z-index: 2;
@@ -159,12 +149,10 @@
   transition: color var(--motion-base, .18s) var(--ease-standard, ease);
 }
 .hero-cue:hover { color: var(--accent-warm); }
-.cue-line { width: 1px; height: 46px; background: linear-gradient(var(--accent-primary), transparent); position: relative; overflow: hidden; }
-.cue-line::after {
-  content: ''; position: absolute; left: 0; top: -40%; width: 1px; height: 40%;
-  background: var(--accent-warm); animation: cue-fall 2.2s var(--ease-emphasis, ease) infinite;
-}
-@keyframes cue-fall { 0% { top: -40%; } 100% { top: 100%; } }
+/* Static rule. The previous version ran an infinite keyframe animating `top`,
+   which is a layout property — it forced a reflow every frame, forever, for a
+   1 px decoration. */
+.cue-line { width: 1px; height: 46px; background: linear-gradient(var(--accent-primary), transparent); }
 
 /* ═══════════════════ MARQUEE ═══════════════════ */
 #stats-bar {
@@ -332,10 +320,10 @@
    They need a dark plate; on a bone one the EJAD Digital mark disappeared. */
 .company-logo-wrap {
   width: 86px; height: 60px; flex: none; border-radius: var(--radius-sm);
-  background: linear-gradient(150deg, #332330, #221820);
+  background: linear-gradient(150deg, var(--surface-dark-3), var(--surface-dark-1));
   display: grid; place-items: center; padding: 9px 11px;
   border: 1px solid rgba(var(--rgb-gold), .22);
-  box-shadow: inset 0 1px 0 rgba(246, 227, 184, .08);
+  box-shadow: inset 0 1px 0 rgba(var(--rgb-gold-pale), .08);
 }
 .company-logo-wrap img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 .company-name { font-family: var(--font-display); font-size: 1.22rem; font-weight: 600; color: var(--text-on-dark); }
@@ -454,3 +442,233 @@ a.context-chip:hover .chip-name { color: var(--accent-deep); }
 .footer-links a:hover { color: var(--accent-warm); border-bottom-color: currentColor; }
 .footer-copy { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--border-on-dark);
   font-size: .78rem; color: var(--text-on-dark-3) !important; }
+
+
+/* ── Hero constellation ──────────────────────────────────
+   Was an animated <canvas> running an O(n²) link mesh every
+   frame. Measured: it alone turned a 3 s desktop scroll from
+   2/179 late frames into 47/132 — it cost more than the whole
+   rest of the page combined, for a decoration most visitors
+   never consciously see. Now a static SVG: same motif, drawn
+   once by the rasteriser, zero frame cost. */
+.hero-constellation {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: url('../images/hero-constellation.svg') center / cover no-repeat;
+  opacity: .5;
+  /* Fades out toward the copy so it never competes with the text. */
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 62% 42%, #000 35%, transparent 78%);
+          mask-image: radial-gradient(ellipse 85% 70% at 62% 42%, #000 35%, transparent 78%);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   OCTOBER 2026 — restructured sections
+   Six homepage sections replace ten. The classes below cover
+   What I Build (Services + Capabilities merged) and Experience
+   & Delivery (About + Companies + Experience merged).
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Inline sprite icons ──────────────────────────────────
+   Replaces the Font Awesome <i> glyphs. 1em square, inherits
+   colour via currentColor, and never affects line box height. */
+.ic {
+  width: 1em; height: 1em; flex: none;
+  fill: currentColor; vertical-align: -0.125em;
+}
+.btn .ic, .link-quiet .ic, .cr-k .ic { font-size: .95em; }
+
+/* ── Section rhythm ──────────────────────────────────────── */
+.section-compact { padding-block: clamp(48px, 6vw, 76px); }
+.sec-cta {
+  margin-top: clamp(34px, 4vw, 52px);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px;
+}
+.sec-head + .filter-tabs { margin-bottom: 26px; }
+
+/* ── 3. WHAT I BUILD ─────────────────────────────────────── */
+/* Fixed 3 columns, not auto-fit: there are exactly six items, and auto-fit
+   resolved to four at desktop width, leaving two dead cells in the bottom
+   row. 3 x 2 fills the block exactly at every breakpoint below. */
+.build-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border-strong);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-lg);
+  overflow: hidden; counter-reset: build;
+}
+@media (max-width: 1024px) { .build-grid { grid-template-columns: repeat(2, 1fr); } }
+.build-item {
+  background: var(--surface-2); padding: 26px 24px 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: background var(--motion-base, .18s) var(--ease-standard, ease);
+}
+.build-item:hover { background: var(--surface-1); }
+.build-n {
+  font-family: var(--font-mono); font-size: .7rem; font-weight: 700;
+  letter-spacing: .14em; color: var(--accent-deep);
+}
+.build-item h3 {
+  font-family: var(--font-display); font-size: 1.16rem; font-weight: 600;
+  color: var(--text-primary); line-height: 1.25;
+}
+.build-item > p { font-size: .92rem; color: var(--text-secondary); margin: 0; }
+.build-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.build-out {
+  margin-top: auto; padding-top: 12px; font-size: .86rem; color: var(--text-muted);
+  border-top: 1px solid var(--border-soft);
+}
+.build-out b { color: var(--accent-deep); font-weight: 700; }
+
+/* ── 4. EXPERIENCE & DELIVERY ────────────────────────────── */
+.xd-top {
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 60px); align-items: start;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.xd-about h2 { color: var(--text-on-dark); }
+.xd-note {
+  margin-top: 16px; font-size: .94rem; color: var(--text-on-dark-2);
+  max-width: 56ch;
+}
+.xd-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 26px; }
+
+.xd-facts {
+  border: 1px solid var(--border-on-dark-2); border-radius: var(--radius-lg);
+  background: var(--glass-bg); padding: 6px 22px;
+}
+.xd-facts > div {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 18px;
+  padding: 14px 0; border-bottom: 1px solid var(--border-on-dark);
+}
+.xd-facts > div:last-child { border-bottom: 0; }
+.xd-facts dt {
+  font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text-on-dark-3);
+}
+.xd-facts dd {
+  font-size: .92rem; font-weight: 600; color: var(--text-on-dark); text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.xd-sub {
+  font-family: var(--font-display); font-size: 1.04rem; font-weight: 600;
+  letter-spacing: .01em; color: var(--accent-primary);
+  padding-bottom: 12px; margin-bottom: 22px;
+  border-bottom: 1px solid var(--border-on-dark-2);
+}
+.xd-sub + .companies-row { margin-bottom: clamp(40px, 5vw, 60px); }
+
+/* Company logo row — compact proof, not a second card grid */
+.companies-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(226px, 1fr)); gap: 14px;
+}
+.co-chip {
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 15px; border-radius: var(--radius);
+  border: 1px solid var(--border-on-dark); background: var(--glass-bg);
+}
+/* The plate is a CONTRAST surface, not branding: several of these logos are
+   white or near-white ink and are invisible without it. No logo is retinted. */
+.co-plate {
+  flex: none; width: 76px; height: 40px; border-radius: var(--radius-xs);
+  background: var(--surface-dark-3); border: 1px solid var(--border-on-dark-2);
+  display: grid; place-items: center; padding: 6px 8px;
+}
+.co-plate img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.co-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.co-text b { font-size: .9rem; font-weight: 600; color: var(--text-on-dark); }
+.co-text i { font-style: normal; font-size: .73rem; color: var(--text-on-dark-3); }
+
+/* Compact timeline — CSS scroll-snap, no JS loop, no autoplay */
+.xd-timeline {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(268px, 1fr);
+  gap: 16px; overflow-x: auto; padding-bottom: 14px;
+  scroll-snap-type: x proximity; overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+.xd-timeline:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+.xdt-item {
+  scroll-snap-align: start;
+  border: 1px solid var(--border-on-dark); border-radius: var(--radius);
+  background: var(--glass-bg); padding: 18px 18px 16px;
+  border-top: 2px solid rgba(var(--rgb-gold), .5);
+  display: flex; flex-direction: column; gap: 7px;
+}
+.xdt-date {
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700;
+  letter-spacing: .08em; color: var(--accent-primary);
+}
+.xdt-item h4 { font-size: 1rem; font-weight: 600; color: var(--text-on-dark); margin: 0; }
+.xdt-co { font-size: .76rem; color: var(--on-dark-sage); margin: 0; }
+.xdt-item > p:not(.xdt-co) { font-size: .86rem; color: var(--text-on-dark-2); margin: 0; }
+.xdt-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
+.xdt-tags span {
+  font-size: .66rem; font-weight: 600; letter-spacing: .04em;
+  padding: 4px 9px; border-radius: 999px;
+  background: rgba(var(--rgb-gold), .1); color: var(--accent-warm);
+  border: 1px solid rgba(var(--rgb-gold), .2);
+}
+
+/* ── 5. HOW I WORK, compact ──────────────────────────────── */
+.flow-compact {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
+  border-top: 1px solid var(--border-strong); counter-reset: flow;
+}
+.flow-compact .flow-step {
+  padding: 22px 18px 4px; border-right: 1px solid var(--border-soft);
+  display: flex; flex-direction: column; gap: 7px;
+  position: static;
+}
+.flow-compact .flow-step:last-child { border-right: 0; }
+.flow-compact .flow-step::before,
+.flow-compact .flow-step::after { content: none; }
+.flow-compact .flow-n {
+  font-family: var(--font-mono); font-size: .7rem; font-weight: 700;
+  letter-spacing: .14em; color: var(--accent-deep);
+  position: static; margin: 0;
+}
+.flow-compact .flow-step h3 {
+  font-family: var(--font-display); font-size: 1.04rem; font-weight: 600;
+  color: var(--text-primary); margin: 0;
+}
+.flow-compact .flow-step p { font-size: .86rem; color: var(--text-muted); margin: 0; }
+
+/* ── 6. CONTACT — availability list ─────────────────────── */
+.avail-list {
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 28px; padding: 0; list-style: none;
+}
+.avail-list li {
+  font-size: .78rem; font-weight: 600; padding: 6px 13px; border-radius: 999px;
+  background: rgba(var(--rgb-gold), .1); color: var(--accent-warm);
+  border: 1px solid rgba(var(--rgb-gold), .24);
+}
+
+/* ── Nav CV action ─────────────────────────────────────────
+   Tertiary: quieter than the primary CTA, but distinguishable from the
+   plain section links. An outlined chip rather than an underline, because
+   .nav-links > a already owns the underline as its active-state marker. */
+.nav-cv {
+  font-size: .8rem; font-weight: 600;
+  margin-left: 6px;
+  border: 1px solid var(--border-on-dark-2); border-radius: 999px;
+  color: var(--text-on-dark-2);
+  transition: border-color var(--motion-base, .18s) var(--ease-standard, ease),
+              color var(--motion-base, .18s) var(--ease-standard, ease);
+}
+.nav-links > a.nav-cv::after { display: none; }
+.nav-cv:hover { color: var(--accent-warm); border-color: rgba(var(--rgb-gold), .55); }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .xd-top { grid-template-columns: 1fr; }
+  .flow-compact { grid-template-columns: repeat(2, 1fr); }
+  .flow-compact .flow-step { border-bottom: 1px solid var(--border-soft); }
+  .flow-compact .flow-step:nth-child(2n) { border-right: 0; }
+}
+@media (max-width: 640px) {
+  .build-grid { grid-template-columns: 1fr; }
+  .flow-compact { grid-template-columns: 1fr; }
+  .flow-compact .flow-step { border-right: 0; }
+  .companies-row { grid-template-columns: 1fr; }
+  .xd-timeline { grid-auto-columns: minmax(84vw, 1fr); }
+  .xd-facts > div { flex-direction: column; gap: 3px; }
+  .xd-facts dd { text-align: left; }
+}
