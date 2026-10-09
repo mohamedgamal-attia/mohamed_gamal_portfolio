@@ -29,12 +29,14 @@
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 44px -12px rgba(var(--rgb-burgundy), .85); }
 
 /* On plum surfaces the gold reads as the primary action */
-#navbar .btn-primary, .mobile-menu .btn-primary,
+#navbar .btn-primary, .mobile-menu .btn-primary, .cs-nav .btn-primary,
+.cs-page .cs-end .btn-primary, .cs-interlude .btn-primary,
 .section-dark .btn-primary, .section-deep .btn-primary, #hero .btn-primary {
   background: var(--grad-gold); color: #35241c;
   box-shadow: 0 12px 32px -12px rgba(var(--rgb-gold), .7);
 }
-#navbar .btn-primary:hover, .mobile-menu .btn-primary:hover,
+#navbar .btn-primary:hover, .mobile-menu .btn-primary:hover, .cs-nav .btn-primary:hover,
+.cs-page .cs-end .btn-primary:hover, .cs-interlude .btn-primary:hover,
 .section-dark .btn-primary:hover, .section-deep .btn-primary:hover, #hero .btn-primary:hover {
   box-shadow: 0 20px 48px -14px rgba(var(--rgb-gold), .85);
 }
