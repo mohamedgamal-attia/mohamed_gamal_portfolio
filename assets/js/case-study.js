@@ -63,6 +63,13 @@
   }
 
   /* ── Screen gallery ─────────────────────────────────── */
+  /* Captions live in the DOM and are translated by the i18n pass; the gallery
+     mirrors them into .gal-cap, so it has to redraw when the language flips. */
+  var galleryRedraws = [];
+  window.addEventListener('mg:langchange', function () {
+    galleryRedraws.forEach(function (fn) { try { fn(); } catch (e) {} });
+  });
+
   document.querySelectorAll('[data-gallery]').forEach(function (gal) {
     var track = gal.querySelector('.gal-track');
     var mainImg = gal.querySelector('.gal-main img');
@@ -80,8 +87,17 @@
         alt: img.getAttribute('alt') || '',
         w: img.getAttribute('width'),
         h: img.getAttribute('height'),
-        title: title ? title.textContent.trim() : '',
-        text: capEl ? capEl.textContent.replace(title ? title.textContent : '', '').trim() : '',
+        /* Live getters, not snapshots — see note above. */
+        get title() {
+          var b = this.fig.querySelector('figcaption b');
+          return b ? b.textContent.trim() : '';
+        },
+        get text() {
+          var c = this.fig.querySelector('figcaption');
+          if (!c) return '';
+          var b = c.querySelector('b');
+          return c.textContent.replace(b ? b.textContent : '', '').trim();
+        },
         group: fig.dataset.group || 'all',
         fig: fig
       };
@@ -108,6 +124,10 @@
         btn.setAttribute('aria-current', i === index ? 'true' : 'false');
       });
     }
+
+    /* Repaint on language change: the caption text comes from the DOM, which
+       the i18n pass has just rewritten. */
+    galleryRedraws.push(function () { paint(); buildThumbs(); });
 
     function buildThumbs() {
       thumbs.textContent = '';

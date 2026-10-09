@@ -48,7 +48,20 @@
     "accent": "#0e7390",
     "accentOnDark": "#118eb0",
     "accentSoft": "rgba(14,116,144,.12)",
-    "accentSource": "EJAD product teal — the palette the EGHR portal shipped with"
+    "accentSource": "EJAD product teal — the palette the EGHR portal shipped with",
+    "title_ar": "EJAD EGHR — بوابة الموظفين",
+    "short_ar": "بوابة موظفين على Odoo 18 — خدمات واعتمادات وحضور بالنطاق الجغرافي، بلغتين.",
+    "typeLabel_ar": "بوابة موظفين · Odoo",
+    "sectorLabel_ar": "موارد بشرية · خدمة ذاتية",
+    "caseStudyLabel_ar": "اعرض دراسة الحالة",
+    "tags_ar": [
+      "Odoo 18",
+      "Python",
+      "QWeb",
+      "PostgreSQL"
+    ],
+    "country_ar": "السعودية",
+    "company_ar": "إيجاد للحلول الرقمية"
   },
   {
     "id": "dotec-engineering-erp",
@@ -137,7 +150,20 @@
     "accentOnDark": "#6276ff",
     "accentSoft": "rgba(0,26,211,.10)",
     "accentSource": "sampled from the real DOTec logo (#001ad3)",
-    "caseStudyLabel": "View Case Study"
+    "caseStudyLabel": "View Case Study",
+    "title_ar": "DOTec — نظام ERP الهندسي",
+    "short_ar": "نظام ERP الهندسي الداخلي — المشاريع والتخصصات وساعات العمل والمصروفات والتقارير.",
+    "typeLabel_ar": "نظام ERP متكامل",
+    "sectorLabel_ar": "ERP هندسي",
+    "caseStudyLabel_ar": "اعرض دراسة الحالة",
+    "tags_ar": [
+      "Odoo 18",
+      "Python",
+      "PostgreSQL",
+      "REST API"
+    ],
+    "country_ar": "الولايات المتحدة",
+    "company_ar": "DOTec Engineering"
   },
   {
     "id": "margins-real-estate-erp",
@@ -206,7 +232,20 @@
     "accentOnDark": "#df5454",
     "accentSoft": "rgba(139,26,26,.10)",
     "accentSource": "from the Margins placeholder mark — no real logo is publicly available",
-    "caseStudyLabel": "View Case Study"
+    "caseStudyLabel": "View Case Study",
+    "title_ar": "Margins — نظام ERP العقاري",
+    "short_ar": "نظام ERP عقاري متكامل — إدارة العملاء والحجوزات والعقود والمدفوعات.",
+    "typeLabel_ar": "نظام ERP متكامل",
+    "sectorLabel_ar": "قطاع عقاري",
+    "caseStudyLabel_ar": "اعرض دراسة الحالة",
+    "tags_ar": [
+      "Odoo 17",
+      "Python",
+      "PostgreSQL",
+      "QWeb"
+    ],
+    "country_ar": "مصر",
+    "company_ar": "Margins Developments"
   },
   {
     "id": "ejadtech-gov-delivery",
@@ -280,7 +319,20 @@
     "accentOnDark": "#00a89c",
     "accentSoft": "rgba(0,168,156,.12)",
     "accentSource": "sampled from the real EjadTech Odoo backend screenshot",
-    "caseStudyLabel": "View Case Study"
+    "caseStudyLabel": "View Case Study",
+    "title_ar": "إيجاد التقنية — التحول الرقمي الحكومي",
+    "short_ar": "وحدات خلفية وأتمتة على Odoo عبر خمس منصات حكومية سعودية.",
+    "typeLabel_ar": "فريق تنفيذ Odoo",
+    "sectorLabel_ar": "قطاع حكومي · تحول رقمي",
+    "caseStudyLabel_ar": "اعرض دراسة الحالة",
+    "tags_ar": [
+      "Odoo",
+      "Python",
+      "قطاع حكومي",
+      "أتمتة"
+    ],
+    "country_ar": "السعودية",
+    "company_ar": "إيجاد التقنية"
   },
   {
     "id": "ejad-digital-delivery",
@@ -348,7 +400,20 @@
     "accentOnDark": "#118eb0",
     "accentSoft": "rgba(14,116,144,.12)",
     "accentSource": "EJAD product teal",
-    "caseStudyLabel": "View Case Study"
+    "caseStudyLabel": "View Case Study",
+    "title_ar": "إيجاد للحلول الرقمية — تنفيذ Odoo Enterprise",
+    "short_ar": "تنفيذ Odoo لعدة عملاء — أنظمة ERP وأتمتة الإجراءات والتكاملات.",
+    "typeLabel_ar": "تنفيذ Odoo أول",
+    "sectorLabel_ar": "شريك Odoo فضي",
+    "caseStudyLabel_ar": "اعرض دراسة الحالة",
+    "tags_ar": [
+      "Odoo 17/18",
+      "Python",
+      "QWeb",
+      "تكامل"
+    ],
+    "country_ar": "السعودية",
+    "company_ar": "إيجاد للحلول الرقمية"
   },
   {
     "id": "sunbelt-website-assets",
@@ -396,7 +461,20 @@
     "accentOnDark": "#a97948",
     "accentSoft": "rgba(84,60,36,.12)",
     "accentSource": "sampled from the real Sunbelt site capture",
-    "caseStudyLabel": "View Case Study"
+    "caseStudyLabel": "View Case Study",
+    "title_ar": "Sunbelt Deals — تنسيق صور وأصول الموقع",
+    "short_ar": "تنسيق ومراجعة وتحسين مكتبة الصور الكاملة لإعادة تصميم الموقع.",
+    "typeLabel_ar": "موقع · تنفيذ رقمي",
+    "sectorLabel_ar": "حزمة أصول موقع",
+    "caseStudyLabel_ar": "اعرض دراسة الحالة",
+    "tags_ar": [
+      "موقع إلكتروني",
+      "واجهات أمامية",
+      "WebP",
+      "تحسين الصور"
+    ],
+    "country_ar": "الولايات المتحدة",
+    "company_ar": "Sunbelt Deals"
   },
   {
     "id": "bluedez-content-pack",
@@ -443,6 +521,19 @@
     "accentOnDark": "#007fff",
     "accentSoft": "rgba(0,36,72,.10)",
     "accentSource": "sampled from the real BlueDez site capture",
-    "caseStudyLabel": "View Case Study"
+    "caseStudyLabel": "View Case Study",
+    "title_ar": "BlueDez — حزمة محتوى المدونة الهندسية",
+    "short_ar": "تحويل 15 مقالًا إلى حزمة بصرية من 24 صفحة و32 صورة قابلة لإعادة الاستخدام.",
+    "typeLabel_ar": "محتوى · هوية بصرية",
+    "sectorLabel_ar": "حزمة محتوى بصري",
+    "caseStudyLabel_ar": "اعرض دراسة الحالة",
+    "tags_ar": [
+      "تصميم محتوى",
+      "هوية بصرية",
+      "نظام بصري",
+      "PDF"
+    ],
+    "country_ar": "الولايات المتحدة",
+    "company_ar": "BlueDez Engineered Solutions"
   }
 ]

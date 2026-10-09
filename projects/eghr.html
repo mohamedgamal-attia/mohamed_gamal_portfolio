@@ -32,16 +32,25 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
 
-  <link rel="stylesheet" href="../assets/css/variables.css?v=5cd8193e" />
-  <link rel="stylesheet" href="../assets/css/motion.css?v=5cd8193e" />
-  <link rel="stylesheet" href="../assets/css/base.css?v=5cd8193e" />
-  <link rel="stylesheet" href="../assets/css/layout.css?v=5cd8193e" />
-  <link rel="stylesheet" href="../assets/css/components.css?v=5cd8193e" />
-  <link rel="stylesheet" href="../assets/css/sections.css?v=5cd8193e" />
-  <link rel="stylesheet" href="../assets/css/responsive.css?v=5cd8193e" />
-  <link rel="stylesheet" href="../assets/css/futuristic.css?v=5cd8193e" />
-  <link rel="stylesheet" href="../assets/css/project-showcase.css?v=5cd8193e" />
-  <link rel="stylesheet" href="../assets/css/case-study.css?v=5cd8193e" />
+  <!-- i18n loads blocking, ahead of the stylesheets, so direction and text are
+       correct before the first paint. -->
+  <script src="../assets/i18n/en.js"></script>
+  <script src="../assets/i18n/ar.js"></script>
+  <script src="../assets/i18n/eghr-en.js"></script>
+  <script src="../assets/i18n/eghr-ar.js"></script>
+  <script src="../assets/js/i18n.js?v=508cb6ac"></script>
+
+  <link rel="stylesheet" href="../assets/css/variables.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/motion.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/base.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/layout.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/components.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/sections.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/futuristic.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/project-showcase.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/rtl.css?v=508cb6ac" />
+  <link rel="stylesheet" href="../assets/css/case-study.css?v=508cb6ac" />
 
   <script type="application/ld+json">
   {
@@ -88,27 +97,30 @@
 <symbol id="i-whatsapp" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></symbol>
 <symbol id="i-xmark" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></symbol>
 </svg>
-<a class="skip-link" href="#overview">Skip to content</a>
+<a class="skip-link" href="#overview" data-i18n="cs.b276">Skip to content</a>
 
 <!-- ════════════════ NAV ════════════════ -->
 <nav class="cs-nav" aria-label="Case study navigation">
   <div class="cs-nav-inner">
     <a href="../index.html#work" class="cs-back">
-      <svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-arrow-left"/></svg> Portfolio
-    </a>
-    <div class="cs-nav-title">EJAD EGHR <span>· Employee Portal</span></div>
+      <svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-arrow-left"/></svg> <span data-i18n="cs.b277">Portfolio</span></a>
+    <div class="cs-nav-title"><span data-i18n="cs.b324">EJAD EGHR</span> <span data-i18n="cs.b1">· Employee Portal</span></div>
+    <div class="lang-switch cs-lang" role="group" aria-label="Language" data-i18n-attr="aria-label:a11y.langGroup">
+      <button type="button" data-lang-btn="en" lang="en" aria-label="Switch to English" data-i18n-attr="aria-label:a11y.switchEn"><span data-i18n="cs.b318">English</span></button>
+      <button type="button" data-lang-btn="ar" lang="ar" aria-label="التبديل إلى العربية" data-i18n-attr="aria-label:a11y.switchAr">العربية</button>
+    </div>
     <nav class="cs-secnav" aria-label="Sections">
-      <a href="#challenge"     data-sec-link>Problem</a>
-      <a href="#role"          data-sec-link>Role</a>
-      <a href="#dashboard"     data-sec-link>Dashboard</a>
-      <a href="#requests"      data-sec-link>Requests</a>
-      <a href="#attendance"    data-sec-link>Attendance</a>
-      <a href="#services"      data-sec-link>Services</a>
-      <a href="#localization"  data-sec-link>AR / EN</a>
-      <a href="#architecture"  data-sec-link>Architecture</a>
+      <a href="#challenge"     data-sec-link data-i18n="cs.b278">Problem</a>
+      <a href="#role"          data-sec-link data-i18n="cs.b279">Role</a>
+      <a href="#dashboard"     data-sec-link data-i18n="cs.b280">Dashboard</a>
+      <a href="#requests"      data-sec-link data-i18n="cs.b281">Requests</a>
+      <a href="#attendance"    data-sec-link data-i18n="cs.b282">Attendance</a>
+      <a href="#services"      data-sec-link data-i18n="cs.b283">Services</a>
+      <a href="#localization"  data-sec-link data-i18n="cs.b284">AR / EN</a>
+      <a href="#architecture"  data-sec-link data-i18n="cs.b285">Architecture</a>
     </nav>
     <div class="cs-nav-spacer"></div>
-    <a href="../index.html#contact" class="btn btn-primary btn-sm">
+    <a href="../index.html#contact" class="btn btn-primary btn-sm" data-i18n="cs.b286">
       Start a Project
     </a>
   </div>
@@ -122,42 +134,42 @@
     <div class="cs-hero-grid">
 
       <div>
-        <span class="cs-kicker">Case study · 2026</span>
-        <h1>EJAD EGHR<em>Enterprise Employee&nbsp;Portal</em></h1>
-        <p class="cs-hero-sub">A portal-first HR experience built on Odoo&nbsp;18.</p>
-        <p class="cs-hero-lead">
+        <span class="cs-kicker" data-i18n="cs.b2">Case study · 2026</span>
+        <h1><span data-i18n="cs.b325">EJAD EGHR</span><em data-i18n="cs.b3">Enterprise Employee&nbsp;Portal</em></h1>
+        <p class="cs-hero-sub" data-i18n="cs.b4">A portal-first HR experience built on Odoo&nbsp;18.</p>
+        <p class="cs-hero-lead" data-i18n="cs.b5">
           Employees get one branded place to check in, raise any HR request, follow its
           approval, and read what HR published — in Arabic or English, light or dark, on a
           phone or a desktop. The Odoo back office stays where it belongs: behind the portal.
         </p>
 
         <div class="cs-chips">
-          <span class="cs-chip is-key">Odoo 18</span>
-          <span class="cs-chip">Python</span>
-          <span class="cs-chip">QWeb / XML</span>
-          <span class="cs-chip">JavaScript</span>
-          <span class="cs-chip">SCSS / CSS</span>
-          <span class="cs-chip">PostgreSQL</span>
-          <span class="cs-chip">Playwright</span>
-          <span class="cs-chip">Git</span>
+          <span class="cs-chip is-key" data-i18n="cs.b6">Odoo 18</span>
+          <span class="cs-chip" data-i18n="cs.b7">Python</span>
+          <span class="cs-chip" data-i18n="cs.b8">QWeb / XML</span>
+          <span class="cs-chip" data-i18n="cs.b9">JavaScript</span>
+          <span class="cs-chip" data-i18n="cs.b10">SCSS / CSS</span>
+          <span class="cs-chip" data-i18n="cs.b11">PostgreSQL</span>
+          <span class="cs-chip" data-i18n="cs.b12">Playwright</span>
+          <span class="cs-chip" data-i18n="cs.b13">Git</span>
         </div>
 
         <div class="cs-meta">
           <div class="cs-meta-item">
-            <div class="cs-meta-k">My role</div>
-            <div class="cs-meta-v">End-to-end delivery</div>
+            <div class="cs-meta-k" data-i18n="cs.b14">My role</div>
+            <div class="cs-meta-v" data-i18n="cs.b15">End-to-end delivery</div>
           </div>
           <div class="cs-meta-item">
-            <div class="cs-meta-k">Surface</div>
-            <div class="cs-meta-v">Responsive web</div>
+            <div class="cs-meta-k" data-i18n="cs.b16">Surface</div>
+            <div class="cs-meta-v" data-i18n="cs.b17">Responsive web</div>
           </div>
           <div class="cs-meta-item">
-            <div class="cs-meta-k">Languages</div>
-            <div class="cs-meta-v">Arabic · English</div>
+            <div class="cs-meta-k" data-i18n="cs.b18">Languages</div>
+            <div class="cs-meta-v" data-i18n="cs.b19">Arabic · English</div>
           </div>
           <div class="cs-meta-item">
-            <div class="cs-meta-k">Themes</div>
-            <div class="cs-meta-v">Light · Dark</div>
+            <div class="cs-meta-k" data-i18n="cs.b20">Themes</div>
+            <div class="cs-meta-v" data-i18n="cs.b21">Light · Dark</div>
           </div>
         </div>
       </div>
@@ -185,20 +197,20 @@
   <div class="cs-wrap">
     <div class="fact-strip cs-reveal">
       <div class="fact">
-        <div class="fact-k">Platform</div>
-        <div class="fact-v">Odoo 18 · portal controllers</div>
+        <div class="fact-k" data-i18n="cs.b22">Platform</div>
+        <div class="fact-v" data-i18n="cs.b23">Odoo 18 · portal controllers</div>
       </div>
       <div class="fact">
-        <div class="fact-k">Services</div>
-        <div class="fact-v">11 employee request flows</div>
+        <div class="fact-k" data-i18n="cs.b24">Services</div>
+        <div class="fact-v" data-i18n="cs.b25">11 employee request flows</div>
       </div>
       <div class="fact">
-        <div class="fact-k">Attendance</div>
-        <div class="fact-v">Server-validated geofence</div>
+        <div class="fact-k" data-i18n="cs.b26">Attendance</div>
+        <div class="fact-v" data-i18n="cs.b27">Server-validated geofence</div>
       </div>
       <div class="fact">
-        <div class="fact-k">Reach</div>
-        <div class="fact-v">AR / EN · light / dark · responsive</div>
+        <div class="fact-k" data-i18n="cs.b28">Reach</div>
+        <div class="fact-v" data-i18n="cs.b29">AR / EN · light / dark · responsive</div>
       </div>
     </div>
   </div>
@@ -211,9 +223,9 @@
     <div class="split">
       <div class="cs-reveal">
         <div class="cs-head">
-          <div class="cs-num">01 · The problem</div>
-          <h2>HR software people actually open</h2>
-          <p>
+          <div class="cs-num" data-i18n="cs.b30">01 · The problem</div>
+          <h2 data-i18n="cs.b31">HR software people actually open</h2>
+          <p data-i18n="cs.b32">
             The HR data already lived in Odoo. The problem was the front door:
             asking every employee to learn an ERP back office to book three days off
             is how a rollout dies.
@@ -223,32 +235,32 @@
         <div class="bullets">
           <div class="bullet">
             <span class="bullet-mark" aria-hidden="true">01</span>
-            <p><b>Portal-first, back office hidden.</b> Employees never see an Odoo menu,
-              a technical model name or an internal view. They see one branded portal.</p>
+            <p><b data-i18n="cs.b33">Portal-first, back office hidden.</b> <span data-i18n="cs.b295">Employees never see an Odoo menu,
+              a technical model name or an internal view. They see one branded portal.</span></p>
           </div>
           <div class="bullet">
             <span class="bullet-mark" aria-hidden="true">02</span>
-            <p><b>One coherent set of HR services.</b> Time off, advances, loans, tickets,
-              visas, trips, custody and the rest had to feel like one product, not eleven forms.</p>
+            <p><b data-i18n="cs.b34">One coherent set of HR services.</b> <span data-i18n="cs.b296">Time off, advances, loans, tickets,
+              visas, trips, custody and the rest had to feel like one product, not eleven forms.</span></p>
           </div>
           <div class="bullet">
             <span class="bullet-mark" aria-hidden="true">03</span>
-            <p><b>Approvals employees can follow.</b> A request is only useful if the person
-              who raised it can see where it is and who has it.</p>
+            <p><b data-i18n="cs.b35">Approvals employees can follow.</b> <span data-i18n="cs.b297">A request is only useful if the person
+              who raised it can see where it is and who has it.</span></p>
           </div>
           <div class="bullet">
             <span class="bullet-mark" aria-hidden="true">04</span>
-            <p><b>Attendance that cannot be faked.</b> Check-in is tied to the office location
-              and validated on the server, not in the browser.</p>
+            <p><b data-i18n="cs.b36">Attendance that cannot be faked.</b> <span data-i18n="cs.b298">Check-in is tied to the office location
+              and validated on the server, not in the browser.</span></p>
           </div>
           <div class="bullet">
             <span class="bullet-mark" aria-hidden="true">05</span>
-            <p><b>Arabic and English, phone and desktop.</b> Both languages are first-class,
-              and the same journeys work at 360&nbsp;px and 1920&nbsp;px.</p>
+            <p><b data-i18n="cs.b37">Arabic and English, phone and desktop.</b> <span data-i18n="cs.b299">Both languages are first-class,
+              and the same journeys work at 360&nbsp;px and 1920&nbsp;px.</span></p>
           </div>
           <div class="bullet">
             <span class="bullet-mark" aria-hidden="true">06</span>
-            <p><b>Extensible without a rewrite.</b> HR adds a service; the portal picks it up.</p>
+            <p><b data-i18n="cs.b38">Extensible without a rewrite.</b> <span data-i18n="cs.b300">HR adds a service; the portal picks it up.</span></p>
           </div>
         </div>
       </div>
@@ -269,9 +281,9 @@
 <section class="cs-section cs-sheet" id="role">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">02 · My role</div>
-      <h2>Requirements through deployment</h2>
-      <p>
+      <div class="cs-num" data-i18n="cs.b39">02 · My role</div>
+      <h2 data-i18n="cs.b40">Requirements through deployment</h2>
+      <p data-i18n="cs.b41">
         I owned this one end to end — the conversations with HR, the Odoo models and
         controllers behind it, the portal itself, and the testing that kept it honest.
       </p>
@@ -280,50 +292,50 @@
     <div class="card-grid">
       <article class="cs-card cs-reveal">
         <span class="cs-card-num">01</span>
-        <h3>Business analysis</h3>
-        <p>Mapped each HR service to a request flow, an approval route and an owner before
+        <h3 data-i18n="cs.b42">Business analysis</h3>
+        <p data-i18n="cs.b43">Mapped each HR service to a request flow, an approval route and an owner before
           any model was written.</p>
       </article>
       <article class="cs-card cs-reveal d1">
         <span class="cs-card-num">02</span>
-        <h3>Odoo backend development</h3>
-        <p>Models, inheritance, compute and constraint logic, approval state machines and
+        <h3 data-i18n="cs.b44">Odoo backend development</h3>
+        <p data-i18n="cs.b45">Models, inheritance, compute and constraint logic, approval state machines and
           scheduled actions — on Odoo 18, without patching core.</p>
       </article>
       <article class="cs-card cs-reveal d2">
         <span class="cs-card-num">03</span>
-        <h3>Portal architecture</h3>
-        <p>Portal controllers, routing, the dynamic service registry and the record rules
+        <h3 data-i18n="cs.b46">Portal architecture</h3>
+        <p data-i18n="cs.b47">Portal controllers, routing, the dynamic service registry and the record rules
           that decide what each employee may open.</p>
       </article>
       <article class="cs-card cs-reveal">
         <span class="cs-card-num">04</span>
-        <h3>UI/UX implementation</h3>
-        <p>Translated the approved EJAD design direction into QWeb templates, SCSS tokens
+        <h3 data-i18n="cs.b48">UI/UX implementation</h3>
+        <p data-i18n="cs.b49">Translated the approved EJAD design direction into QWeb templates, SCSS tokens
           and reusable portal components.</p>
       </article>
       <article class="cs-card cs-reveal d1">
         <span class="cs-card-num">05</span>
-        <h3>Responsive frontend</h3>
-        <p>One markup set, one stylesheet, three breakpoint families — plus full RTL
+        <h3 data-i18n="cs.b50">Responsive frontend</h3>
+        <p data-i18n="cs.b51">One markup set, one stylesheet, three breakpoint families — plus full RTL
           mirroring rather than a separate Arabic build.</p>
       </article>
       <article class="cs-card cs-reveal d2">
         <span class="cs-card-num">06</span>
-        <h3>Security</h3>
-        <p>Access rights, record rules and server-side validation on every portal route —
+        <h3 data-i18n="cs.b52">Security</h3>
+        <p data-i18n="cs.b53">Access rights, record rules and server-side validation on every portal route —
           nothing is trusted because it came from the client.</p>
       </article>
       <article class="cs-card cs-reveal">
         <span class="cs-card-num">07</span>
-        <h3>Testing &amp; QA</h3>
-        <p>Automated Odoo tests for the business rules, Playwright runs for the portal
+        <h3 data-i18n="cs.b54">Testing &amp; QA</h3>
+        <p data-i18n="cs.b55">Automated Odoo tests for the business rules, Playwright runs for the portal
           journeys, and a responsive pass in both languages.</p>
       </article>
       <article class="cs-card cs-reveal d1">
         <span class="cs-card-num">08</span>
-        <h3>Deployment support</h3>
-        <p>Module packaging, environment configuration and the fixes that only show up once
+        <h3 data-i18n="cs.b56">Deployment support</h3>
+        <p data-i18n="cs.b57">Module packaging, environment configuration and the fixes that only show up once
           real users arrive.</p>
       </article>
     </div>
@@ -335,9 +347,9 @@
 <section class="cs-section" id="system">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">03 · Design system</div>
-      <h2>The rules the portal is built from</h2>
-      <p>
+      <div class="cs-num" data-i18n="cs.b58">03 · Design system</div>
+      <h2 data-i18n="cs.b59">The rules the portal is built from</h2>
+      <p data-i18n="cs.b60">
         Eleven services, two languages and two themes only stay coherent if the surface
         decisions are made once. These are the ones that mattered.
       </p>
@@ -350,8 +362,8 @@
           <span style="background:var(--surface-dark-3)"></span><span style="background:var(--border-on-dark-2)"></span>
         </div>
         <div class="ds-body">
-          <h4>Surface &amp; elevation</h4>
-          <p>Four surface levels — canvas, panel, raised panel, divider — so a card never
+          <h4 data-i18n="cs.b61">Surface &amp; elevation</h4>
+          <p data-i18n="cs.b62">Four surface levels — canvas, panel, raised panel, divider — so a card never
             invents its own background.</p>
         </div>
       </div>
@@ -362,46 +374,46 @@
           <span style="background:var(--danger)"></span><span style="background:var(--accent-deep)"></span>
         </div>
         <div class="ds-body">
-          <h4>Status semantics</h4>
-          <p>Approved, pending, rejected, in review. One colour per meaning, applied the same
+          <h4 data-i18n="cs.b63">Status semantics</h4>
+          <p data-i18n="cs.b64">Approved, pending, rejected, in review. One colour per meaning, applied the same
             way on a pill, a timeline node and a row.</p>
         </div>
       </div>
 
       <div class="ds-tile cs-reveal d2">
         <div class="ds-type">
-          <div class="t1">Dashboard</div>
-          <div class="t2">Section heading</div>
-          <div class="t3">Body &amp; field labels</div>
+          <div class="t1" data-i18n="cs.b65">Dashboard</div>
+          <div class="t2" data-i18n="cs.b66">Section heading</div>
+          <div class="t3" data-i18n="cs.b67">Body &amp; field labels</div>
           <div class="t4">لوحة المعلومات · عربي</div>
         </div>
         <div class="ds-body" style="border-top:1px solid rgba(255,255,255,.08)">
-          <h4>Type scale</h4>
-          <p>A four-step scale that holds in both scripts — Arabic is set at its own size,
+          <h4 data-i18n="cs.b68">Type scale</h4>
+          <p data-i18n="cs.b69">A four-step scale that holds in both scripts — Arabic is set at its own size,
             not the Latin size reused.</p>
         </div>
       </div>
 
       <div class="ds-tile cs-reveal">
         <div class="ds-body" style="padding-top:22px">
-          <h4>Navigation</h4>
-          <p>A persistent service rail on desktop, a bottom tab bar on phones, and the same
+          <h4 data-i18n="cs.b70">Navigation</h4>
+          <p data-i18n="cs.b71">A persistent service rail on desktop, a bottom tab bar on phones, and the same
             seven destinations in both — mirrored for Arabic.</p>
         </div>
       </div>
 
       <div class="ds-tile cs-reveal d1">
         <div class="ds-body" style="padding-top:22px">
-          <h4>Forms</h4>
-          <p>Label above field, full-width on phones, two columns from tablet up. Validation
+          <h4 data-i18n="cs.b72">Forms</h4>
+          <p data-i18n="cs.b73">Label above field, full-width on phones, two columns from tablet up. Validation
             messages sit with the field, never in an alert box.</p>
         </div>
       </div>
 
       <div class="ds-tile cs-reveal d2">
         <div class="ds-body" style="padding-top:22px">
-          <h4>Arabic RTL</h4>
-          <p>Layout, icon direction, progress rails and table alignment all mirror. Numerals
+          <h4 data-i18n="cs.b74">Arabic RTL</h4>
+          <p data-i18n="cs.b75">Layout, icon direction, progress rails and table alignment all mirror. Numerals
             and dates follow the active locale.</p>
         </div>
       </div>
@@ -414,9 +426,9 @@
 <section class="cs-section cs-sheet" id="dashboard">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">04 · Dashboard</div>
-      <h2>The whole working day on one screen</h2>
-      <p>
+      <div class="cs-num" data-i18n="cs.b76">04 · Dashboard</div>
+      <h2 data-i18n="cs.b77">The whole working day on one screen</h2>
+      <p data-i18n="cs.b78">
         The landing screen answers the four questions an employee actually opens the portal
         with: am I checked in, how much leave do I have, where are my requests, and what did
         HR just publish.
@@ -427,36 +439,34 @@
       <div class="cs-reveal d1">
         <div class="bullets" style="margin-top:0">
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Today &amp; attendance.</b> Check-in state, time, and the check-out action in
-              the same tile.</p></div>
+            <p><b data-i18n="cs.b79">Today &amp; attendance.</b> <span data-i18n="cs.b301">Check-in state, time, and the check-out action in
+              the same tile.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Official working hours.</b> Read from the employee's contract calendar, not
-              hard-coded.</p></div>
+            <p><b data-i18n="cs.b80">Official working hours.</b> <span data-i18n="cs.b302">Read from the employee's contract calendar, not
+              hard-coded.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Annual leave balance.</b> The same figure the approval flow validates against.</p></div>
+            <p><b data-i18n="cs.b81">Annual leave balance.</b> <span data-i18n="cs.b303">The same figure the approval flow validates against.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Open requests.</b> A live count that links straight into My Requests.</p></div>
+            <p><b data-i18n="cs.b82">Open requests.</b> <span data-i18n="cs.b304">A live count that links straight into My Requests.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Services.</b> The most-used entries from the registry, promoted onto the dashboard.</p></div>
+            <p><b data-i18n="cs.b83">Services.</b> <span data-i18n="cs.b305">The most-used entries from the registry, promoted onto the dashboard.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Announcements.</b> Only the ones targeted at this employee.</p></div>
+            <p><b data-i18n="cs.b84">Announcements.</b> <span data-i18n="cs.b306">Only the ones targeted at this employee.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Recent attendance.</b> The last working days with their present/late state.</p></div>
+            <p><b data-i18n="cs.b85">Recent attendance.</b> <span data-i18n="cs.b307">The last working days with their present/late state.</span></p></div>
         </div>
       </div>
 
       <div class="cs-reveal tilt-stage media-stack">
         <figure>
           <div class="frame tilt-3d-media">
-            <span class="schematic-tag">Interface schematic</span>
+            <span class="schematic-tag" data-i18n="cs.b86">Interface schematic</span>
             <img src="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg"
                  alt="EGHR dashboard in English: four summary tiles, an employee services grid, an announcements panel, recent attendance and a my-requests list."
                  width="1440" height="900" loading="lazy" decoding="async" />
           </div>
           <figcaption class="state-cap" style="max-width:66%">
-            <b>Dashboard · English, dark</b>
-            Summary tiles, promoted services, targeted announcements and the last working days.
-          </figcaption>
+            <b data-i18n="cs.b87">Dashboard · English, dark</b><span data-i18n="cs.b326">Summary tiles, promoted services, targeted announcements and the last working days.</span></figcaption>
         </figure>
         <div class="frame-phone lift">
           <img src="../assets/images/projects/eghr/dashboard-mobile-en.svg"
@@ -473,30 +483,28 @@
 <section class="cs-section" id="requests">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">05 · Request centre</div>
-      <h2>One inbox for raising, one for deciding</h2>
-      <p>
-        Every service writes into the same request spine, so an employee has exactly two
-        places to look: <b>My Requests</b> for what they raised, and <b>My Actions</b> for
+      <div class="cs-num" data-i18n="cs.b88">05 · Request centre</div>
+      <h2 data-i18n="cs.b89">One inbox for raising, one for deciding</h2>
+      <p><span data-i18n="cs.b327">Every service writes into the same request spine, so an employee has exactly two
+        places to look:</span> <b data-i18n="cs.b90">My Requests</b> <span data-i18n="cs.b328">for what they raised, and</span> <b data-i18n="cs.b91">My Actions</b> <span data-i18n="cs.b308">for
         what is waiting on them. What appears in either is decided by record rules, not by
-        the menu.
-      </p>
+        the menu.</span></p>
     </div>
 
     <div class="card-grid" style="margin-bottom:34px">
       <article class="cs-card cs-reveal">
-        <h3>My Requests</h3>
-        <p>Every request the employee raised, across all eleven services, with its current
+        <h3 data-i18n="cs.b92">My Requests</h3>
+        <p data-i18n="cs.b93">Every request the employee raised, across all eleven services, with its current
           stage and the service it came from.</p>
       </article>
       <article class="cs-card cs-reveal d1">
-        <h3>My Actions</h3>
-        <p>Requests waiting on this person because of their role in the approval route —
+        <h3 data-i18n="cs.b94">My Actions</h3>
+        <p data-i18n="cs.b95">Requests waiting on this person because of their role in the approval route —
           line manager, HR, or a delegate.</p>
       </article>
       <article class="cs-card cs-reveal d2">
-        <h3>Request detail</h3>
-        <p>The submitted values, the attachment, and an approval timeline that names each
+        <h3 data-i18n="cs.b96">Request detail</h3>
+        <p data-i18n="cs.b97">The submitted values, the attachment, and an approval timeline that names each
           step and who currently holds it.</p>
       </article>
     </div>
@@ -504,22 +512,22 @@
     <div class="split split-narrow" style="align-items:start">
       <figure class="cs-reveal tilt-stage" style="margin:0">
         <div class="frame tilt-3d-media">
-          <span class="schematic-tag">Interface schematic</span>
+          <span class="schematic-tag" data-i18n="cs.b98">Interface schematic</span>
           <img src="../assets/images/projects/eghr/requests-desktop-en-dark.svg"
                alt="My Requests table listing request references, service, submission date and approval stage with coloured status pills."
                width="1440" height="900" loading="lazy" decoding="async" />
         </div>
-        <figcaption class="state-cap"><b>My Requests</b>Reference, service, submitted date and stage — one row per request.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b99">My Requests</b><span data-i18n="cs.b329">Reference, service, submitted date and stage — one row per request.</span></figcaption>
       </figure>
 
       <figure class="cs-reveal d1" style="margin:0">
         <div class="frame lift">
-          <span class="schematic-tag">Interface schematic</span>
+          <span class="schematic-tag" data-i18n="cs.b100">Interface schematic</span>
           <img src="../assets/images/projects/eghr/request-detail-desktop-ar-light.svg"
                alt="Request detail in Arabic with a right-to-left layout: submitted values on one side and a vertical approval timeline on the other."
                width="1440" height="900" loading="lazy" decoding="async" />
         </div>
-        <figcaption class="state-cap"><b>Request detail · Arabic, light</b>Values, attachment and the approval timeline — mirrored for RTL.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b101">Request detail · Arabic, light</b><span data-i18n="cs.b330">Values, attachment and the approval timeline — mirrored for RTL.</span></figcaption>
       </figure>
     </div>
   </div>
@@ -530,9 +538,9 @@
 <section class="cs-section cs-sheet" id="attendance">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">06 · Attendance</div>
-      <h2>Check-in is a server decision</h2>
-      <p>
+      <div class="cs-num" data-i18n="cs.b102">06 · Attendance</div>
+      <h2 data-i18n="cs.b103">Check-in is a server decision</h2>
+      <p data-i18n="cs.b104">
         The browser supplies coordinates; it does not supply the verdict. The portal sends
         the position with the check-in call and the server compares it against the configured
         office geofence before any attendance record is written. A spoofed client gets a
@@ -540,69 +548,69 @@
       </p>
     </div>
 
-    <p class="rail-hint cs-reveal"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right-long"/></svg> Scroll for all seven states</p>
+    <p class="rail-hint cs-reveal"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right-long"/></svg> <span data-i18n="cs.b105">Scroll for all seven states</span></p>
     <div class="state-rail cs-reveal" role="group" aria-label="Attendance states">
       <figure class="state-item" style="margin:0">
         <img src="../assets/images/projects/eghr/attendance-state-not-checked-in.svg"
              alt="Attendance widget with no record for today and a check-in button." width="560" height="380" loading="lazy" decoding="async" />
-        <figcaption class="state-cap"><b>Not checked in</b>Day opens with no attendance record.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b106">Not checked in</b><span data-i18n="cs.b331">Day opens with no attendance record.</span></figcaption>
       </figure>
       <figure class="state-item" style="margin:0">
         <img src="../assets/images/projects/eghr/attendance-state-location-permission.svg"
              alt="Attendance widget asking the employee to grant browser location permission." width="560" height="380" loading="lazy" decoding="async" />
-        <figcaption class="state-cap"><b>Location permission</b>Geolocation has not been granted yet.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b107">Location permission</b><span data-i18n="cs.b332">Geolocation has not been granted yet.</span></figcaption>
       </figure>
       <figure class="state-item" style="margin:0">
         <img src="../assets/images/projects/eghr/attendance-state-locating.svg"
              alt="Attendance widget resolving the employee's coordinates before the check-in call." width="560" height="380" loading="lazy" decoding="async" />
-        <figcaption class="state-cap"><b>Locating</b>Coordinates resolving before the call is sent.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b108">Locating</b><span data-i18n="cs.b333">Coordinates resolving before the call is sent.</span></figcaption>
       </figure>
       <figure class="state-item" style="margin:0">
         <img src="../assets/images/projects/eghr/attendance-state-inside-zone.svg"
              alt="Attendance widget showing the employee inside the office geofence with the distance." width="560" height="380" loading="lazy" decoding="async" />
-        <figcaption class="state-cap"><b>Inside zone</b>Position falls inside the configured geofence.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b109">Inside zone</b><span data-i18n="cs.b334">Position falls inside the configured geofence.</span></figcaption>
       </figure>
       <figure class="state-item" style="margin:0">
         <img src="../assets/images/projects/eghr/attendance-state-outside-zone.svg"
              alt="Attendance widget showing a rejected check-in because the employee is outside the office geofence." width="560" height="380" loading="lazy" decoding="async" />
-        <figcaption class="state-cap"><b>Outside zone</b>Server rejects and explains the distance.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b110">Outside zone</b><span data-i18n="cs.b335">Server rejects and explains the distance.</span></figcaption>
       </figure>
       <figure class="state-item" style="margin:0">
         <img src="../assets/images/projects/eghr/attendance-state-checked-in.svg"
              alt="Attendance widget after a successful check-in, showing the stored time." width="560" height="380" loading="lazy" decoding="async" />
-        <figcaption class="state-cap"><b>Checked in</b>Record created; check-out becomes the action.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b111">Checked in</b><span data-i18n="cs.b336">Record created; check-out becomes the action.</span></figcaption>
       </figure>
       <figure class="state-item" style="margin:0">
         <img src="../assets/images/projects/eghr/attendance-state-checkout.svg"
              alt="Attendance widget at check-out, with worked hours computed from the stored check-in." width="560" height="380" loading="lazy" decoding="async" />
-        <figcaption class="state-cap"><b>Check out</b>Worked hours computed from the stored check-in.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b112">Check out</b><span data-i18n="cs.b337">Worked hours computed from the stored check-in.</span></figcaption>
       </figure>
     </div>
 
     <div class="split" style="margin-top:46px;align-items:start">
       <figure class="cs-reveal tilt-stage" style="margin:0">
         <div class="frame tilt-3d-media">
-          <span class="schematic-tag">Interface schematic</span>
+          <span class="schematic-tag" data-i18n="cs.b113">Interface schematic</span>
           <img src="../assets/images/projects/eghr/attendance-desktop-en-dark.svg"
                alt="Attendance screen with the geofence indicator, today's check-in time, and a monthly bar chart of worked hours with present, late and absent counts."
                width="1440" height="900" loading="lazy" decoding="async" />
         </div>
-        <figcaption class="state-cap"><b>Attendance · desktop</b>Today's state beside the month, with present / late / absent counts.</figcaption>
+        <figcaption class="state-cap"><b data-i18n="cs.b114">Attendance · desktop</b><span data-i18n="cs.b338">Today's state beside the month, with present / late / absent counts.</span></figcaption>
       </figure>
       <div class="cs-reveal d1">
         <div class="bullets" style="margin-top:0">
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Geofence held in configuration.</b> Office coordinates and radius are data, so
-              a new branch needs a record rather than a release.</p></div>
+            <p><b data-i18n="cs.b115">Geofence held in configuration.</b> <span data-i18n="cs.b309">Office coordinates and radius are data, so
+              a new branch needs a record rather than a release.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Every state is designed.</b> Permission refused, position unavailable and
-              out-of-range all have a screen — they are not left to a browser alert.</p></div>
+            <p><b data-i18n="cs.b116">Every state is designed.</b> <span data-i18n="cs.b310">Permission refused, position unavailable and
+              out-of-range all have a screen — they are not left to a browser alert.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Worked hours are computed.</b> Check-out reads the stored check-in rather than
-              trusting a second client timestamp.</p></div>
+            <p><b data-i18n="cs.b117">Worked hours are computed.</b> <span data-i18n="cs.b311">Check-out reads the stored check-in rather than
+              trusting a second client timestamp.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>History stays visible.</b> The employee can see their own month without
-              asking HR for a report.</p></div>
+            <p><b data-i18n="cs.b118">History stays visible.</b> <span data-i18n="cs.b312">The employee can see their own month without
+              asking HR for a report.</span></p></div>
         </div>
       </div>
     </div>
@@ -615,12 +623,11 @@
   <div class="cs-wrap">
     <div class="interlude-inner cs-reveal">
       <div>
-        <p class="eyebrow">Same problem?</p>
-        <h3>If your employees are being asked to learn an ERP, the portal is the fix.</h3>
+        <p class="eyebrow" data-i18n="cs.b119">Same problem?</p>
+        <h3 data-i18n="cs.b120">If your employees are being asked to learn an ERP, the portal is the fix.</h3>
       </div>
       <a href="../index.html#contact" class="btn btn-primary">
-        Start a Project <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-      </a>
+        <span data-i18n="cs.b287">Start a Project</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
     </div>
   </div>
 </section>
@@ -630,9 +637,9 @@
 <section class="cs-section" id="services">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">07 · Employee services</div>
-      <h2>Eleven services, one registry</h2>
-      <p>
+      <div class="cs-num" data-i18n="cs.b121">07 · Employee services</div>
+      <h2 data-i18n="cs.b122">Eleven services, one registry</h2>
+      <p data-i18n="cs.b123">
         Each service is an entry in a registry — its label, icon, route, form and approval
         route are data. The catalogue, the dashboard shortcuts and the request spine all read
         from it, so adding a twelfth service does not mean rewriting the portal.
@@ -640,30 +647,29 @@
     </div>
 
     <div class="tag-row cs-reveal" style="margin-bottom:34px">
-      <span>Time Off</span><span>Advance Salary</span><span>Loans</span>
-      <span>Ticket Booking</span><span>Visa</span><span>Business Trip</span>
-      <span>End of Service</span><span>Custody</span><span>Data Update</span>
-      <span>Permission</span><span>Job Requests</span>
+      <span data-i18n="cs.b124">Time Off</span><span data-i18n="cs.b125">Advance Salary</span><span data-i18n="cs.b126">Loans</span>
+      <span data-i18n="cs.b127">Ticket Booking</span><span data-i18n="cs.b128">Visa</span><span data-i18n="cs.b129">Business Trip</span>
+      <span data-i18n="cs.b130">End of Service</span><span data-i18n="cs.b131">Custody</span><span data-i18n="cs.b132">Data Update</span>
+      <span data-i18n="cs.b133">Permission</span><span data-i18n="cs.b134">Job Requests</span>
     </div>
 
     <div class="gal cs-reveal" data-gallery>
       <div class="gal-tabs" role="tablist" aria-label="Screen categories">
-        <button class="gal-tab" type="button" role="tab" aria-selected="true" data-group="all">All screens</button>
-        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="dashboard">Dashboard</button>
-        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="requests">Requests</button>
-        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="attendance">Attendance</button>
-        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="services">Services</button>
-        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="announcements">Announcements</button>
-        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="mobile">Mobile</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="true" data-group="all" data-i18n="cs.b135">All screens</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="dashboard" data-i18n="cs.b136">Dashboard</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="requests" data-i18n="cs.b137">Requests</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="attendance" data-i18n="cs.b138">Attendance</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="services" data-i18n="cs.b139">Services</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="announcements" data-i18n="cs.b140">Announcements</button>
+        <button class="gal-tab" type="button" role="tab" aria-selected="false" data-group="mobile" data-i18n="cs.b141">Mobile</button>
       </div>
 
       <div class="gal-main">
-        <span class="schematic-tag">Interface schematic</span>
+        <span class="schematic-tag" data-i18n="cs.b142">Interface schematic</span>
         <img src="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg"
              alt="EGHR dashboard in English." width="1440" height="900" loading="lazy" decoding="async" />
         <button class="gal-open" type="button" data-lightbox>
-          <svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-expand"/></svg> Expand
-        </button>
+          <svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-expand"/></svg> <span data-i18n="cs.b143">Expand</span></button>
       </div>
       <p class="gal-cap" aria-live="polite"></p>
       <div class="gal-thumbs" role="group" aria-label="Screen thumbnails"></div>
@@ -672,98 +678,98 @@
       <div class="gal-track">
         <figure data-group="dashboard">
           <img src="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg" alt="EGHR dashboard in English, dark theme." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Dashboard · English, dark</b> Attendance, working hours, leave balance, open requests, services, announcements.</figcaption>
+          <figcaption><b data-i18n="cs.b144">Dashboard · English, dark</b><span data-i18n="cs.b339">Attendance, working hours, leave balance, open requests, services, announcements.</span></figcaption>
         </figure>
         <figure data-group="dashboard">
           <img src="../assets/images/projects/eghr/dashboard-desktop-ar-light.svg" alt="EGHR dashboard in Arabic, right-to-left, light theme." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Dashboard · Arabic, light</b> The same screen mirrored for RTL, with locale-aware numerals and dates.</figcaption>
+          <figcaption><b data-i18n="cs.b145">Dashboard · Arabic, light</b><span data-i18n="cs.b340">The same screen mirrored for RTL, with locale-aware numerals and dates.</span></figcaption>
         </figure>
         <figure data-group="requests">
           <img src="../assets/images/projects/eghr/requests-desktop-en-dark.svg" alt="My Requests list." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>My Requests</b> Everything this employee raised, across all services, with its stage.</figcaption>
+          <figcaption><b data-i18n="cs.b146">My Requests</b><span data-i18n="cs.b341">Everything this employee raised, across all services, with its stage.</span></figcaption>
         </figure>
         <figure data-group="requests">
           <img src="../assets/images/projects/eghr/actions-desktop-en-dark.svg" alt="My Actions list of requests awaiting this employee's approval." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>My Actions</b> Requests waiting on this person because of their role in the route.</figcaption>
+          <figcaption><b data-i18n="cs.b147">My Actions</b><span data-i18n="cs.b342">Requests waiting on this person because of their role in the route.</span></figcaption>
         </figure>
         <figure data-group="requests">
           <img src="../assets/images/projects/eghr/request-detail-desktop-en-dark.svg" alt="Request detail with approval timeline." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Request detail</b> Submitted values, attachment and the approval timeline with the current holder.</figcaption>
+          <figcaption><b data-i18n="cs.b148">Request detail</b><span data-i18n="cs.b343">Submitted values, attachment and the approval timeline with the current holder.</span></figcaption>
         </figure>
         <figure data-group="requests">
           <img src="../assets/images/projects/eghr/request-detail-desktop-ar-light.svg" alt="Request detail in Arabic, light theme." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Request detail · Arabic</b> Timeline rail and field grid mirrored for right-to-left reading.</figcaption>
+          <figcaption><b data-i18n="cs.b149">Request detail · Arabic</b><span data-i18n="cs.b344">Timeline rail and field grid mirrored for right-to-left reading.</span></figcaption>
         </figure>
         <figure data-group="attendance">
           <img src="../assets/images/projects/eghr/attendance-desktop-en-dark.svg" alt="Attendance screen with geofence and monthly chart." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Attendance</b> Geofence state and check-in time beside the month's worked hours.</figcaption>
+          <figcaption><b data-i18n="cs.b150">Attendance</b><span data-i18n="cs.b345">Geofence state and check-in time beside the month's worked hours.</span></figcaption>
         </figure>
         <figure data-group="attendance">
           <img src="../assets/images/projects/eghr/attendance-desktop-ar-light.svg" alt="Attendance screen in Arabic, light theme." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Attendance · Arabic</b> Same logic, mirrored layout and locale-aware figures.</figcaption>
+          <figcaption><b data-i18n="cs.b151">Attendance · Arabic</b><span data-i18n="cs.b346">Same logic, mirrored layout and locale-aware figures.</span></figcaption>
         </figure>
         <figure data-group="services">
           <img src="../assets/images/projects/eghr/services-desktop-en-dark.svg" alt="Services catalogue with search and category filters." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Services catalogue</b> Search and category filters over the registry entries.</figcaption>
+          <figcaption><b data-i18n="cs.b152">Services catalogue</b><span data-i18n="cs.b347">Search and category filters over the registry entries.</span></figcaption>
         </figure>
         <figure data-group="services">
           <img src="../assets/images/projects/eghr/service-form-desktop-en-dark.svg" alt="Time Off request form with policy and validation panel." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Service form · Time Off</b> Field layout beside the rules the server enforces on submit.</figcaption>
+          <figcaption><b data-i18n="cs.b153">Service form · Time Off</b><span data-i18n="cs.b348">Field layout beside the rules the server enforces on submit.</span></figcaption>
         </figure>
         <figure data-group="services">
           <img src="../assets/images/projects/eghr/services-desktop-ar-light.svg" alt="Services catalogue in Arabic, light theme." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Services · Arabic, light</b> Catalogue cards and filters mirrored for RTL.</figcaption>
+          <figcaption><b data-i18n="cs.b154">Services · Arabic, light</b><span data-i18n="cs.b349">Catalogue cards and filters mirrored for RTL.</span></figcaption>
         </figure>
         <figure data-group="announcements">
           <img src="../assets/images/projects/eghr/announcements-desktop-en-dark.svg" alt="Announcements list with audience tags." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Announcements</b> Each item carries the audience it was published to.</figcaption>
+          <figcaption><b data-i18n="cs.b155">Announcements</b><span data-i18n="cs.b350">Each item carries the audience it was published to.</span></figcaption>
         </figure>
         <figure data-group="announcements">
           <img src="../assets/images/projects/eghr/announcement-detail-desktop-ar-light.svg" alt="Announcement detail in Arabic with audience panel." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Announcement detail · Arabic</b> Body, attachment and the audience the item resolved to.</figcaption>
+          <figcaption><b data-i18n="cs.b156">Announcement detail · Arabic</b><span data-i18n="cs.b351">Body, attachment and the audience the item resolved to.</span></figcaption>
         </figure>
         <figure data-group="announcements">
           <img src="../assets/images/projects/eghr/profile-desktop-en-dark.svg" alt="Employee profile screen." width="1440" height="900" loading="lazy" decoding="async" />
-          <figcaption><b>Profile</b> Employee record surfaced read-only; edits go through the Data Update service.</figcaption>
+          <figcaption><b data-i18n="cs.b157">Profile</b><span data-i18n="cs.b352">Employee record surfaced read-only; edits go through the Data Update service.</span></figcaption>
         </figure>
         <figure data-group="mobile">
           <img src="../assets/images/projects/eghr/dashboard-mobile-en.svg" alt="Dashboard on a phone in English." width="420" height="880" loading="lazy" decoding="async" />
-          <figcaption><b>Dashboard · phone</b> One column, attendance first, bottom tab bar.</figcaption>
+          <figcaption><b data-i18n="cs.b158">Dashboard · phone</b><span data-i18n="cs.b353">One column, attendance first, bottom tab bar.</span></figcaption>
         </figure>
         <figure data-group="mobile">
           <img src="../assets/images/projects/eghr/dashboard-mobile-ar.svg" alt="Dashboard on a phone in Arabic." width="420" height="880" loading="lazy" decoding="async" />
-          <figcaption><b>Dashboard · phone, Arabic</b> Tab bar order and card contents mirror with the locale.</figcaption>
+          <figcaption><b data-i18n="cs.b159">Dashboard · phone, Arabic</b><span data-i18n="cs.b354">Tab bar order and card contents mirror with the locale.</span></figcaption>
         </figure>
         <figure data-group="mobile">
           <img src="../assets/images/projects/eghr/services-mobile-en.svg" alt="Services catalogue on a phone." width="420" height="880" loading="lazy" decoding="async" />
-          <figcaption><b>Services · phone</b> Two-column catalogue with touch-sized targets.</figcaption>
+          <figcaption><b data-i18n="cs.b160">Services · phone</b><span data-i18n="cs.b355">Two-column catalogue with touch-sized targets.</span></figcaption>
         </figure>
         <figure data-group="mobile">
           <img src="../assets/images/projects/eghr/request-form-mobile-en.svg" alt="Request form on a phone." width="420" height="880" loading="lazy" decoding="async" />
-          <figcaption><b>Request form · phone</b> Single column, labels above fields, actions pinned at the end.</figcaption>
+          <figcaption><b data-i18n="cs.b161">Request form · phone</b><span data-i18n="cs.b356">Single column, labels above fields, actions pinned at the end.</span></figcaption>
         </figure>
         <figure data-group="mobile">
           <img src="../assets/images/projects/eghr/attendance-mobile-en.svg" alt="Attendance on a phone." width="420" height="880" loading="lazy" decoding="async" />
-          <figcaption><b>Attendance · phone</b> Geofence state, check-out, and the month in one scroll.</figcaption>
+          <figcaption><b data-i18n="cs.b162">Attendance · phone</b><span data-i18n="cs.b357">Geofence state, check-out, and the month in one scroll.</span></figcaption>
         </figure>
         <figure data-group="mobile">
           <img src="../assets/images/projects/eghr/announcements-mobile-ar.svg" alt="Announcements on a phone in Arabic." width="420" height="880" loading="lazy" decoding="async" />
-          <figcaption><b>Announcements · phone, Arabic</b> Audience tag kept visible at phone width.</figcaption>
+          <figcaption><b data-i18n="cs.b163">Announcements · phone, Arabic</b><span data-i18n="cs.b358">Audience tag kept visible at phone width.</span></figcaption>
         </figure>
         <figure data-group="mobile">
           <img src="../assets/images/projects/eghr/profile-mobile-en.svg" alt="Profile on a phone." width="420" height="880" loading="lazy" decoding="async" />
-          <figcaption><b>Profile · phone</b> Stacked record fields with the same read-only rule.</figcaption>
+          <figcaption><b data-i18n="cs.b164">Profile · phone</b><span data-i18n="cs.b359">Stacked record fields with the same read-only rule.</span></figcaption>
         </figure>
       </div>
     </div>
 
     <div class="media-note cs-reveal">
       <svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-circle-info"/></svg>
-      <p><b>These are schematics, not screenshots.</b> Each one reproduces the delivered
+      <p><b data-i18n="cs.b165">These are schematics, not screenshots.</b> <span data-i18n="cs.b313">Each one reproduces the delivered
         portal's layout, information architecture, RTL mirroring, theming and attendance
         states — drawn from the build, not captured from it. Live screens carry employee
         records, so they are not published on a public site; I walk through the running
-        portal on a call.</p>
+        portal on a call.</span></p>
     </div>
   </div>
 </section>
@@ -775,9 +781,9 @@
     <div class="split" style="align-items:start">
       <div class="cs-reveal">
         <div class="cs-head">
-          <div class="cs-num">08 · Announcements</div>
-          <h2>Published once, targeted per employee</h2>
-          <p>
+          <div class="cs-num" data-i18n="cs.b166">08 · Announcements</div>
+          <h2 data-i18n="cs.b167">Published once, targeted per employee</h2>
+          <p data-i18n="cs.b168">
             HR writes an announcement in both languages and chooses who should see it —
             everyone, a department, or a branch. Resolution happens per employee, so the
             dashboard notice, the list and the detail page all show the same filtered set.
@@ -785,26 +791,26 @@
         </div>
         <div class="bullets">
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Dashboard notice.</b> The most recent targeted items, inline on the landing screen.</p></div>
+            <p><b data-i18n="cs.b169">Dashboard notice.</b> <span data-i18n="cs.b314">The most recent targeted items, inline on the landing screen.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Full list.</b> Everything addressed to this employee, newest first, with its audience.</p></div>
+            <p><b data-i18n="cs.b170">Full list.</b> <span data-i18n="cs.b315">Everything addressed to this employee, newest first, with its audience.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Detail page.</b> Body, attachment and the audience the item resolved to.</p></div>
+            <p><b data-i18n="cs.b171">Detail page.</b> <span data-i18n="cs.b316">Body, attachment and the audience the item resolved to.</span></p></div>
           <div class="bullet"><span class="bullet-mark" aria-hidden="true">·</span>
-            <p><b>Bilingual by record.</b> Arabic and English bodies live on the same announcement;
-              the portal picks by active locale instead of duplicating the record.</p></div>
+            <p><b data-i18n="cs.b172">Bilingual by record.</b> <span data-i18n="cs.b317">Arabic and English bodies live on the same announcement;
+              the portal picks by active locale instead of duplicating the record.</span></p></div>
         </div>
       </div>
 
       <div class="cs-reveal d1 tilt-stage">
         <figure style="margin:0">
           <div class="frame tilt-3d-media">
-            <span class="schematic-tag">Interface schematic</span>
+            <span class="schematic-tag" data-i18n="cs.b173">Interface schematic</span>
             <img src="../assets/images/projects/eghr/announcements-desktop-en-dark.svg"
                  alt="Announcements list where each row carries a coloured audience tag such as all employees, engineering, or a branch."
                  width="1440" height="900" loading="lazy" decoding="async" />
           </div>
-          <figcaption class="state-cap"><b>Announcements · list</b>Audience is shown on the row, not buried in the record.</figcaption>
+          <figcaption class="state-cap"><b data-i18n="cs.b174">Announcements · list</b><span data-i18n="cs.b360">Audience is shown on the row, not buried in the record.</span></figcaption>
         </figure>
       </div>
     </div>
@@ -816,9 +822,9 @@
 <section class="cs-section" id="localization">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">09 · Arabic / English · light / dark</div>
-      <h2>Four combinations, one codebase</h2>
-      <p>
+      <div class="cs-num" data-i18n="cs.b175">09 · Arabic / English · light / dark</div>
+      <h2 data-i18n="cs.b176">Four combinations, one codebase</h2>
+      <p data-i18n="cs.b177">
         Language and theme are independent. Switch either below — these are the same
         dashboard built from the same templates, not four hand-made layouts.
       </p>
@@ -831,46 +837,46 @@
          data-src-ar-light="../assets/images/projects/eghr/dashboard-desktop-ar-light.svg">
       <div class="cmp-controls">
         <div>
-          <div class="switch-label" id="lbl-lang">Language</div>
+          <div class="switch-label" id="lbl-lang" data-i18n="cs.b178">Language</div>
           <div class="switch" role="group" aria-labelledby="lbl-lang">
-            <button type="button" data-set="lang:en" aria-pressed="true">English</button>
+            <button type="button" data-set="lang:en" aria-pressed="true" data-i18n="cs.b179">English</button>
             <button type="button" data-set="lang:ar" aria-pressed="false" lang="ar">العربية</button>
           </div>
         </div>
         <div>
-          <div class="switch-label" id="lbl-theme">Theme</div>
+          <div class="switch-label" id="lbl-theme" data-i18n="cs.b180">Theme</div>
           <div class="switch" role="group" aria-labelledby="lbl-theme">
-            <button type="button" data-set="theme:dark" aria-pressed="true">Dark</button>
-            <button type="button" data-set="theme:light" aria-pressed="false">Light</button>
+            <button type="button" data-set="theme:dark" aria-pressed="true" data-i18n="cs.b181">Dark</button>
+            <button type="button" data-set="theme:light" aria-pressed="false" data-i18n="cs.b182">Light</button>
           </div>
         </div>
       </div>
 
       <figure style="margin:0">
         <div class="frame lift">
-          <span class="schematic-tag">Interface schematic</span>
+          <span class="schematic-tag" data-i18n="cs.b183">Interface schematic</span>
           <img data-compare-img src="../assets/images/projects/eghr/dashboard-desktop-en-dark.svg"
                alt="EGHR dashboard schematic — English in dark theme."
                width="1440" height="900" loading="lazy" decoding="async" />
         </div>
-        <figcaption class="cmp-tag" style="margin-top:14px"><span data-compare-tag>English (LTR) · Dark</span></figcaption>
+        <figcaption class="cmp-tag" style="margin-top:14px"><span data-compare-tag data-i18n="cs.b184">English (LTR) · Dark</span></figcaption>
       </figure>
     </div>
 
     <div class="card-grid cs-reveal" style="margin-top:38px">
       <article class="cs-card">
-        <h3>Mirrored, not translated</h3>
-        <p>Navigation side, progress rails, table alignment, icon direction and card internals
-          all flip. The Arabic build is the same markup under <code>dir="rtl"</code>.</p>
+        <h3 data-i18n="cs.b185">Mirrored, not translated</h3>
+        <p><span data-i18n="cs.b319">Navigation side, progress rails, table alignment, icon direction and card internals
+          all flip. The Arabic build is the same markup under</span> <code><span data-i18n="cs.b320">dir="rtl"</span></code>.</p>
       </article>
       <article class="cs-card">
-        <h3>Locale-aware figures</h3>
-        <p>Numerals, dates and day names follow the active language rather than being printed
+        <h3 data-i18n="cs.b186">Locale-aware figures</h3>
+        <p data-i18n="cs.b187">Numerals, dates and day names follow the active language rather than being printed
           once and reused.</p>
       </article>
       <article class="cs-card">
-        <h3>Themes as tokens</h3>
-        <p>Light and dark are two token sets over one component layer, so a new component
+        <h3 data-i18n="cs.b188">Themes as tokens</h3>
+        <p data-i18n="cs.b189">Light and dark are two token sets over one component layer, so a new component
           inherits both for free.</p>
       </article>
     </div>
@@ -882,40 +888,40 @@
 <section class="cs-section cs-sheet" id="mobile">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">10 · Mobile</div>
-      <h2>Responsive web, not a separate app</h2>
-      <p>
+      <div class="cs-num" data-i18n="cs.b190">10 · Mobile</div>
+      <h2 data-i18n="cs.b191">Responsive web, not a separate app</h2>
+      <p data-i18n="cs.b192">
         There is no native build. The same portal reflows to one column, promotes attendance
         to the top, and swaps the desktop service rail for a bottom tab bar — so an employee
         on a phone gets the whole product, not a cut-down version of it.
       </p>
     </div>
 
-    <p class="rail-hint cs-reveal"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right-long"/></svg> Scroll for more screens</p>
+    <p class="rail-hint cs-reveal"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right-long"/></svg> <span data-i18n="cs.b193">Scroll for more screens</span></p>
     <div class="phones cs-reveal" role="group" aria-label="Mobile screens">
       <figure class="phone-item" style="margin:0">
         <div class="frame-phone lift"><img src="../assets/images/projects/eghr/dashboard-mobile-en.svg" alt="Dashboard on a phone in English." width="420" height="880" loading="lazy" decoding="async" /></div>
-        <figcaption><b>Dashboard</b>Attendance first, then balances</figcaption>
+        <figcaption><b data-i18n="cs.b194">Dashboard</b><span data-i18n="cs.b361">Attendance first, then balances</span></figcaption>
       </figure>
       <figure class="phone-item" style="margin:0">
         <div class="frame-phone lift"><img src="../assets/images/projects/eghr/services-mobile-en.svg" alt="Services catalogue on a phone." width="420" height="880" loading="lazy" decoding="async" /></div>
-        <figcaption><b>Services</b>Two-column catalogue</figcaption>
+        <figcaption><b data-i18n="cs.b195">Services</b><span data-i18n="cs.b362">Two-column catalogue</span></figcaption>
       </figure>
       <figure class="phone-item" style="margin:0">
         <div class="frame-phone lift"><img src="../assets/images/projects/eghr/request-form-mobile-en.svg" alt="Request form on a phone." width="420" height="880" loading="lazy" decoding="async" /></div>
-        <figcaption><b>Request form</b>One column, labels above</figcaption>
+        <figcaption><b data-i18n="cs.b196">Request form</b><span data-i18n="cs.b363">One column, labels above</span></figcaption>
       </figure>
       <figure class="phone-item" style="margin:0">
         <div class="frame-phone lift"><img src="../assets/images/projects/eghr/attendance-mobile-en.svg" alt="Attendance on a phone." width="420" height="880" loading="lazy" decoding="async" /></div>
-        <figcaption><b>Attendance</b>Geofence and the month</figcaption>
+        <figcaption><b data-i18n="cs.b197">Attendance</b><span data-i18n="cs.b364">Geofence and the month</span></figcaption>
       </figure>
       <figure class="phone-item" style="margin:0">
         <div class="frame-phone lift"><img src="../assets/images/projects/eghr/announcements-mobile-ar.svg" alt="Announcements on a phone in Arabic." width="420" height="880" loading="lazy" decoding="async" /></div>
-        <figcaption><b>Announcements</b>Arabic, right-to-left</figcaption>
+        <figcaption><b data-i18n="cs.b198">Announcements</b><span data-i18n="cs.b365">Arabic, right-to-left</span></figcaption>
       </figure>
       <figure class="phone-item" style="margin:0">
         <div class="frame-phone lift"><img src="../assets/images/projects/eghr/profile-mobile-en.svg" alt="Profile on a phone." width="420" height="880" loading="lazy" decoding="async" /></div>
-        <figcaption><b>Profile</b>Stacked record fields</figcaption>
+        <figcaption><b data-i18n="cs.b199">Profile</b><span data-i18n="cs.b366">Stacked record fields</span></figcaption>
       </figure>
     </div>
   </div>
@@ -926,9 +932,9 @@
 <section class="cs-section" id="architecture">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">11 · Architecture</div>
-      <h2>How a request travels</h2>
-      <p>
+      <div class="cs-num" data-i18n="cs.b200">11 · Architecture</div>
+      <h2 data-i18n="cs.b201">How a request travels</h2>
+      <p data-i18n="cs.b202">
         Nothing reaches the employee without passing the controller and security layer, and
         nothing new is added to the portal without being registered as a service first.
       </p>
@@ -938,75 +944,75 @@
       <ol class="arch-stack" aria-label="Request path through the system, top to bottom">
 
         <li class="arch-layer" style="--c:var(--on-dark-mauve)">
-          <span class="arch-tier">Platform</span>
-          <h3>Odoo 18</h3>
-          <p>ORM, access-rights framework, QWeb engine and the scheduler everything else is built on.</p>
-          <div class="arch-chips"><span>Python</span><span>PostgreSQL</span></div>
+          <span class="arch-tier" data-i18n="cs.b203">Platform</span>
+          <h3 data-i18n="cs.b204">Odoo 18</h3>
+          <p data-i18n="cs.b205">ORM, access-rights framework, QWeb engine and the scheduler everything else is built on.</p>
+          <div class="arch-chips"><span data-i18n="cs.b206">Python</span><span data-i18n="cs.b207">PostgreSQL</span></div>
         </li>
 
         <li class="arch-layer" style="--c:var(--accent-primary)">
-          <span class="arch-tier">Domain</span>
-          <h3>HR · Attendance · Approval models</h3>
-          <p>Employee and contract data, attendance records with their geofence rules, and the
+          <span class="arch-tier" data-i18n="cs.b208">Domain</span>
+          <h3 data-i18n="cs.b209">HR · Attendance · Approval models</h3>
+          <p data-i18n="cs.b210">Employee and contract data, attendance records with their geofence rules, and the
             approval state machine shared by every service.</p>
-          <div class="arch-chips"><span>Custom modules</span><span>Inheritance</span><span>Constraints</span></div>
+          <div class="arch-chips"><span data-i18n="cs.b211">Custom modules</span><span data-i18n="cs.b212">Inheritance</span><span data-i18n="cs.b213">Constraints</span></div>
         </li>
 
         <li class="arch-layer is-boundary" style="--c:var(--accent-primary)">
-          <span class="arch-tier">Security boundary</span>
-          <h3>Portal controllers + security</h3>
-          <p>Every portal route resolves the employee from the session, applies record rules,
+          <span class="arch-tier" data-i18n="cs.b214">Security boundary</span>
+          <h3 data-i18n="cs.b215">Portal controllers + security</h3>
+          <p data-i18n="cs.b216">Every portal route resolves the employee from the session, applies record rules,
             and validates the payload server-side before anything is written.</p>
-          <div class="arch-chips"><span>Routes</span><span>Record rules</span><span>Server validation</span></div>
+          <div class="arch-chips"><span data-i18n="cs.b217">Routes</span><span data-i18n="cs.b218">Record rules</span><span data-i18n="cs.b219">Server validation</span></div>
         </li>
 
         <li class="arch-layer is-config" style="--c:var(--on-dark-mauve)">
-          <span class="arch-tier">Configuration-driven</span>
-          <h3>Dynamic service registry</h3>
-          <p>Each of the eleven services is a registry entry — label, icon, form, route and
+          <span class="arch-tier" data-i18n="cs.b220">Configuration-driven</span>
+          <h3 data-i18n="cs.b221">Dynamic service registry</h3>
+          <p data-i18n="cs.b222">Each of the eleven services is a registry entry — label, icon, form, route and
             approval chain. The catalogue and the request spine both read from here.</p>
-          <div class="arch-chips"><span>11 services</span><span>No portal rewrite to extend</span></div>
+          <div class="arch-chips"><span data-i18n="cs.b223">11 services</span><span data-i18n="cs.b224">No portal rewrite to extend</span></div>
         </li>
 
         <li class="arch-layer" style="--c:var(--accent-primary)">
-          <span class="arch-tier">Presentation</span>
-          <h3>EJAD portal theme</h3>
-          <p>QWeb templates and SCSS tokens: surfaces, status colours, type scale, navigation,
+          <span class="arch-tier" data-i18n="cs.b225">Presentation</span>
+          <h3 data-i18n="cs.b226">EJAD portal theme</h3>
+          <p data-i18n="cs.b227">QWeb templates and SCSS tokens: surfaces, status colours, type scale, navigation,
             forms — plus the RTL mirroring and the light/dark token sets.</p>
-          <div class="arch-chips"><span>QWeb / XML</span><span>SCSS</span><span>JavaScript</span></div>
+          <div class="arch-chips"><span data-i18n="cs.b228">QWeb / XML</span><span data-i18n="cs.b229">SCSS</span><span data-i18n="cs.b230">JavaScript</span></div>
         </li>
 
         <li class="arch-layer" style="--c:var(--on-dark-sage)">
-          <span class="arch-tier">Delivery</span>
-          <h3>Desktop · tablet · mobile</h3>
-          <p>One responsive web surface. No native build, no separate Arabic build, no
+          <span class="arch-tier" data-i18n="cs.b231">Delivery</span>
+          <h3 data-i18n="cs.b232">Desktop · tablet · mobile</h3>
+          <p data-i18n="cs.b233">One responsive web surface. No native build, no separate Arabic build, no
             cut-down phone experience.</p>
-          <div class="arch-chips"><span>360 → 1920 px</span><span>AR / EN</span><span>Light / dark</span></div>
+          <div class="arch-chips"><span data-i18n="cs.b234">360 → 1920 px</span><span data-i18n="cs.b235">AR / EN</span><span data-i18n="cs.b236">Light / dark</span></div>
         </li>
 
       </ol>
     </div>
 
     <div class="arch-legend cs-reveal">
-      <span><i style="background:var(--accent-primary)"></i> Request path</span>
-      <span><i style="background:var(--accent-primary)"></i> Security boundary</span>
-      <span><i style="background:var(--on-dark-mauve)"></i> Configuration-driven</span>
+      <span><i style="background:var(--accent-primary)"></i><span data-i18n="cs.b321">Request path</span></span>
+      <span><i style="background:var(--accent-primary)"></i><span data-i18n="cs.b322">Security boundary</span></span>
+      <span><i style="background:var(--on-dark-mauve)"></i><span data-i18n="cs.b323">Configuration-driven</span></span>
     </div>
 
     <div class="card-grid cs-reveal" style="margin-top:38px">
       <article class="cs-card">
-        <h3>Odoo-core-safe</h3>
-        <p>Everything lives in custom modules using inheritance and extension points. No core
+        <h3 data-i18n="cs.b237">Odoo-core-safe</h3>
+        <p data-i18n="cs.b238">Everything lives in custom modules using inheritance and extension points. No core
           file is edited, so an Odoo upgrade stays an upgrade.</p>
       </article>
       <article class="cs-card">
-        <h3>Permission-aware by default</h3>
-        <p>Portal routes resolve the employee from the session and apply record rules — the
+        <h3 data-i18n="cs.b239">Permission-aware by default</h3>
+        <p data-i18n="cs.b240">Portal routes resolve the employee from the session and apply record rules — the
           URL is never the thing that grants access.</p>
       </article>
       <article class="cs-card">
-        <h3>Theme as a layer</h3>
-        <p>The EJAD portal theme sits above the templates, so the same service renders
+        <h3 data-i18n="cs.b241">Theme as a layer</h3>
+        <p data-i18n="cs.b242">The EJAD portal theme sits above the templates, so the same service renders
           consistently wherever it appears.</p>
       </article>
     </div>
@@ -1018,58 +1024,58 @@
 <section class="cs-section cs-sheet" id="engineering">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">12 · Engineering highlights</div>
-      <h2>The decisions worth defending</h2>
+      <div class="cs-num" data-i18n="cs.b243">12 · Engineering highlights</div>
+      <h2 data-i18n="cs.b244">The decisions worth defending</h2>
     </div>
 
     <div class="hl-list cs-reveal">
       <div class="hl-row">
         <span class="hl-n">01</span>
-        <h3>Dynamic employee-service registry</h3>
-        <p>Services are configuration, not code branches. The catalogue, dashboard shortcuts
+        <h3 data-i18n="cs.b245">Dynamic employee-service registry</h3>
+        <p data-i18n="cs.b246">Services are configuration, not code branches. The catalogue, dashboard shortcuts
           and request spine all read the same registry.</p>
       </div>
       <div class="hl-row">
         <span class="hl-n">02</span>
-        <h3>Unified My Requests / My Actions</h3>
-        <p>One request spine behind eleven services, split into two views by the employee's
+        <h3 data-i18n="cs.b247">Unified My Requests / My Actions</h3>
+        <p data-i18n="cs.b248">One request spine behind eleven services, split into two views by the employee's
           role in the approval route.</p>
       </div>
       <div class="hl-row">
         <span class="hl-n">03</span>
-        <h3>Server-side attendance geofencing</h3>
-        <p>The client sends coordinates; the server decides. Out-of-range check-ins are
+        <h3 data-i18n="cs.b249">Server-side attendance geofencing</h3>
+        <p data-i18n="cs.b250">The client sends coordinates; the server decides. Out-of-range check-ins are
           rejected before a record exists.</p>
       </div>
       <div class="hl-row">
         <span class="hl-n">04</span>
-        <h3>Arabic RTL and English LTR</h3>
-        <p>Full mirroring from one template set — layout, rails, icons, tables and numerals.</p>
+        <h3 data-i18n="cs.b251">Arabic RTL and English LTR</h3>
+        <p data-i18n="cs.b252">Full mirroring from one template set — layout, rails, icons, tables and numerals.</p>
       </div>
       <div class="hl-row">
         <span class="hl-n">05</span>
-        <h3>Light and dark themes</h3>
-        <p>Two token sets over one component layer, so new components inherit both.</p>
+        <h3 data-i18n="cs.b253">Light and dark themes</h3>
+        <p data-i18n="cs.b254">Two token sets over one component layer, so new components inherit both.</p>
       </div>
       <div class="hl-row">
         <span class="hl-n">06</span>
-        <h3>Targeted bilingual announcements</h3>
-        <p>One record carries both languages and its audience; resolution happens per employee.</p>
+        <h3 data-i18n="cs.b255">Targeted bilingual announcements</h3>
+        <p data-i18n="cs.b256">One record carries both languages and its audience; resolution happens per employee.</p>
       </div>
       <div class="hl-row">
         <span class="hl-n">07</span>
-        <h3>Permission-aware portal</h3>
-        <p>Access rights and record rules decide what each route returns — not the navigation.</p>
+        <h3 data-i18n="cs.b257">Permission-aware portal</h3>
+        <p data-i18n="cs.b258">Access rights and record rules decide what each route returns — not the navigation.</p>
       </div>
       <div class="hl-row">
         <span class="hl-n">08</span>
-        <h3>Responsive employee journeys</h3>
-        <p>Every journey — check in, raise, approve, read — completes on a phone as well as a desktop.</p>
+        <h3 data-i18n="cs.b259">Responsive employee journeys</h3>
+        <p data-i18n="cs.b260">Every journey — check in, raise, approve, read — completes on a phone as well as a desktop.</p>
       </div>
       <div class="hl-row">
         <span class="hl-n">09</span>
-        <h3>Odoo-core-safe customisation</h3>
-        <p>Custom modules and inheritance only, so the work survives the next Odoo version.</p>
+        <h3 data-i18n="cs.b261">Odoo-core-safe customisation</h3>
+        <p data-i18n="cs.b262">Custom modules and inheritance only, so the work survives the next Odoo version.</p>
       </div>
     </div>
   </div>
@@ -1080,27 +1086,27 @@
 <section class="cs-section" id="quality">
   <div class="cs-wrap">
     <div class="cs-head cs-reveal">
-      <div class="cs-num">13 · Quality</div>
-      <h2>How it was checked</h2>
-      <p>Two languages times two themes times three device families is a lot of surface.
+      <div class="cs-num" data-i18n="cs.b263">13 · Quality</div>
+      <h2 data-i18n="cs.b264">How it was checked</h2>
+      <p data-i18n="cs.b265">Two languages times two themes times three device families is a lot of surface.
         It was tested rather than hoped for.</p>
     </div>
 
     <div class="qa-grid cs-reveal">
       <div class="qa-item"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>
-        <span><b>Responsive QA</b>Every journey walked at phone, tablet and desktop widths.</span></div>
+        <span><b data-i18n="cs.b266">Responsive QA</b><span data-i18n="cs.b367">Every journey walked at phone, tablet and desktop widths.</span></span></div>
       <div class="qa-item"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>
-        <span><b>Arabic RTL</b>Full mirroring pass, including forms, tables and rails.</span></div>
+        <span><b data-i18n="cs.b267">Arabic RTL</b><span data-i18n="cs.b368">Full mirroring pass, including forms, tables and rails.</span></span></div>
       <div class="qa-item"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>
-        <span><b>English LTR</b>Same pass, same checklist, in the default direction.</span></div>
+        <span><b data-i18n="cs.b268">English LTR</b><span data-i18n="cs.b369">Same pass, same checklist, in the default direction.</span></span></div>
       <div class="qa-item"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>
-        <span><b>Automated Odoo tests</b>Business rules and approval transitions covered in the module's test suite.</span></div>
+        <span><b data-i18n="cs.b269">Automated Odoo tests</b><span data-i18n="cs.b370">Business rules and approval transitions covered in the module's test suite.</span></span></div>
       <div class="qa-item"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>
-        <span><b>Browser testing</b>Portal journeys driven end to end with Playwright.</span></div>
+        <span><b data-i18n="cs.b270">Browser testing</b><span data-i18n="cs.b371">Portal journeys driven end to end with Playwright.</span></span></div>
       <div class="qa-item"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>
-        <span><b>Security review</b>Access rights, record rules and server-side validation on every route.</span></div>
+        <span><b data-i18n="cs.b271">Security review</b><span data-i18n="cs.b372">Access rights, record rules and server-side validation on every route.</span></span></div>
       <div class="qa-item"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>
-        <span><b>Performance profiling</b>Query and render paths checked on the list and dashboard screens.</span></div>
+        <span><b data-i18n="cs.b272">Performance profiling</b><span data-i18n="cs.b373">Query and render paths checked on the list and dashboard screens.</span></span></div>
     </div>
   </div>
 </section>
@@ -1109,21 +1115,18 @@
 <!-- ════════════════ CTA ════════════════ -->
 <section class="cs-end">
   <div class="cs-wrap">
-    <h2>Want the walkthrough?</h2>
-    <p>
+    <h2 data-i18n="cs.b273">Want the walkthrough?</h2>
+    <p data-i18n="cs.b274">
       I can take you through the live portal, the module structure, or the parts of this
       build that would apply to your own Odoo estate.
     </p>
     <div class="cs-end-btns">
       <a href="https://wa.me/201102672347" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-        Start a Project <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-      </a>
+        <span data-i18n="cs.b288">Start a Project</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       <a href="mailto:mohammedgamal37l30@gmail.com" class="btn btn-outline-warm btn-lg">
-        <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-envelope"/></svg> Email me
-      </a>
+        <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-envelope"/></svg> <span data-i18n="cs.b289">Email me</span></a>
       <a href="../index.html#work" class="link-quiet">
-        <svg class="ic ic-social" width="18" height="18" aria-hidden="true"><use href="#i-arrow-left"/></svg> Back to all work
-      </a>
+        <svg class="ic ic-social" width="18" height="18" aria-hidden="true"><use href="#i-arrow-left"/></svg> <span data-i18n="cs.b290">Back to all work</span></a>
     </div>
   </div>
 </section>
@@ -1131,12 +1134,12 @@
 <footer id="footer">
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-copy">© 2026 Mohamed Gamal · Senior Odoo Developer &amp; ERP Software Engineer · Cairo, Egypt</div>
+      <div class="footer-copy" data-i18n="cs.b275">© 2026 Mohamed Gamal · Senior Software Engineer &amp; Odoo / ERP Specialist · Cairo, Egypt</div>
       <div class="footer-links">
-        <a href="../index.html">Home</a>
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#contact">Contact</a>
-        <a href="../0_Mohamed_Gamal_CV.pdf" download>Download CV</a>
+        <a href="../index.html" data-i18n="cs.b291">Home</a>
+        <a href="../index.html#work" data-i18n="cs.b292">Work</a>
+        <a href="../index.html#contact" data-i18n="cs.b293">Contact</a>
+        <a href="../0_Mohamed_Gamal_CV.pdf" download data-i18n="cs.b294">Download CV</a>
       </div>
     </div>
   </div>
@@ -1155,6 +1158,6 @@
   </figure>
 </div>
 
-<script src="../assets/js/case-study.js?v=5cd8193e"></script>
+<script src="../assets/js/case-study.js?v=508cb6ac"></script>
 </body>
 </html>

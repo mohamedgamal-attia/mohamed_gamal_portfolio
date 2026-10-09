@@ -83,7 +83,7 @@
   background: linear-gradient(to top, rgba(var(--rgb-ink), .55) 0%, transparent 52%); }
 
 .card-type-badge {
-  position: absolute; top: 12px; left: 12px; right: auto; z-index: 2;
+  position: absolute; top: 12px; inset-inline-start: 12px; inset-inline-end: auto; z-index: 2;
   display: inline-block; width: auto;
   padding: 5px 12px; border-radius: 999px;
   font-size: .64rem; font-weight: 700; text-transform: uppercase; letter-spacing: .11em;
@@ -93,7 +93,7 @@
 .card-type-badge.erp-system { background: var(--grad-gold); color: #35241c; border-color: transparent; }
 
 .card-gallery-hint {
-  position: absolute; bottom: 12px; left: 12px; z-index: 2;
+  position: absolute; bottom: 12px; inset-inline-start: 12px; z-index: 2;
   display: inline-flex; align-items: center; gap: 6px;
   padding: 4px 11px; border-radius: 999px;
   background: rgba(var(--rgb-ink), .86); color: #fff;
@@ -120,7 +120,7 @@
   font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
   color: var(--accent-deep); margin-bottom: 8px;
 }
-.card-sub-hint { color: var(--text-muted); margin-left: 6px; letter-spacing: .04em; }
+.card-sub-hint { color: var(--text-muted); margin-inline-start: 6px; letter-spacing: .04em; }
 .project-card-body h3 {
   font-family: var(--font-display); font-size: 1.24rem; font-weight: 600;
   line-height: 1.22; color: var(--text-primary); margin-bottom: 7px;
@@ -186,7 +186,7 @@
 a.modal-ctx-item:hover { border-color: var(--accent-deep); }
 .modal-ctx-item .ctx-name { font-weight: 700; color: var(--text-primary); font-size: .88rem; }
 .modal-ctx-item .ctx-sub { font-size: .76rem; color: var(--text-muted); }
-.modal-ctx-item i { margin-left: auto; font-size: .7rem; color: var(--accent-deep); }
+.modal-ctx-item i { margin-inline-start: auto; font-size: .7rem; color: var(--accent-deep); }
 
 /* Modal gallery */
 .modal-gallery { margin-bottom: 22px; }
@@ -202,9 +202,9 @@ a.modal-ctx-item:hover { border-color: var(--accent-deep); }
   background: rgba(var(--rgb-ink), .7);
 }
 .gallery-nav:hover { background: var(--accent-deep); }
-.gallery-prev { left: 12px; } .gallery-next { right: 12px; }
+.gallery-prev { inset-inline-start: 12px; } .gallery-next { inset-inline-end: 12px; }
 .gallery-count {
-  position: absolute; right: 12px; bottom: 12px;
+  position: absolute; inset-inline-end: 12px; bottom: 12px;
   font-size: .72rem; font-weight: 700; color: #fff;
   background: rgba(var(--rgb-ink), .7); padding: 4px 10px; border-radius: 999px;
 }

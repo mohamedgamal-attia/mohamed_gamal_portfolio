@@ -27,6 +27,25 @@
   }
   P.escapeHTML = escapeHTML;
 
+  /* Pick the Arabic variant of a data field when Arabic is active.
+     projects.json carries `title` / `title_ar` side by side so each project
+     stays one record rather than two parallel files. Falling back to the
+     English value means a half-translated record degrades to English rather
+     than rendering blank. */
+  function L(obj, field) {
+    var lang = (window.MG && window.MG.i18n && window.MG.i18n.lang) || 'en';
+    if (lang !== 'en') {
+      var v = obj[field + '_' + lang];
+      if (v !== undefined && v !== null && v !== '') return v;
+    }
+    return obj[field];
+  }
+  /* UI strings that are not part of the project record. */
+  function T(key, fallback) {
+    var v = window.MG && window.MG.i18n && window.MG.i18n.t(key);
+    return v === null || v === undefined ? fallback : v;
+  }
+
   const TYPE_BADGE = {
     'erp-system':      'Full ERP Build',
     'odoo-work':       'Odoo Delivery',
@@ -49,8 +68,8 @@
                onerror="this.src='${escapeHTML(c.logoFallback || 'assets/images/companies/' + c.slug + '-placeholder.svg')}'" />
         </span>
         <span class="co-text">
-          <b>${escapeHTML(c.name)}</b>
-          <i>${escapeHTML(c.country)}</i>
+          <b>${escapeHTML(L(c, 'name'))}</b>
+          <i>${escapeHTML(L(c, 'country'))}</i>
         </span>
       </div>`).join('');
 
@@ -71,21 +90,22 @@
 
     grid.innerHTML = allProjects.map((p, i) => {
       const cover      = p.cover || p.image;
-      const badge      = p.typeLabel || TYPE_BADGE[p.type] || '';
+      const badge      = L(p, 'typeLabel') || TYPE_BADGE[p.type] || '';
       /* Projects with their own page become real links; the rest open the modal. */
       const href       = p.caseStudyUrl;
-      const ctaLabel   = p.caseStudyLabel || 'Case Study';
+      const ctaLabel   = L(p, 'caseStudyLabel') || T('work.viewCase', 'View Case Study');
       const galleryN   = Array.isArray(p.gallery) ? p.gallery.length : 0;
       const galleryHint = galleryN > 1
         ? `<span class="card-gallery-hint"><svg class="ic ic-xs" width="12" height="12" aria-hidden="true"><use href="#i-images"/></svg> ${galleryN}</span>` : '';
       const subN = (p.subProjects || []).length;
-      const subHint = subN ? `<span class="card-sub-hint">+${subN} context</span>` : '';
+      const subHint = subN
+        ? `<span class="card-sub-hint">+${subN} ${escapeHTML(T('work.contextSuffix', 'context'))}</span>` : '';
       const size = p.size || 'medium';
 
       /* Never nest an anchor inside a card that is itself a link. */
       const sourceBtn = (p.sourceUrl && !href)
         ? `<a href="${escapeHTML(p.sourceUrl)}" target="_blank" rel="noopener" class="card-source"
-             aria-label="Open the official source for ${escapeHTML(p.title)} (opens in a new tab)"
+             aria-label="${escapeHTML(T('modal.officialSource', 'View Official Source'))} — ${escapeHTML(L(p, 'title'))}"
              title="Official source" onclick="event.stopPropagation()">
              <svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-up-right-from-square"/></svg></a>` : '';
 
@@ -105,16 +125,16 @@
               href="${escapeHTML(href)}"${styleAttr}
               data-categories="${escapeHTML((p.categories||[]).join(','))}"
               data-type="${escapeHTML(p.type||'')}"
-              aria-label="Open the ${escapeHTML(p.title)} case study">`
+              aria-label="${escapeHTML(ctaLabel)} — ${escapeHTML(L(p, 'title'))}">`
         : `<article class="project-card card-${size} fade-up ${i ? 'fade-up-delay-' + Math.min(i,3) : ''}"${styleAttr}
               data-categories="${escapeHTML((p.categories||[]).join(','))}"
               data-type="${escapeHTML(p.type||'')}" data-modal="${escapeHTML(p.id)}"
-              tabindex="0" role="button" aria-label="View case study: ${escapeHTML(p.title)}">`;
+              tabindex="0" role="button" aria-label="${escapeHTML(ctaLabel)} — ${escapeHTML(L(p, 'title'))}">`;
 
       return `
         ${open}
           <div class="project-card-img">
-            <img src="${escapeHTML(cover)}" alt="${escapeHTML(p.title)} cover" loading="lazy"
+            <img src="${escapeHTML(cover)}" alt="${escapeHTML(L(p, 'title'))} cover" loading="lazy"
                  onerror="this.src='assets/images/placeholders/generic.svg'" />
             <div class="project-card-scrim"></div>
             ${badge ? `<span class="card-type-badge ${escapeHTML(p.type||'')}">${escapeHTML(badge)}</span>` : ''}
@@ -124,13 +144,13 @@
             </div>
           </div>
           <div class="project-card-body">
-            <div class="project-card-company">${escapeHTML(p.company)} · ${escapeHTML(p.country)} ${subHint}</div>
-            <h3>${escapeHTML(p.title)}</h3>
-            <p>${escapeHTML(p.short || '')}</p>
-            <div class="project-card-tags">${pills(p.tags, 'tag-pill', 5)}</div>
+            <div class="project-card-company">${escapeHTML(L(p, 'company'))} · ${escapeHTML(L(p, 'country'))} ${subHint}</div>
+            <h3>${escapeHTML(L(p, 'title'))}</h3>
+            <p>${escapeHTML(L(p, 'short') || '')}</p>
+            <div class="project-card-tags">${pills(L(p, 'tags'), 'tag-pill', 4)}</div>
           </div>
           <div class="project-card-footer">
-            <span class="project-card-sector">${escapeHTML(p.sectorLabel || '')}</span>
+            <span class="project-card-sector">${escapeHTML(L(p, 'sectorLabel') || '')}</span>
             <span class="project-card-cta">${escapeHTML(ctaLabel)} <svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
             ${sourceBtn}
           </div>
@@ -187,6 +207,18 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
+
+  /* The cards are built from JSON, so a language switch has to rebuild them —
+     the generic data-i18n pass only reaches markup that was authored in the
+     page. Re-running init() re-fetches from the browser cache, so this is a
+     re-render rather than a network round trip. */
+  window.addEventListener('mg:langchange', function (e) {
+    /* i18n also fires this once on first boot so late painters can redraw.
+       The cards are already being built by init() above, and rebuilding them
+       here would discard the reveal state they were just given. */
+    if (e && e.detail && e.detail.initial) return;
+    init();
+  });
 
   window.Portfolio = P;
   P.loadJSON = loadJSON;

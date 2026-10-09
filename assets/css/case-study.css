@@ -35,7 +35,7 @@
 
 /* Skip link */
 .skip-link {
-  position: absolute; left: 16px; top: -60px; z-index: 2000;
+  position: absolute; inset-inline-start: 16px; top: -60px; z-index: 2000;
   background: var(--cyan); color: var(--bg-deep); font-weight: 800;
   padding: 10px 18px; border-radius: 0 0 10px 10px;
   transition: top var(--motion-base) var(--ease-standard);
@@ -67,9 +67,9 @@
 .cs-back i { transition: transform var(--motion-base) var(--ease-standard); }
 .cs-back:hover i { transform: translateX(-3px); }
 .cs-nav-title { font-size: .86rem; font-weight: 700; color: var(--on-dark); white-space: nowrap; }
-.cs-nav-title span { color: var(--on-dark-muted); font-weight: 500; }
+.cs-nav-title span + span { color: var(--on-dark-muted); font-weight: 500; }
 .cs-nav-spacer { flex: 1; }
-.cs-secnav { display: flex; gap: 1px; margin-left: 12px; }
+.cs-secnav { display: flex; gap: 1px; margin-inline-start: 12px; }
 .cs-secnav a {
   position: relative; font-size: .74rem; font-weight: 600; white-space: nowrap;
   color: var(--on-dark-muted); padding: 7px 9px; border-radius: 8px;
@@ -83,9 +83,10 @@
   height: 2px; border-radius: 2px; background: var(--cyan);
 }
 @media (max-width: 1180px) { .cs-secnav { display: none; } }
-.cs-nav .btn { white-space: nowrap; }
+.cs-nav .btn { white-space: nowrap; flex-shrink: 0; }
 #cs-progress {
-  position: absolute; left: 0; bottom: -1px; height: 2px; width: 0;
+  /* Logical start, so the reading-progress rail grows from the right in Arabic. */
+  position: absolute; inset-inline-start: 0; bottom: -1px; height: 2px; width: 0;
   background: var(--grad-brand); box-shadow: var(--glow-cyan);
 }
 
@@ -136,14 +137,14 @@
 .cs-hero h1 em {
   display: block; font-style: italic; font-weight: 500;
   background: var(--grad-text); -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; padding-right: .06em;
+  -webkit-text-fill-color: transparent; padding-inline-end: .06em;
 }
 .cs-hero-sub {
   position: relative; font-size: clamp(1.02rem, 1.8vw, 1.22rem); font-weight: 600;
   color: var(--accent-warm); padding-top: 20px; margin-bottom: 20px;
 }
 .cs-hero-sub::before {
-  content: ''; position: absolute; top: 0; left: 0; width: 70px; height: 2px;
+  content: ''; position: absolute; top: 0; inset-inline-start: 0; width: 70px; height: 2px;
   background: var(--grad-gold); border-radius: 2px;
 }
 .cs-hero-lead { font-size: 1.03rem; max-width: 52ch; margin-bottom: 28px; }
@@ -213,7 +214,7 @@
 .cs-stage { position: relative; padding-bottom: 34px; }
 .cs-stage .frame { transform: rotateY(-5deg) rotateX(2deg); transform-origin: 60% 50%; }
 .cs-stage .stage-phone {
-  position: absolute; right: -4%; bottom: -7%; width: 25%; min-width: 132px; z-index: 3;
+  position: absolute; inset-inline-end: -4%; bottom: -7%; width: 25%; min-width: 132px; z-index: 3;
 }
 .cs-stage::after {
   content: ''; position: absolute; inset: 14% 8% -6%;
@@ -223,7 +224,7 @@
 
 /* Side-by-side composition */
 .stage-pair { position: relative; }
-.stage-pair .frame + .frame { margin-top: -10%; margin-left: 12%; }
+.stage-pair .frame + .frame { margin-top: -10%; margin-inline-start: 12%; }
 
 /* ── Fact strip ──────────────────────────────────────────── */
 .fact-strip {
@@ -358,7 +359,7 @@
 }
 .gal-main img { width: 100%; height: auto; display: block; }
 .gal-open {
-  position: absolute; right: 14px; bottom: 14px; z-index: 2;
+  position: absolute; inset-inline-end: 14px; bottom: 14px; z-index: 2;
   display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
   font-size: .78rem; font-weight: 700; color: #fff;
   padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(var(--rgb-gold-pale), .22);
@@ -425,7 +426,7 @@
 }
 .lb-cap b { color: #fff; }
 .lb-btn {
-  position: absolute; top: 14px; right: 16px; cursor: pointer;
+  position: absolute; top: 14px; inset-inline-end: 16px; cursor: pointer;
   width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
   background: rgba(var(--rgb-gold-pale), .1); border: 1px solid rgba(var(--rgb-gold-pale), .2);
   color: #fff; font-size: 1.1rem;
@@ -440,9 +441,9 @@
   transition: background var(--motion-base) var(--ease-standard);
 }
 .lb-nav:hover { background: var(--blue); }
-.lb-prev { left: 18px; } .lb-next { right: 18px; }
+.lb-prev { inset-inline-start: 18px; } .lb-next { inset-inline-end: 18px; }
 .lb-count {
-  position: absolute; top: 22px; left: 24px;
+  position: absolute; top: 22px; inset-inline-start: 24px;
   font-size: .78rem; font-weight: 700; color: var(--on-dark-muted);
   font-family: var(--font-mono);
 }
@@ -498,13 +499,13 @@
   padding: 22px 26px 22px 74px; border-radius: 14px;
   background: rgba(var(--rgb-gold-pale), .04);
   border: 1px solid rgba(var(--rgb-gold-pale), .09);
-  border-left: 3px solid var(--c, var(--cyan));
+  border-inline-start: 3px solid var(--c, var(--cyan));
   transition: background var(--motion-base) var(--ease-standard),
               transform var(--motion-base) var(--ease-emphasis);
 }
 .arch-layer::before {
   content: counter(arch, decimal-leading-zero);
-  position: absolute; left: 24px; top: 24px;
+  position: absolute; inset-inline-start: 24px; top: 24px;
   font-family: var(--font-mono); font-size: .78rem; font-weight: 700;
   color: var(--c, var(--cyan));
 }
@@ -514,7 +515,7 @@
 /* Connector between layers — the request path */
 .arch-layer + .arch-layer { margin-top: 34px; }
 .arch-layer + .arch-layer::after {
-  content: ''; position: absolute; left: 32px; top: -34px;
+  content: ''; position: absolute; inset-inline-start: 32px; top: -34px;
   width: 2px; height: 34px;
   background: linear-gradient(180deg, rgba(var(--rgb-gold), .15), rgba(var(--rgb-gold), .7));
 }
@@ -532,9 +533,9 @@
   background: rgba(var(--rgb-gold-pale), .05); border: 1px solid rgba(var(--rgb-gold-pale), .08);
 }
 .arch-layer.is-boundary { background: rgba(var(--rgb-gold), .07); border-color: rgba(var(--rgb-gold), .24); }
-.arch-layer.is-boundary { border-left-color: var(--gold); }
+.arch-layer.is-boundary { border-inline-start-color: var(--gold); }
 .arch-layer.is-config   { background: rgba(var(--rgb-mauve), .07); border-color: rgba(var(--rgb-mauve), .24); }
-.arch-layer.is-config   { border-left-color: var(--violet); }
+.arch-layer.is-config   { border-inline-start-color: var(--violet); }
 .arch-legend {
   display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 22px;
   padding-top: 20px; border-top: 1px solid rgba(var(--rgb-gold-pale), .08);
@@ -577,7 +578,7 @@
 .media-note p { font-size: .85rem; margin: 0; line-height: 1.6; }
 .media-note b { color: #fff; }
 .schematic-tag {
-  position: absolute; top: 12px; left: 12px; z-index: 2;
+  position: absolute; top: 12px; inset-inline-start: 12px; z-index: 2;
   font-size: .62rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
   color: var(--on-dark-2); padding: 5px 11px; border-radius: 999px;
   background: rgba(var(--rgb-deep), .92); border: 1px solid rgba(var(--rgb-gold-pale), .17);
@@ -614,13 +615,13 @@
   .cs-section { padding: 64px 0; }
   .arch { padding: 20px 16px; }
   .arch-layer { padding: 18px 18px 18px 54px; }
-  .arch-layer::before { left: 16px; top: 20px; }
-  .arch-layer + .arch-layer::after { left: 23px; }
+  .arch-layer::before { inset-inline-start: 16px; top: 20px; }
+  .arch-layer + .arch-layer::after { inset-inline-start: 23px; }
   .cs-hero { padding: 48px 0 64px; }
   .cs-wrap { padding: 0 18px; }
   .cs-nav-title { display: none; }
   .cs-stage .frame { transform: none; }
-  .cs-stage .stage-phone { width: 30%; right: -4px; }
+  .cs-stage .stage-phone { width: 30%; inset-inline-end: -4px; }
   .stage-pair .frame + .frame { margin: 18px 0 0; }
   .cmp-stage { grid-template-columns: 1fr; }
   /* Phones get the swipe rail, not a cramped thumbnail strip */
@@ -630,7 +631,7 @@
   .gal.is-enhanced .gal-track  { display: grid; }
   .lb { padding: 64px 12px 16px; }
   .lb-nav { width: 42px; height: 42px; }
-  .lb-prev { left: 8px; } .lb-next { right: 8px; }
+  .lb-prev { inset-inline-start: 8px; } .lb-next { inset-inline-end: 8px; }
 }
 
 @media (max-width: 460px) {
@@ -667,7 +668,7 @@
    composition rather than two stacked pictures with a gap. */
 .media-stack { position: relative; }
 .media-stack .frame-phone {
-  position: absolute; right: -3%; bottom: -14%; width: 27%; min-width: 128px; z-index: 3;
+  position: absolute; inset-inline-end: -3%; bottom: -14%; width: 27%; min-width: 128px; z-index: 3;
 }
 .media-stack > figure { margin: 0; }
 .media-stack + .media-stack { margin-top: 68px; }
@@ -680,6 +681,6 @@
    layered phone must stop hanging past the page edge. Declared last so it
    wins over the base offsets above. */
 @media (max-width: 1080px) {
-  .cs-stage .stage-phone { right: 0; bottom: -4%; }
-  .media-stack .frame-phone { right: 0; bottom: -10%; }
+  .cs-stage .stage-phone { inset-inline-end: 0; bottom: -4%; }
+  .media-stack .frame-phone { inset-inline-end: 0; bottom: -10%; }
 }

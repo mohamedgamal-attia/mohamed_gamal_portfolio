@@ -8,7 +8,9 @@
     "logo": "assets/images/companies/ejadtech-logo.png",
     "logoFallback": "assets/images/companies/ejadtech-placeholder.svg",
     "website": "https://ejadtech.sa/",
-    "description": "A leading Saudi digital transformation and IT solutions company serving government ministries and public-sector clients. I contributed as an Odoo Developer to ERP/business workflow modules across multiple customer-facing digital transformation projects — delivering custom module development, backend logic, workflow automation, access rights configuration, and QWeb reports."
+    "description": "A leading Saudi digital transformation and IT solutions company serving government ministries and public-sector clients. I contributed as an Odoo Developer to ERP/business workflow modules across multiple customer-facing digital transformation projects — delivering custom module development, backend logic, workflow automation, access rights configuration, and QWeb reports.",
+    "name_ar": "إيجاد التقنية",
+    "country_ar": "السعودية"
   },
   {
     "slug": "ejad-digital",
@@ -20,7 +22,9 @@
     "logoFallback": "assets/images/companies/ejad-digital-placeholder.svg",
     "website": "https://www.ejad.sa/",
     "odooPartner": "https://www.odoo.com/partners/ejad-digital-solutions-3221859",
-    "description": "An official Odoo Silver Partner and Creatio integrator offering ERP, BPM, AI, mobile apps, and digital solutions across Saudi Arabia. I work/worked as Senior Odoo Developer on Odoo Enterprise backend solutions — building custom modules, workflows, automation rules, QWeb reports, access rights, and integrations across multiple concurrent client projects."
+    "description": "An official Odoo Silver Partner and Creatio integrator offering ERP, BPM, AI, mobile apps, and digital solutions across Saudi Arabia. I work/worked as Senior Odoo Developer on Odoo Enterprise backend solutions — building custom modules, workflows, automation rules, QWeb reports, access rights, and integrations across multiple concurrent client projects.",
+    "name_ar": "إيجاد للحلول الرقمية",
+    "country_ar": "السعودية"
   },
   {
     "slug": "margins",
@@ -31,7 +35,9 @@
     "logo": "assets/images/companies/margins-logo.svg",
     "logoFallback": "assets/images/companies/margins-logo.svg",
     "website": "https://marginsdevelopments.com/",
-    "description": "A real estate development company with flagship projects in Egypt's New Administrative Capital, New Cairo, and Mostakbal City. I designed and built the company's complete internal Odoo ERP system from scratch — covering real estate CRM, sales pipeline, unit and property management, reservation workflows, broker management, contracts, accounting workflow customization, payment tracking, automated reports, and role-based access control."
+    "description": "A real estate development company with flagship projects in Egypt's New Administrative Capital, New Cairo, and Mostakbal City. I designed and built the company's complete internal Odoo ERP system from scratch — covering real estate CRM, sales pipeline, unit and property management, reservation workflows, broker management, contracts, accounting workflow customization, payment tracking, automated reports, and role-based access control.",
+    "name_ar": "Margins Developments",
+    "country_ar": "مصر"
   },
   {
     "slug": "dotec",
@@ -42,6 +48,8 @@
     "logo": "assets/images/companies/dotec-logo.png",
     "logoFallback": "assets/images/companies/dotec-placeholder.svg",
     "website": "https://dotecengineering.com/",
-    "description": "A US-based engineering consultancy serving major industrial and commercial clients across multiple disciplines including civil, structural, MEP, robotics, and forensic engineering. I designed and built the company's full internal Odoo ERP system — covering engineering CRM, project lifecycle management, discipline and team management, consultant profiles, timesheet tracking, expense management, document handling, QWeb reports, automation, security groups, and code quality improvements."
+    "description": "A US-based engineering consultancy serving major industrial and commercial clients across multiple disciplines including civil, structural, MEP, robotics, and forensic engineering. I designed and built the company's full internal Odoo ERP system — covering engineering CRM, project lifecycle management, discipline and team management, consultant profiles, timesheet tracking, expense management, document handling, QWeb reports, automation, security groups, and code quality improvements.",
+    "name_ar": "DOTec Engineering",
+    "country_ar": "الولايات المتحدة"
   }
 ]

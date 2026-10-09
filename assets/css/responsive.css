@@ -12,9 +12,9 @@
 @media (max-width: 1080px) {
   .hero-inner { grid-template-columns: 1fr; gap: 52px; }
   .hero-visual { order: -1; width: min(360px, 74vw); }
-  .hero-copy { text-align: left; }
+  .hero-copy { text-align: start; }
   .hero-proof { grid-template-columns: repeat(2, auto); gap: 16px 40px; }
-  .hv-chip { right: -16px; }
+  .hv-chip { inset-inline-end: -16px; }
 
   .work-feature { grid-template-columns: 1fr; }
   .wf-media { order: -1; }
@@ -53,7 +53,7 @@
   .hv-plate { inset: 24px -16px -20px 20px; }
   /* Keep the floating layers off the face: the chip sits above the frame
      and the depth layers tuck into the lower corner. */
-  .hv-chip { font-size: .62rem; padding: 7px 11px; right: 0; top: -16px; }
+  .hv-chip { font-size: .62rem; padding: 7px 11px; inset-inline-end: 0; top: -16px; }
   .hv-bracket { width: 38px; height: 38px; }
 
   /* Primary action first and full-width on a phone */
@@ -78,10 +78,10 @@
   .cr-k  { grid-column: 1; grid-row: 1; }
   .cr-v  { grid-column: 1; grid-row: 2; font-size: .86rem; }
   .cr-go { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
-  .contact-rows a:hover { padding-left: 10px; }
+  .contact-rows a:hover { padding-inline-start: 10px; }
 
   .footer-inner { flex-direction: column; }
-  #back-top { bottom: 18px; right: 18px; }
+  #back-top { bottom: 18px; inset-inline-end: 18px; }
   .modal-header { height: 180px; }
   .modal-body { padding: 22px 20px 30px; }
   .modal-tabs { padding: 0 10px; overflow-x: auto; }
@@ -90,7 +90,7 @@
 @media (max-width: 460px) {
   .hero-proof { grid-template-columns: 1fr 1fr; }
   .wf-meta { grid-template-columns: 1fr; }
-  .wf-phone { width: 30%; right: 0; }
+  .wf-phone { width: 30%; inset-inline-end: 0; }
   .filter-tabs { gap: 6px; }
   .filter-tab { padding: 8px 13px; font-size: .76rem; }
   .skill-group { padding: 26px 22px; }

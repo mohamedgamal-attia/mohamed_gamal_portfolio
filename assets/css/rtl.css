@@ -1,0 +1,123 @@
+/* =========================================================
+   rtl.css — Arabic direction support + the language switch
+   ---------------------------------------------------------
+   This is deliberately SMALL. It is not a mirrored copy of the
+   stylesheet: the layout is handled by logical properties and
+   by flex/grid, both of which already follow `dir`. What lives
+   here is only the handful of places that were written with
+   physical left/right and the things that must NOT mirror.
+   ========================================================= */
+
+/* ── Language switch ──────────────────────────────────── */
+.lang-switch {
+  display: inline-flex; align-items: center;
+  margin-inline-start: 6px;
+  border: 1px solid var(--border-on-dark-2); border-radius: 999px;
+  overflow: hidden;
+}
+.lang-switch button {
+  appearance: none; background: none; cursor: pointer;
+  border: 0; padding: 6px 11px;
+  font-family: inherit; font-size: .76rem; font-weight: 600; line-height: 1.4;
+  color: var(--text-on-dark-3);
+  transition: background var(--motion-base, .18s) var(--ease-standard, ease),
+              color var(--motion-base, .18s) var(--ease-standard, ease);
+}
+.lang-switch button + button { border-inline-start: 1px solid var(--border-on-dark); }
+.lang-switch button:hover { color: var(--accent-warm); }
+.lang-switch button.active {
+  background: rgba(var(--rgb-gold), .16);
+  color: var(--accent-warm);
+}
+.lang-switch button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+/* The Arabic label needs a touch more room to sit optically level. */
+.lang-switch button[lang="ar"] { font-size: .8rem; padding-block: 5px; }
+
+.lang-switch-mobile {
+  width: 100%; justify-content: center; margin-inline-start: 0; margin-top: 6px;
+}
+.lang-switch-mobile button { flex: 1; padding-block: 11px; font-size: .85rem; }
+
+/* ── Direction-sensitive fixes ────────────────────────────
+   Everything below exists because the rule it corrects was
+   written with a physical side. Each one is a one-line flip,
+   not a re-layout. */
+:root[dir="rtl"] .marquee-track { animation-direction: reverse; }
+
+/* Directional glyphs point the other way in RTL. Logos, photos,
+   brand marks and non-directional icons are untouched. */
+:root[dir="rtl"] .ic-arrow use,
+:root[dir="rtl"] .btn .ic-btn use,
+:root[dir="rtl"] .project-card-cta .ic use,
+:root[dir="rtl"] .overlay-cta .ic use,
+:root[dir="rtl"] .cs-nav .ic-social use { transform-box: fill-box; transform-origin: center; }
+:root[dir="rtl"] .ic-arrow,
+:root[dir="rtl"] .btn .ic-btn,
+:root[dir="rtl"] .project-card-cta .ic,
+:root[dir="rtl"] .overlay-cta .ic { transform: scaleX(-1); }
+/* ...but a DOWN arrow is not directional in the inline axis. */
+:root[dir="rtl"] .ic-arrow[data-noflip],
+:root[dir="rtl"] .btn .ic-btn[data-noflip] { transform: none; }
+
+/* Hover nudges follow the reading direction. */
+:root[dir="rtl"] .btn:hover .ic-btn,
+:root[dir="rtl"] .project-card:hover .project-card-cta .ic-arrow,
+:root[dir="rtl"] .contact-rows a:hover .cr-go .ic-arrow { transform: scaleX(-1) translateX(4px); }
+:root[dir="rtl"] .contact-rows a:hover { padding-inline-start: 16px; padding-inline-end: 8px; }
+:root[dir="rtl"] .cs-back:hover { transform: translateX(2px); }
+:root[dir="rtl"] .cs-back:hover .ic { transform: scaleX(-1) translateX(-3px); }
+:root[dir="rtl"] .cs-back .ic { transform: scaleX(-1); }
+
+/* The hero composition is built around a left-anchored portrait: the plate
+   peeks out bottom-left and the brackets frame top-left / bottom-right.
+   `inset` and the bracket corners are physical shorthands, so they are
+   mirrored here rather than rewritten four properties at a time. */
+:root[dir="rtl"] .hv-plate { inset: 34px 30px -30px -28px; }
+:root[dir="rtl"] .hv-bracket-tl {
+  left: auto; right: -16px;
+  border-left: 0; border-right: 2px solid var(--accent-primary);
+  border-top-left-radius: 0; border-top-right-radius: 6px;
+}
+:root[dir="rtl"] .hv-bracket-br {
+  right: auto; left: -18px;
+  border-right: 0; border-left: 2px solid var(--accent-primary);
+  border-bottom-right-radius: 0; border-bottom-left-radius: 6px;
+}
+@media (max-width: 760px) { :root[dir="rtl"] .hv-plate { inset: 24px 20px -20px -16px; } }
+
+/* ── Things that must stay LTR (§7) ───────────────────────
+   Email, phone, URLs, code, prices and version ranges read
+   left-to-right in any language. `dir="ltr"` in the markup
+   handles most; these keep their alignment inside an RTL row. */
+:root[dir="rtl"] [dir="ltr"] { text-align: start; }
+:root[dir="rtl"] .cr-v[dir="ltr"],
+:root[dir="rtl"] .xdt-date[dir="ltr"] { direction: ltr; text-align: start; unicode-bidi: isolate; }
+
+/* Numerals and currency stay Western/LTR even inside Arabic copy. */
+.num-ltr { direction: ltr; unicode-bidi: isolate; }
+
+/* ── Arabic typography ────────────────────────────────────
+   Fraunces has no Arabic coverage, so Arabic headings fall back
+   to a system Arabic face. Setting it explicitly stops the
+   browser picking a different one per platform, and lifts the
+   line-height, which Arabic needs more of than Latin. */
+:root[lang="ar"] {
+  --font-display: 'Noto Kufi Arabic', 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+  --font-sans: 'Noto Sans Arabic', 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+}
+:root[lang="ar"] h1, :root[lang="ar"] h2, :root[lang="ar"] h3, :root[lang="ar"] h4 {
+  line-height: 1.32; letter-spacing: 0;
+}
+:root[lang="ar"] .hero-name { line-height: 1.22; }
+:root[lang="ar"] p, :root[lang="ar"] li { line-height: 1.85; }
+/* The display italic is a Latin convention; in Arabic it just skews the
+   glyphs. Keep the colour distinction, drop the slant. */
+:root[lang="ar"] h1 em, :root[lang="ar"] h2 em, :root[lang="ar"] .display em { font-style: normal; }
+/* Uppercase + wide tracking does nothing for Arabic and hurts legibility. */
+:root[lang="ar"] .eyebrow,
+:root[lang="ar"] .xd-sub,
+:root[lang="ar"] .hero-eyebrow,
+:root[lang="ar"] .cue-label,
+:root[lang="ar"] .hero-proof dt,
+:root[lang="ar"] .xd-facts dt,
+:root[lang="ar"] .project-card-company { text-transform: none; letter-spacing: 0; }

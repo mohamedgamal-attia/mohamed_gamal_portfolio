@@ -36,15 +36,23 @@
   <!-- Stylesheets are linked individually rather than @import-ed from one
        entry point: @import serialises each fetch behind the parse of the file
        that requested it, so the whole set used to download one at a time. -->
-  <link rel="stylesheet" href="assets/css/variables.css?v=5cd8193e" />
-  <link rel="stylesheet" href="assets/css/motion.css?v=5cd8193e" />
-  <link rel="stylesheet" href="assets/css/base.css?v=5cd8193e" />
-  <link rel="stylesheet" href="assets/css/layout.css?v=5cd8193e" />
-  <link rel="stylesheet" href="assets/css/components.css?v=5cd8193e" />
-  <link rel="stylesheet" href="assets/css/sections.css?v=5cd8193e" />
-  <link rel="stylesheet" href="assets/css/responsive.css?v=5cd8193e" />
-  <link rel="stylesheet" href="assets/css/futuristic.css?v=5cd8193e" />
-  <link rel="stylesheet" href="assets/css/project-showcase.css?v=5cd8193e" />
+  <!-- i18n loads BEFORE the stylesheets and before any content paints, so an
+       Arabic visitor never sees a frame of English or the wrong direction.
+       These are deliberately NOT deferred. -->
+  <script src="assets/i18n/en.js"></script>
+  <script src="assets/i18n/ar.js"></script>
+  <script src="assets/js/i18n.js?v=508cb6ac"></script>
+
+  <link rel="stylesheet" href="assets/css/variables.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/motion.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/base.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/layout.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/components.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/sections.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/responsive.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/futuristic.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/project-showcase.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/rtl.css?v=508cb6ac" />
 
   <noscript><style>
     .fade-up, .reveal, .reveal-left, .reveal-scale, .cs-reveal, .kin, .kin-word
@@ -101,44 +109,56 @@
 <symbol id="i-xmark" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></symbol>
 </svg>
 
-<a class="skip-link" href="#work">Skip to selected work</a>
+<a class="skip-link" href="#work" data-i18n="a11y.skip">Skip to selected work</a>
 
 <div id="grain" aria-hidden="true"></div>
 <div id="scroll-progress" aria-hidden="true"></div>
 
 <!-- ════════════════════════════ NAV ════════════════════════════ -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
+<nav id="navbar" role="navigation" aria-label="Main navigation" data-i18n-attr="aria-label:a11y.mainNav">
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo" aria-label="Mohamed Gamal — home">
+    <a href="#hero" class="nav-logo" aria-label="Mohamed Gamal — home" data-i18n-attr="aria-label:a11y.homeLink">
       <span class="nav-logo-mark">MG</span>
       <span class="nav-logo-text">
-        <b>Mohamed Gamal</b>
-        <i>Software &amp; ERP Engineering</i>
+        <b data-i18n="brand.name">Mohamed Gamal</b>
+        <i data-i18n="nav.tagline">Software &amp; ERP Engineering</i>
       </span>
     </a>
 
     <div class="nav-links">
-      <a href="#work"       data-section="work">Work</a>
-      <a href="#services"   data-section="services">Services</a>
-      <a href="#experience" data-section="experience">Experience</a>
-      <a href="#contact"    data-section="contact">Contact</a>
-      <a href="0_Mohamed_Gamal_CV.pdf" download class="nav-cv">CV</a>
-      <a href="#contact" class="btn btn-primary btn-sm nav-cta">Start a Project</a>
+      <a href="#work"       data-section="work" data-i18n="nav.work">Work</a>
+      <a href="#services"   data-section="services" data-i18n="nav.services">Services</a>
+      <a href="#experience" data-section="experience" data-i18n="nav.experience">Experience</a>
+      <a href="#contact"    data-section="contact" data-i18n="nav.contact">Contact</a>
+      <a href="0_Mohamed_Gamal_CV.pdf" download class="nav-cv" data-i18n="nav.cv">CV</a>
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-attr="aria-label:a11y.langGroup">
+        <button type="button" data-lang-btn="en" lang="en"
+                aria-label="Switch to English" data-i18n-attr="aria-label:a11y.switchEn">English</button>
+        <button type="button" data-lang-btn="ar" lang="ar"
+                aria-label="التبديل إلى العربية" data-i18n-attr="aria-label:a11y.switchAr">العربية</button>
+      </div>
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta" data-i18n="cta.startProject">Start a Project</a>
     </div>
 
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" data-i18n-attr="aria-label:a11y.openMenu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobile-menu" role="menu">
-  <a href="#work">Work</a>
-  <a href="#services">Services</a>
-  <a href="#experience">Experience</a>
-  <a href="#contact">Contact</a>
-  <a href="#contact" class="btn btn-primary">Start a Project</a>
-  <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-outline-warm">Download CV</a>
+  <a href="#work" data-i18n="nav.work">Work</a>
+  <a href="#services" data-i18n="nav.services">Services</a>
+  <a href="#experience" data-i18n="nav.experience">Experience</a>
+  <a href="#contact" data-i18n="nav.contact">Contact</a>
+  <a href="#contact" class="btn btn-primary" data-i18n="cta.startProject">Start a Project</a>
+  <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-outline-warm" data-i18n="cta.downloadCv">Download CV</a>
+  <div class="lang-switch lang-switch-mobile" role="group" aria-label="Language" data-i18n-attr="aria-label:a11y.langGroup">
+    <button type="button" data-lang-btn="en" lang="en"
+            aria-label="Switch to English" data-i18n-attr="aria-label:a11y.switchEn">English</button>
+    <button type="button" data-lang-btn="ar" lang="ar"
+            aria-label="التبديل إلى العربية" data-i18n-attr="aria-label:a11y.switchAr">العربية</button>
+  </div>
 </div>
 
 <!-- ════════════════════════════ HERO ════════════════════════════
@@ -154,19 +174,19 @@
       <div class="hero-copy">
         <p class="hero-eyebrow kin" style="--kin:0">
           <span class="avail-dot" aria-hidden="true"></span>
-          Open to senior roles, consulting &amp; freelance
+          <span data-i18n="hero.available">Open to senior roles, consulting &amp; freelance</span>
         </p>
 
         <h1 class="hero-name">
-          <span class="kin-word" style="--kin:1">Mohamed</span>
-          <span class="kin-word" style="--kin:2">Gamal</span>
+          <span class="kin-word" style="--kin:1" data-i18n="hero.firstName">Mohamed</span>
+          <span class="kin-word" style="--kin:2" data-i18n="hero.lastName">Gamal</span>
         </h1>
 
-        <p class="hero-title kin" style="--kin:3">
+        <p class="hero-title kin" style="--kin:3" data-i18n="hero.title">
           Senior Software Engineer <span class="ht-div">&amp;</span> Odoo / ERP Specialist
         </p>
 
-        <p class="hero-lead kin" style="--kin:4">
+        <p class="hero-lead kin" style="--kin:4" data-i18n="hero.lead">
           I build software that connects business workflows to reliable systems — from Odoo and
           ERP platforms to web applications, backend services, integrations, automation and
           data pipelines.
@@ -174,19 +194,19 @@
 
         <div class="hero-actions kin" style="--kin:5">
           <a href="#work" class="btn btn-primary btn-lg">
-            View Selected Work <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            <span data-i18n="hero.viewWork">View Selected Work</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
-          <a href="#contact" class="btn btn-outline-warm btn-lg">Start a Project</a>
+          <a href="#contact" class="btn btn-outline-warm btn-lg" data-i18n="cta.startProject">Start a Project</a>
           <a href="0_Mohamed_Gamal_CV.pdf" download class="link-quiet">
-            <svg class="ic ic-social" width="18" height="18" aria-hidden="true"><use href="#i-arrow-down"/></svg> Download CV
+            <svg class="ic ic-social" width="18" height="18" aria-hidden="true"><use href="#i-arrow-down"/></svg> <span data-i18n="cta.downloadCv">Download CV</span>
           </a>
         </div>
 
         <dl class="hero-proof kin" style="--kin:6">
-          <div><dt>Experience</dt><dd>4+ years</dd></div>
-          <div><dt>Odoo versions</dt><dd>14 – 20</dd></div>
-          <div><dt>Delivery</dt><dd>ERP · Web · Data</dd></div>
-          <div><dt>In production</dt><dd>3 countries</dd></div>
+          <div><dt data-i18n="hero.proof.experience">Experience</dt><dd data-i18n="hero.proof.experienceV">4+ years</dd></div>
+          <div><dt data-i18n="hero.proof.versions">Odoo versions</dt><dd dir="ltr" data-i18n="hero.proof.versionsV">14 – 20</dd></div>
+          <div><dt data-i18n="hero.proof.delivery">Delivery</dt><dd data-i18n="hero.proof.deliveryV">ERP · Web · Data</dd></div>
+          <div><dt data-i18n="hero.proof.production">In production</dt><dd data-i18n="hero.proof.productionV">3 countries</dd></div>
         </dl>
       </div>
 
@@ -210,16 +230,16 @@
             <span class="hv-light" aria-hidden="true"></span>
           </figure>
 
-          <span class="hv-chip" data-depth="55" aria-hidden="true">Python · PostgreSQL · Odoo</span>
+          <span class="hv-chip" data-depth="55" aria-hidden="true"><span dir="ltr" data-i18n="hero.chip">Python · PostgreSQL · Odoo</span></span>
         </div>
       </div>
 
     </div>
   </div>
 
-  <a href="#work" class="hero-cue" aria-label="Scroll to selected work">
+  <a href="#work" class="hero-cue" aria-label="Scroll to selected work" data-i18n-attr="aria-label:a11y.scrollWork">
     <span class="cue-line" aria-hidden="true"></span>
-    <span class="cue-label">Selected work</span>
+    <span class="cue-label" data-i18n="hero.cue">Selected work</span>
   </a>
 </header>
 
@@ -232,23 +252,23 @@
       <span class="tech-pill">Python</span>
       <span class="tech-pill">PostgreSQL</span>
       <span class="tech-pill">REST &amp; JSON-RPC</span>
-      <span class="tech-pill">Portals &amp; Web</span>
-      <span class="tech-pill">Workflow Automation</span>
-      <span class="tech-pill">SQL &amp; Data Modelling</span>
+      <span class="tech-pill" data-i18n="mq.portalsWeb">Portals &amp; Web</span>
+      <span class="tech-pill" data-i18n="mq.workflowAutomation">Workflow Automation</span>
+      <span class="tech-pill" data-i18n="mq.sqlModelling">SQL &amp; Data Modelling</span>
       <span class="tech-pill">QWeb / XML</span>
       <span class="tech-pill">GitLab CI/CD</span>
-      <span class="tech-pill">Linux Deployment</span>
+      <span class="tech-pill" data-i18n="mq.linuxDeployment">Linux Deployment</span>
       <span class="tech-pill">Playwright</span>
       <span class="tech-pill" aria-hidden="true">Odoo 14–20</span>
       <span class="tech-pill" aria-hidden="true">Python</span>
       <span class="tech-pill" aria-hidden="true">PostgreSQL</span>
       <span class="tech-pill" aria-hidden="true">REST &amp; JSON-RPC</span>
-      <span class="tech-pill" aria-hidden="true">Portals &amp; Web</span>
-      <span class="tech-pill" aria-hidden="true">Workflow Automation</span>
-      <span class="tech-pill" aria-hidden="true">SQL &amp; Data Modelling</span>
+      <span class="tech-pill" aria-hidden="true" data-i18n="mq.portalsWeb">Portals &amp; Web</span>
+      <span class="tech-pill" aria-hidden="true" data-i18n="mq.workflowAutomation">Workflow Automation</span>
+      <span class="tech-pill" aria-hidden="true" data-i18n="mq.sqlModelling">SQL &amp; Data Modelling</span>
       <span class="tech-pill" aria-hidden="true">QWeb / XML</span>
       <span class="tech-pill" aria-hidden="true">GitLab CI/CD</span>
-      <span class="tech-pill" aria-hidden="true">Linux Deployment</span>
+      <span class="tech-pill" aria-hidden="true" data-i18n="mq.linuxDeployment">Linux Deployment</span>
       <span class="tech-pill" aria-hidden="true">Playwright</span>
     </div>
   </div>
@@ -258,20 +278,20 @@
 <section id="work" class="section-pad">
   <div class="container">
     <div class="sec-head">
-      <p class="eyebrow">Selected work</p>
-      <h2>Real systems I've <em>built and shipped</em></h2>
-      <p class="sec-lead">
+      <p class="eyebrow" data-i18n="work.eyebrow">Selected work</p>
+      <h2 data-i18n="work.title">Real systems I've <em>built and shipped</em></h2>
+      <p class="sec-lead" data-i18n="work.lead">
         Selected projects across ERP, portals, web, automation and data. Every card is a system
         that went into production — each opens its own case study.
       </p>
     </div>
 
-    <div class="filter-tabs" role="group" aria-label="Filter projects">
-      <button class="filter-tab active" data-filter="all">All</button>
-      <button class="filter-tab" data-filter="odoo-erp">Odoo &amp; ERP</button>
-      <button class="filter-tab" data-filter="portals-web">Portals / Web</button>
-      <button class="filter-tab" data-filter="integrations">Integrations / Automation</button>
-      <button class="filter-tab" data-filter="digital-content">Digital &amp; Content</button>
+    <div class="filter-tabs" role="group" aria-label="Filter projects" data-i18n-attr="aria-label:work.filterLabel">
+      <button class="filter-tab active" data-filter="all" data-i18n="work.filter.all">All</button>
+      <button class="filter-tab" data-filter="odoo-erp" data-i18n="work.filter.odooErp">Odoo &amp; ERP</button>
+      <button class="filter-tab" data-filter="portals-web" data-i18n="work.filter.portalsWeb">Portals / Web</button>
+      <button class="filter-tab" data-filter="integrations" data-i18n="work.filter.integrations">Integrations / Automation</button>
+      <button class="filter-tab" data-filter="digital-content" data-i18n="work.filter.digitalContent">Digital &amp; Content</button>
     </div>
 
     <div class="projects-grid bento" id="projects-grid">
@@ -281,8 +301,8 @@
     </div>
 
     <div id="no-results-msg" hidden>
-      <strong>No projects match this filter.</strong>
-      <span>Try a different category above.</span>
+      <strong data-i18n="work.empty.title">No projects match this filter.</strong>
+      <span data-i18n="work.empty.hint">Try a different category above.</span>
     </div>
   </div>
 </section>
@@ -292,9 +312,9 @@
 <section id="services" data-cv class="section-pad section-sage">
   <div class="container">
     <div class="sec-head">
-      <p class="eyebrow">What I build</p>
-      <h2>Six things people <em>bring me in for</em></h2>
-      <p class="sec-lead">
+      <p class="eyebrow" data-i18n="build.eyebrow">What I build</p>
+      <h2 data-i18n="build.title">Six things people <em>bring me in for</em></h2>
+      <p class="sec-lead" data-i18n="build.lead">
         Odoo and ERP is the deepest of these, not the whole of it. Each group lists what I
         actually do and what you end up with.
       </p>
@@ -303,82 +323,82 @@
     <ol class="build-grid">
       <li class="build-item fade-up">
         <span class="build-n">01</span>
-        <h3>Odoo &amp; ERP Engineering</h3>
-        <p>Full internal systems from requirements to go-live — data model, custom modules,
+        <h3 data-i18n="build.1.h">Odoo &amp; ERP Engineering</h3>
+        <p data-i18n="build.1.p">Full internal systems from requirements to go-live — data model, custom modules,
           access rules, reports and the training that makes it stick.</p>
         <div class="build-tags">
-          <span class="skill-tag">Custom modules</span><span class="skill-tag">Models &amp; ORM</span>
-          <span class="skill-tag">Record rules</span><span class="skill-tag">QWeb reports</span>
+          <span class="skill-tag" data-i18n="tag.customModules">Custom modules</span><span class="skill-tag" data-i18n="tag.modelsOrm">Models &amp; ORM</span>
+          <span class="skill-tag" data-i18n="tag.recordRules">Record rules</span><span class="skill-tag" data-i18n="tag.qwebReports">QWeb reports</span>
         </div>
-        <p class="build-out"><b>You get</b> a running ERP your team owns, not a prototype.</p>
+        <p class="build-out"><b data-i18n="build.youGet">You get</b> <span data-i18n="build.1.out">a running ERP your team owns, not a prototype.</span></p>
       </li>
 
       <li class="build-item fade-up">
         <span class="build-n">02</span>
-        <h3>Web Applications &amp; Portals</h3>
-        <p>Portals and responsive front ends, so the people using the system never have to
+        <h3 data-i18n="build.2.h">Web Applications &amp; Portals</h3>
+        <p data-i18n="build.2.p">Portals and responsive front ends, so the people using the system never have to
           learn the back office — bilingual and accessible by default.</p>
         <div class="build-tags">
-          <span class="skill-tag">Portal controllers</span><span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">Arabic RTL</span><span class="skill-tag">Accessibility</span>
+          <span class="skill-tag" data-i18n="tag.portalControllers">Portal controllers</span><span class="skill-tag" data-i18n="tag.javascript">JavaScript</span>
+          <span class="skill-tag" data-i18n="tag.arabicRtl">Arabic RTL</span><span class="skill-tag" data-i18n="tag.accessibility">Accessibility</span>
         </div>
-        <p class="build-out"><b>You get</b> adoption, because it is built for the person raising the request.</p>
+        <p class="build-out"><b data-i18n="build.youGet">You get</b> <span data-i18n="build.2.out">adoption, because it is built for the person raising the request.</span></p>
       </li>
 
       <li class="build-item fade-up">
         <span class="build-n">03</span>
-        <h3>Backend Systems &amp; APIs</h3>
-        <p>Python business logic, REST and JSON-RPC services, PostgreSQL schema and query
+        <h3 data-i18n="build.3.h">Backend Systems &amp; APIs</h3>
+        <p data-i18n="build.3.p">Python business logic, REST and JSON-RPC services, PostgreSQL schema and query
           work, authentication and permission models.</p>
         <div class="build-tags">
-          <span class="skill-tag">Python</span><span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">REST API</span><span class="skill-tag">RBAC</span>
+          <span class="skill-tag" data-i18n="tag.python">Python</span><span class="skill-tag" data-i18n="tag.postgresql">PostgreSQL</span>
+          <span class="skill-tag" data-i18n="tag.restApi">REST API</span><span class="skill-tag" data-i18n="tag.rbac">RBAC</span>
         </div>
-        <p class="build-out"><b>You get</b> services that behave under real traffic, not just in a demo.</p>
+        <p class="build-out"><b data-i18n="build.youGet">You get</b> <span data-i18n="build.3.out">services that behave under real traffic, not just in a demo.</span></p>
       </li>
 
       <li class="build-item fade-up">
         <span class="build-n">04</span>
-        <h3>Integrations &amp; Automation</h3>
-        <p>Approval chains, scheduled actions and system-to-system integration — with the
+        <h3 data-i18n="build.4.h">Integrations &amp; Automation</h3>
+        <p data-i18n="build.4.p">Approval chains, scheduled actions and system-to-system integration — with the
           error handling and retry behaviour production actually demands.</p>
         <div class="build-tags">
-          <span class="skill-tag">External APIs</span><span class="skill-tag">Scheduled actions</span>
-          <span class="skill-tag">Workflow automation</span><span class="skill-tag">Data migration</span>
+          <span class="skill-tag" data-i18n="tag.externalApis">External APIs</span><span class="skill-tag" data-i18n="tag.scheduledActions">Scheduled actions</span>
+          <span class="skill-tag" data-i18n="tag.workflowAutomation">Workflow automation</span><span class="skill-tag" data-i18n="tag.dataMigration">Data migration</span>
         </div>
-        <p class="build-out"><b>You get</b> one source of truth instead of three spreadsheets.</p>
+        <p class="build-out"><b data-i18n="build.youGet">You get</b> <span data-i18n="build.4.out">one source of truth instead of three spreadsheets.</span></p>
       </li>
 
       <li class="build-item fade-up">
         <span class="build-n">05</span>
-        <h3>Data Engineering</h3>
-        <p>Python and SQL pipelines, analytical modelling and reporting layers — plus the
+        <h3 data-i18n="build.5.h">Data Engineering</h3>
+        <p data-i18n="build.5.p">Python and SQL pipelines, analytical modelling and reporting layers — plus the
           computer-vision work that came before the ERP years.</p>
         <div class="build-tags">
-          <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
-          <span class="skill-tag">ETL / ELT</span><span class="skill-tag">Computer vision</span>
+          <span class="skill-tag" data-i18n="tag.python">Python</span><span class="skill-tag" data-i18n="tag.sql">SQL</span>
+          <span class="skill-tag" data-i18n="tag.etl">ETL / ELT</span><span class="skill-tag" data-i18n="tag.computerVision">Computer vision</span>
         </div>
-        <p class="build-out"><b>You get</b> reporting people trust enough to make decisions on.</p>
+        <p class="build-out"><b data-i18n="build.youGet">You get</b> <span data-i18n="build.5.out">reporting people trust enough to make decisions on.</span></p>
       </li>
 
       <li class="build-item fade-up">
         <span class="build-n">06</span>
-        <h3>Deployment, Performance &amp; Consulting</h3>
-        <p>Requirements and gap analysis when the brief is fuzzy; profiling, deployment and
+        <h3 data-i18n="build.6.h">Deployment, Performance &amp; Consulting</h3>
+        <p data-i18n="build.6.p">Requirements and gap analysis when the brief is fuzzy; profiling, deployment and
           CI/CD when it is not — then UAT, documentation and training.</p>
         <div class="build-tags">
-          <span class="skill-tag">Profiling</span><span class="skill-tag">Linux deployment</span>
-          <span class="skill-tag">GitLab CI/CD</span><span class="skill-tag">UAT &amp; training</span>
+          <span class="skill-tag" data-i18n="tag.profiling">Profiling</span><span class="skill-tag" data-i18n="tag.linuxDeployment">Linux deployment</span>
+          <span class="skill-tag" data-i18n="tag.gitlabCi">GitLab CI/CD</span><span class="skill-tag" data-i18n="tag.uatTraining">UAT &amp; training</span>
         </div>
-        <p class="build-out"><b>You get</b> a team that can run the system without me.</p>
+        <p class="build-out"><b data-i18n="build.youGet">You get</b> <span data-i18n="build.6.out">a team that can run the system without me.</span></p>
       </li>
     </ol>
 
     <div class="sec-cta">
       <a href="#contact" class="btn btn-primary btn-lg">
-        Start a Project <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <span data-i18n="cta.startProject">Start a Project</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
       </a>
-      <a href="#work" class="link-quiet">See these in the work above</a>
+      <a href="#work" class="link-quiet" data-i18n="build.seeWork">See these in the work above</a>
     </div>
   </div>
 </section>
@@ -391,19 +411,19 @@
 
     <div class="xd-top">
       <div class="xd-about fade-up">
-        <p class="eyebrow">About</p>
-        <h2>The engineer in<br /><em>the business meeting</em></h2>
-        <p class="sec-lead">
+        <p class="eyebrow" data-i18n="about.eyebrow">About</p>
+        <h2 data-i18n="about.title">The engineer in<br /><em>the business meeting</em></h2>
+        <p class="sec-lead" data-i18n="about.lead">
           I started in data and moved into ERP because that is where the interesting problems
           are: not “can this be built”, but “what should it do, and will anyone use it”.
         </p>
-        <p class="xd-note">
+        <p class="xd-note" data-i18n="about.note">
           Four years across three countries, with Odoo partners and in-house teams — full ERP
           builds, portals, government platform delivery, and the data work that came before.
         </p>
         <div class="xd-actions">
           <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-outline-warm">
-            <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-down"/></svg> Download CV
+            <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-down"/></svg> <span data-i18n="cta.downloadCv">Download CV</span>
           </a>
           <a href="https://www.linkedin.com/in/mohamedgamal37l30" target="_blank" rel="noopener" class="link-quiet">
             <svg class="ic ic-social" width="18" height="18" aria-hidden="true"><use href="#i-linkedin-in"/></svg> LinkedIn
@@ -415,84 +435,84 @@
       </div>
 
       <dl class="xd-facts fade-up">
-        <div><dt>Based in</dt><dd>Cairo, Egypt</dd></div>
-        <div><dt>Working with</dt><dd>KSA · Egypt · United States</dd></div>
-        <div><dt>Odoo versions</dt><dd>14 – 20</dd></div>
-        <div><dt>Experience</dt><dd>4+ years</dd></div>
-        <div><dt>Open to</dt><dd>Senior roles · consulting · freelance</dd></div>
+        <div><dt data-i18n="facts.basedIn">Based in</dt><dd data-i18n="facts.basedInV">Cairo, Egypt</dd></div>
+        <div><dt data-i18n="facts.workingWith">Working with</dt><dd data-i18n="facts.workingWithV">KSA · Egypt · United States</dd></div>
+        <div><dt data-i18n="hero.proof.versions">Odoo versions</dt><dd dir="ltr" data-i18n="hero.proof.versionsV">14 – 20</dd></div>
+        <div><dt data-i18n="hero.proof.experience">Experience</dt><dd data-i18n="hero.proof.experienceV">4+ years</dd></div>
+        <div><dt data-i18n="facts.openTo">Open to</dt><dd data-i18n="facts.openToV">Senior roles · consulting · freelance</dd></div>
       </dl>
     </div>
 
     <!-- Company logo row, rendered from companies.json -->
-    <h3 class="xd-sub">Where the work happened</h3>
+    <h3 class="xd-sub" data-i18n="xd.companies">Where the work happened</h3>
     <div class="companies-row" id="companies-grid"></div>
 
     <!-- Compact timeline. CSS scroll-snap, no autoplay, no transform loop. -->
-    <h3 class="xd-sub">Career timeline</h3>
-    <ol class="xd-timeline" tabindex="0" aria-label="Career timeline">
+    <h3 class="xd-sub" data-i18n="xd.timeline">Career timeline</h3>
+    <ol class="xd-timeline" tabindex="0" aria-label="Career timeline" data-i18n-attr="aria-label:a11y.timeline">
       <li class="xdt-item">
-        <span class="xdt-date">Apr 2026 – Present</span>
-        <h4>Senior Odoo Developer</h4>
-        <p class="xdt-co">EJAD Digital Solutions · Saudi Arabia · Odoo Silver Partner</p>
-        <p>Backend Odoo Enterprise across concurrent projects — modules, automation and ORM
+        <span class="xdt-date" dir="ltr" data-i18n="xp.1.date">Apr 2026 – Present</span>
+        <h4 data-i18n="xp.1.role">Senior Odoo Developer</h4>
+        <p class="xdt-co" data-i18n="xp.1.co">EJAD Digital Solutions · Saudi Arabia · Odoo Silver Partner</p>
+        <p data-i18n="xp.1.p">Backend Odoo Enterprise across concurrent projects — modules, automation and ORM
           performance tuning.</p>
-        <div class="xdt-tags"><span>Odoo Enterprise</span><span>Automation</span><span>CI/CD</span></div>
+        <div class="xdt-tags"><span data-i18n="xtag.odooEnterprise">Odoo Enterprise</span><span data-i18n="xtag.automation">Automation</span><span data-i18n="xtag.cicd">CI/CD</span></div>
       </li>
       <li class="xdt-item">
-        <span class="xdt-date">Nov 2025 – Present</span>
-        <h4>Odoo Developer (Remote)</h4>
-        <p class="xdt-co">DOTec Professional Corp. · United States</p>
-        <p>Built the internal engineering ERP end to end for US-based clients.</p>
-        <div class="xdt-tags"><span>Engineering ERP</span><span>Full build</span><span>Python</span></div>
+        <span class="xdt-date" dir="ltr" data-i18n="xp.2.date">Nov 2025 – Present</span>
+        <h4 data-i18n="xp.2.role">Odoo Developer (Remote)</h4>
+        <p class="xdt-co" data-i18n="xp.2.co">DOTec Professional Corp. · United States</p>
+        <p data-i18n="xp.2.p">Built the internal engineering ERP end to end for US-based clients.</p>
+        <div class="xdt-tags"><span data-i18n="xtag.engineeringErp">Engineering ERP</span><span data-i18n="xtag.fullBuild">Full build</span><span data-i18n="tag.python">Python</span></div>
       </li>
       <li class="xdt-item">
-        <span class="xdt-date">Oct 2025 – Jan 2026</span>
-        <h4>Odoo Techno-Functional</h4>
-        <p class="xdt-co">Margins Developments · Cairo, Egypt</p>
-        <p>Customised CRM, sales and accounting workflows; built reports and trained users.</p>
-        <div class="xdt-tags"><span>Real-estate ERP</span><span>CRM</span><span>Training</span></div>
+        <span class="xdt-date" dir="ltr" data-i18n="xp.3.date">Oct 2025 – Jan 2026</span>
+        <h4 data-i18n="xp.3.role">Odoo Techno-Functional</h4>
+        <p class="xdt-co" data-i18n="xp.3.co">Margins Developments · Cairo, Egypt</p>
+        <p data-i18n="xp.3.p">Customised CRM, sales and accounting workflows; built reports and trained users.</p>
+        <div class="xdt-tags"><span data-i18n="xtag.realEstateErp">Real-estate ERP</span><span data-i18n="xtag.crm">CRM</span><span data-i18n="xtag.training">Training</span></div>
       </li>
       <li class="xdt-item">
-        <span class="xdt-date">Aug 2025 – Dec 2025</span>
-        <h4>AI Software Engineer</h4>
-        <p class="xdt-co">Computing Gate IT · Saudi Arabia · Part-time</p>
-        <p>Integrated ML components into backend ERP systems for automation.</p>
-        <div class="xdt-tags"><span>ML / DL</span><span>AI in ERP</span></div>
+        <span class="xdt-date" dir="ltr" data-i18n="xp.4.date">Aug 2025 – Dec 2025</span>
+        <h4 data-i18n="xp.4.role">AI Software Engineer</h4>
+        <p class="xdt-co" data-i18n="xp.4.co">Computing Gate IT · Saudi Arabia · Part-time</p>
+        <p data-i18n="xp.4.p">Integrated ML components into backend ERP systems for automation.</p>
+        <div class="xdt-tags"><span data-i18n="xtag.mlDl">ML / DL</span><span data-i18n="xtag.aiInErp">AI in ERP</span></div>
       </li>
       <li class="xdt-item">
-        <span class="xdt-date">Sep 2024 – Mar 2026</span>
-        <h4>Odoo Developer (Enterprise)</h4>
-        <p class="xdt-co">EjadTech · Egypt / Saudi Arabia</p>
-        <p>Backend delivery on five government platforms — modules, REST integrations and
+        <span class="xdt-date" dir="ltr" data-i18n="xp.5.date">Sep 2024 – Mar 2026</span>
+        <h4 data-i18n="xp.5.role">Odoo Developer (Enterprise)</h4>
+        <p class="xdt-co" data-i18n="xp.5.co">EjadTech · Egypt / Saudi Arabia</p>
+        <p data-i18n="xp.5.p">Backend delivery on five government platforms — modules, REST integrations and
           client training.</p>
-        <div class="xdt-tags"><span>Government</span><span>REST API</span><span>Training</span></div>
+        <div class="xdt-tags"><span data-i18n="xtag.government">Government</span><span data-i18n="tag.restApi">REST API</span><span data-i18n="xtag.training">Training</span></div>
       </li>
       <li class="xdt-item">
-        <span class="xdt-date">Mar 2024 – Sep 2024</span>
-        <h4>Data Scientist</h4>
-        <p class="xdt-co">DEPI · Digital Egypt Pioneers · Cairo, Egypt</p>
-        <p>Built YOLO computer-vision models and tuned detection performance.</p>
-        <div class="xdt-tags"><span>Computer vision</span><span>YOLO</span><span>Python</span></div>
+        <span class="xdt-date" dir="ltr" data-i18n="xp.6.date">Mar 2024 – Sep 2024</span>
+        <h4 data-i18n="xp.6.role">Data Scientist</h4>
+        <p class="xdt-co" data-i18n="xp.6.co">DEPI · Digital Egypt Pioneers · Cairo, Egypt</p>
+        <p data-i18n="xp.6.p">Built YOLO computer-vision models and tuned detection performance.</p>
+        <div class="xdt-tags"><span data-i18n="tag.computerVision">Computer vision</span><span data-i18n="xtag.yolo">YOLO</span><span data-i18n="tag.python">Python</span></div>
       </li>
       <li class="xdt-item">
-        <span class="xdt-date">Jun 2023 – Aug 2024</span>
-        <h4>Data Scientist</h4>
-        <p class="xdt-co">ExploreAI Academy · Remote</p>
-        <p>Delivered end-to-end data-science projects and the insights behind them.</p>
-        <div class="xdt-tags"><span>Data science</span><span>SQL</span></div>
+        <span class="xdt-date" dir="ltr" data-i18n="xp.7.date">Jun 2023 – Aug 2024</span>
+        <h4 data-i18n="xp.7.role">Data Scientist</h4>
+        <p class="xdt-co" data-i18n="xp.7.co">ExploreAI Academy · Remote</p>
+        <p data-i18n="xp.7.p">Delivered end-to-end data-science projects and the insights behind them.</p>
+        <div class="xdt-tags"><span data-i18n="xtag.dataScience">Data science</span><span data-i18n="tag.sql">SQL</span></div>
       </li>
       <li class="xdt-item">
-        <span class="xdt-date">2024</span>
-        <h4>Data Analyst</h4>
-        <p class="xdt-co">CognoRise InfoTech · Cairo, Egypt</p>
-        <p>Cleaned large datasets and built the dashboards teams decided on.</p>
-        <div class="xdt-tags"><span>Dashboards</span><span>SQL</span></div>
+        <span class="xdt-date" dir="ltr" data-i18n="xp.8.date">2024</span>
+        <h4 data-i18n="xp.8.role">Data Analyst</h4>
+        <p class="xdt-co" data-i18n="xp.8.co">CognoRise InfoTech · Cairo, Egypt</p>
+        <p data-i18n="xp.8.p">Cleaned large datasets and built the dashboards teams decided on.</p>
+        <div class="xdt-tags"><span data-i18n="xtag.dashboards">Dashboards</span><span data-i18n="tag.sql">SQL</span></div>
       </li>
     </ol>
 
     <div class="sec-cta">
       <a href="#contact" class="btn btn-primary">
-        Start a Project <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <span data-i18n="cta.startProject">Start a Project</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
       </a>
     </div>
   </div>
@@ -503,35 +523,35 @@
 <section id="process" data-cv class="section-pad section-compact">
   <div class="container">
     <div class="sec-head sec-head-center">
-      <p class="eyebrow">How I work</p>
-      <h2>Five steps, <em>no surprises</em></h2>
+      <p class="eyebrow" data-i18n="flow.eyebrow">How I work</p>
+      <h2 data-i18n="flow.title">Five steps, <em>no surprises</em></h2>
     </div>
 
     <ol class="flow flow-compact">
       <li class="flow-step">
         <span class="flow-n">01</span>
-        <h3>Understand</h3>
-        <p>Sit with the people doing the work. Map the process as it is.</p>
+        <h3 data-i18n="flow.1.h">Understand</h3>
+        <p data-i18n="flow.1.p">Sit with the people doing the work. Map the process as it is.</p>
       </li>
       <li class="flow-step">
         <span class="flow-n">02</span>
-        <h3>Design</h3>
-        <p>Data model, approval routes and screens agreed in writing first.</p>
+        <h3 data-i18n="flow.2.h">Design</h3>
+        <p data-i18n="flow.2.p">Data model, approval routes and screens agreed in writing first.</p>
       </li>
       <li class="flow-step">
         <span class="flow-n">03</span>
-        <h3>Build</h3>
-        <p>Small reviewable increments, on inheritance rather than patches.</p>
+        <h3 data-i18n="flow.3.h">Build</h3>
+        <p data-i18n="flow.3.p">Small reviewable increments, on inheritance rather than patches.</p>
       </li>
       <li class="flow-step">
         <span class="flow-n">04</span>
-        <h3>Validate</h3>
-        <p>Tests for the rules, browser tests for the journeys, UAT with the asker.</p>
+        <h3 data-i18n="flow.4.h">Validate</h3>
+        <p data-i18n="flow.4.p">Tests for the rules, browser tests for the journeys, UAT with the asker.</p>
       </li>
       <li class="flow-step">
         <span class="flow-n">05</span>
-        <h3>Ship</h3>
-        <p>Deploy, train, then stay close for what only real users surface.</p>
+        <h3 data-i18n="flow.5.h">Ship</h3>
+        <p data-i18n="flow.5.p">Deploy, train, then stay close for what only real users surface.</p>
       </li>
     </ol>
   </div>
@@ -543,26 +563,26 @@
   <div class="container">
 
     <div class="contact-lead">
-      <p class="eyebrow">Start a project</p>
-      <h2>Got something that needs <em>building properly</em>?</h2>
-      <p class="sec-lead">
+      <p class="eyebrow" data-i18n="contact.eyebrow">Start a project</p>
+      <h2 data-i18n="contact.title">Got something that needs <em>building properly</em>?</h2>
+      <p class="sec-lead" data-i18n="contact.lead">
         Tell me what the business needs to happen and I'll tell you what it takes. I usually
         reply within a day.
       </p>
       <ul class="avail-list">
-        <li>Odoo / ERP</li>
-        <li>Web applications</li>
-        <li>Backend &amp; APIs</li>
-        <li>Automation &amp; integrations</li>
-        <li>Data engineering</li>
-        <li>Other software engineering</li>
+        <li data-i18n="contact.avail.odoo">Odoo / ERP</li>
+        <li data-i18n="contact.avail.web">Web applications</li>
+        <li data-i18n="contact.avail.backend">Backend &amp; APIs</li>
+        <li data-i18n="contact.avail.automation">Automation &amp; integrations</li>
+        <li data-i18n="contact.avail.data">Data engineering</li>
+        <li data-i18n="contact.avail.other">Other software engineering</li>
       </ul>
       <div class="contact-actions">
         <a href="https://wa.me/201102672347" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-wa-link>
-          Start a Project <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          <span data-i18n="cta.startProject">Start a Project</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
         </a>
         <a href="mailto:mohammedgamal37l30@gmail.com" class="btn btn-outline-warm btn-lg">
-          <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-envelope"/></svg> Email me
+          <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-envelope"/></svg> <span data-i18n="contact.emailMe">Email me</span>
         </a>
       </div>
     </div>
@@ -570,43 +590,43 @@
     <ul class="contact-rows">
       <li>
         <a href="https://wa.me/201102672347" target="_blank" rel="noopener" data-wa-link>
-          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp</span>
-          <span class="cr-v">Fastest reply — send the brief</span>
+          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-whatsapp"/></svg> <span data-i18n="row.whatsapp">WhatsApp</span></span>
+          <span class="cr-v" data-i18n="row.whatsappV">Fastest reply — send the brief</span>
           <span class="cr-go" aria-hidden="true"><svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
       </li>
       <li>
         <a href="mailto:mohammedgamal37l30@gmail.com">
-          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-envelope"/></svg> Email</span>
-          <span class="cr-v">mohammedgamal37l30@gmail.com</span>
+          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-envelope"/></svg> <span data-i18n="row.email">Email</span></span>
+          <span class="cr-v" dir="ltr">mohammedgamal37l30@gmail.com</span>
           <span class="cr-go" aria-hidden="true"><svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
       </li>
       <li>
         <a href="https://www.linkedin.com/in/mohamedgamal37l30" target="_blank" rel="noopener">
-          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-linkedin-in"/></svg> LinkedIn</span>
-          <span class="cr-v">Full career timeline</span>
+          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-linkedin-in"/></svg> <span data-i18n="row.linkedin">LinkedIn</span></span>
+          <span class="cr-v" data-i18n="row.linkedinV">Full career timeline</span>
           <span class="cr-go" aria-hidden="true"><svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
       </li>
       <li>
         <a href="https://github.com/mohamedgamal-attia" target="_blank" rel="noopener">
-          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-github"/></svg> GitHub</span>
-          <span class="cr-v">Code, including this site</span>
+          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-github"/></svg> <span data-i18n="row.github">GitHub</span></span>
+          <span class="cr-v" data-i18n="row.githubV">Code, including this site</span>
           <span class="cr-go" aria-hidden="true"><svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
       </li>
       <li>
         <a href="tel:+201102672347">
-          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-phone"/></svg> Call</span>
-          <span class="cr-v">+20 110 267 2347 · Cairo (GMT+2)</span>
+          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-phone"/></svg> <span data-i18n="row.call">Call</span></span>
+          <span class="cr-v" data-i18n="row.callV">+20 110 267 2347 · Cairo (GMT+2)</span>
           <span class="cr-go" aria-hidden="true"><svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
       </li>
       <li>
         <a href="0_Mohamed_Gamal_CV.pdf" download>
-          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-file-arrow-down"/></svg> CV</span>
-          <span class="cr-v">Experience, skills and education (PDF)</span>
+          <span class="cr-k"><svg class="ic ic-row" width="20" height="20" aria-hidden="true"><use href="#i-file-arrow-down"/></svg> <span data-i18n="row.cv">CV</span></span>
+          <span class="cr-v" data-i18n="row.cvV">Experience, skills and education (PDF)</span>
           <span class="cr-go" aria-hidden="true"><svg class="ic ic-arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow-down"/></svg></span>
         </a>
       </li>
@@ -621,25 +641,25 @@
   <div class="container">
     <div class="footer-inner">
       <div>
-        <p class="footer-name">Mohamed Gamal</p>
-        <p class="footer-role">Senior Software Engineer &amp; Odoo / ERP Specialist · Cairo, Egypt</p>
+        <p class="footer-name" data-i18n="brand.name">Mohamed Gamal</p>
+        <p class="footer-role" data-i18n="footer.role">Senior Software Engineer &amp; Odoo / ERP Specialist · Cairo, Egypt</p>
       </div>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="#work">Work</a>
-        <a href="#services">Services</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-        <a href="0_Mohamed_Gamal_CV.pdf" download>CV</a>
+      <nav class="footer-links" aria-label="Footer" data-i18n-attr="aria-label:a11y.footerNav">
+        <a href="#work" data-i18n="nav.work">Work</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#experience" data-i18n="nav.experience">Experience</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="0_Mohamed_Gamal_CV.pdf" download data-i18n="nav.cv">CV</a>
       </nav>
     </div>
-    <p class="footer-copy">© 2026 Mohamed Gamal. Built and deployed from this repository.</p>
+    <p class="footer-copy" data-i18n="footer.copy">© 2026 Mohamed Gamal. Built and deployed from this repository.</p>
   </div>
 </footer>
 
-<button id="back-top" aria-label="Back to top"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-chevron-up"/></svg></button>
+<button id="back-top" aria-label="Back to top" data-i18n-attr="aria-label:a11y.backTop"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-chevron-up"/></svg></button>
 
 <!-- ════════════════════════ PROJECT DETAIL MODAL ════════════════════════ -->
-<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Project case study">
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Project case study" data-i18n-attr="aria-label:a11y.modalLabel">
   <div class="modal">
     <div class="modal-header">
       <img id="m-img" alt="" />
@@ -649,31 +669,31 @@
         <div class="modal-header-title" id="m-title"></div>
         <span class="modal-type-badge" id="m-type"></span>
       </div>
-      <button class="modal-close" id="modal-close" aria-label="Close modal">
+      <button class="modal-close" id="modal-close" aria-label="Close modal" data-i18n-attr="aria-label:a11y.closeModal">
         <svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-xmark"/></svg>
       </button>
     </div>
 
     <div class="modal-tabs" role="tablist">
-      <button class="modal-tab active" data-tab="overview">Overview</button>
-      <button class="modal-tab" data-tab="gallery">Visuals</button>
-      <button class="modal-tab" data-tab="scope">Scope</button>
-      <button class="modal-tab" data-tab="context">Context</button>
-      <button class="modal-tab" data-tab="impact">Impact</button>
+      <button class="modal-tab active" data-tab="overview" data-i18n="modal.overview">Overview</button>
+      <button class="modal-tab" data-tab="gallery" data-i18n="modal.visuals">Visuals</button>
+      <button class="modal-tab" data-tab="scope" data-i18n="modal.scope">Scope</button>
+      <button class="modal-tab" data-tab="context" data-i18n="modal.context">Context</button>
+      <button class="modal-tab" data-tab="impact" data-i18n="modal.impact">Impact</button>
     </div>
 
     <div class="modal-body">
       <div class="tab-panel active" data-panel="overview">
-        <div class="modal-section"><h4>My Role</h4><p id="m-role"></p></div>
-        <div class="modal-section"><h4>Overview</h4><p id="m-overview"></p></div>
+        <div class="modal-section"><h4 data-i18n="modal.myRole">My Role</h4><p id="m-role"></p></div>
+        <div class="modal-section"><h4 data-i18n="modal.overview">Overview</h4><p id="m-overview"></p></div>
       </div>
 
       <div class="tab-panel" data-panel="gallery">
         <div class="modal-gallery">
           <div class="modal-gallery-main">
             <img id="m-gallery-img" alt="" />
-            <button class="gallery-nav gallery-prev" id="m-gallery-prev" aria-label="Previous image"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-chevron-left"/></svg></button>
-            <button class="gallery-nav gallery-next" id="m-gallery-next" aria-label="Next image"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-chevron-right"/></svg></button>
+            <button class="gallery-nav gallery-prev" id="m-gallery-prev" aria-label="Previous image" data-i18n-attr="aria-label:a11y.prevImage"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-chevron-left"/></svg></button>
+            <button class="gallery-nav gallery-next" id="m-gallery-next" aria-label="Next image" data-i18n-attr="aria-label:a11y.nextImage"><svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-chevron-right"/></svg></button>
             <span class="gallery-count" id="m-gallery-count"></span>
           </div>
           <div class="modal-thumbs" id="m-gallery-thumbs"></div>
@@ -681,7 +701,7 @@
       </div>
 
       <div class="tab-panel" data-panel="scope">
-        <div class="modal-section"><h4>Scope &amp; What I Built</h4><div class="modal-features" id="m-scope"></div></div>
+        <div class="modal-section"><h4 data-i18n="modal.scopeBuilt">Scope &amp; What I Built</h4><div class="modal-features" id="m-scope"></div></div>
       </div>
 
       <div class="tab-panel" data-panel="context">
@@ -690,12 +710,12 @@
       </div>
 
       <div class="tab-panel" data-panel="impact">
-        <div class="modal-section"><h4>Business Impact</h4><p id="m-impact"></p></div>
-        <div class="modal-section"><h4>Technologies</h4><div class="modal-tags" id="m-tags"></div></div>
+        <div class="modal-section"><h4 data-i18n="modal.businessImpact">Business Impact</h4><p id="m-impact"></p></div>
+        <div class="modal-section"><h4 data-i18n="modal.technologies">Technologies</h4><div class="modal-tags" id="m-tags"></div></div>
         <div class="modal-source-link" id="m-source-link" style="display:none">
           <a href="#" target="_blank" rel="noopener" id="m-source-anchor">
             <svg class="ic ic-md" width="16" height="16" aria-hidden="true"><use href="#i-arrow-up-right-from-square"/></svg>
-            <span id="m-source-label">View Official Source</span>
+            <span id="m-source-label" data-i18n="modal.officialSource">View Official Source</span>
           </a>
         </div>
       </div>
@@ -705,15 +725,15 @@
 
 
 <!-- ════════════════════════════ SCRIPTS ════════════════════════════ -->
-<script src="assets/js/config.js?v=5cd8193e" defer></script>
-<script src="assets/js/animations.js?v=5cd8193e" defer></script>
-<script src="assets/js/effects.js?v=5cd8193e" defer></script>
-<script src="assets/js/hero.js?v=5cd8193e" defer></script>
-<script src="assets/js/tilt.js?v=5cd8193e" defer></script>
-<script src="assets/js/modals.js?v=5cd8193e" defer></script>
-<script src="assets/js/filters.js?v=5cd8193e" defer></script>
-<script src="assets/js/data-loader.js?v=5cd8193e" defer></script>
-<script src="assets/js/main.js?v=5cd8193e" defer></script>
+<script src="assets/js/config.js?v=508cb6ac" defer></script>
+<script src="assets/js/animations.js?v=508cb6ac" defer></script>
+<script src="assets/js/effects.js?v=508cb6ac" defer></script>
+<script src="assets/js/hero.js?v=508cb6ac" defer></script>
+<script src="assets/js/tilt.js?v=508cb6ac" defer></script>
+<script src="assets/js/modals.js?v=508cb6ac" defer></script>
+<script src="assets/js/filters.js?v=508cb6ac" defer></script>
+<script src="assets/js/data-loader.js?v=508cb6ac" defer></script>
+<script src="assets/js/main.js?v=508cb6ac" defer></script>
 
 </body>
 </html>

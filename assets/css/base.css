@@ -79,13 +79,13 @@ p { line-height: 1.7; color: var(--text-secondary); }
 @media (prefers-reduced-motion: reduce) { #grain { opacity: .022; } }
 
 #scroll-progress {
-  position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 1200;
+  position: fixed; top: 0; inset-inline-start: 0; height: 2px; width: 0; z-index: 1200;
   background: var(--grad-gold);
   box-shadow: 0 0 14px rgba(var(--rgb-gold), .6);
 }
 
 .skip-link {
-  position: absolute; left: 18px; top: -64px; z-index: 2000;
+  position: absolute; inset-inline-start: 18px; top: -64px; z-index: 2000;
   background: var(--accent-primary); color: var(--bg-deep); font-weight: 800;
   padding: 11px 20px; border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   transition: top var(--motion-base, .18s) var(--ease-standard, ease);
