@@ -5,13 +5,22 @@ const DIR='/tmp/claude-0/-home-user-mohamed-gamal-portfolio/a61b8e2f-6245-581f-8
 const GF=fs.readFileSync(DIR+'vendor/gf.css','utf8'), GF2=fs.readFileSync(DIR+'vendor/gf2.css','utf8');
 const ENDPOINT='https://mock.estimate.test/project-estimate';
 
-let pass=0, fail=0;
+let pass=0, fail=0, productionHits=0;
 const ok=(c,m)=>{ c?pass++:fail++; console.log(`  ${c?'PASS':'FAIL'}  ${m}`); };
 
 const b=await chromium.launch();
 async function newPage(lang, {capture}={}) {
   const ctx=await b.newContext({viewport:{width:1280,height:900}});
   ctx.route('**://fonts.googleapis.com/**',r=>r.fulfill({contentType:'text/css',body:r.request().url().includes('Fraunces')?GF2:GF}));
+  // Safety net: neither suite has any business calling the production API.
+  // If a future edit forgets to route or blank the endpoint, fail here
+  // instead of silently creating a real lead.
+  await ctx.route('**mogamal.duckdns.org**', (r) => {
+    console.log('  FAIL  a test reached the PRODUCTION endpoint: ' + r.request().url());
+    productionHits++;
+    r.abort();
+  });
+
   ctx.route('**://fonts.gstatic.com/**',r=>{const f=DIR+'vendor/gstatic/'+nodePath.basename(new URL(r.request().url()).pathname);fs.existsSync(f)?r.fulfill({body:fs.readFileSync(f)}):r.abort();});
   if (lang) await ctx.addInitScript(l=>{try{localStorage.setItem('mg-lang',l)}catch(e){}}, lang);
   const errors=[];
@@ -211,13 +220,26 @@ console.log('\n--- Draft / persistence / honeypot ---');
   await ctx.close();
 }
 {
-  // Not configured -> say so, do not pretend.
+  // Not configured -> say so, do not pretend. config.js now ships a real
+  // endpoint, so the unconfigured branch has to be set up deliberately; it
+  // still needs covering, because blanking the endpoint must degrade
+  // honestly rather than throw.
   const ctx=await b.newContext({viewport:{width:1280,height:900}});
   ctx.route('**://fonts.googleapis.com/**',r=>r.fulfill({contentType:'text/css',body:GF}));
+  // Safety net: neither suite has any business calling the production API.
+  // If a future edit forgets to route or blank the endpoint, fail here
+  // instead of silently creating a real lead.
+  await ctx.route('**mogamal.duckdns.org**', (r) => {
+    console.log('  FAIL  a test reached the PRODUCTION endpoint: ' + r.request().url());
+    productionHits++;
+    r.abort();
+  });
+
   ctx.route('**://fonts.gstatic.com/**',r=>r.abort());
   const p=await ctx.newPage();
   await p.goto('http://127.0.0.1:8777/request.html',{waitUntil:'load'});
   await p.waitForFunction(()=>document.querySelectorAll('#rq-country option').length>50);
+  await p.evaluate(()=>{ window.Portfolio.leadSystem.endpoint = ''; });
   await fillAll(p,{lang:'en'});
   await p.click('#rq-submit');
   await p.waitForSelector('#rq-form-err:not([hidden])',{timeout:4000});
@@ -262,6 +284,15 @@ console.log('\n--- Review regressions ---');
   // A failed country fetch must not strand step 1.
   const ctx=await b.newContext({viewport:{width:1280,height:900}});
   ctx.route('**://fonts.googleapis.com/**',r=>r.fulfill({contentType:'text/css',body:GF}));
+  // Safety net: neither suite has any business calling the production API.
+  // If a future edit forgets to route or blank the endpoint, fail here
+  // instead of silently creating a real lead.
+  await ctx.route('**mogamal.duckdns.org**', (r) => {
+    console.log('  FAIL  a test reached the PRODUCTION endpoint: ' + r.request().url());
+    productionHits++;
+    r.abort();
+  });
+
   ctx.route('**://fonts.gstatic.com/**',r=>r.abort());
   ctx.route('**/assets/data/countries.json', r=>r.abort());
   const p=await ctx.newPage();
@@ -300,5 +331,6 @@ console.log('\n--- Review regressions ---');
 }
 
 await b.close();
+if (productionHits) { fail += productionHits; console.log(`\n  ${productionHits} request(s) escaped to PRODUCTION`); }
 console.log(`\n=== ${pass} passed, ${fail} failed ===`);
 process.exit(fail?1:0);

@@ -56,8 +56,9 @@ window.Portfolio = {
      docs/lead-system-setup.md). While it is blank the wizard says so plainly
      instead of pretending to submit. */
   leadSystem: {
-    /* POST target for the project-request wizard. */
-    endpoint: '',
+    /* POST target for the project-request wizard. Public URL, no credential:
+       the server validates, rate-limits and prices every request itself. */
+    endpoint: 'https://mogamal.duckdns.org/project-estimate',
     /* POST target used by the admin dashboard to re-send a notification. */
     resendEndpoint: '',
     /* Public by design, per Supabase's security model: the anon key grants

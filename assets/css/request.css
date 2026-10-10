@@ -209,6 +209,27 @@
   margin: 0; font-family: var(--font-display); font-weight: 600;
   font-size: clamp(1.25rem, 3vw, 1.6rem); color: var(--text-primary);
 }
+/* The USD reference under a local-currency headline. Secondary by size and
+   weight only - no new colour, it reuses the muted text token. */
+.rq-figure-sub {
+  margin: 4px 0 0; font-size: .86rem; font-weight: 500; color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.rq-figure-sub[hidden] { display: none; }
+/* Exchange-rate attribution: present, legible, and never competing with the
+   price itself. */
+.rq-fx { margin: 8px 0 0; font-size: .72rem; line-height: 1.5; color: var(--text-muted); }
+.rq-fx[hidden] { display: none; }
+.rq-fx a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.rq-fx a:hover { color: var(--accent-deep); }
+
+/* Both price lines are dir="ltr" so the digits read left-to-right in Arabic
+   too. Left to itself, `start` for an LTR element means the LEFT edge, which
+   put the USD line on the opposite side of the card from its own label.
+   `end` on an LTR element is the right edge - which is where an RTL card
+   starts. The internal digit order is untouched. */
+:root[dir="rtl"] #rq-price,
+:root[dir="rtl"] #rq-price-usd { text-align: end; }
 
 .rq-list-block { margin-bottom: 22px; }
 .rq-list-block[hidden] { display: none; }

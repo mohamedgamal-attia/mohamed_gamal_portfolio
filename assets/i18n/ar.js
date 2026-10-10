@@ -314,6 +314,7 @@ window.MG_I18N.ar = {
   'rq.result.titleNoQuote': 'تم استلام الطلب',
   'rq.result.budget': 'الميزانية التقديرية',
   'rq.result.timeline': 'المدة التقديرية',
+  'rq.result.fxBy': 'أسعار الصرف عبر',
   'rq.result.scope': 'النطاق المقترح للبدء',
   'rq.result.assumptions': 'ما يفترضه هذا التقدير',
   'rq.result.whatsapp': 'احجز اجتماعًا سريعًا عبر واتساب',

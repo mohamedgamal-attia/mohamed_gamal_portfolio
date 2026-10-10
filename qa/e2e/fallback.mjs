@@ -1,6 +1,6 @@
 import pkg from '/opt/node-tools/node_modules/playwright/index.js';
 const { chromium } = pkg;
-let pass=0, fail=0;
+let pass=0, fail=0, productionHits=0;
 const ok=(c,m,x='')=>{ c?pass++:fail++; console.log(`  ${c?'PASS':'FAIL'}  ${m}${x?'  '+x:''}`); };
 const EP='https://mock.estimate.test/project-estimate';
 const b=await chromium.launch();
@@ -9,6 +9,15 @@ async function page(lang, route) {
   const ctx=await b.newContext({viewport:{width:1100,height:900}});
   ctx.route('**://fonts.googleapis.com/**',r=>r.fulfill({contentType:'text/css',body:''}));
   ctx.route('**://fonts.gstatic.com/**',r=>r.abort());
+  // Safety net: neither suite has any business calling the production API.
+  // If a future edit forgets to route or blank the endpoint, fail here
+  // instead of silently creating a real lead.
+  await ctx.route('**mogamal.duckdns.org**', (r) => {
+    console.log('  FAIL  a test reached the PRODUCTION endpoint: ' + r.request().url());
+    productionHits++;
+    r.abort();
+  });
+
   await ctx.addInitScript(l=>{try{localStorage.setItem('mg-lang',l)}catch(e){}}, lang);
   if (route) await ctx.route(EP, route);
   const p=await ctx.newPage();
@@ -33,9 +42,12 @@ async function fill(p, lang) {
   await p.waitForSelector('#rq-form-err:not([hidden])',{timeout:8000});
 }
 
-console.log('\n--- Not configured (the live state today) ---');
+console.log('\n--- Not configured ---');
 for (const lang of ['en','ar']) {
-  const { ctx, p } = await page(lang, null);     // endpoint left empty
+  // config.js now ships a LIVE endpoint, so this block must blank it
+  // explicitly. Without that it POSTs real submissions to production.
+  const { ctx, p } = await page(lang, null);
+  await p.evaluate(() => { window.Portfolio.leadSystem.endpoint = ''; });
   await fill(p, lang);
   const txt = (await p.textContent('#rq-form-err')).trim();
   ok(txt.length>0, `${lang}: a message is shown`, JSON.stringify(txt.slice(0,52)));
@@ -86,5 +98,6 @@ console.log('\n--- A genuine validation rejection still behaves as a form error 
 }
 
 await b.close();
+if (productionHits) { fail += productionHits; console.log(`\n  ${productionHits} request(s) escaped to PRODUCTION`); }
 console.log(`\n=== ${pass} passed, ${fail} failed ===`);
 process.exit(fail?1:0);

@@ -310,6 +310,7 @@ window.MG_I18N.en = {
   'rq.result.titleNoQuote': 'Request received',
   'rq.result.budget': 'Estimated budget',
   'rq.result.timeline': 'Estimated timeline',
+  'rq.result.fxBy': 'Rates by',
   'rq.result.scope': 'Suggested starting scope',
   'rq.result.assumptions': 'What this assumes',
   'rq.result.whatsapp': 'Schedule a WhatsApp meeting',
