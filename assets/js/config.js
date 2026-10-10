@@ -47,6 +47,28 @@ window.Portfolio = {
     { filter: 'digital-content', label: 'Digital & Content' },
   ],
 
+  /* §62 — PUBLIC configuration only.
+     Nothing here is a secret and nothing here may become one. The endpoint is
+     a public URL and the Turnstile site key is public by design; the Gemini,
+     Resend, service-role and Turnstile SECRET keys live only in the Edge
+     Function's environment and never reach a browser.
+     Fill `endpoint` in after deploying the function (see
+     docs/lead-system-setup.md). While it is blank the wizard says so plainly
+     instead of pretending to submit. */
+  leadSystem: {
+    /* POST target for the project-request wizard. */
+    endpoint: '',
+    /* POST target used by the admin dashboard to re-send a notification. */
+    resendEndpoint: '',
+    /* Public by design, per Supabase's security model: the anon key grants
+       nothing on its own. portfolio_leads has RLS on with no anon policy, so
+       an anonymous caller holding this key can read and write nothing. */
+    supabaseUrl: '',
+    supabaseAnonKey: '',
+    /* Public site key. The Turnstile SECRET stays in the function. */
+    turnstileSiteKey: '',
+  },
+
   dataFiles: {
     profile:    'assets/data/profile.json',
     companies:  'assets/data/companies.json',

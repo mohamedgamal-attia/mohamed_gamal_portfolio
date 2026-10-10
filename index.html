@@ -39,20 +39,20 @@
   <!-- i18n loads BEFORE the stylesheets and before any content paints, so an
        Arabic visitor never sees a frame of English or the wrong direction.
        These are deliberately NOT deferred. -->
-  <script src="assets/i18n/en.js"></script>
-  <script src="assets/i18n/ar.js"></script>
-  <script src="assets/js/i18n.js?v=508cb6ac"></script>
+  <script src="assets/i18n/en.js?v=91d3033c"></script>
+  <script src="assets/i18n/ar.js?v=91d3033c"></script>
+  <script src="assets/js/i18n.js?v=91d3033c"></script>
 
-  <link rel="stylesheet" href="assets/css/variables.css?v=508cb6ac" />
-  <link rel="stylesheet" href="assets/css/motion.css?v=508cb6ac" />
-  <link rel="stylesheet" href="assets/css/base.css?v=508cb6ac" />
-  <link rel="stylesheet" href="assets/css/layout.css?v=508cb6ac" />
-  <link rel="stylesheet" href="assets/css/components.css?v=508cb6ac" />
-  <link rel="stylesheet" href="assets/css/sections.css?v=508cb6ac" />
-  <link rel="stylesheet" href="assets/css/responsive.css?v=508cb6ac" />
-  <link rel="stylesheet" href="assets/css/futuristic.css?v=508cb6ac" />
-  <link rel="stylesheet" href="assets/css/project-showcase.css?v=508cb6ac" />
-  <link rel="stylesheet" href="assets/css/rtl.css?v=508cb6ac" />
+  <link rel="stylesheet" href="assets/css/variables.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/motion.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/base.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/layout.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/components.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/sections.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/responsive.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/futuristic.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/project-showcase.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/rtl.css?v=91d3033c" />
 
   <noscript><style>
     .fade-up, .reveal, .reveal-left, .reveal-scale, .cs-reveal, .kin, .kin-word
@@ -137,7 +137,7 @@
         <button type="button" data-lang-btn="ar" lang="ar"
                 aria-label="التبديل إلى العربية" data-i18n-attr="aria-label:a11y.switchAr">العربية</button>
       </div>
-      <a href="#contact" class="btn btn-primary btn-sm nav-cta" data-i18n="cta.startProject">Start a Project</a>
+      <a href="request.html" class="btn btn-primary btn-sm nav-cta" data-i18n="cta.startProject">Start a Project</a>
     </div>
 
     <button class="hamburger" id="hamburger" aria-label="Open menu" data-i18n-attr="aria-label:a11y.openMenu" aria-expanded="false" aria-controls="mobile-menu">
@@ -151,7 +151,7 @@
   <a href="#services" data-i18n="nav.services">Services</a>
   <a href="#experience" data-i18n="nav.experience">Experience</a>
   <a href="#contact" data-i18n="nav.contact">Contact</a>
-  <a href="#contact" class="btn btn-primary" data-i18n="cta.startProject">Start a Project</a>
+  <a href="request.html" class="btn btn-primary" data-i18n="cta.startProject">Start a Project</a>
   <a href="0_Mohamed_Gamal_CV.pdf" download class="btn btn-outline-warm" data-i18n="cta.downloadCv">Download CV</a>
   <div class="lang-switch lang-switch-mobile" role="group" aria-label="Language" data-i18n-attr="aria-label:a11y.langGroup">
     <button type="button" data-lang-btn="en" lang="en"
@@ -196,7 +196,7 @@
           <a href="#work" class="btn btn-primary btn-lg">
             <span data-i18n="hero.viewWork">View Selected Work</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
-          <a href="#contact" class="btn btn-outline-warm btn-lg" data-i18n="cta.startProject">Start a Project</a>
+          <a href="request.html" class="btn btn-outline-warm btn-lg" data-i18n="cta.startProject">Start a Project</a>
           <a href="0_Mohamed_Gamal_CV.pdf" download class="link-quiet">
             <svg class="ic ic-social" width="18" height="18" aria-hidden="true"><use href="#i-arrow-down"/></svg> <span data-i18n="cta.downloadCv">Download CV</span>
           </a>
@@ -395,7 +395,7 @@
     </ol>
 
     <div class="sec-cta">
-      <a href="#contact" class="btn btn-primary btn-lg">
+      <a href="request.html" class="btn btn-primary btn-lg">
         <span data-i18n="cta.startProject">Start a Project</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
       </a>
       <a href="#work" class="link-quiet" data-i18n="build.seeWork">See these in the work above</a>
@@ -511,7 +511,7 @@
     </ol>
 
     <div class="sec-cta">
-      <a href="#contact" class="btn btn-primary">
+      <a href="request.html" class="btn btn-primary">
         <span data-i18n="cta.startProject">Start a Project</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
       </a>
     </div>
@@ -578,8 +578,11 @@
         <li data-i18n="contact.avail.other">Other software engineering</li>
       </ul>
       <div class="contact-actions">
-        <a href="https://wa.me/201102672347" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-wa-link>
-          <span data-i18n="cta.startProject">Start a Project</span> <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <a href="request.html" class="btn btn-primary btn-lg">
+          <span data-i18n="cta.startProject">Start a Project</span> <svg class="ic ic-btn ic-arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+        <a href="https://wa.me/201102672347" target="_blank" rel="noopener" class="btn btn-outline-warm btn-lg" data-wa-link>
+          <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-whatsapp"/></svg> <span data-i18n="contact.chatWhatsapp">Chat on WhatsApp</span>
         </a>
         <a href="mailto:mohammedgamal37l30@gmail.com" class="btn btn-outline-warm btn-lg">
           <svg class="ic ic-btn" width="16" height="16" aria-hidden="true"><use href="#i-envelope"/></svg> <span data-i18n="contact.emailMe">Email me</span>
@@ -725,15 +728,15 @@
 
 
 <!-- ════════════════════════════ SCRIPTS ════════════════════════════ -->
-<script src="assets/js/config.js?v=508cb6ac" defer></script>
-<script src="assets/js/animations.js?v=508cb6ac" defer></script>
-<script src="assets/js/effects.js?v=508cb6ac" defer></script>
-<script src="assets/js/hero.js?v=508cb6ac" defer></script>
-<script src="assets/js/tilt.js?v=508cb6ac" defer></script>
-<script src="assets/js/modals.js?v=508cb6ac" defer></script>
-<script src="assets/js/filters.js?v=508cb6ac" defer></script>
-<script src="assets/js/data-loader.js?v=508cb6ac" defer></script>
-<script src="assets/js/main.js?v=508cb6ac" defer></script>
+<script src="assets/js/config.js?v=91d3033c" defer></script>
+<script src="assets/js/animations.js?v=91d3033c" defer></script>
+<script src="assets/js/effects.js?v=91d3033c" defer></script>
+<script src="assets/js/hero.js?v=91d3033c" defer></script>
+<script src="assets/js/tilt.js?v=91d3033c" defer></script>
+<script src="assets/js/modals.js?v=91d3033c" defer></script>
+<script src="assets/js/filters.js?v=91d3033c" defer></script>
+<script src="assets/js/data-loader.js?v=91d3033c" defer></script>
+<script src="assets/js/main.js?v=91d3033c" defer></script>
 
 </body>
 </html>

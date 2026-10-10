@@ -16,6 +16,24 @@
    below is the only place a literal colour is written.
    ========================================================= */
 
+/* A metrics-matched stand-in for Fraunces, used only for the moment between
+   first paint and the web font arriving.
+
+   Measured at the sizes actually used, not at a nominal 100px: Fraunces is an
+   optical-size variable font, so its width relative to a serif fallback
+   changes with font-size - 113.5% at 16px, 110.0% at 44px, 104.1% at 70px.
+   The fallback is therefore NARROWER than Fraunces at heading sizes, and a
+   heading that fits one line before the font loads wraps to two after it,
+   which was a 0.079 layout shift on the request page. 110% is tuned to the
+   large headings, where a reflow costs the most. */
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia'), local('Times New Roman'), local('Liberation Serif'), local('DejaVu Serif');
+  size-adjust: 110%;
+  font-weight: 400 900;
+  font-style: normal;
+}
+
 :root {
 
   /* ── Raw palette ───────────────────────────────────────  */
@@ -141,7 +159,7 @@
   --max-width:   1240px;
   --measure:     68ch;
   --font-sans:  'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --font-display:'Fraunces', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-display:'Fraunces', 'Fraunces Fallback', 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-mono:  ui-monospace, 'SFMono-Regular', 'Cascadia Mono', 'Segoe UI Mono', monospace;
 
   /* ── Easing kept here for files loaded before motion.css ─ */

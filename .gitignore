@@ -1,1 +1,14 @@
 .idea/
+
+# Secrets. Never commit a real value; .env.example carries names only.
+.env
+.env.*
+!.env.example
+
+# Local tooling
+node_modules/
+.DS_Store
+*.log
+test-results/
+playwright-report/
+.supabase/

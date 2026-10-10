@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#171717" />
+  <!-- Not a public page. It is still reachable, because security here is
+       authentication and RLS, not an unguessable URL - but there is no reason
+       to put it in an index. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Leads — Admin</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="assets/css/variables.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/admin.css?v=91d3033c" />
+</head>
+<body class="ad-page">
+
+<!-- ── Sign in ──────────────────────────────────────────────────────── -->
+<section class="ad-auth" id="ad-auth" hidden>
+  <form class="ad-auth-card" id="ad-login">
+    <h1>Leads</h1>
+    <p class="ad-auth-sub">Sign in to continue.</p>
+
+    <label for="ad-email">Email</label>
+    <input type="email" id="ad-email" autocomplete="username" required dir="ltr" />
+
+    <label for="ad-password">Password</label>
+    <input type="password" id="ad-password" autocomplete="current-password" />
+
+    <p class="ad-auth-err" id="ad-auth-err" role="alert" hidden></p>
+
+    <div class="ad-auth-actions">
+      <button type="submit" class="ad-btn ad-btn-primary" id="ad-signin">Sign in</button>
+      <button type="button" class="ad-btn" id="ad-magic">Email me a link</button>
+    </div>
+    <p class="ad-auth-note" id="ad-auth-note" hidden></p>
+  </form>
+</section>
+
+<!-- ── Dashboard ────────────────────────────────────────────────────── -->
+<div class="ad-shell" id="ad-shell" hidden>
+
+  <header class="ad-top">
+    <h1 class="ad-brand">Leads</h1>
+    <span class="ad-who" id="ad-who"></span>
+    <button type="button" class="ad-btn ad-btn-sm" id="ad-refresh">Refresh</button>
+    <button type="button" class="ad-btn ad-btn-sm" id="ad-export">Export CSV</button>
+    <button type="button" class="ad-btn ad-btn-sm" id="ad-signout">Sign out</button>
+  </header>
+
+  <section class="ad-stats" id="ad-stats" aria-label="Totals"></section>
+
+  <section class="ad-filters">
+    <input type="search" id="ad-q" placeholder="Search name, email or phone" aria-label="Search" />
+    <select id="ad-status" aria-label="Status"><option value="">All statuses</option></select>
+    <select id="ad-type" aria-label="Project type"><option value="">All project types</option></select>
+    <select id="ad-country" aria-label="Country"><option value="">All countries</option></select>
+    <select id="ad-lang" aria-label="Language">
+      <option value="">Both languages</option>
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+    <label class="ad-date">From <input type="date" id="ad-from" /></label>
+    <label class="ad-date">To <input type="date" id="ad-to" /></label>
+    <button type="button" class="ad-btn ad-btn-sm" id="ad-clear">Clear</button>
+  </section>
+
+  <p class="ad-count" id="ad-count"></p>
+  <p class="ad-error" id="ad-error" role="alert" hidden></p>
+
+  <div class="ad-table-wrap">
+    <table class="ad-table">
+      <thead>
+        <tr>
+          <th scope="col">Date</th><th scope="col">Name</th><th scope="col">Country</th>
+          <th scope="col">Project type</th><th scope="col">Estimate</th>
+          <th scope="col">Status</th><th scope="col">Lang</th><th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody id="ad-rows"></tbody>
+    </table>
+    <p class="ad-empty" id="ad-empty" hidden>No leads match these filters.</p>
+  </div>
+</div>
+
+<!-- ── Detail ───────────────────────────────────────────────────────── -->
+<div class="ad-drawer" id="ad-drawer" hidden role="dialog" aria-modal="true" aria-labelledby="ad-d-name">
+  <div class="ad-drawer-scrim" data-close></div>
+  <div class="ad-drawer-panel">
+    <header class="ad-drawer-head">
+      <div>
+        <h2 id="ad-d-name"></h2>
+        <p class="ad-d-ref" id="ad-d-ref" dir="ltr"></p>
+      </div>
+      <button type="button" class="ad-btn ad-btn-sm" data-close aria-label="Close">Close</button>
+    </header>
+    <div class="ad-drawer-body" id="ad-d-body"></div>
+  </div>
+</div>
+
+<script src="assets/js/config.js?v=91d3033c"></script>
+<script type="module" src="assets/js/admin.js?v=91d3033c"></script>
+<noscript><p style="padding:2rem;font:16px system-ui">This dashboard needs JavaScript.</p></noscript>
+</body>
+</html>
