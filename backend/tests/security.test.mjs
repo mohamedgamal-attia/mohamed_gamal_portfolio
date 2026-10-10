@@ -169,6 +169,29 @@ test('a leaked prompt or pricing internal is replaced with safe copy', () => {
   assert.equal(r.quote.summary, CTX.fallbacks.summary);
 });
 
+test('a leak in ANY scanned field is cleared, not just the obvious ones', () => {
+  const base = {
+    language: 'en', project_type: 'simple_website', summary: 'ok',
+    recommended_scope: ['a'], price_min_usd: WIN.allowedMinUsd, price_max_usd: WIN.allowedMaxUsd,
+    estimated_timeline: '2 weeks', assumptions: ['a'],
+    customer_message: 'hello', meeting_cta: 'chat',
+  };
+  const LEAKY = 'priced at the tier C multiplier above the hard floor';
+  for (const field of ['summary', 'estimated_timeline', 'customer_message', 'meeting_cta']) {
+    const r = normaliseQuote({ ...base, [field]: LEAKY }, WIN, CTX);
+    assert.equal(r.leaked, true, `${field} leak not detected`);
+    const all = [r.quote.summary, r.quote.estimatedTimeline, r.quote.customerMessage,
+                 r.quote.meetingCta, ...r.quote.recommendedScope, ...r.quote.assumptions].join(' ');
+    assert.ok(!looksLikeLeak(all), `${field} leak reached the customer: ${all}`);
+  }
+  for (const field of ['recommended_scope', 'assumptions']) {
+    const r = normaliseQuote({ ...base, [field]: [LEAKY] }, WIN, CTX);
+    assert.equal(r.leaked, true, `${field} leak not detected`);
+    const all = [...r.quote.recommendedScope, ...r.quote.assumptions, r.quote.summary].join(' ');
+    assert.ok(!looksLikeLeak(all), `${field} leak reached the customer`);
+  }
+});
+
 test('malformed and hostile model output degrades to a complete quote', () => {
   for (const bad of [null, {}, { price_min_usd: 'free' }, { recommended_scope: 'not a list' }]) {
     const r = normaliseQuote(bad, WIN, CTX);

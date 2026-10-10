@@ -181,6 +181,17 @@ leadSystem: {
 },
 ```
 
+**`supabaseAnonKey` is required for the wizard, not just the dashboard.** The
+functions gateway rejects an unsigned request before your function runs, so
+the wizard sends the anon key as its bearer token. Leave it blank and every
+submission comes back 401 without reaching any of your code.
+
+The anon key is safe in a public file: `portfolio_leads` has RLS on with no
+policy for the anonymous role, so a caller holding only this key can read and
+write nothing. (`backend/supabase/config.toml` keeps `verify_jwt = true` for
+both functions; set it to `false` for `project-estimate` if you would rather
+leave the key out and have the endpoint openly callable.)
+
 Then re-stamp the asset cache-busting hashes and push:
 
 ```bash
@@ -203,8 +214,12 @@ limit (5 submissions per IP per hour by default).
 2. Put the **site key** in `config.js` as `turnstileSiteKey`.
 3. `supabase secrets set TURNSTILE_SECRET_KEY=<secret>`.
 
-The function enforces Turnstile only when `TURNSTILE_SECRET_KEY` is set, so
-this can be added later without any code change.
+**Set both or neither.** The widget appears only when the site key is present,
+and the function demands a token only when the secret is present. Setting the
+secret alone makes every real submission fail the check; setting the site key
+alone shows a widget whose answer nobody reads.
+
+Added later, this needs no code change — only the two values.
 
 ---
 

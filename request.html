@@ -23,16 +23,16 @@
 
   <!-- i18n is blocking and ahead of the stylesheets, exactly as on the other
        pages: an Arabic visitor must never see a frame of English or LTR. -->
-  <script src="assets/i18n/en.js?v=91d3033c"></script>
-  <script src="assets/i18n/ar.js?v=91d3033c"></script>
-  <script src="assets/js/i18n.js?v=91d3033c"></script>
+  <script src="assets/i18n/en.js?v=664d8cfd"></script>
+  <script src="assets/i18n/ar.js?v=664d8cfd"></script>
+  <script src="assets/js/i18n.js?v=664d8cfd"></script>
 
-  <link rel="stylesheet" href="assets/css/variables.css?v=91d3033c" />
-  <link rel="stylesheet" href="assets/css/motion.css?v=91d3033c" />
-  <link rel="stylesheet" href="assets/css/base.css?v=91d3033c" />
-  <link rel="stylesheet" href="assets/css/components.css?v=91d3033c" />
-  <link rel="stylesheet" href="assets/css/request.css?v=91d3033c" />
-  <link rel="stylesheet" href="assets/css/rtl.css?v=91d3033c" />
+  <link rel="stylesheet" href="assets/css/variables.css?v=664d8cfd" />
+  <link rel="stylesheet" href="assets/css/motion.css?v=664d8cfd" />
+  <link rel="stylesheet" href="assets/css/base.css?v=664d8cfd" />
+  <link rel="stylesheet" href="assets/css/components.css?v=664d8cfd" />
+  <link rel="stylesheet" href="assets/css/request.css?v=664d8cfd" />
+  <link rel="stylesheet" href="assets/css/rtl.css?v=664d8cfd" />
 </head>
 <body class="rq-page">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -84,10 +84,13 @@
     <form class="rq-form" id="rq-form" novalidate autocomplete="on">
 
       <!-- Honeypot. Hidden from people and from assistive technology; a bot
-           that fills it gets a success-shaped reply and nothing is stored. -->
+           that fills it gets a success-shaped reply and nothing is stored.
+           The name is deliberately meaningless: a field called "company" is
+           one browsers autofill, which would throw away a real lead. -->
       <div class="rq-hp" aria-hidden="true">
-        <label for="rq-company">Company (leave blank)</label>
-        <input type="text" id="rq-company" name="company" tabindex="-1" autocomplete="off" />
+        <label for="rq-hp-field">Leave this field empty</label>
+        <input type="text" id="rq-hp-field" name="hp_detail_2" tabindex="-1"
+               autocomplete="off" aria-hidden="true" />
       </div>
 
       <!-- ── Step 1 ─────────────────────────────────────────────────── -->
@@ -210,6 +213,11 @@
           <p class="rq-err" data-err-for="consent" role="alert"></p>
         </div>
 
+        <!-- Filled in by request.js only when leadSystem.turnstileSiteKey is
+             set. Without a key the honeypot and the server-side rate limit
+             are the protection, and nothing is rendered here. -->
+        <div class="rq-turnstile" id="rq-turnstile" hidden></div>
+
         <p class="rq-form-err" id="rq-form-err" role="alert" hidden></p>
 
         <div class="rq-actions">
@@ -286,7 +294,7 @@
   <p data-i18n="rq.footer">&copy; 2026 Mohamed Gamal · Senior Software Engineer &amp; Odoo / ERP Specialist · Cairo, Egypt</p>
 </footer>
 
-<script src="assets/js/config.js?v=91d3033c"></script>
-<script src="assets/js/request.js?v=91d3033c"></script>
+<script src="assets/js/config.js?v=664d8cfd"></script>
+<script src="assets/js/request.js?v=664d8cfd"></script>
 </body>
 </html>

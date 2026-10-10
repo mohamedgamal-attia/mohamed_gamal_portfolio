@@ -63,7 +63,7 @@ export async function handleEstimate(req, deps) {
    *     success, so a bot learns nothing, but nothing is stored or spent. */
   if (lead.honeypotTripped) {
     log('warn', 'honeypot', { ip: req.ip });
-    return { status: 200, body: { ok: true, reference: makeReference(randomBytes(6)), quote: null, aiAvailable: false } };
+    return { status: 200, body: { ok: true, reference: makeReference(randomBytes(6)), quote: null, aiAvailable: false, notified: false } };
   }
   if (config.botCheckRequired) {
     const passed = await verifyBot(req.body && req.body.botToken, req.ip);
@@ -201,12 +201,15 @@ export async function handleEstimate(req, deps) {
   } catch { /* already logged; the lead itself is safe */ }
 
   /* 10 — the customer sees the quote, or an honest fallback */
+  // `notified` is reported so the page can say "this also reached Mohamed"
+  // only when the provider actually accepted the message.
+  const notified = emailStatus === 'sent';
   if (aiFailed) {
     return {
       status: 200,
-      body: { ok: true, reference, quote: null, aiAvailable: false,
+      body: { ok: true, reference, quote: null, aiAvailable: false, notified,
               message: errorBody('aiUnavailable', lead.language).message },
     };
   }
-  return { status: 200, body: { ok: true, reference, aiAvailable: true, quote } };
+  return { status: 200, body: { ok: true, reference, aiAvailable: true, notified, quote } };
 }

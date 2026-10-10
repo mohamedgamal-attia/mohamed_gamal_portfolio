@@ -1,0 +1,23 @@
+# Supabase CLI project configuration.
+#
+# Only the parts this project relies on are set; everything else uses the
+# CLI's defaults.
+
+project_id = "mohamed-gamal-portfolio"
+
+[functions.project-estimate]
+# The gateway checks for a signed project JWT before the function runs. The
+# wizard satisfies this by sending the PUBLIC anon key as the bearer token,
+# which grants nothing on its own (portfolio_leads has RLS on and no anon
+# policy). Keeping the check on means unsigned traffic is dropped at the edge,
+# before it can cost anything.
+#
+# If you would rather not put the anon key in config.js, set this to false and
+# the endpoint becomes openly callable - the honeypot, the rate limit and
+# Turnstile are then the only gate.
+verify_jwt = true
+
+[functions.resend-notification]
+# Always on: the caller must present a real session token, which the function
+# then resolves to a user and checks against the admin allow-list.
+verify_jwt = true

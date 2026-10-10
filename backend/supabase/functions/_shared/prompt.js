@@ -149,7 +149,13 @@ export const RESPONSE_SCHEMA = {
 export const GENERATION_CONFIG = {
   temperature: 0.2,          // pre-sales arithmetic, not creative writing
   topP: 0.8,
-  maxOutputTokens: 900,
+  // On a 2.5-class model maxOutputTokens covers THINKING as well as the
+  // reply, so a tight budget can be spent entirely on thinking and return
+  // empty text - which would fail every lead to `ai_failed`. Thinking is
+  // switched off (this is schema-filling, not reasoning) and the budget is
+  // generous enough for the schema either way.
+  thinkingConfig: { thinkingBudget: 0 },
+  maxOutputTokens: 2048,
   responseMimeType: 'application/json',
   responseSchema: RESPONSE_SCHEMA,
 };

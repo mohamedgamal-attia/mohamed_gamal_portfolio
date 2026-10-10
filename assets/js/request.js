@@ -58,10 +58,30 @@
     if (keep) select.value = keep;
   }
 
+  /* A required <select> with no options makes step 1 impossible to pass, so a
+     failed fetch falls back to a short list that covers most of the audience
+     and still lets anyone else continue. The draft is restored either way. */
+  var FALLBACK_COUNTRIES = [
+    { c: 'EG', en: 'Egypt',                ar: 'مصر' },
+    { c: 'SA', en: 'Saudi Arabia',         ar: 'المملكة العربية السعودية' },
+    { c: 'AE', en: 'United Arab Emirates', ar: 'الإمارات العربية المتحدة' },
+    { c: 'KW', en: 'Kuwait',               ar: 'الكويت' },
+    { c: 'QA', en: 'Qatar',                ar: 'قطر' },
+    { c: 'US', en: 'United States',        ar: 'الولايات المتحدة' },
+    { c: 'GB', en: 'United Kingdom',       ar: 'المملكة المتحدة' },
+    { c: 'ZZ', en: 'Somewhere else',       ar: 'دولة أخرى' },
+  ];
+
+  function useCountries(rows) {
+    countries = (rows && rows.length) ? rows : FALLBACK_COUNTRIES;
+    paintCountries();
+    restoreDraft();
+  }
+
   fetch('assets/data/countries.json')
-    .then(function (r) { return r.ok ? r.json() : []; })
-    .then(function (rows) { countries = rows || []; paintCountries(); restoreDraft(); })
-    .catch(function () { /* the field stays a plain required select */ });
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(useCountries)
+    .catch(function () { useCountries(null); });
 
   /* ── Draft persistence (§51 — do not lose what was typed) ── */
 
@@ -209,8 +229,11 @@
   });
 
   // Enter inside a text field advances rather than submitting from step 1 or 2.
+  // A button must keep its own Enter behaviour, or Back becomes unusable by
+  // keyboard.
   form.addEventListener('keydown', function (e) {
     if (e.key !== 'Enter' || e.target.tagName === 'TEXTAREA') return;
+    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
     if (current < TOTAL_STEPS) {
       e.preventDefault();
       if (stepIsValid(current)) goTo(current + 1);
@@ -224,6 +247,51 @@
   }
 
   /* ── Submit ────────────────────────────────────────── */
+
+  /* ── Turnstile ──────────────────────────────────────
+     Rendered only when a site key is configured. The server enforces it only
+     when TURNSTILE_SECRET_KEY is set, so the two switch on together: with
+     neither, the honeypot and the server-side rate limit are the protection.
+     The widget is loaded lazily so the page costs nothing when it is off. */
+
+  var turnstileWidget = null;
+
+  function initTurnstile() {
+    if (!LEAD.turnstileSiteKey) return;
+    var mount = document.getElementById('rq-turnstile');
+    if (!mount) return;
+    mount.hidden = false;
+
+    window.mgTurnstileReady = function () {
+      try {
+        turnstileWidget = window.turnstile.render(mount, {
+          sitekey: LEAD.turnstileSiteKey,
+          language: lang(),
+          'error-callback': function () { turnstileWidget = null; },
+        });
+      } catch (e) { turnstileWidget = null; }
+    };
+
+    var sc = document.createElement('script');
+    sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=mgTurnstileReady&render=explicit';
+    sc.async = true;
+    sc.defer = true;
+    document.head.appendChild(sc);
+  }
+
+  function botToken() {
+    if (!LEAD.turnstileSiteKey || !window.turnstile) return null;
+    try { return window.turnstile.getResponse(turnstileWidget) || null; }
+    catch (e) { return null; }
+  }
+
+  function resetTurnstile() {
+    if (turnstileWidget !== null && window.turnstile) {
+      try { window.turnstile.reset(turnstileWidget); } catch (e) { /* ignore */ }
+    }
+  }
+
+  initTurnstile();
 
   var formErr = document.getElementById('rq-form-err');
 
@@ -251,10 +319,11 @@
       clientBudget:    form.elements.clientBudget.value || null,
       referenceUrl:    form.elements.referenceUrl.value || null,
       consent:         form.elements.consent.checked,
-      company:         form.elements.company ? form.elements.company.value : '',
+      company:         form.elements.hp_detail_2 ? form.elements.hp_detail_2.value : '',
       utmSource:       param('utm_source'),
       utmMedium:       param('utm_medium'),
       utmCampaign:     param('utm_campaign'),
+      botToken:        botToken(),
     };
   }
 
@@ -263,8 +332,13 @@
     catch (e) { return null; }
   }
 
+  var inFlight = false;
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    // CSS pointer-events only stops the mouse. Without this guard, two quick
+    // Enter presses create two leads, two Gemini calls and two emails.
+    if (inFlight) return;
     if (formErr) formErr.hidden = true;
 
     // Re-check every step, not just the last: a visitor can reach step 3 and
@@ -279,13 +353,27 @@
       return;
     }
 
+    inFlight = true;
     form.classList.add('is-submitting');
+    var submitBtn = document.getElementById('rq-submit');
+    if (submitBtn) submitBtn.disabled = true;
     var controller = new AbortController();
     var timer = setTimeout(function () { controller.abort(); }, 30000);
 
+    /* Supabase's function gateway rejects an unauthenticated request before
+       the function runs, so the PUBLIC anon key is sent as the bearer token.
+       It grants nothing on its own: portfolio_leads has RLS on with no anon
+       policy. Without a configured key the call still works on a gateway
+       deployed with --no-verify-jwt. */
+    var headers = { 'Content-Type': 'application/json' };
+    if (LEAD.supabaseAnonKey) {
+      headers.apikey = LEAD.supabaseAnonKey;
+      headers.Authorization = 'Bearer ' + LEAD.supabaseAnonKey;
+    }
+
     fetch(LEAD.endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: headers,
       body: JSON.stringify(collect()),
       signal: controller.signal,
     })
@@ -317,7 +405,11 @@
       })
       .finally(function () {
         clearTimeout(timer);
+        inFlight = false;
         form.classList.remove('is-submitting');
+        if (submitBtn) submitBtn.disabled = false;
+        // A Turnstile token is single-use; a retry needs a fresh one.
+        resetTurnstile();
       });
   });
 

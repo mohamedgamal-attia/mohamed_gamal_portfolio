@@ -427,6 +427,10 @@ $('ad-export').addEventListener('click', () => {
   const a = document.createElement('a');
   a.href = url;
   a.download = `leads-${new Date().toISOString().slice(0, 10)}.csv`;
+  // Anchored in the document and revoked on a later tick: revoking straight
+  // after click() cancels the download in some browsers.
+  a.style.display = 'none';
+  document.body.appendChild(a);
   a.click();
-  URL.revokeObjectURL(url);
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 2000);
 });

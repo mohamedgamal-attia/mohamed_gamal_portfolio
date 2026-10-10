@@ -26,18 +26,33 @@ const TURNSTILE_SECRET  = env('TURNSTILE_SECRET_KEY');
 const THROTTLE_SALT     = env('THROTTLE_SALT', 'change-me-in-production');
 const SITE_URL          = env('PUBLIC_SITE_URL', 'https://mohamedgamal-attia.github.io/mohamed_gamal_portfolio/');
 const ADMIN_URL         = env('PUBLIC_ADMIN_URL', SITE_URL.replace(/\/?$/, '/') + 'admin.html');
-const ALLOWED_ORIGINS   = env('ALLOWED_ORIGINS', new URL(SITE_URL).origin)
-                            .split(',').map((s) => s.trim()).filter(Boolean);
+/* An empty allow-list would answer every browser with an empty
+   Access-Control-Allow-Origin, i.e. block everything. Fall back through the
+   configured site URL to the published origin so a missing variable degrades
+   to "the real site works" rather than "nothing works". */
+const DEFAULT_ORIGIN = 'https://mohamedgamal-attia.github.io';
+function originsFrom(list: string, siteUrl: string): string[] {
+  const parsed = list.split(',').map((s) => s.trim()).filter(Boolean);
+  if (parsed.length) return parsed;
+  try { return [new URL(siteUrl).origin]; } catch { return [DEFAULT_ORIGIN]; }
+}
+const ALLOWED_ORIGINS = originsFrom(env('ALLOWED_ORIGINS'), SITE_URL);
 
 /* Model: a current stable Flash-class model, overridable without a redeploy of
  * this file. Keep it low-cost — this is structured pre-sales, not prose. */
 const GEMINI_MODEL = env('GEMINI_MODEL', 'gemini-2.5-flash');
 
+const MAX_BODY_BYTES = 16 * 1024;   // mirrors LIMITS.bodyBytes in validation.js
 const RATE_LIMIT    = Number(env('RATE_LIMIT_PER_WINDOW', '5'));
 const RATE_WINDOW_S = Number(env('RATE_LIMIT_WINDOW_SECONDS', '3600'));
 const GEMINI_TIMEOUT_MS = Number(env('GEMINI_TIMEOUT_MS', '20000'));
 
 /* ── Small helpers ──────────────────────────────────────────────────────── */
+
+const json = (body: unknown, status: number, h: Record<string, string>) =>
+  new Response(JSON.stringify(body), {
+    status, headers: { ...h, 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+  });
 
 function corsHeaders(origin: string | null): Record<string, string> {
   // Echo the origin only when it is one we allow; never reflect blindly.
@@ -191,17 +206,34 @@ Deno.serve(async (req: Request) => {
     });
   }
 
+  // Reject an oversized body from its declared length, BEFORE reading it, so
+  // a huge request costs nothing to refuse.
+  const declared = Number(req.headers.get('content-length') ?? '0');
+  if (declared > MAX_BODY_BYTES) {
+    return json({ ok: false, code: 'tooLarge' }, 413, cors);
+  }
+
   const raw = await req.text();
+  // `raw.length` counts UTF-16 code units, so Arabic text would pass at
+  // roughly half its true size. Measure the encoded bytes.
+  const rawBytes = new TextEncoder().encode(raw).byteLength;
+
   let body: unknown = null;
   try { body = JSON.parse(raw); } catch { body = null; }
 
-  const ip = (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim()
-          || req.headers.get('cf-connecting-ip') || 'unknown';
+  // The LEFT-most X-Forwarded-For entry is whatever the client sent, so using
+  // it lets anyone bypass the rate limit with a random header per request.
+  // The right-most entry is the one appended by the proxy we are behind.
+  const xff = (req.headers.get('x-forwarded-for') ?? '').split(',').map((v) => v.trim()).filter(Boolean);
+  const ip = req.headers.get('cf-connecting-ip')
+          || req.headers.get('x-real-ip')
+          || xff[xff.length - 1]
+          || 'unknown';
 
   let result;
   try {
     result = await handleEstimate(
-      { body, headers: { referer: req.headers.get('referer') }, ip, rawBodyBytes: raw.length },
+      { body, headers: { referer: req.headers.get('referer') }, ip, rawBodyBytes: rawBytes },
       {
         db, callGemini, sendEmail, verifyBot, rateLimit, log,
         randomBytes: (n: number) => crypto.getRandomValues(new Uint8Array(n)),

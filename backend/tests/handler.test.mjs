@@ -192,6 +192,33 @@ test('a database failure is reported as a server error, with nothing leaked', as
   assert.equal(calls.gemini.length, 0, 'no quota spent when the lead could not be saved');
 });
 
+test('the response reports whether the email was actually accepted', async () => {
+  const sent = await handleEstimate(REQ(), harness().deps);
+  assert.equal(sent.body.notified, true, 'true when the provider accepted it');
+
+  const { deps } = harness({ deps: { sendEmail: async () => { throw new Error('down'); } } });
+  const failed = await handleEstimate(REQ(), deps);
+  assert.equal(failed.body.notified, false, 'false when it did not go out');
+
+  const { deps: d2 } = harness({ deps: {
+    sendEmail: async () => { throw new Error('down'); },
+    callGemini: async () => { throw new Error('down'); },
+  } });
+  const both = await handleEstimate(REQ(), d2);
+  assert.equal(both.body.notified, false, 'false on the AI-failed path too');
+});
+
+test('a honeypot reply is shaped exactly like a real one', async () => {
+  const { deps } = harness();
+  const real = await handleEstimate(REQ(), deps);
+  const { deps: d2 } = harness();
+  const bot = await handleEstimate(REQ({ ...BODY, company: 'bot' }), d2);
+  assert.deepEqual(Object.keys(bot.body).sort(), ['aiAvailable', 'notified', 'ok', 'quote', 'reference'],
+    'the bot response exposes no extra field to distinguish it');
+  assert.equal(bot.status, real.status);
+  assert.equal(typeof bot.body.reference, typeof real.body.reference);
+});
+
 test('only the referrer origin is stored', () => {
   assert.equal(safeReferrerOrigin('https://x.test/private/page?token=abc'), 'https://x.test');
   assert.equal(safeReferrerOrigin('garbage'), null);

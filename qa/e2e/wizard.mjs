@@ -19,7 +19,7 @@ async function newPage(lang, {capture}={}) {
   await ctx.route(ENDPOINT, async route => {
     const body = JSON.parse(route.request().postData()||'{}');
     seen.push(body);
-    if (capture && capture.reply) return route.fulfill(capture.reply(body));
+    if (capture && capture.reply) return route.fulfill(await capture.reply(body));
     route.fulfill({ status:200, contentType:'application/json', body: JSON.stringify({
       ok:true, reference:'MG-7K4P2Q', aiAvailable:true, notified:true,
       quote:{ language: body.language, projectType: body.projectType,
@@ -176,10 +176,10 @@ console.log('\n--- Draft / persistence / honeypot ---');
 }
 {
   const { ctx, p } = await newPage('en');
-  const hp = await p.$('#rq-company');
+  const hp = await p.$('#rq-hp-field');
   ok(hp !== null, 'honeypot field exists');
   const box = await p.evaluate(() => {
-    const el = document.getElementById('rq-company');
+    const el = document.getElementById('rq-hp-field');
     // The WRAPPER is what clips; the input's own layout box overflows it and
     // is hidden by overflow + clip-path. Verified visually: with both removed
     // the field appears in the same crop, with them it does not.
@@ -192,7 +192,10 @@ console.log('\n--- Draft / persistence / honeypot ---');
   ok(box.w <= 1 && box.h <= 1 && box.clip !== 'none' && box.overflow === 'hidden',
      `honeypot is clipped to nothing (${box.w}x${box.h}, ${box.clip}, overflow:${box.overflow})`);
   ok(box.ariaHidden === 'true', 'honeypot is hidden from assistive technology');
-  ok(await p.getAttribute('#rq-company','tabindex')==='-1', 'honeypot is out of the tab order');
+  ok(await p.getAttribute('#rq-hp-field','tabindex')==='-1', 'honeypot is out of the tab order');
+  const hpName = await p.getAttribute('#rq-hp-field','name');
+  ok(!/company|organi[sz]ation|address|name|email|phone/i.test(hpName),
+     `honeypot name cannot attract browser autofill (${hpName})`);
   await ctx.close();
 }
 {
@@ -219,6 +222,80 @@ console.log('\n--- Draft / persistence / honeypot ---');
   await p.click('#rq-submit');
   await p.waitForSelector('#rq-form-err:not([hidden])',{timeout:4000});
   ok((await p.textContent('#rq-form-err')).includes('not connected'), 'unconfigured endpoint is stated plainly, not faked');
+  await ctx.close();
+}
+
+/* ── Regressions found in code review ────────────────────────── */
+console.log('\n--- Review regressions ---');
+{
+  // Enter on the Back button must go back, not forward.
+  const { ctx, p } = await newPage('en');
+  await p.fill('#rq-name','Jane Doe');
+  await p.fill('#rq-email','jane@example.com');
+  await p.fill('#rq-phone','+20 100 123 4567');
+  await p.selectOption('#rq-country','EG');
+  await p.click('[data-next="2"]');
+  await p.waitForTimeout(200);
+  await p.focus('[data-prev="1"]');
+  await p.keyboard.press('Enter');
+  await p.waitForTimeout(250);
+  ok(await p.isVisible('[data-panel="1"]'), 'Enter on Back returns to the previous step');
+  await ctx.close();
+}
+{
+  // Two rapid submits must produce exactly one request.
+  const { ctx, p, seen } = await newPage('en', { capture: { reply: async () => {
+    await new Promise(r=>setTimeout(r,600));
+    return { status:200, contentType:'application/json',
+             body: JSON.stringify({ ok:true, reference:'MG-ONE111', aiAvailable:false, notified:true, message:'ok' }) };
+  } } });
+  await fillAll(p,{lang:'en'});
+  await p.evaluate(()=>{ const f=document.getElementById('rq-form');
+    f.dispatchEvent(new Event('submit',{cancelable:true,bubbles:true}));
+    f.dispatchEvent(new Event('submit',{cancelable:true,bubbles:true}));
+    f.dispatchEvent(new Event('submit',{cancelable:true,bubbles:true})); });
+  await p.waitForSelector('#rq-result:not([hidden])',{timeout:6000});
+  ok(seen.length===1, `three submits produced one request (got ${seen.length})`);
+  await ctx.close();
+}
+{
+  // A failed country fetch must not strand step 1.
+  const ctx=await b.newContext({viewport:{width:1280,height:900}});
+  ctx.route('**://fonts.googleapis.com/**',r=>r.fulfill({contentType:'text/css',body:GF}));
+  ctx.route('**://fonts.gstatic.com/**',r=>r.abort());
+  ctx.route('**/assets/data/countries.json', r=>r.abort());
+  const p=await ctx.newPage();
+  await p.goto('http://127.0.0.1:8777/request.html',{waitUntil:'load'});
+  await p.waitForTimeout(700);
+  const n=(await p.$$('#rq-country option')).length;
+  ok(n>1, `country list falls back when the fetch fails (${n} options)`);
+  await p.fill('#rq-name','Jane Doe');
+  await p.fill('#rq-email','jane@example.com');
+  await p.fill('#rq-phone','+20 100 123 4567');
+  await p.selectOption('#rq-country','EG');
+  await p.click('[data-next="2"]');
+  await p.waitForTimeout(200);
+  ok(await p.isVisible('[data-panel="2"]'), 'step 1 is still passable without the country file');
+  await ctx.close();
+}
+{
+  // Delivery must be claimed only when the server confirms it.
+  const { ctx, p } = await newPage('en', { capture: { reply: () => ({
+    status:200, contentType:'application/json',
+    body: JSON.stringify({ ok:true, reference:'MG-NON111', aiAvailable:false, notified:false, message:'Saved.' }) }) } });
+  await fillAll(p,{lang:'en'});
+  await p.click('#rq-submit');
+  await p.waitForSelector('#rq-result:not([hidden])',{timeout:5000});
+  ok(await p.isHidden('#rq-notified'), 'no delivery claim when the server says the email was not sent');
+  await ctx.close();
+}
+{
+  // No Turnstile key configured -> no widget, no third-party script.
+  const { ctx, p } = await newPage('en');
+  const reqs=[]; p.on('request',r=>reqs.push(r.url()));
+  await p.waitForTimeout(400);
+  ok(await p.isHidden('#rq-turnstile'), 'no Turnstile widget without a site key');
+  ok(!reqs.some(u=>u.includes('challenges.cloudflare.com')), 'no Cloudflare script loaded without a site key');
   await ctx.close();
 }
 

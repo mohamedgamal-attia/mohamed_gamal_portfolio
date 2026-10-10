@@ -22,8 +22,15 @@ const ADMIN_EMAIL      = env('ADMIN_NOTIFICATION_EMAIL');
 const FROM_EMAIL       = env('NOTIFICATION_FROM_EMAIL', 'leads@resend.dev');
 const SITE_URL         = env('PUBLIC_SITE_URL', '');
 const ADMIN_URL        = env('PUBLIC_ADMIN_URL', '');
-const ALLOWED_ORIGINS  = env('ALLOWED_ORIGINS', SITE_URL ? new URL(SITE_URL).origin : '')
-                           .split(',').map((s) => s.trim()).filter(Boolean);
+/* Same fallback as project-estimate: an unset ALLOWED_ORIGINS must not mean
+   "allow nothing", or the dashboard's re-send button always fails CORS. */
+const DEFAULT_ORIGIN = 'https://mohamedgamal-attia.github.io';
+function originsFrom(list: string, siteUrl: string): string[] {
+  const parsed = list.split(',').map((s) => s.trim()).filter(Boolean);
+  if (parsed.length) return parsed;
+  try { return [new URL(siteUrl).origin]; } catch { return [DEFAULT_ORIGIN]; }
+}
+const ALLOWED_ORIGINS = originsFrom(env('ALLOWED_ORIGINS'), SITE_URL);
 
 function cors(origin: string | null): Record<string, string> {
   const allow = origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0] ?? '';

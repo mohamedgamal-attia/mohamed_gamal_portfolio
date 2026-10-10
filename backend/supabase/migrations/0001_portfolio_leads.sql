@@ -122,11 +122,18 @@ create table if not exists public.portfolio_leads (
   -- The quote may never escape the window the server calculated. This is the
   -- last line of defence behind the application-level clamp: even a bug in the
   -- function cannot persist an out-of-band price.
+  --
+  -- Written so neither bound can slip through on a NULL. A CHECK passes when
+  -- it evaluates to NULL, so `max <= ceiling` with a NULL max would silently
+  -- accept any minimum. Each bound is therefore checked on its own, and the
+  -- pair must be present or absent together.
   constraint ai_price_within_window
     check (
-      ai_price_min_usd is null
-      or (ai_price_min_usd >= pricing_floor_usd
-          and ai_price_max_usd <= pricing_ceiling_usd)
+      (ai_price_min_usd is null or ai_price_min_usd >= pricing_floor_usd)
+      and (ai_price_max_usd is null or ai_price_max_usd <= pricing_ceiling_usd)
+      and (ai_price_max_usd is null or ai_price_max_usd >= pricing_floor_usd)
+      and (ai_price_min_usd is null or ai_price_min_usd <= pricing_ceiling_usd)
+      and (ai_price_min_usd is null) = (ai_price_max_usd is null)
     ),
 
   email_notification_status email_status not null default 'pending',

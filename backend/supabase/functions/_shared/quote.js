@@ -80,9 +80,11 @@ export function normaliseQuote(parsed, win, ctx) {
   const lang = (p.language === 'ar' || p.language === 'en') ? p.language : language;
   const languageMismatch = lang !== language;
 
+  // Every field that is scanned must also be cleared, or a leak simply moves
+  // to whichever field was left out. (It was the timeline.)
   const leaked = [summary, message, cta, timeline, ...scope, ...assume].some(looksLikeLeak);
   if (leaked) {
-    summary = ''; message = ''; cta = ''; scope = []; assume = [];
+    summary = ''; message = ''; cta = ''; timeline = ''; scope = []; assume = [];
   }
 
   // Anything still missing falls back to localised copy written by us, so the
