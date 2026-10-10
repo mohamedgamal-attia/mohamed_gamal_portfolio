@@ -12,3 +12,7 @@ node_modules/
 test-results/
 playwright-report/
 .supabase/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
