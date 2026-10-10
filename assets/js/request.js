@@ -130,7 +130,10 @@
   var PHONE_RE = /^\+?[0-9][0-9\s()\-.]{4,31}$/;
 
   var RULES = {
-    fullName:    function (v) { return v.trim().length >= 2 ? null : 'required'; },
+    fullName:    function (v) {
+      var n = v.trim().length;
+      return n >= 2 && n <= 120 ? null : (n > 120 ? 'tooLong' : 'required');
+    },
     email:       function (v) { return EMAIL_RE.test(v.trim()) ? null : 'invalid'; },
     phone:       function (v) { return PHONE_RE.test(v.trim()) ? null : 'invalid'; },
     countryCode: function (v) { return v ? null : 'required'; },
@@ -295,9 +298,36 @@
 
   var formErr = document.getElementById('rq-form-err');
 
-  function showFormError(msg) {
+  /* A dead end is not an acceptable error state. When the backend cannot take
+     the request at all, the message is followed by the two routes that always
+     work, so the visitor is never told "contact me directly" without being
+     given a way to do it. */
+  function showFormError(msg, withContact) {
     if (!formErr) return;
-    formErr.textContent = msg;
+    formErr.textContent = '';
+    formErr.appendChild(document.createTextNode(msg));
+
+    if (withContact) {
+      var p = (window.Portfolio && window.Portfolio.profile) || {};
+      var row = document.createElement('div');
+      row.className = 'rq-err-actions';
+      if (p.whatsapp) {
+        var w = document.createElement('a');
+        w.className = 'btn btn-outline-warm btn-sm';
+        w.href = p.whatsapp; w.target = '_blank'; w.rel = 'noopener';
+        w.textContent = t('rq.err.contactWhatsapp', 'Message on WhatsApp');
+        row.appendChild(w);
+      }
+      if (p.email) {
+        var m = document.createElement('a');
+        m.className = 'btn btn-outline-warm btn-sm';
+        m.href = 'mailto:' + p.email;
+        m.textContent = t('rq.err.contactEmail', 'Email me');
+        row.appendChild(m);
+      }
+      if (row.childNodes.length) formErr.appendChild(row);
+    }
+
     formErr.hidden = false;
     formErr.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }
@@ -347,9 +377,10 @@
       if (!stepIsValid(s)) { goTo(s); return; }
     }
 
+    // Never configured: say so, and offer the routes that do work.
     if (!LEAD.endpoint) {
       showFormError(t('rq.err.notConfigured',
-        'The request form is not connected yet. Please email or message me directly in the meantime.'));
+        'The request form is not connected yet. You can contact me directly in the meantime.'), true);
       return;
     }
 
@@ -390,18 +421,61 @@
         if (res.status === 200 && res.body && res.body.ok) {
           submitted = true;
           clearDraft();
-          renderResult(res.body);
+          // The lead exists on the server from here on. A failure to PAINT it
+          // must never be reported as "we could not reach the server", or the
+          // visitor retries and we create a second lead, a second model call
+          // and a second email.
+          try {
+            renderResult(res.body);
+          } catch (renderErr) {
+            showFormError(
+              t('rq.result.received', 'Request received') + ' — ' + (res.body.reference || ''),
+              true);
+          }
           return;
         }
         if (res.body && Array.isArray(res.body.errors)) {
           res.body.errors.forEach(function (err) { setFieldError(err.field, err.code); });
+          // The server validates every field at once, so a rejected one can
+          // belong to a step the visitor has already left. Marking it there
+          // puts the message inside a collapsed panel where nobody sees it,
+          // so jump to the earliest step that actually has a problem.
+          var earliest = null;
+          res.body.errors.forEach(function (err) {
+            for (var step = 1; step <= TOTAL_STEPS; step++) {
+              if ((STEP_FIELDS[step] || []).indexOf(err.field) !== -1) {
+                if (earliest === null || step < earliest) earliest = step;
+              }
+            }
+          });
+          if (earliest !== null && earliest !== current) goTo(earliest);
         }
-        showFormError((res.parsed && res.body.message) ||
-          t('rq.err.server', 'Something went wrong. Please try again shortly.'));
+        // Only OUR error shape may be shown verbatim. The functions gateway
+        // also answers with {message}, and "Missing authorization header" is
+        // not something to put in front of a customer.
+        var ours = res.parsed && res.body && res.body.ok === false &&
+                   typeof res.body.code === 'string' && typeof res.body.message === 'string';
+        // A 403 we recognise is a bot check the visitor can clear by
+        // reloading; a 403 we do not recognise is the gateway refusing us.
+        var serverDown = res.status >= 500 || res.status === 404 || res.status === 401 ||
+                         (res.status === 403 && !ours);
+        showFormError(
+          (ours && !serverDown ? res.body.message : null) ||
+          (serverDown
+            ? t('rq.err.unavailable',
+                'The request form is temporarily unavailable. You can contact me directly while I reconnect it.')
+            : t('rq.err.server', 'Something went wrong. Please try again shortly.')),
+          serverDown);
       })
-      .catch(function () {
-        showFormError(t('rq.err.network',
-          'We could not reach the server. Please check your connection and try again.'));
+      .catch(function (err) {
+        // An abort is our own 30s timeout; anything else is the network.
+        // Either way the backend did not take the request, so offer a way out.
+        var timedOut = err && err.name === 'AbortError';
+        showFormError(timedOut
+          ? t('rq.err.unavailable',
+              'The request form is temporarily unavailable. You can contact me directly while I reconnect it.')
+          : t('rq.err.network',
+              'We could not reach the server. Please check your connection and try again.'), true);
       })
       .finally(function () {
         clearTimeout(timer);

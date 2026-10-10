@@ -27,6 +27,15 @@ for(const [pn,pu] of [['home','/'],['eghr','/projects/eghr.html']]){
     ctx.route('**://fonts.gstatic.com/**',r=>{const f=DIR+'vendor/gstatic/'+nodePath.basename(new URL(r.request().url()).pathname);fs.existsSync(f)?r.fulfill({body:fs.readFileSync(f)}):r.abort();});
     const p=await ctx.newPage();
     await p.goto('http://127.0.0.1:8777'+pu,{waitUntil:'load'});
+    // The project cards are built from JSON, so wait for them FIRST. Forcing
+    // reveal state before they exist leaves 40 card icons un-revealed, and an
+    // un-revealed icon measures 0x0 and is excluded - a weaker result dressed
+    // up as the same "0 out of range".
+    await p.waitForFunction(() => {
+      const g = document.querySelector('.projects-grid');
+      return !g || g.children.length > 0;
+    }, null, { timeout: 6000 }).catch(() => {});
+    await p.waitForTimeout(400);
     await p.evaluate(()=>document.querySelectorAll('.cs-reveal,.fade-up,.reveal,.reveal-scale,.reveal-left').forEach(e=>e.classList.add('visible')));
     await p.waitForTimeout(1300);
     const got=await p.evaluate(()=>[...document.querySelectorAll('svg.ic')].filter(el=>{

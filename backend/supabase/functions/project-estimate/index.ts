@@ -59,7 +59,10 @@ function corsHeaders(origin: string | null): Record<string, string> {
   const allow = origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0] ?? '';
   return {
     'Access-Control-Allow-Origin': allow,
-    'Access-Control-Allow-Headers': 'content-type',
+    // Must list EVERY header the browser will send, or the preflight fails
+    // and the request never happens. The wizard sends the anon key so the
+    // functions gateway lets the call through.
+    'Access-Control-Allow-Headers': 'content-type, authorization, apikey, x-client-info',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Max-Age': '86400',
     'Vary': 'Origin',

@@ -155,6 +155,7 @@
   color: var(--danger, #b4453d); font-size: .9rem; line-height: 1.6;
 }
 .rq-form-err[hidden] { display: none; }
+.rq-err-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 
 .rq-actions {
   display: flex; gap: 12px; flex-wrap: wrap;

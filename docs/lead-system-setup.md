@@ -20,6 +20,42 @@ steps below are the ones that need you to be signed in somewhere.
 
 ---
 
+## The short way
+
+On your Windows machine — the one that has `GEMINI_API_KEY` in its
+environment — from a **freshly opened** PowerShell window:
+
+```powershell
+cd <this repository>
+powershell -ExecutionPolicy Bypass -File scripts\connect-backend.ps1
+```
+
+It links the project, applies the migrations, sets every server secret,
+deploys both functions, reads back the **public** anon key, writes it into
+`assets/js/config.js`, re-stamps the asset hashes, commits and pushes. It asks
+for three things: your project ref, the email to notify, and your Resend key
+(entered hidden). It never prints or stores a secret, and it stops rather than
+committing if a secret-shaped value ends up in the public config.
+
+A fresh window matters: `setx` only affects new processes, so a shell you
+already had open will report `GEMINI_API_KEY=MISSING`.
+
+Afterwards:
+
+```bash
+node scripts/verify-backend.mjs          # cheap checks, no model call
+node scripts/verify-backend.mjs --full   # one real end-to-end request
+```
+
+Two things the script cannot do for you: creating your admin login in the
+Supabase dashboard (step 3 below), and verifying a Resend sender domain if you
+want mail from your own address rather than `leads@resend.dev` (step 4).
+
+The rest of this document is the same work done by hand — useful if you are on
+another OS, or if a step fails and you want to see what it was doing.
+
+---
+
 ## What you need
 
 | | |
